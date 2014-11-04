@@ -1,0 +1,2245 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sage.CRE.ComponentIdentification</name>
+    </assembly>
+    <members>
+        <member name="T:Sage.CRE.ComponentIdentification.FileXPathSingleNodeReaderStrategy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.DetectionStrategyBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.IDetectionStrategy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.IDetectionStrategy.Detect">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.IDetectionStrategy.Priority">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.IDetectionStrategy.ProductId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.DetectionStrategyBase.#ctor(System.String,System.String,System.Uri,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            
+            </summary>
+            <param name="productId"></param>
+            <param name="productName"></param>
+            <param name="baseHelpUri"></param>
+            <param name="tag"></param>
+            <param name="priority"></param>
+            <param name="propertySpecifications"></param>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.DetectionStrategyBase.PopulatePropertyValuesFromSpecifications(Sage.CRE.ComponentIdentification.DetectResult,System.Collections.Generic.Dictionary{System.String,System.String},System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="result"></param>
+            <param name="propertySpecifications"></param>
+            <param name="instance"></param>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.DetectionStrategyBase.Detect">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.DetectionStrategyBase.CreateDetectResult(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectionStrategyBase.ProductId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectionStrategyBase.ProductName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectionStrategyBase.BaseHelpUri">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectionStrategyBase.Tag">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectionStrategyBase.Priority">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectionStrategyBase.PropertySpecifications">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.FileXPathSingleNodeReaderStrategy.#ctor(System.String,System.String,System.Uri,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="productId"></param>
+            <param name="productName"></param>
+            <param name="baseHelpUri"></param>
+            <param name="tag"></param>
+            <param name="priority"></param>
+            <param name="propertySpecifications"></param>
+            <param name="directory"></param>
+            <param name="fileName"></param>
+            <param name="xpath"></param>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.FileXPathSingleNodeReaderStrategy.Detect">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Internal.FileXPathSingleNodeInformation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Helpers.FileInformation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.FileInformation.Load(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="directory"></param>
+            <param name="fileName"></param>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.FileInformation.Directory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.FileInformation.FileName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.FileInformation.FullPath">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.FileInformation.DirectoryExists">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.FileInformation.FileExists">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.FileInformation.FileVersionInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.FileXPathSingleNodeInformation.XmlNode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Internal.RegistrySubKeyInformation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.RegistrySubKeyReaderStrategy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.RegistrySubKeyReaderStrategy.#ctor(System.String,System.String,System.Uri,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="productId"></param>
+            <param name="productName"></param>
+            <param name="baseHelpUri"></param>
+            <param name="tag"></param>
+            <param name="priority"></param>
+            <param name="propertySpecifications"></param>
+            <param name="registrySubKeyUrl"></param>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.RegistrySubKeyReaderStrategy.Detect">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Internal.RegistryValueInformation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Internal.RegistryValueInformation.Create(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.RegistryValueInformation.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.RegistryValueReaderStrategy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.RegistryValueReaderStrategy.#ctor(System.String,System.String,System.Uri,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="productId"></param>
+            <param name="productName"></param>
+            <param name="baseHelpUri"></param>
+            <param name="tag"></param>
+            <param name="priority"></param>
+            <param name="propertySpecifications"></param>
+            <param name="registryValueUrl"></param>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.RegistryValueReaderStrategy.Detect">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Internal.IfModifiedSinceWebClient">
+            <summary>
+            Class that adds the If-Modified-Since header to WebClient and offers a helper method for asynchronous file updates.
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Internal.IfModifiedSinceWebClient.GetWebRequest(System.Uri)">
+            <summary>
+            Returns a System.Net.WebRequest object for the specified resource.
+            </summary>
+            <param name="address">A System.Uri that identifies the resource to request.</param>
+            <returns>A new System.Net.WebRequest object for the specified resource.</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Internal.IfModifiedSinceWebClient.UpdateFileIfNewer(System.String,System.Uri)">
+            <summary>
+            Updates a file from a web source if and only if the web content is newer.
+            </summary>
+            <param name="path">Path to the file.</param>
+            <param name="uri">Path to the web content.</param>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.IfModifiedSinceWebClient.IfModifiedSince">
+            <summary>
+            Gets or sets the value to use for the If-Modified-Since HTTP header.
+            </summary>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Internal.IfModifiedSinceWebClient.UpdateFileIfNewerResult">
+            <summary>
+            Result codes for the UpdateFileIfNewer method.
+            </summary>
+        </member>
+        <member name="F:Sage.CRE.ComponentIdentification.Internal.IfModifiedSinceWebClient.UpdateFileIfNewerResult.Error">
+            <summary>
+            There was an error during the update.
+            </summary>
+        </member>
+        <member name="F:Sage.CRE.ComponentIdentification.Internal.IfModifiedSinceWebClient.UpdateFileIfNewerResult.UpToDate">
+            <summary>
+            The file was already up to date with the web content.
+            </summary>
+        </member>
+        <member name="F:Sage.CRE.ComponentIdentification.Internal.IfModifiedSinceWebClient.UpdateFileIfNewerResult.Updated">
+            <summary>
+            The file has been updated to match the current web content.
+            </summary>
+        </member>
+        <member name="T:Sage.Configuration.DataRegistry">
+            <summary>
+            A class used to locate, create and manage data repositories
+            </summary>
+        </member>
+        <member name="T:Sage.Configuration.IDataRegistry">
+            <summary>
+            Interface for interacting with the Data Registry
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.IDataRegistry.CreateKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Create or open a keyed value set
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>Interface to the keyed value set</returns>
+            <remarks>If the keyed value set already exists this method will simply return an interface to it. If it does not exist it will create it</remarks>
+        </member>
+        <member name="M:Sage.Configuration.IDataRegistry.CreateEncryptedKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Create a open an encrypted keyed value set 
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>Interface to the keyed value set</returns>
+            <remarks>If the keyed value set already exists this method will simply return an interface to it. If it does not exist it will create it</remarks>
+        </member>
+        <member name="M:Sage.Configuration.IDataRegistry.OpenKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Open an existing keyed value set
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>Interface to the keyed value set</returns>
+            <remarks>An error is throw if you attemtp to open a keyed value set that doesn't exist</remarks>
+        </member>
+        <member name="M:Sage.Configuration.IDataRegistry.RemoveKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Remove a keyed value set 
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+        </member>
+        <member name="M:Sage.Configuration.IDataRegistry.ContainsKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Determine if the data registry contains a particular keyed value set.
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>True if the keyed value set exists, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.IDataRegistry.RemoveAllData(System.String)">
+            <summary>
+            Remove all data sets from a particular location within the data registry
+            </summary>
+            <param name="location">The location of the keyed value set within the data registry</param>
+        </member>
+        <member name="F:Sage.Configuration.DataRegistry.FileExtension">
+            <summary>
+            Standard Xml Data Store file extension
+            </summary>
+        </member>
+        <member name="F:Sage.Configuration.DataRegistry.EncryptedFileExtension">
+            <summary>
+            Encrypted Xml Data Store file extension
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.Sage#Configuration#IDataRegistry#CreateKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Create or open a keyed value set
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>Interface to the keyed value set</returns>
+            <remarks>If the keyed value set already exists this method will simply return an interface to it. If it does not exist it will create it</remarks>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.Sage#Configuration#IDataRegistry#CreateEncryptedKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Create a open an encrypted keyed value set 
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>Interface to the keyed value set</returns>
+            <remarks>If the keyed value set already exists this method will simply return an interface to it. If it does not exist it will create it</remarks>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.Sage#Configuration#IDataRegistry#OpenKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Open an existing keyed value set
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>Interface to the keyed value set</returns>
+            <remarks>An error is throw if you attemtp to open a keyed value set that doesn't exist</remarks>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.Sage#Configuration#IDataRegistry#RemoveKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Remove a keyed value set 
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.Sage#Configuration#IDataRegistry#ContainsKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Determine if the data registry contains a particular keyed value set.
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>True if the keyed value set exists, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.Sage#Configuration#IDataRegistry#RemoveAllData(System.String)">
+            <summary>
+            Remove all data sets from a particular location within the data registry
+            </summary>
+            <param name="location">The location of the keyed value set within the data registry</param>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.CreateKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Create or open a keyed value set
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>Interface to the keyed value set</returns>
+            <remarks>If the keyed value set already exists this method will simply return an interface to it. If it does not exist it will create it</remarks>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.CreateEncryptedKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Create a open an encrypted keyed value set 
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>Interface to the keyed value set</returns>
+            <remarks>If the keyed value set already exists this method will simply return an interface to it. If it does not exist it will create it</remarks>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.OpenKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Open an existing keyed value set
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>Interface to the keyed value set</returns>
+            <remarks>An error is throw if you attemtp to open a keyed value set that doesn't exist</remarks>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.RemoveKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Remove a keyed value set 
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.ContainsKeyedValueSet(Sage.Configuration.DataScope,System.String,System.String)">
+            <summary>
+            Determine if the data registry contains a particular keyed value set.
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <param name="name">The name of the keyed value set</param>
+            <returns>True if the keyed value set exists, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.RemoveAllData(System.String)">
+            <summary>
+            Remove all data sets from a particular location within the data registry
+            </summary>
+            <param name="location">The location of the keyed value set within the data registry</param>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.RemoveFolderAndFiles(Sage.Configuration.DataScope,System.String)">
+            <summary>
+            Remove a folder and all it's files
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="path">The path to the folder to remove</param>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.InsureLocationFolderExists(Sage.Configuration.DataScope,System.String)">
+            <summary>
+            Make sure the root location folder exists
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.GetDataPath(Sage.Configuration.DataScope,System.String)">
+            <summary>
+            Retrieve a formated data path to the root location folder
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="location">The location of the keyed value set within the data registry</param>
+            <returns>A formated data path to the root location folder</returns>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.InsureFileFoldersExist(System.String)">
+            <summary>
+            Make sure the directory structure exists
+            </summary>
+            <param name="path">The path to validate</param>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.InsureIsolatedStorageDirectoriesExist(Sage.Configuration.DataScope,System.String)">
+            <summary>
+            Make sure an isolated storage path exists
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="path">The path validate</param>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.GetDefaultFileBytes">
+            <summary>
+            Retrieve the default content for a new file
+            </summary>
+            <returns>The file bytes containing the default content</returns>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.GetEncryptedDefaultFileBytes">
+            <summary>
+            Retrieve the encrypted default content for a new file
+            </summary>
+            <returns>The encrypted file bytes containing the default content</returns>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.GetStorageFile(Sage.Configuration.DataScope)">
+            <summary>
+            Retrieve an isolated storage file object
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <returns>an isolated storage file object</returns>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.KeyedValueSetExists(Sage.Configuration.DataScope,System.String)">
+            <summary>
+            Determine if a keyed value set exists
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="path">The path of the data table</param>
+            <returns>True if the keyed value set already exists, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.CreateKeyedValueSet(Sage.Configuration.DataScope,System.String)">
+            <summary>
+            Create a new keyed value set
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="path">The path of the file to create</param>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.RemoveKeyedValueSet(Sage.Configuration.DataScope,System.String)">
+            <summary>
+            Delete a keyed value set's file
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="path">the path of the data table file</param>
+        </member>
+        <member name="M:Sage.Configuration.DataRegistry.GetPersistenceStream(Sage.Configuration.DataScope,System.String)">
+            <summary>
+            Get the persistence stream to write the keyed value set to
+            </summary>
+            <param name="scope">The scope of the keyed value set</param>
+            <param name="path">A path to a file</param>
+            <returns>A persistence stream to write the data table to </returns>
+        </member>
+        <member name="T:Sage.Configuration.DataScope">
+            <summary>
+            Enumerate the available scopes of stored data
+            </summary>
+        </member>
+        <member name="F:Sage.Configuration.DataScope.AllUsers">
+            <summary>
+            Stores data visible to all users on a machine
+            </summary>
+        </member>
+        <member name="F:Sage.Configuration.DataScope.CurrentUser">
+            <summary>
+            Store data visible to the current user only
+            </summary>
+        </member>
+        <member name="F:Sage.Configuration.DataScope.RoamingUser">
+            <summary>
+            Store data on the server for a roaming user profile
+            </summary>
+        </member>
+        <member name="F:Sage.Configuration.DataScope.FileSystem">
+            <summary>
+            Store data on the file system.
+            </summary>
+        </member>
+        <member name="T:Sage.Configuration.DataStoreKeyValueSet">
+            <summary>
+            Class for managing a data table key value set
+            </summary>
+        </member>
+        <member name="T:Sage.Configuration.IKeyValueSet">
+            <summary>
+            Interface for accessing a key/value set
+            </summary>
+        </member>
+        <member name="P:Sage.Configuration.IKeyValueSet.Key">
+            <summary>
+            Get/Set the key name
+            </summary>
+        </member>
+        <member name="P:Sage.Configuration.IKeyValueSet.Value">
+            <summary>
+            Get/set the key value
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.DataStoreKeyValueSet.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.DataStoreKeyValueSet.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="key">The name of the data key</param>
+            <param name="dataValue">The value of the data key</param>
+        </member>
+        <member name="P:Sage.Configuration.DataStoreKeyValueSet.Key">
+            <summary>
+            Get/Set the key name
+            </summary>
+        </member>
+        <member name="P:Sage.Configuration.DataStoreKeyValueSet.Value">
+            <summary>
+            Get/set the key value
+            </summary>
+        </member>
+        <member name="T:Sage.Sandbox.Tools.LinkedSource.FolderRedirectSchemaException">
+            <summary>
+            Exception thrown when a schema error is found with a folder redirect file
+            </summary>
+        </member>
+        <member name="M:Sage.Sandbox.Tools.LinkedSource.FolderRedirectSchemaException.#ctor(System.String,System.Exception)">
+            <summary>
+            Construct an instance of the FolderRedirectSchemaException class
+            </summary>
+            <param name="errorMessage">ErrorMessage</param>
+            <param name="innerException">An inner exception</param>
+        </member>
+        <member name="M:Sage.Sandbox.Tools.LinkedSource.FolderRedirectSchemaException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Serialization Constructor
+            </summary>
+            <param name="si">Serialization Info</param>
+            <param name="sc">Streaming Context</param>
+        </member>
+        <member name="T:Sage.Sandbox.Tools.LinkedSource.FolderManager">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Sage.Sandbox.Tools.LinkedSource.FolderManager.GetRedirectLocation(System.String)">
+            <summary>
+            Retrieve a location specified by a redirect file
+            </summary>
+            <param name="redirectTypeExpression">An XPath expression used to locate the redirect information for a specific type of file</param>
+            <returns>The location specified by a redirect file</returns>
+            <remarks>The redirect file is a simple XML file that contains alternate locations for various default locations</remarks>
+        </member>
+        <member name="M:Sage.Sandbox.Tools.LinkedSource.FolderManager.GetRedirectFile">
+            <summary>
+            Returns the name and path of the redirect file if it exists 
+            or null if it does not exists.
+            </summary>
+        </member>
+        <member name="M:Sage.Sandbox.Tools.LinkedSource.FolderManager.ConditionalTrace(System.String,System.Object[])">
+            <summary>
+            Writes a message to the trace listeners if the "Sage.Sandbox.Tools.LinkedSource.FolderManager"
+            trace switch is enabled.
+            </summary>
+            <remarks>
+            To enable the switch, place the following in the application's exe.config:
+            <example>
+                <system.diagnostics>
+                    <switches>
+                        <add name="Sage.Sandbox.Tools.LinkedSource.FolderManager" value="1" />
+                    </switches> 
+                </system.diagnostics>
+            </example>
+            </remarks>
+            <param name="format">A String containing zero or more format items.</param>
+            <param name="args">An Object array containing zero or more objects to format.</param>
+        </member>
+        <member name="P:Sage.Sandbox.Tools.LinkedSource.FolderManager.SageCommonProgramFilesLocation">
+            <summary>
+            Returns the location where the shared Sage libraries are installed
+            </summary>
+            <remarks>Although shared libraries are typically expected to be 
+            located at "Program Files\Common Files\Sage", an alternate location 
+            can be specified via the 'Location' attribute on the 'SharedLibraries' 
+            element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="P:Sage.Sandbox.Tools.LinkedSource.FolderManager.CommonProgramFilesLocation">
+            <summary>
+            Returns the location where the shared libraries are installed
+            </summary>
+            <remarks>Although shared libraries are typically expected to be 
+            located at "Program Files\Common Files", an alternate location 
+            can be specified via the 'Location' attribute on the 'SharedLibraries' 
+            element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="P:Sage.Sandbox.Tools.LinkedSource.FolderManager.SharedDocumentsLocation">
+            <summary>
+            Return the location for shared documents on the current machine
+            </summary>
+            <remarks>Although this location is typically 
+            "C:\Documents and Settings\All Users\Application Data\Shared Documents", 
+            an alternate location can be specified via the 'Location' attribute on the 'SharedDocuments'
+            element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="P:Sage.Sandbox.Tools.LinkedSource.FolderManager.SageCommonApplicationDataLocation">
+            <summary>
+            Return the location for configuration files shared by all users on a machine
+            </summary>
+            <remarks>Although this location is typically 
+            "C:\Documents and Settings\All Users\Application Data\Sage", 
+            an alternate location can be specified via the 'Location' attribute on the 
+            'SharedConfiguration' element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="P:Sage.Sandbox.Tools.LinkedSource.FolderManager.SageApplicationDataLocation">
+            <summary>
+            Base location for configuration files for a specific user on a machine
+            </summary>
+            <remarks>Although this location is typically 
+            "C:\Documents and Settings\[User Name]\Application Data\Sage", 
+            an alternate location can be specified via the 'Location' attribute on 
+            the 'UserConfigurationBase' element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="P:Sage.Sandbox.Tools.LinkedSource.FolderManager.MyDocumentsLocation">
+            <summary>
+            Return the location for My Documents for a specific user on a machine
+            </summary>
+            <remarks>Although this location is typically 
+            "C:\Documents and Settings\[User Name]\My Documents", 
+            an alternate location can be specified via the 'Location' attribute on the 
+            'UserConfigurationBase' element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="T:Sage.Configuration.IKeyedValues">
+            <summary>
+            Interface for interacting with a set of keyed values
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.IKeyedValues.GetValue(System.String,System.String)">
+            <summary>
+            Retrieve a value from a set of keyed values
+            </summary>
+            <param name="dataPath">Identifies the location of the key value set within the set of data</param>
+            <param name="key">The name of a key within the set of data</param>
+            <returns>The data value stored for the provided key</returns>
+        </member>
+        <member name="M:Sage.Configuration.IKeyedValues.SetValue(System.String,System.String,System.String)">
+            <summary>
+            Add or update a value in a set of keyed values
+            </summary>
+            <param name="dataPath">Identifies the location of the key value set within the set of data</param>
+            <param name="key">The name of a key within the set of data</param>
+            <param name="dataValue">The data value to store under the provided key</param>
+        </member>
+        <member name="M:Sage.Configuration.IKeyedValues.GetAllKeyValueSets(System.String)">
+            <summary>
+            Retrieve all key value sets located at a particular location within a set of data
+            </summary>
+            <param name="dataPath">Identifies the location of the key value set within the set of data</param>
+            <returns>all key value sets located at a particular location within a set of data</returns>
+        </member>
+        <member name="M:Sage.Configuration.IKeyedValues.SetKeyValues(System.String,Sage.Configuration.IKeyValueSet[])">
+            <summary>
+            Add or update one or more values in a set of keyed values
+            </summary>
+            <param name="dataPath">Identifies the location of the key value set within the set of data</param>
+            <param name="newValues">A collection of Keys and values to set</param>
+        </member>
+        <member name="M:Sage.Configuration.IKeyedValues.CreateKey(System.String,System.String)">
+            <summary>
+            Creates a new key at a particular location within a set of data
+            </summary>
+            <param name="dataPath">Identifies the location of the key value set within the set of data</param>
+            <param name="key">The name of the key to create</param>
+        </member>
+        <member name="M:Sage.Configuration.IKeyedValues.RemoveKey(System.String,System.String)">
+            <summary>
+            Remove a key from a particular location within a set of data
+            </summary>
+            <param name="dataPath">Identifies the location of the key value set within the set of data</param>
+            <param name="key">The name of the key to remove</param>
+        </member>
+        <member name="M:Sage.Configuration.IKeyedValues.Contains(System.String,System.String)">
+            <summary>
+            Determine if a specific key exists in a particular location within a set of data
+            </summary>
+            <param name="dataPath">Identifies the location of the key value set within the set of data</param>
+            <param name="key">The name of the key in question</param>
+            <returns>True if the key exists, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.IKeyedValues.GetKeyValuesNames(System.String)">
+            <summary>
+            Given a data path, retrieve an array of strings corresponding with the names of the key values.
+            </summary>
+            <param name="dataPath"></param>
+            <returns>Returns an array of strings.</returns>
+        </member>
+        <member name="M:Sage.Configuration.IKeyedValues.Export(System.String)">
+            <summary>
+            Export the current data to the specified full path export file. The resultant data is understood to be in XML format.
+            </summary>
+            <param name="fullPathExportFile">Specify the full path export file.</param>
+            <returns>Returns true if exported successfully; otherwise, false.</returns>
+        </member>
+        <member name="M:Sage.Configuration.IKeyedValues.GetKeyNames(System.String)">
+            <summary>
+            Given a data path, retrieve a list of Key names for the specified data path.
+            </summary>
+            <param name="dataPath">The data path used to find all key names.</param>
+            <returns>Returns an array of strings.</returns>
+        </member>
+        <member name="T:Sage.Configuration.Internal.CryptoHelper">
+            <summary>
+            Summary description for CryptoHelper.
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.CryptoHelper.#ctor">
+            <summary>
+            Hide the instance constructor
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.CryptoHelper.TransformBytes(System.Byte[],Sage.Configuration.Internal.CryptoHelper.EncryptionAction)">
+            <summary>
+            Encrypt/Decrypt a data array
+            </summary>
+            <param name="data">The bytes to encrypt/decrypt</param>
+            <param name="action">The encryption action to perform</param>
+            <returns>A encrypted byte array</returns>
+        </member>
+        <member name="T:Sage.Configuration.Internal.CryptoHelper.EncryptionAction">
+            <summary>
+            Available types of encryption actions
+            </summary>
+        </member>
+        <member name="F:Sage.Configuration.Internal.CryptoHelper.EncryptionAction.Encrypt">
+            <summary>
+            Encrypt
+            </summary>
+        </member>
+        <member name="F:Sage.Configuration.Internal.CryptoHelper.EncryptionAction.Decrypt">
+            <summary>
+            Decrypt
+            </summary>
+        </member>
+        <member name="T:Sage.Configuration.Internal.KeyedValueSet">
+            <summary>
+            Summary description for DataTable.
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.#ctor(System.String,Sage.Configuration.DataScope)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.GetValue(System.String,System.String)">
+            <summary>
+            Retrieve a value from a Data Table
+            </summary>
+            <param name="dataPath">Identifies the location of the data within the data table</param>
+            <param name="key">The name of a key within the data table</param>
+            <returns>The data value stored for the provided key</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.SetValue(System.String,System.String,System.String)">
+            <summary>
+            Set a value in a Data Table
+            </summary>
+            <param name="dataPath">Identifies the location of the data within the data table</param>
+            <param name="key">The name of a key within the data table</param>
+            <param name="dataValue">The data value to store under the provided key</param>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.GetKeyValuesNames(System.String)">
+            <summary>
+            Given a data path, retrieve an array of strings corresponding with the names of the key value sets.
+            </summary>
+            <param name="dataPath">The data path used to find the names of the key value sets.</param>
+            <returns>Returns an array of strings.</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.GetKeyNames(System.String)">
+            <summary>
+            Given a data path, retrieve a list of Key names for the specified data path.
+            </summary>
+            <param name="dataPath">The data path used to find all key names.</param>
+            <returns>Returns an array of strings.</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.Export(System.String)">
+            <summary>
+            Export the current data to the specified full path export file. The resultant data is understood to be in XML format.
+            </summary>
+            <param name="fullPathExportFile">Specify the full path export file.</param>
+            <returns>Returns true if exported successfully; otherwise, false.</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.GetAllKeyValueSets(System.String)">
+            <summary>
+            Retrieve all key value sets located at a particular location within a data table
+            </summary>
+            <param name="dataPath">Identifies the location of the data within the data table</param>
+            <returns>all key value sets located at a particular location within a data table</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.SetKeyValues(System.String,Sage.Configuration.IKeyValueSet[])">
+            <summary>
+            Set one or more values in a data table
+            </summary>
+            <param name="dataPath">Identifies the location of the data within the data table</param>
+            <param name="newValues">A collection of Keys and values to set</param>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.CreateKey(System.String,System.String)">
+            <summary>
+            Creates a new key at a particular location within a data table
+            </summary>
+            <param name="dataPath">Identifies the location of the data within the data table</param>
+            <param name="key">The name of the key to create</param>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.RemoveKey(System.String,System.String)">
+            <summary>
+            Remove a key from a particular location within a data table
+            </summary>
+            <param name="dataPath">Identifies the location of the data within the data table</param>
+            <param name="key">The name of the key to remove</param>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.Contains(System.String,System.String)">
+            <summary>
+            Determine if a specific key exists in a particular location within a data table
+            </summary>
+            <param name="dataPath">Identifies the location of the data within the data table</param>
+            <param name="key">The name of the key in question</param>
+            <returns>True if the key exists, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.OpenReadOnlyDataTable">
+            <summary>
+            Open the xml file representing the data table in a readonly mode
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.OpenWritableDataTable">
+            <summary>
+            Open a data table with a write lock.
+            </summary>
+            <returns>An Xml document representation of the table</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.OpenWritableStream">
+            <summary>
+            Open a read/write stream
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.GetReadWriteStreamData">
+            <summary>
+            Retrieve an unencrypted stream of data the suppots both reads and writes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.UpdateDataTable(System.Xml.XmlDocument)">
+            <summary>
+            Update the data table's file
+            </summary>
+            <param name="dataTable">The data table to update</param>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.CloseWritableFileStream">
+            <summary>
+            Close a writable file stream
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.PreparedOutputStream">
+            <summary>
+            Retrieve an output stream prepared for writing
+            </summary>
+            <returns>The prepared stream</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.BuildDataPath(System.Xml.XmlDocument,System.String)">
+            <summary>
+            Build up a data path
+            </summary>
+            <param name="dataTable">The data table to build the data path in</param>
+            <param name="dataPath">The data path to build</param>
+            <remarks>Called recusivly</remarks>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.ReadStorageStream">
+            <summary>
+            Read a stream of data from isolated storage
+            </summary>
+            <returns>The data stream read</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.ReadFileStream">
+            <summary>
+            Read a stream of bytes from the data table file
+            </summary>
+            <returns>The retrieved stream of bytes</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.ReadStorageBytes">
+            <summary>
+            Read a stream of bytes from a file
+            </summary>
+            <returns>The bytes read from a file</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.ReadBytes">
+            <summary>
+            Read a stream of bytes from a file
+            </summary>
+            <returns>The bytes read from a file</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.ReadDataTableStream">
+            <summary>
+            Read in a data table stream
+            </summary>
+            <returns>A data table stream</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.ConvertDataTableToBytes(System.String)">
+            <summary>
+            Convert a data table to a set of set of bytes
+            </summary>
+            <param name="dataTableXml">An xml representation of the data table</param>
+            <returns>a set of bytes representing a data table</returns>
+            <remarks>Will encrypt the bytes if required</remarks>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.formatDataPath(System.String)">
+            <summary>
+            Format a provided data path for internal processing
+            </summary>
+            <param name="dataPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.KeyedDataPath(System.String,System.String)">
+            <summary>
+            Append the datapath for a specific key
+            </summary>
+            <param name="dataPath">The dataPath to append to</param>
+            <param name="keyName">The name of the key</param>
+            <returns>The dataPath with a key specific expression appended</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.KeyedValueSet.KeysDataPath(System.String)">
+            <summary>
+            Build a dataPath for locating all keys
+            </summary>
+            <param name="dataPath">The base dataPath</param>
+            <returns>A dataPath for locating all keys</returns>
+        </member>
+        <member name="T:Sage.Configuration.LibraryManager">
+            <summary>
+            The library Manager class is used to support shared component 
+            libraries. The library Manager class uses Library Manifest files 
+            to provided library dependency validations, assembly location 
+            resolutions, and COM ProgId Mappings from version independent 
+            ProgIds to version specific ProgIds.
+            </summary>
+        </member>
+        <member name="P:Sage.Configuration.LibraryManager.SharedLibrariesLocation">
+            <summary>
+            Returns the location where the shared Sage libraries are installed
+            </summary>
+            <remarks>Although shared libraries are typically expected to be 
+            located at "Program Files\Common Files\Sage", an alternate location 
+            can be specified via the 'Location' attribute on the 'SharedLibraries' 
+            element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="P:Sage.Configuration.LibraryManager.CommonProgramFiles">
+            <summary>
+            Returns the location where the shared libraries are installed
+            </summary>
+            <remarks>Although shared libraries are typically expected to be 
+            located at "Program Files\Common Files", an alternate location 
+            can be specified via the 'Location' attribute on the 'SharedLibraries' 
+            element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="P:Sage.Configuration.LibraryManager.SharedDocumentsLocation">
+            <summary>
+            Return the location for shared documents on the current machine
+            </summary>
+            <remarks>Although this location is typically 
+            "C:\Documents and Settings\All Users\Application Data\Shared Documents", 
+            an alternate location can be specified via the 'Location' attribute on the 'SharedDocuments'
+            element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="P:Sage.Configuration.LibraryManager.SharedConfigLocation">
+            <summary>
+            Return the location for configuration files shared by all users on a machine
+            </summary>
+            <remarks>Although this location is typically 
+            "C:\Documents and Settings\All Users\Application Data\Sage", 
+            an alternate location can be specified via the 'Location' attribute on the 
+            'SharedConfiguration' element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="P:Sage.Configuration.LibraryManager.UserConfigLocation">
+            <summary>
+            Base location for configuration files for a specific user on a machine
+            </summary>
+            <remarks>Although this location is typically 
+            "C:\Documents and Settings\[User Name]\Application Data\Sage", 
+            an alternate location can be specified via the 'Location' attribute on 
+            the 'UserConfigurationBase' element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="P:Sage.Configuration.LibraryManager.MyDocumentsLocation">
+            <summary>
+            Return the location for My Documents for a specific user on a machine
+            </summary>
+            <remarks>Although this location is typically 
+            "C:\Documents and Settings\[User Name]\My Documents", 
+            an alternate location can be specified via the 'Location' attribute on the 
+            'UserConfigurationBase' element in a FolderRedirect.xml file at: 
+            C:\Documents and Settings\All Users\Application Data\Sage</remarks>
+        </member>
+        <member name="T:Sage.IO.PathUtils">
+            <summary>
+            Class providing path utility methods
+            </summary>
+        </member>
+        <member name="M:Sage.IO.PathUtils.IsAccessibleDirectory(System.String)">
+            <summary>
+            Determines if a directory is accessible (e.g. exists and is online).
+            </summary>
+            <param name="path">Path to test</param>
+            <returns>Returns true if path exists and is online, false otherwise.
+            Guaranteed not to throw exceptions.</returns>
+        </member>
+        <member name="M:Sage.IO.PathUtils.IsPathUNC(System.String)">
+            <summary>
+            Is the path part of a UNC path.
+            </summary>
+            <param name="path">The path that needs to be tested if it is part of a UNC path.</param>
+            <returns>True if the path is UNC, false otherwise.</returns>
+        </member>
+        <member name="M:Sage.IO.PathUtils.Normalize(System.String)">
+            <summary>
+            Use to clean up a path retrieved from user input or the registry.
+            Also ensures that if there are multiple paths seperated by ';', only
+            the first will be used.
+            </summary>
+            <param name="path">Path to normalize. A null path is handled by
+            causing the empty string to be returned.</param>
+            <returns>Normalized path or empty string if path is null.</returns>
+        </member>
+        <member name="M:Sage.IO.PathUtils.Combine(System.String,System.String)">
+            <summary>
+            Combines two path strings.
+            </summary>
+            <param name="path1">First path string: absolute or relative.</param>
+            <param name="path2">Second path string: relative paths only.</param>
+            <returns>Combined path string.</returns>
+        </member>
+        <member name="M:Sage.IO.PathUtils.Normalize(System.String,System.Boolean)">
+            <summary>
+            Use to clean up a path retrieved from user input or the registry.
+            Also ensures that if there are multiple paths seperated by ';', only
+            the first will be used.
+            </summary>
+            <param name="path">Path to normalize. A null path is handled by
+            causing the empty string to be returned.</param>
+            <param name="addTrailingSeparator">Specify whether to add a trailing slash.</param>
+            <returns>Normalized path or empty string if path is null.</returns>
+        </member>
+        <member name="M:Sage.IO.PathUtils.HasLeadingSeparator(System.String)">
+            <summary>
+            Get a flag indicating if the path starts with a '/' or '\' character.
+            </summary>
+            <param name="path">The path to check.</param>
+            <returns>Returns true if the path starts with a '/' or '\' character; otherwise, false.</returns>
+        </member>
+        <member name="M:Sage.IO.PathUtils.StripLeadingSlash(System.String)">
+            <summary>
+            Remove any leading '/' or '\' from the start of a path
+            </summary>
+            <param name="path">The path to examine\modify</param>
+            <returns>The path without a leading '\'</returns>
+            <remarks>If the path does not have a leading '\' the orginal path will be returned</remarks>
+        </member>
+        <member name="M:Sage.IO.PathUtils.StripTrailingSlash(System.String)">
+            <summary>
+            Remove any trailing '\' from the end of a path
+            </summary>
+            <param name="path">The path to examine\modify</param>
+            <returns>The path without a trailing '\'</returns>
+            <remarks>If the path does not have a trailing '\' the orginal path will be returned</remarks>
+        </member>
+        <member name="M:Sage.IO.PathUtils.HasTrailingSeparator(System.String)">
+            <summary>
+            Get a flag indicating if the path ends with a trailing directory separator character (either '/' or '\').
+            </summary>
+            <param name="path">The path to check.</param>
+            <returns>Returns true if the path has a trailing directory separator character; otherwise, false.</returns>
+        </member>
+        <member name="M:Sage.IO.PathUtils.AddTrailingSeparator(System.String@)">
+            <summary>
+            Add a trailing separator if one doesn't already exist.
+            </summary>
+            <param name="path">The path to check.</param>
+            <returns>Returns true if a trailing separator was added; otherwise, false.</returns>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.DetectionStrategyInformation">
+            <summary>
+            The detection strategy information
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.DetectionStrategyInformation.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectionStrategyInformation.Name">
+            <summary>
+            Gets or sets the Name
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectionStrategyInformation.Tag">
+            <summary>
+            Gets or sets the tag
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectionStrategyInformation.Priority">
+            <summary>
+            Gets or sets the priority
+            </summary>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.DetectResult">
+            <summary>
+            Detected component info
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.DetectResult.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.DetectResult.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectResult.ProductId">
+            <summary>
+            Gets or sets the product id
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectResult.ProductName">
+            <summary>
+            Gets or sets the product id
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectResult.BaseHelpUri">
+            <summary>
+            Gets or sets the product id
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectResult.Properties">
+            <summary>
+            Gets or sets the product id
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.DetectResult.DetectionStrategyInformation">
+            <summary>
+            The detection strategy which matched this
+            </summary>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Detector">
+            <summary>
+            the engine
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Detector.LoadFromWeb(System.Uri,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="detectProductInstructionsUri"></param>
+            <param name="detectProductInstructionsLocalFilePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Detector.LoadFromXml(System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="detectProductInstructionsLocalFilePath"></param>
+            <param name="checkForUpdates"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Detector.#ctor(System.Collections.Generic.IEnumerable{Sage.CRE.ComponentIdentification.IDetectionStrategy})">
+            <summary>
+            
+            </summary>
+            <param name="strategies"></param>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Detector.DetectProducts">
+            <summary>
+            detect components
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Detector.TracedAction(System.String,System.Int32,System.Func{System.Int32,System.Boolean})">
+            <summary>
+            
+            </summary>
+            <param name="description"></param>
+            <param name="indentLevel"></param>
+            <param name="action"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Detector.LoadDetectProductInstructionsFromWeb(System.Uri,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="updateUri"></param>
+            <param name="localPath"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Extensions">
+            <summary>
+            General utility helper class
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Extensions.ExceptionAsString(System.Exception,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="ex"></param>
+            <param name="indentLevel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.FileReaderStrategy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.FileReaderStrategy.#ctor(System.String,System.String,System.Uri,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="productId"></param>
+            <param name="productName"></param>
+            <param name="baseHelpUri"></param>
+            <param name="tag"></param>
+            <param name="priority"></param>
+            <param name="propertySpecifications"></param>
+            <param name="directory"></param>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.FileReaderStrategy.Detect">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Helpers.EnvironmentReader">
+            <summary>
+            An environment reader
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.EnvironmentReader.GetCommonLanguageRuntimeVersion">
+            <summary>
+            Returns the CLR version
+            </summary>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.EnvironmentReader.Is64Bit">
+            <summary>
+            Whether the current OS is 64-bit
+            </summary>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.EnvironmentReader.MachineName">
+            <summary>
+            Returns the current machine name
+            </summary>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.EnvironmentReader.OperatingSystemVersion">
+            <summary>
+            Returns attributes of the current operating system
+            </summary>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.EnvironmentReader.ProcessorCount">
+            <summary>
+            Returns the number of processor of the current machine
+            </summary>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.EnvironmentReader.GetEnvironmentVariableValue(System.String)">
+            <summary>
+            Get an environment variable value
+            </summary>
+            <param name="key">the key</param>
+            <returns>the value</returns>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Helpers.FileInformationReader">
+            <summary>
+            A file reader
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.FileInformationReader.FileExists(System.String)">
+            <summary>
+            Tests if file exists
+            </summary>
+            <param name="filePath">the file path</param>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.FileInformationReader.DirectoryExists(System.String)">
+            <summary>
+            Tests if directory exists
+            </summary>
+            <param name="directoryPath">the directory path</param>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.FileInformationReader.GetFileVersionInfo(System.String)">
+            <summary>
+            Gets file version info
+            </summary>
+            <param name="filePath">the file path</param>
+            <returns>the value</returns>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation">
+            <summary>
+            MSI uninstall information
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.Load(System.String)">
+            <summary>
+            Populate from uninstall registry
+            </summary>
+            <param name="productKey">the product key</param>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.AuthorizedCDFPrefix">
+            <summary>
+            Gets or sets AuthorizedCDFPrefix
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.Comment">
+            <summary>
+            Gets or sets Comment
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.Contact">
+            <summary>
+            Gets or sets Contact
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.DisplayName">
+            <summary>
+            Gets or sets DisplayName
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.DisplayVersion">
+            <summary>
+            Gets or sets DisplayVersion
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.EstimatedSize">
+            <summary>
+            Gets or sets EstimatedSize
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.HelpLink">
+            <summary>
+            Gets or sets HelpLink
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.HelpTelephone">
+            <summary>
+            Gets or sets HelpTelephone
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.InstallDate">
+            <summary>
+            Gets or sets InstallDate
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.InstallLocation">
+            <summary>
+            Gets or sets InstallLocation
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.InstallSource">
+            <summary>
+            Gets or sets InstallSource
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.Language">
+            <summary>
+            Gets or sets Language
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.ModifyPath">
+            <summary>
+            Gets or sets ModifyPath
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.NoModify">
+            <summary>
+            Gets or sets NoModify
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.NoRepair">
+            <summary>
+            Gets or sets NoRepair
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.Publisher">
+            <summary>
+            Gets or sets Publisher
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.Readme">
+            <summary>
+            Gets or sets Readme
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.Size">
+            <summary>
+            Gets or sets Size
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.UninstallString">
+            <summary>
+            Gets or sets UninstallString
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.URLInfoAbout">
+            <summary>
+            Gets or sets URLInfoAbout
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.URLUpdateInfo">
+            <summary>
+            Gets or sets URLUpdateInfo
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.Version">
+            <summary>
+            Gets or sets Version
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.VersionMajor">
+            <summary>
+            Gets or sets VersionMajor
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.VersionMinor">
+            <summary>
+            Gets or sets VersionMinor
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Helpers.MSIUninstallInformation.WindowsInstaller">
+            <summary>
+            Gets or sets WindowsInstaller
+            </summary>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Helpers.RegistryReader">
+            <summary>
+            Helper for accessing registry values
+            </summary>
+        </member>
+        <member name="F:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.MSIUninstallBaseKey">
+            <summary>
+            MSI Uninstall Base Key
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.GetMSIInstalledProductDWordValue(System.Guid,System.String,System.String@)">
+            <summary>
+            Get MSI Installed Product DWord Value
+            </summary>
+            <param name="productKey">the product key</param>
+            <param name="valueName">the value name</param>
+            <param name="error">the error</param>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.GetMSIInstalledProductDWordValue(System.String,System.String,System.String@)">
+            <summary>
+            Get MSI Installed Product DWord Value
+            </summary>
+            <param name="productKey">the product key</param>
+            <param name="valueName">the value name</param>
+            <param name="error">the error</param>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.GetMSIInstalledProductStringValue(System.Guid,System.String,System.String@)">
+            <summary>
+            Get MSI Installed Product String Value
+            </summary>
+            <param name="productKey">the product key</param>
+            <param name="valueName">the value name</param>
+            <param name="error">the error</param>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.GetMSIInstalledProductStringValue(System.String,System.String,System.String@)">
+            <summary>
+            Get MSI Installed Product String Value
+            </summary>
+            <param name="productKey">the product key</param>
+            <param name="valueName">the value name</param>
+            <param name="error">the error</param>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.GetMSIInstalledProductObjectValue(System.String,System.String,System.String@)">
+            <summary>
+            Get MSI Installed Product Object Value
+            </summary>
+            <param name="productKey">the product key</param>
+            <param name="valueName">the value name</param>
+            <param name="error">the error</param>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.GetLocalMachineStringValue(System.String,System.String@)">
+            <summary>
+            Get Local Machine String Value
+            </summary>
+            <param name="key">the key</param>
+            <param name="error">the error</param>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.GetLocalMachineValue(System.String,System.String@)">
+            <summary>
+            Get Local Machine Value
+            </summary>
+            <param name="key">the key</param>
+            <param name="error">the error</param>
+            <returns>the value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.GetLongValue(System.String,System.String,System.String@)">
+            <summary>
+            Access a string value given a key and value.  Note that certain
+            registry key values may have restricted read permission protections.
+            </summary>
+            <param name="key">the key</param>
+            <param name="value">the value</param>
+            <param name="error">the error</param>
+            <returns>the long value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.GetStringValue(System.String,System.String,System.String@)">
+            <summary>
+            Access a string value given a key and value.  Note that certain
+            registry key values may have restricted read permission protections.
+            </summary>
+            <param name="key">the key</param>
+            <param name="value">the value</param>
+            <param name="error">the error</param>
+            <returns>the string value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.GetValue(System.String,System.String,System.String@)">
+            <summary>
+            Access an object value given a key and value.  Note that certain
+            registry key values may have restricted read permission protections.
+            </summary>
+            <param name="key">the key</param>
+            <param name="value">the value</param>
+            <param name="error">the error</param>
+            <returns>the object value</returns>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.Helpers.RegistryReader.GetMSIBaseObjectValue(Microsoft.Win32.RegistryHive,Microsoft.Win32.RegistryView,System.String,System.String,System.String@)">
+            <summary>
+            Get MSI Base Object Value
+            </summary>
+            <param name="baseHive">the base hive</param>
+            <param name="viewKind">the view kind</param>
+            <param name="key">the key</param>
+            <param name="valueName">the value name</param>
+            <param name="error">the error</param>
+            <returns>the MSI base object value</returns>
+        </member>
+        <member name="T:Sage.Configuration.Internal.PathRegistrarHelper">
+            <summary>
+            This internal class contains static methods for maintaining registered paths
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.PathRegistrarHelper.RegisterPath(System.String,System.String)">
+            <summary>
+            Register a path with the path registrar helper
+            </summary>
+            <param name="key">A key used to identify the path</param>
+            <param name="path">The path to register</param>
+        </member>
+        <member name="M:Sage.Configuration.Internal.PathRegistrarHelper.UnRegisterPath(System.String)">
+            <summary>
+            Unregister a path with the path registrar
+            </summary>
+            <param name="key">The key of the path to unregister</param>
+        </member>
+        <member name="M:Sage.Configuration.Internal.PathRegistrarHelper.IsRegistered(System.String)">
+            <summary>
+            Determine if a particular path is registered
+            </summary>
+            <param name="key">A key for the path</param>
+            <returns>True if the path is registered, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.PathRegistrarHelper.GetRegisteredPath(System.String)">
+            <summary>
+            Retrieve a registered path
+            </summary>
+            <param name="key">Key of a registered path</param>
+            <returns>The registered path</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.PathRegistrarHelper.GetRegisteredPaths">
+            <summary>
+            Retrieve a collection of all registered paths
+            </summary>
+        </member>
+        <member name="T:Sage.Configuration.Internal.RegisteredPathUrlResolver">
+            <summary>
+            This path class contains the information needed to resolve registered paths
+            </summary>
+        </member>
+        <member name="T:Sage.Configuration.IUrlResolver">
+            <summary>
+            Objects containing information needed to resolve paths implement IPath
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.IUrlResolver.CanResolveUrl(System.String)">
+            <summary>
+            Determine if this url can be resolved (i.e. is it a known type of url)
+            </summary>
+            <param name="url">Url to examine</param>
+            <returns>True if the object can resolve the url, otherwise false</returns>
+        </member>
+        <member name="M:Sage.Configuration.IUrlResolver.ResolveUrl(System.String)">
+            <summary>
+            Resolves an URL that uses one of the encoded paths protocol to a file system reference.
+            No guarantees are provided that the resolved path is valid in the file system.
+            </summary>
+            <remarks>
+            A Paths URL has the form Protocol://context/path 
+            </remarks>
+            <param name="url">Url to resolve.</param>
+            <returns>A resolved path if the path can be resolved otherwise the path unchanged </returns>
+        </member>
+        <member name="M:Sage.Configuration.IUrlResolver.EncodeUrl(System.String)">
+            <summary>
+            Generate an encoded url (i.e. Protocol://context/path) from an url
+            </summary>
+            <param name="url">A url to encode</param>
+            <returns>The encoded url if the method is able to encode it, otherwise the original url is returned</returns>
+        </member>
+        <member name="P:Sage.Configuration.IUrlResolver.CanEncodeUrl">
+            <summary>
+            This property equals true if the path object can encode urls
+            </summary>
+        </member>
+        <member name="F:Sage.Configuration.Internal.RegisteredPathUrlResolver.RegisteredPathUrlPrefix">
+            <summary>
+            Prefix for encoded registered paths
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.RegisteredPathUrlResolver.Sage#Configuration#IUrlResolver#CanResolveUrl(System.String)">
+            <summary>
+            Determine if this is a regisered url
+            </summary>
+            <param name="url">Url to examine</param>
+            <returns>True if the url is a registered url, otherwise false</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.RegisteredPathUrlResolver.Sage#Configuration#IUrlResolver#ResolveUrl(System.String)">
+            <summary>
+            Resolves an URL that uses the registered path protocol to a file system reference.
+            No guarantees are provided that the resolved path is valid in the file system.
+            </summary>
+            <remarks>
+            A Paths URL has the form registeredpath://context/path where path is a path relative 
+            to one of the context folders and context is a key to a specific folder. 
+            </remarks>
+            <param name="url">Url to resolve.</param>
+            <returns>A resolved path if a known registered path is provided otherwise the path unchanged</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.RegisteredPathUrlResolver.EncodeUrl(System.String)">
+            <summary>
+            Generate an encoded url (i.e. registrypath://context/path) from an url
+            </summary>
+            <param name="url">A url to encode</param>
+            <returns>The encoded url if the method is able to encode it, otherwise the original url is returned</returns>
+        </member>
+        <member name="P:Sage.Configuration.Internal.RegisteredPathUrlResolver.CanEncodeUrl">
+            <summary>
+            This property equals true if the object can encode urls
+            </summary>
+        </member>
+        <member name="T:Sage.Configuration.Internal.RegistryUrlResolver">
+            <summary>
+            This path class contains information needed to resolve registry paths.
+            </summary>
+        </member>
+        <member name="F:Sage.Configuration.Internal.RegistryUrlResolver.RegistryPathUrlPrefix">
+            <summary>
+            Prefix of encoded registry stored paths
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.RegistryUrlResolver.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.RegistryUrlResolver.CanResolveUrl(System.String)">
+            <summary>
+            Determine if this is a registry url
+            </summary>
+            <param name="url">Url to examine</param>
+            <returns>True if the url is a registry url, otherwise false</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.RegistryUrlResolver.ResolveUrl(System.String)">
+            <summary>
+            Resolves an URL that uses the registry path protocol to a file system reference.
+            No guarantees are provided that the resolved path is valid in the file system.
+            </summary>
+            <remarks>
+            A Paths URL has the form registrypath://context/path where path is a path relative to 
+            one of the context folders and context is a key to a specific folder. 
+            </remarks>
+            <param name="url">Path to resolve.</param>
+            <returns>A resolved path if a valid registry paths URL is provided otherwise the path unchanged</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.RegistryUrlResolver.EncodeUrl(System.String)">
+            <summary>
+            Generate an encoded url (i.e. registrypath://context/path) from an url
+            </summary>
+            <param name="url">A url to encode</param>
+            <returns>The encoded url if the method is able to encode it, otherwise the original url is returned</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.RegistryUrlResolver.ParseRegistryKey(Microsoft.Win32.RegistryKey,System.String,System.String)">
+            <summary>
+            Looks up the subkey default value or named value and returns the string
+            path.  If there is no value the original url is returned
+            </summary>
+            <param name="key">The hive subkey</param>
+            <param name="path">the original url</param>
+            <param name="spec">the spec minus the url part</param>
+            <returns></returns>
+        </member>
+        <member name="P:Sage.Configuration.Internal.RegistryUrlResolver.CanEncodeUrl">
+            <summary>
+            This property equals true if the path object can encode urls
+            </summary>
+        </member>
+        <member name="T:Sage.Configuration.Internal.SpecialPathUrlResolver">
+            <summary>
+            This path class contains information needed to resolve special paths
+            </summary>
+        </member>
+        <member name="F:Sage.Configuration.Internal.SpecialPathUrlResolver.SpecialPathUrlPrefix">
+            <summary>
+            Prefix of encoded special OS system folders or enviornment variable based paths
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.SpecialPathUrlResolver.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.Internal.SpecialPathUrlResolver.CanResolveUrl(System.String)">
+            <summary>
+            Determine if this is a special url
+            </summary>
+            <param name="url">Url to examine</param>
+            <returns>True if the url is a special url, otherwise false</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.SpecialPathUrlResolver.ResolveUrl(System.String)">
+            <summary>
+            Resolves an URL that uses the special path protocol to a file system reference.
+            No guarantees are provided that the resolved path is valid in the file system.
+            </summary>
+            <remarks>
+            A Paths URL has the form specialpath://context/path where path is a path relative to 
+            one of the context folders and context is a key to a specific folder. 
+            </remarks>
+            <param name="url">Url to resolve.</param>
+            <returns>A resolved path if the provide url is a valid special path otherwise the path unchanged</returns>
+        </member>
+        <member name="M:Sage.Configuration.Internal.SpecialPathUrlResolver.EncodeUrl(System.String)">
+            <summary>
+            Generate an encoded url (i.e. specialpath://context/path) from an url
+            </summary>
+            <param name="url">A url to encode</param>
+            <returns>The encoded url if the method is able to encode it, otherwise the original url is returned</returns>
+        </member>
+        <member name="P:Sage.Configuration.Internal.SpecialPathUrlResolver.CanEncodeUrl">
+            <summary>
+            This property equals true if the path object can encode urls
+            </summary>
+        </member>
+        <member name="T:Sage.Configuration.IPathRegistrar">
+            <summary>
+            Interface used to handle path registrations
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.IPathRegistrar.RegisterPath(System.String,System.String)">
+            <summary>
+            Register a path with the path registrar
+            </summary>
+            <param name="key">A key used to identify the path</param>
+            <param name="path">The path to register</param>
+        </member>
+        <member name="M:Sage.Configuration.IPathRegistrar.UnRegisterPath(System.String)">
+            <summary>
+            Unregister a path with the path registrar
+            </summary>
+            <param name="key">The key of the path to unregister</param>
+        </member>
+        <member name="M:Sage.Configuration.IPathRegistrar.IsRegistered(System.String)">
+            <summary>
+            Determine if a particular path is registered
+            </summary>
+            <param name="key">A key for the path</param>
+            <returns>True if the path is registered, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.IPathRegistrar.GetRegisteredPath(System.String)">
+            <summary>
+            Retrieve a registered path
+            </summary>
+            <param name="key">Key of a registered path</param>
+            <returns>The registered path</returns>
+        </member>
+        <member name="M:Sage.Configuration.IPathRegistrar.GetRegisteredPaths">
+            <summary>
+            Retrieve a collection of all registered paths
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.IPathRegistrar.ResolveUrl(System.String)">
+            <summary>
+            Resolves an URL that uses one of the encoded paths protocol to a file system reference.
+            No guarantees are provided that the resolved path is valid in the file system.
+            </summary>
+            <remarks>
+            A Paths URL has the form Protocol://context/path where "Protocol" is either registeredpath, tspath, specialpath, or registrypath and path is a path relative to one
+            of the context folders and context is a key to a specific folder. 
+            </remarks>
+            <param name="url">Path to resolve.</param>
+            <returns>A resolved path if a resolveable URL or the path unchanged otherwise</returns>
+        </member>
+        <member name="M:Sage.Configuration.IPathRegistrar.RegisteredPathFromUrl(System.String)">
+            <summary>
+            Generate a registered path string from a URL
+            </summary>
+            <param name="url">A URL to transform</param>
+            <returns>The URL reformated using the registered path syntax if applicable or else a the original URL is returned</returns>
+        </member>
+        <member name="T:Sage.Configuration.IPathResolver">
+            <summary>
+            Summary description for IPathResolver.
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.IPathResolver.IsRegistered(System.String)">
+            <summary>
+            Determine if a particular path is registered
+            </summary>
+            <param name="key">A key for the path</param>
+            <returns>True if the path is registered, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.IPathResolver.GetRegisteredPath(System.String)">
+            <summary>
+            Retrieve a registered path
+            </summary>
+            <param name="key">Key of a registered path</param>
+            <returns>The registered path</returns>
+        </member>
+        <member name="M:Sage.Configuration.IPathResolver.ResolveUrl(System.String)">
+            <summary>
+            Resolves an URL that uses one of the encoded paths protocol to a file system reference.
+            No guarantees are provided that the resolved path is valid in the file system.
+            </summary>
+            <remarks>
+            A Paths URL has the form Protocol://context/path where "Protocol" is either registeredpath, tspath, specialpath, or registrypath and path is a path relative to one
+            of the context folders and context is a key to a specific folder. 
+            </remarks>
+            <param name="url">Path to resolve.</param>
+            <returns>A resolved path if a resolveable URL or the path unchanged otherwise</returns>
+        </member>
+        <member name="M:Sage.Configuration.IPathResolver.RegisteredPathFromUrl(System.String)">
+            <summary>
+            Generate a registered path string from a URL
+            </summary>
+            <param name="url">A URL to transform</param>
+            <returns>The URL reformated using the registered path syntax if applicable or else a the original URL is returned</returns>
+        </member>
+        <member name="T:Sage.Configuration.PathRegistrar">
+            <summary>
+            The PathRegistrar class is used to register, unregister and lookup registered paths.
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.RegisterPath(System.String,System.String)">
+            <summary>
+            Register a path with the path registrar helper
+            </summary>
+            <param name="key">A key used to identify the path</param>
+            <param name="path">The path to register</param>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.UnRegisterPath(System.String)">
+            <summary>
+            Unregister a path with the path registrar
+            </summary>
+            <param name="key">The key of the path to unregister</param>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.IsRegistered(System.String)">
+            <summary>
+            Determine if a particular path is registered
+            </summary>
+            <param name="key">A key for the path</param>
+            <returns>True if the path is registered, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.GetRegisteredPath(System.String)">
+            <summary>
+            Retrieve a registered path
+            </summary>
+            <param name="key">Key of a registered path</param>
+            <returns>The registered path</returns>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.GetRegisteredPaths">
+            <summary>
+            Retrieve a collection of all registered paths
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.ResolveUrl(System.String)">
+            <summary>
+            Resolves an URL that uses one of the encoded paths protocol to a file system reference.
+            No guarantees are provided that the resolved path is valid in the file system.
+            </summary>
+            <remarks>
+            A Paths URL has the form Protocol://context/path where 'Protocol' is either registeredpath, 
+            specialpath, registrypath, or a plugin path type. 'path' is a path relative to one
+            of the context folders and 'context' is a key to a specific folder. 
+            </remarks>
+            <param name="url">Path to resolve.</param>
+            <returns>A resolved path if a valid Paths URL or the path unchanged otherwise</returns>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.RegisteredPathFromUrl(System.String)">
+            <summary>
+            Generate a registered path String from a URL
+            </summary>
+            <param name="url">A URL to transform</param>
+            <returns>The URL reformated using the registered path syntax if applicable or else a the original URL is returned</returns>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.Sage#Configuration#IPathRegistrar#RegisterPath(System.String,System.String)">
+            <summary>
+            Register a path with the path registrar
+            </summary>
+            <param name="key">A key used to identify the path</param>
+            <param name="path">The path to register</param>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.Sage#Configuration#IPathRegistrar#UnRegisterPath(System.String)">
+            <summary>
+            Unregister a path with the path registrar
+            </summary>
+            <param name="key">The key of the path to unregister</param>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.Sage#Configuration#IPathRegistrar#IsRegistered(System.String)">
+            <summary>
+            Determine if a particular path is registered
+            </summary>
+            <param name="key">A key for the path</param>
+            <returns>True if the path is registered, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.Sage#Configuration#IPathRegistrar#GetRegisteredPath(System.String)">
+            <summary>
+            Retrieve a registered path
+            </summary>
+            <param name="key">Key of a registered path</param>
+            <returns>The registered path</returns>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.Sage#Configuration#IPathRegistrar#GetRegisteredPaths">
+            <summary>
+            Retrieve a collection of all registered paths
+            </summary>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.Sage#Configuration#IPathRegistrar#ResolveUrl(System.String)">
+            <summary>
+            Resolves an URL that uses one of the encoded paths protocol to a file system reference.
+            No guarantees are provided that the resolved path is valid in the file system.
+            </summary>
+            <remarks>
+            A Paths URL has the form Protocol://context/path where "Protocol" is either registeredpath, tspath, specialpath, or registrypath and path is a path relative to one
+            of the context folders and context is a key to a specific folder. 
+            </remarks>
+            <param name="url">Path to resolve.</param>
+            <returns>A resolved path if a valid Paths URL or the path unchanged otherwise</returns>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.Sage#Configuration#IPathRegistrar#RegisteredPathFromUrl(System.String)">
+            <summary>
+            Generate a registered path String from a URL
+            </summary>
+            <param name="url">A URL to transform</param>
+            <returns>The URL reformated using the registered path syntax if applicable or else a the original URL is returned</returns>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.Sage#Configuration#IPathResolver#IsRegistered(System.String)">
+            <summary>
+            Determine if a particular path is registered
+            </summary>
+            <param name="key">A key for the path</param>
+            <returns>True if the path is registered, false if not</returns>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.Sage#Configuration#IPathResolver#GetRegisteredPath(System.String)">
+            <summary>
+            Retrieve a registered path
+            </summary>
+            <param name="key">Key of a registered path</param>
+            <returns>The registered path</returns>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.Sage#Configuration#IPathResolver#ResolveUrl(System.String)">
+            <summary>
+            Resolves an URL that uses one of the encoded paths protocol to a file system reference.
+            No guarantees are provided that the resolved path is valid in the file system.
+            </summary>
+            <remarks>
+            A Paths URL has the form Protocol://context/path where "Protocol" is either registeredpath, tspath, specialpath, or registrypath and path is a path relative to one
+            of the context folders and context is a key to a specific folder. 
+            </remarks>
+            <param name="url">Path to resolve.</param>
+            <returns>A resolved path if a valid Paths URL or the path unchanged otherwise</returns>
+        </member>
+        <member name="M:Sage.Configuration.PathRegistrar.Sage#Configuration#IPathResolver#RegisteredPathFromUrl(System.String)">
+            <summary>
+            Generate a registered path String from a URL
+            </summary>
+            <param name="url">A URL to transform</param>
+            <returns>The URL reformated using the registered path syntax if applicable or else a the original URL is returned</returns>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.MSIUninstallInformationReaderStrategy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.MSIUninstallInformationReaderStrategy.#ctor(System.String,System.String,System.Uri,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="productId"></param>
+            <param name="productName"></param>
+            <param name="baseHelpUri"></param>
+            <param name="tag"></param>
+            <param name="priority"></param>
+            <param name="propertySpecifications"></param>
+            <param name="productCode"></param>
+        </member>
+        <member name="M:Sage.CRE.ComponentIdentification.MSIUninstallInformationReaderStrategy.Detect">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sage.CRE.ComponentIdentification.Internal.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.FailedToBuildDataPath">
+            <summary>
+              Looks up a localized string similar to Failed to build data path.
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.FailedToCreateRegistryKeyFormat">
+            <summary>
+              Looks up a localized string similar to Failed to create &apos;{0}&apos; registry key.
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.InvalidDataPath">
+            <summary>
+              Looks up a localized string similar to Invalid data path.
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.InvalidKeyBadChars">
+            <summary>
+              Looks up a localized string similar to Invalid key. A Key can not contain &apos;/&apos; or &apos;\&apos; characters.
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.PathDoesNotExistFormat">
+            <summary>
+              Looks up a localized string similar to Invalid path. The path, {0}, does not exist.
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.ReadRegistry_ArgumentException">
+            <summary>
+              Looks up a localized string similar to Unable to read registry key value. The registry key does not exist..
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.ReadRegistry_Exception">
+            <summary>
+              Looks up a localized string similar to Unable to read registry key value..
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.ReadRegistry_IOException">
+            <summary>
+              Looks up a localized string similar to Unable to read registry key value. The registry key has been marked for deletion..
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.ReadRegistry_ObjectDisposedException">
+            <summary>
+              Looks up a localized string similar to Unable to read registry key value. The registry key value has been closed..
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.ReadRegistry_SecurityException">
+            <summary>
+              Looks up a localized string similar to Unable to read registry key value. Read permission restrictions prevented reading the registry key value..
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.ReadRegistry_UnauthorizedAccessException">
+            <summary>
+              Looks up a localized string similar to Unable to read registry key value. Read permission restrictions prevented reading the registry key value..
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.SpecifiedFolderKeyInvalid">
+            <summary>
+              Looks up a localized string similar to The specified folder key is in valid.
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.SpecifiedPathKeyNotRegistered">
+            <summary>
+              Looks up a localized string similar to The specified path key is not registered.
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.SpecifiedRegistryKeyInvalid">
+            <summary>
+              Looks up a localized string similar to The specified Registry key is in valid.
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.UseLMSharedConfigLocation">
+            <summary>
+              Looks up a localized string similar to Path may be redirected;  use specialpath://librarymanager.SharedConfigLocation instead..
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.UseLMSharedLibrariesLocation">
+            <summary>
+              Looks up a localized string similar to Path may be redirected;  use specialpath://librarymanager.SharedLibrariesLocation instead..
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.UseLMSharedMyDocumentsLocation">
+            <summary>
+              Looks up a localized string similar to Path may be redirected;  use specialpath://librarymanager.MyDocumentsLocation instead..
+            </summary>
+        </member>
+        <member name="P:Sage.CRE.ComponentIdentification.Internal.Resource.UseLMUserConfigLocation">
+            <summary>
+              Looks up a localized string similar to Path may be redirected;  use specialpath://librarymanager.UserConfigLocation instead..
+            </summary>
+        </member>
+    </members>
+</doc>

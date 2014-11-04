@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build"  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+<!-- setup properties for use by the Sage Nuget Support targets file-->
+  <PropertyGroup>
+
+    <!-- should we create a package, works locally or on a server -->
+    <CreateNuGetPackage Condition=" '$(CreateNuGetPackage)'=='' ">false</CreateNuGetPackage>
+
+    <!-- Should we publish a created package-->
+    <PublishNuGetPackage Condition=" '$(PublishNuGetPackage)'=='' ">false</PublishNuGetPackage>
+
+    <!-- Should nuget use IncludeReferencedProjects switch/logic. Comes with trade offs -->
+    <UseNugetIncludeReferencedProjects Condition="'$(UseNugetIncludeReferencedProjects)' == ''">false</UseNugetIncludeReferencedProjects>
+    
+    <!-- Should nuget use BasePath switch/logic with value of $outdir is used as part of the pack command line-->
+    <UseNugetBasePath Condition="'$(UseNugetBasePath)' == ''">false</UseNugetBasePath>
+
+    <!-- Should nuget use NugetNoPackageAnalysis as part of the pack command line, intended to be overridden via build definition on server.-->
+    <UseNugetNoPackageAnalysis>true</UseNugetNoPackageAnalysis>
+ 
+    <!-- publish path for the nuget package -->
+    <!-- Set via sln level nuget.config. left in case we need to add build file level overrides.-->
+    <!--<NuGetRepositoryPublishRoot Condition=" '$(NuGetRepositoryPublishRoot)'=='' ">\\orbdevstebld1\NugetPackages</NuGetRepositoryPublishRoot>-->
+    
+    <!--<nugetSpec>$(MSBuildProjectName).nuspec</nugetSpec>-->
+    <RootBuildDefinition>CloudConnector_vNextCon_Pegasus</RootBuildDefinition>
+    <RootBuildDefinitionCommon>CloudConnector_vNextCon_Pegasus</RootBuildDefinitionCommon>
+
+  </PropertyGroup>
+ </Project>
+

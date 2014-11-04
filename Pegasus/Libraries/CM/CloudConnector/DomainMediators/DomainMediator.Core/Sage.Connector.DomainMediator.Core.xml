@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sage.Connector.DomainMediator.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Sage.Connector.DomainMediator.Core.AbstractDomainMediator">
+            <summary>
+            Abstract Class for the Domain Mediators.   
+            Designed to simplify make implementation of the individual feature request. 
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.DomainMediator.Core.IDomainFeatureRequest">
+            <summary>
+            The Domain feature request interface.
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.IDomainFeatureRequest.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            The required information in order to process a domain's feature
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeCompanyConfiguration">The Back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="payload">The request payload</param>
+        </member>
+        <member name="F:Sage.Connector.DomainMediator.Core.AbstractDomainMediator.Disposed">
+            <summary>
+            Track whether Dispose has been called. 
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.DomainMediator.Core.AbstractDomainMediator.Container">
+            <summary>
+            The <see cref="T:System.ComponentModel.Composition.Hosting.CompositionContainer"/>
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.AbstractDomainMediator.#ctor">
+            <summary>
+            Base constructor
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.AbstractDomainMediator.ProcessException(Sage.Connector.DomainContracts.Responses.Response,System.Exception)">
+            <summary>
+            Set response status and diagnosis information for an error exception
+            </summary>
+            <param name="response"><see cref="T:Sage.Connector.DomainContracts.Responses.Response"/></param>
+            <param name="ex"><see cref="T:System.Exception"/></param>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.AbstractDomainMediator.Dispose">
+            <summary>
+            Dispose properly of this instance.
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.AbstractDomainMediator.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios. 
+            If disposing equals true, the method has been called directly 
+            or indirectly by a user's code. Managed and unmanaged resources 
+            can be disposed. 
+            If disposing equals false, the method has been called by the 
+            runtime from inside the finalizer and you should not reference 
+            other objects. Only unmanaged resources can be disposed. 
+            </summary>
+            <param name="disposing">When false, the method has been called by the 
+            runtime from inside the finalizer and you should not reference 
+            other objects. Only unmanaged resources can be disposed. 
+             </param>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.AbstractDomainMediator.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Feature Request implementation
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeCompanyConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="payload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.DomainMediator.Core.BackOfficeCompanyData">
+            <summary>
+            Class to help provide IBackOfficeCompanyData to the plugins
+            </summary>
+            <remarks>
+            Consider if we want this internal and friended.
+            </remarks>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.BackOfficeCompanyData.FromConfiguration(Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.BackOfficeCompanyData.BackOfficeId">
+            <summary>
+            BackOfficeId 
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.BackOfficeCompanyData.ConnectionCredentials">
+            <summary>
+            ConnectionCredentials
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.DomainMediator.Core.IFeatureMetaData">
+            <summary>
+            The Domain Mediator's Feature data
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.IFeatureMetaData.Name">
+            <summary>
+            The Feature to be processed by the domain mediator.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.IFeatureMetaData.DisplayName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.IFeatureMetaData.InterfaceName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.DomainMediator.Core.FeatureMetadataExportAttribute">
+            <summary>
+            Feature metadata export attribute
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.FeatureMetadataExportAttribute.#ctor(System.String,System.Type,System.String)">
+            <summary>
+            The constructor for the set of feature attributes
+            </summary>
+            <param name="name"></param>
+            <param name="featureDescType"></param>
+            <param name="interfaceName"></param>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.FeatureMetadataExportAttribute.Name">
+            <summary>
+            The name of the feature to be processed by the domain mediator.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.FeatureMetadataExportAttribute.DisplayName">
+            <summary>
+            The display name of the feature to be used by configuration
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.FeatureMetadataExportAttribute.InterfaceName">
+            <summary>
+            Name of the Interface supported by the feature. 
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.DomainMediator.Core.IResponseHandler">
+            <summary>
+            The Response handler interface. 
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.IResponseHandler.HandleResponse(System.Guid,System.String)">
+            <summary>
+            Handle the response payload for the given requestId.  Send the information
+            up to the cloud. 
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.DomainMediator.Core.JsonConverters.DictionaryFriendlyContractResolver">
+            <summary>
+            Converter for the Dictionary Friendly Contract
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.JsonConverters.DictionaryFriendlyContractResolver.CreateContract(System.Type)">
+            <summary>
+            Determines which contract type is created for the given type.
+            </summary>
+            <param name="objectType">Type of the object.</param>
+            <returns>
+            A <see cref="T:Newtonsoft.Json.Serialization.JsonContract"/> for the given type.
+            </returns>
+        </member>
+        <member name="T:Sage.Connector.DomainMediator.Core.JsonConverters.DomainMediatorJsonSerializerSettings">
+            <summary>
+            Default set of serializtion settings used by the Domain Mediators
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.JsonConverters.DomainMediatorJsonSerializerSettings.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.DomainMediator.Core.JsonConverters.ListFriendlyContractResolver">
+            <summary>
+            List resolver handles generic types
+            TODO KMS: verify that this is needed.
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.JsonConverters.ListFriendlyContractResolver.CreateContract(System.Type)">
+            <summary>
+            Create the contract for the specified list type
+            </summary>
+            <param name="objectType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sage.Connector.DomainMediator.Core.SafeDirectoryCatalog">
+            <summary>
+            Safe directory catalog that filters out unloadable assemblies during the enumertion process
+            vs. the composition process.
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.SafeDirectoryCatalog.#ctor(System.String)">
+            <summary>
+            Public constructor for the class.
+            </summary>
+            <param name="directory">The directory path to enumerate files for.</param>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.SafeDirectoryCatalog.Parts">
+            <summary>
+            Gets the part definitions that are contained in the catalog.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.SafeDirectoryCatalog.Path">
+            <summary>
+            Returns the path that was used to build the catalog from.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.SafeDirectoryCatalog.Catalog">
+            <summary>
+            Returns the aggregate catalog.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.SafeDirectoryCatalog.LoadedFiles">
+            <summary>
+            Returns the list of loaded files.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.DomainMediator.Core.SafeDirectoryCatalog.UnloadedFiles">
+            <summary>
+            Returns the list of unloaded files.
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.DomainMediator.Core.Utilities.ExternalIdUtilities">
+            <summary>
+            String Extensions
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.Utilities.ExternalIdUtilities.EncodeExternalId(System.String)">
+            <summary>
+             Use base 64 encoding to encode an external ID.
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.Utilities.ExternalIdUtilities.DecodeExternalId(System.String)">
+            <summary>
+             Use base 64 encoding to decode an external ID.
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.Utilities.ExternalIdUtilities.Base64UrlEncode(System.Reflection.PropertyInfo,System.Object)">
+            <summary>
+            Base 64 Url Encode the value for this property
+            </summary>
+            <param name="propInfo"></param>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.Utilities.ExternalIdUtilities.ApplyExternalIdEncoding``1(``0)">
+            <summary>
+            Apply encoding to all External Ids of the object 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.Utilities.ExternalIdUtilities.Base64UrlDecode(System.Reflection.PropertyInfo,System.Object)">
+            <summary>
+            Base 64 Url Decode the value for this property
+            </summary>
+            <param name="propInfo"></param>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.Utilities.ExternalIdUtilities.ApplyExternalIdDecoding``1(``0)">
+            <summary>
+            Apply decoding of all ExternalIds of the object 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+        </member>
+        <member name="T:Sage.Connector.DomainMediator.Core.Utilities.TypeExtensions">
+            <summary>
+            Extension methods for the Type class
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.Utilities.TypeExtensions.GetExternalIdPropertyName(System.Type)">
+            <summary>
+            Get the external id property from the type.
+            </summary>
+            <param name="t"><see cref="T:System.Type"/></param>
+            <returns>The name of the ExternalId property</returns>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.Utilities.TypeExtensions.GetExternalIdProperty(System.Type)">
+            <summary>
+            Get property info of the External Id property
+            </summary>
+            <param name="t"><see cref="T:System.Type"/></param>
+            <returns><see cref="T:System.Reflection.PropertyInfo"/></returns>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.Utilities.TypeExtensions.GetExternalIdRefProperties(System.Type)">
+            <summary>
+            Get the external id reference properties from the type.
+            </summary>
+            <param name="t"><see cref="T:System.Type"/></param>
+            <returns>The name of the ExternalId property</returns>
+        </member>
+        <member name="M:Sage.Connector.DomainMediator.Core.Utilities.TypeExtensions.GetExternalReferenceProperties(System.Type)">
+            <summary>
+            Get the External Reference Properties
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

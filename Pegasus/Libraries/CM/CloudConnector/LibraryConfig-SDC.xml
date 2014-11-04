@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LibraryConfigTool>
+  <Variables>
+    <!-- Product-specific variables: SDC (Sage Data Cloud) ==========================================================================  -->
+    <!-- Note that this evolved in part from SCA. -->
+    <!-- 
+    TurnTheCrank: put new product ID <-> version number mappings here after each release
+    
+    The existing ProductCode value found here should be moved to the appropriate old product codes map in
+    %SkyfreProduct%\ProductInfo-template.cpp
+
+    NOTE:  GUID value must be ALL UPPERCASE, and must NOT include the leading/trailing braces: '{' '}'.
+    -->
+    <Variable Name="SDC_ProductCode" Value="0A00D9AC-6DC2-4E62-8A93-32B231B8D415" />
+    <!-- IMPORTANT: This is the upgrade code that was used to ship the original 1.0 version of Sage Construction Anywhere
+    Connector for Sage Timberline Office. It should ONLY be changed when it is no longer desirable to be able to do an
+    upgrade install from the 1.0 upgrade path.
+    -->
+    <Variable Name="SDC_UpgradeCode" Value="A53A6887-79CA-49B5-B35D-6492C66E3554" />
+    <Variable Name="SDC_ProductId" Value="SDC" />
+    <!--<Variable Name="SDC_ProductHelpBaseUrl" Value="http://help.sageconstructionanywhere.com/2-0/connector/help/" />
+    <Variable Name="SDC_InstallationGuideUrl" Value="http://help.sageconstructionanywhere.com/docs/Default.htm" />
+    <Variable Name="SDC_ReleaseNotesUrl" Value="http://help.sageconstructionanywhere.com/docs/Default.htm" />
+    <Variable Name="SDC_ReleaseNotesConnectorUrl" Value="http://help.sageconstructionanywhere.com/docs/Default.htm" />-->
+
+    <Variable Name="SDC_ProductHelpBaseUrl" Value="http://na.sage.com/us" />
+    <Variable Name="SDC_InstallationGuideUrl" Value="http://na.sage.com/us" />
+    <Variable Name="SDC_ReleaseNotesUrl" Value="http://na.sage.com/us" />
+    <Variable Name="SDC_ReleaseNotesConnectorUrl" Value="http://na.sage.com/us" />
+    
+    <Variable Name="SDC_BriefProductName" Value="Sage Connector" />
+    <Variable Name="SDC_FullProductName" Value="Sage Connector" />
+    <Variable Name="SDC_MonitorBriefProductName" Value="Sage Connector Monitor" />
+    <Variable Name="SDC_MonitorFullProductName" Value="Sage Connector Monitor" />
+    <Variable Name="SDC_MinimumConnectorIntegrationInterfacesVersion" Value="1.4.107.2" />
+    <!-- ConnectorService -->
+    <Variable Name="SDC_ConnectorHostingFxInstanceConfigBaseName" Value="Sage.Connector.Service" />
+    <Variable Name="SDC_ConnectorHostingFxInstanceConfigVersion" Value="1.0" />
+    <Variable Name="SDC_ConnectorHostingFxServiceName" Value="$(SDC_ConnectorHostingFxInstanceConfigBaseName).$(SDC_ConnectorHostingFxInstanceConfigVersion)" />
+    <!-- SDC_ConnectorHostingFxServiceReadyMutexName value is used in the installer and based on how its used in the C++ code, the '\' needs to be escaped-->
+    <Variable Name="SDC_ConnectorHostingFxServiceReadyMutexName" Value="Global\\__$(SDC_ConnectorHostingFxServiceName)_READY" />
+    <Variable Name="SDC_ConnectorHostingFxServiceProcessRunningMutexName" Value="Global\\__$(SDC_ConnectorHostingFxServiceName)_RUNNING" />
+    <Variable Name="SDC_ConnectorHostingFxStartingPort" Value="48810" />
+    <!-- ConnectorMonitorService -->
+    <Variable Name="SDC_MonitorHostingFxInstanceConfigBaseName" Value="Sage.Connector.Service.Monitor" />
+    <Variable Name="SDC_MonitorHostingFxInstanceConfigVersion" Value="1.0" />
+    <Variable Name="SDC_MonitorHostingFxServiceName" Value="$(SDC_MonitorHostingFxInstanceConfigBaseName).$(SDC_MonitorHostingFxInstanceConfigVersion)" />
+    <!-- SDC_MonitorHostingFxServiceReadyMutexName value is used in the installer and based on how its used in the C++ code, the '\' needs to be eSDCped-->
+    <Variable Name="SDC_MonitorHostingFxServiceReadyMutexName" Value="Global\\__$(SDC_MonitorHostingFxServiceName)_READY" />
+    <Variable Name="SDC_MonitorHostingFxServiceProcessRunningMutexName" Value="Global\\__$(SDC_MonitorHostingFxServiceName)_RUNNING" />
+    <Variable Name="SDC_MonitorHostingFxStartingPort" Value="48800" />
+  </Variables>
+</LibraryConfigTool>

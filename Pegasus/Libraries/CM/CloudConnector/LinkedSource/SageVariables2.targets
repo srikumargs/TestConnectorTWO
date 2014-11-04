@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SandboxDir Condition=" '$(SandboxDir)'=='' ">$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))</SandboxDir>
+    <!-- The output directory for all linked source files. -->
+    <SageLinkedSourceDirectory Condition=" '$(SageLinkedSourceDirectory)'=='' ">$(SandboxDir)\LinkedSource</SageLinkedSourceDirectory>
+    <Sage_MajorMinorFileVersion>3.0</Sage_MajorMinorFileVersion>
+  </PropertyGroup>
+  
+  <!--Import nuget support properties-->
+  <Import Project=".\SageNugetSupport.props" />
+</Project>

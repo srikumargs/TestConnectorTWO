@@ -1,0 +1,220 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+  <!-- IMPORTANT: A copy of Product Id is in Sage.CRE.CloudConnector.InstalledProductInfo\Product.cs.
+                  When the Id attribute changes the const in Product.cs, CLIENT_PRODUCT_CODE, must be updated. -->
+  <Product Id="$(var.ProductId)"
+             UpgradeCode="-=TAG_UpgradeCode=-"
+             Name="-=TAG_BriefProductName=-"
+             Language="1033"
+             Version="$(var.BuildVersion)"
+             Manufacturer="Sage">
+
+    <Package
+      Description='-=TAG_FullProductName=-'
+      Comments='-=TAG_FullProductName=-'
+      Manufacturer="Sage"
+      InstallerVersion="200"
+      Languages='1033'
+      Compressed="yes" />
+
+    <Condition Message="A later version of [ProductName] is already installed.">NOT NEWERFOUND</Condition>
+    <Condition Message="[ProductName] has already been updated to $(var.BuildVersion) or newer.">NOT SELFFOUND</Condition>
+
+    <Media Id='1' Cabinet='Sample.cab' EmbedCab='yes' DiskPrompt="CD-ROM #1" />
+
+    <Icon Id="SetupIcon.ico" SourceFile="$(var.SandboxDir)\Libraries\CM\CloudConnector\Install\Resources\SetupIcon.ico" />
+    <Icon Id='Icon_ConnectorUI' SourceFile='$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (COMMON_STAGING)\SageConnect.exe' />
+    <Icon Id='Icon_Monitor' SourceFile='$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (COMMON_STAGING)\Monitor\Tray\ConnectorServiceMonitor.exe' />
+
+    <Binary Id="InstallHelperEXE" SourceFile="$(var.SandboxDir)\Libraries\CM\CloudConnector\Install\$(var.SkyfireProduct)\Build\Output\InstallHelper.exe" />
+
+    <Property Id='DiskPrompt' Value="-=TAG_FullProductName=- Installation [1]" />
+    <Property Id='ALLUSERS' Value="1" />
+    <Property Id='ARPCOMMENTS' Value="-=TAG_FullProductName=- Install" />
+    <Property Id='ARPCONTACT' Value="Customer Support Department" />
+    <Property Id='ARPHELPLINK' Value="http://www.sagecre.com/support_and_services" />
+    <Property Id='ARPHELPTELEPHONE' Value="1-800-551-8307" />
+    <Property Id='ARPURLINFOABOUT' Value="http://www.sagecre.com/" />
+    <Property Id='ARPURLUPDATEINFO' Value="https://customers.sagenorthamerica.com/irj/portal/anonymous/login" />
+    <Property Id="ARPPRODUCTICON" Value="SetupIcon.ico" />
+	<Property Id="ARPSYSTEMCOMPONENT" Value="1" />
+    <!--
+    Using REINSTALLMODE=amus to force overwrite of non-versioned files.  This is needed because we cannot
+    (alternately) schedule RemoveExistingProducts around InstallInitialize/InstallValidate ... due to the fact that
+    we have GAC assemblies whose version numbers may not change during a MSI major upgrade.  In order to make certain
+    that all GAC assemblies are present after a major upgrade (regardless of version number, we must keep RemoveExistingProducts
+    scheduled after InstallFinalize.
+      http://msiworld.blogspot.com/2008/10/how-reinstallmodeamus-works.html
+      http://www.answerspice.com/c119/1641414/msi-does-not-install-all-files-when-removepreviousversion-is-run
+      http://windows-installer-xml-wix-toolset.687559.n2.nabble.com/WiX-MSI-checksum-and-overwrite-behaviour-td706946.html
+      http://blogs.abalaji.com/tag/wix-msi-installer-files-overwrite/
+    -->
+    <Property Id="REINSTALLMODE" Value="amus"/>
+
+    <?include ..\..\INSTALLDIR.wxi ?>
+    
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.SandboxDir)\Libraries\CM\CloudConnector\Install\Documents\License.rtf" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.SandboxDir)\Libraries\CM\CloudConnector\Install\Resources\banner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.SandboxDir)\Libraries\CM\CloudConnector\Install\Resources\dialog.bmp" />
+
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+ 
+      <Directory Id='ProgramFilesFolder' Name='PFiles'>
+        <Directory Id='DIR_PFSage' Name ='Sage'>
+          <Directory Id="INSTALLDIR" Name="-=TAG_FullProductName=-">
+            <Directory Id="DIR_Monitor" Name="Monitor">
+              <Directory Id="Dir_MonitorTray" Name="Tray"/>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+
+      <Directory Id='CommonFilesFolder'/>
+      <Directory Id='CommonAppDataFolder'>
+        <Directory Id='DIR_AppDataSage' Name='Sage'>
+          <Directory Id='DIR_AppDataCRE' Name='CM'>
+            <Directory Id='DIR_AppDataHostingFramework' Name='HostingFramework'>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop"/>
+      <Directory Id='SystemFolder'/>
+
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id='DIR_PMF_Sage' Name='Sage'>
+        </Directory>
+        <Directory Id="StartupFolder" Name="Startup">
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="Complete"
+             Title="-=TAG_FullProductName=-"
+             Description="The complete package."
+             Display="expand"
+             Level="1"
+             ConfigurableDirectory="INSTALLDIR">
+
+      <!--<ComponentRef Id="COM_ConnectorUIStartupShortcut"/>-->
+      <ComponentRef Id="COM_ConnectorUIShortcut"/>
+      <ComponentRef Id="COM_MonitorShortcut"/>
+	  <ComponentRef Id="COM_ConnectorShortcutDesktop"/>
+	  <ComponentRef Id="COM_ServiceMonitorShortcutDesktop"/>
+      <ComponentRef Id="COM_ConfigurationStore"/>
+      <ComponentRef Id="COM_ConnectorRegistry"/>
+      <ComponentRef Id="COM_LogStore"/>
+      <ComponentRef Id="COM_QueueStore"/>
+      <ComponentRef Id="COM_ViewConfigurations"/>
+      <ComponentRef Id="COM_ViewLog"/>
+      <ComponentRef Id="COM_ViewActivity"/>
+
+      <Feature Id="FEA_InstalledProductInfo" Display="hidden" Level="1">
+        <ComponentRef Id="COM_Sage.CRE.CloudConnector.InstalledProductInfo.dll"/>
+      </Feature>
+
+      <Feature Id="FEA_ConSvcInstanceConfigDefaults" Display="hidden" Level="1">
+        <ComponentRef Id="COM_ConnectorServiceInstanceConfigDefaults"/>
+      </Feature>
+
+      <Feature Id="FEA_ConMonSvcInstanceConfigDefaults" Display="hidden" Level="1">
+        <ComponentRef Id="COM_ConnectorMonitorServiceInstanceConfigDefaults"/>
+      </Feature>
+
+      <Feature Id="FEA_ConnectorMonitorTrayConfiguration" Display="hidden" Level="1">
+        <ComponentRef Id="COM_ConnectorMonitorTrayConfiguration"/>
+      </Feature>
+
+      <Feature Id="FEA_Sage.CRE.Core" Display="hidden" Level="1">
+        <ComponentGroupRef Id="Sage.CM.Core"/>
+      </Feature>
+
+      <Feature Id="FEA_Sage.CRE.HostingFrameworkClient" Display="hidden" Level="1">
+        <ComponentGroupRef Id="Sage.CM.HostingFrameworkClient"/>
+      </Feature>
+
+      <Feature Id="FEA_Sage.CRE.HostingFrameworkCommon" Display="hidden" Level="1">
+        <ComponentGroupRef Id="Sage.CM.HostingFrameworkCommon"/>
+      </Feature>
+
+      <Feature Id="FEA_Sage.CRE.HostingFrameworkServer" Display="hidden" Level="1">
+        <ComponentGroupRef Id="Sage.CM.HostingFrameworkServer"/>
+      </Feature>
+
+      <Feature Id="FEA_Sage.CRE.Microsoft" Display="hidden" Level="1">
+        <ComponentGroupRef Id="Sage.CM.Microsoft"/>
+      </Feature>
+
+      <Feature Id="FEA_Sage.CRE.Resources" Display="hidden" Level="1">
+        <ComponentGroupRef Id="Sage.CM.Resources"/>
+      </Feature>
+
+      <Feature Id="FEA_Sage.CRE.CloudConnector" Display="hidden" Level="1">
+        <ComponentGroupRef Id="Sage.CM.CloudConnector"/>
+      </Feature>
+
+    </Feature>
+
+    <Upgrade Id="-=TAG_UpgradeCode=-">
+      <!-- Detect if there is a newer version installed than the current version -->
+      <UpgradeVersion Minimum="$(var.BuildVersion)" IncludeMinimum="no" OnlyDetect="yes" Language="1033" Property="NEWERFOUND" />
+      <!-- Detect if the current version is installed -->
+      <UpgradeVersion Minimum="$(var.BuildVersion)" IncludeMinimum="yes" Maximum="$(var.BuildVersion)" IncludeMaximum="yes" OnlyDetect="yes" Language="1033" Property="SELFFOUND" />
+      <!-- Detect if there is an older version installed -->
+      <UpgradeVersion Minimum="0.0.0" IncludeMinimum="yes" Maximum="$(var.BuildVersion)" IncludeMaximum="no" Language="1033" Property="OLDERFOUND" />
+    </Upgrade>
+
+    <UIRef Id="WixUI_InstallDir" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+
+    <CustomAction Id='CUS_Uninstall' BinaryKey='InstallHelperEXE' ExeCommand='/mode:uninstall /installpath:&quot;[INSTALLDIR]&quot; /version:$(var.BuildVersion)' Execute="deferred" Return='asyncNoWait' HideTarget="no" Impersonate="no" />
+    <CustomAction Id='CUS_UninstallCloseAll' BinaryKey='InstallHelperEXE' ExeCommand='/mode:closeall /installpath:&quot;[INSTALLDIR]&quot; /version:$(var.BuildVersion)' Impersonate="yes" Return="ignore" />
+
+    <InstallUISequence>
+      <!-- 1.2 and older Connector was for STO only -->
+      <Custom Action="SetINSTALLDIR_FromOneDotTwoOrOlderINSTALLDIRAppSearch" After="AppSearch">
+        ONE_DOT_TWO_OR_OLDER_INSTALLDIR_APP_SEARCH
+      </Custom>
+
+      <Custom Action="SetINSTALLDIR_FromPreviousINSTALLDIRAppSearch" After="SetINSTALLDIR_FromOneDotTwoOrOlderINSTALLDIRAppSearch">
+        PREVIOUS_INSTALLDIR_APP_SEARCH
+      </Custom>
+    </InstallUISequence>
+    
+    <InstallExecuteSequence>
+      <Custom Action="CUS_Uninstall" Before='InstallFinalize'>
+        <![CDATA[(NOT UPGRADINGPRODUCTCODE) AND (REMOVE ~= "ALL")]]>
+      </Custom>
+
+      <Custom Action="CUS_UninstallCloseAll" Before="InstallValidate">
+        <![CDATA[(NOT UPGRADINGPRODUCTCODE) AND (REMOVE ~= "ALL")]]>
+      </Custom>
+
+
+      <FindRelatedProducts Before="LaunchConditions" />
+      <!--
+      Using REINSTALLMODE=amus to force overwrite of non-versioned files.  This is needed because we cannot
+      (alternately) schedule RemoveExistingProducts around InstallInitialize/InstallValidate ... due to the fact that
+      we have GAC assemblies whose version numbers may not change during a MSI major upgrade.  In order to make certain
+      that all GAC assemblies are present after a major upgrade (regardless of version number, we must keep RemoveExistingProducts
+      scheduled after InstallFinalize.
+      http://jpassing.com/2007/06/16/where-to-place-removeexistingproducts-in-a-major-msi-upgrade/
+      http://blogs.msdn.com/b/astebner/archive/2007/02/08/assemblies-may-be-missing-from-the-gac-or-winsxs-cache-after-an-msi-major-upgrade.aspx
+      -->
+      <RemoveExistingProducts After="InstallValidate" />
+    </InstallExecuteSequence>
+
+    <InstallUISequence>
+      <FindRelatedProducts Before="LaunchConditions" />
+    </InstallUISequence>
+
+    <UI>
+      <ProgressText Action="CUS_Uninstall">Uninstall cleanup</ProgressText>
+    </UI>
+  </Product>
+
+</Wix>

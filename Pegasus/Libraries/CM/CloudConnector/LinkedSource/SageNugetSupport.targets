@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build"  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!--Import nuget support. Add SageNuGetPackage as a target at the end of BuildDependsOn. Add the actual target. Order matters with other BuildDependsOn extensions.-->
+  <!-- Requires msbuild 4.0 or later.-->
+
+  <!--setup or clear out default values that are not already specified by the specific project file.-->
+  <PropertyGroup>
+
+    <!-- should we create a package, works locally or on a server -->
+    <CreateNuGetPackage Condition=" '$(CreateNuGetPackage)'=='' ">false</CreateNuGetPackage>
+
+    <!-- Should we publish a created package-->
+    <PublishNuGetPackage Condition=" '$(PublishNuGetPackage)'=='' ">false</PublishNuGetPackage>
+
+    <!-- Should nuget use IncludeReferencedProjects switch/logic. Comes with trade offs -->
+    <UseNugetIncludeReferencedProjects Condition="'$(UseNugetIncludeReferencedProjects)' == ''">false</UseNugetIncludeReferencedProjects>
+
+    <!-- Should nuget use BasePath switch/logic with value of $outdir is used as part of the pack command line-->
+    <UseNugetBasePath Condition="'$(UseNugetBasePath)' == ''">false</UseNugetBasePath>
+
+    <!-- Should nuget use NugetNoPackageAnalysis as part of the pack command line, intended to be overridden via build definition on server.-->
+    <UseNugetNoPackageAnalysis Condition="'$(UseNugetNoPackageAnalysis)' == ''">false</UseNugetNoPackageAnalysis>
+    
+    <!-- publish path for the nuget package -->
+    <!--<NuGetRepositoryPublishRoot Condition=" '$(NuGetRepositoryPublishRoot)'=='' ">\\orbdevstebld1\NugetPackages</NuGetRepositoryPublishRoot>-->
+    <!--<NuGetRepositoryPublishRoot Condition=" '$(NuGetRepositoryPublishRoot)'=='' ">\\orbfile1\crebuild\Platform\NuGet</NuGetRepositoryPublishRoot>-->
+
+    <!--<nugetSpec>$(MSBuildProjectName).nuspec</nugetSpec>-->
+    <RootBuildDefinition Condition="'$(RootBuildDefinition)' == ''"></RootBuildDefinition>
+    <RootBuildDefinitionCommon Condition="'$(RootBuildDefinitionCommon)' == ''"></RootBuildDefinitionCommon>
+
+  </PropertyGroup>
+
+
+  <!-- Extend our build depends on to get our target at the end of the list.-->
+  <PropertyGroup>
+    <BuildDependsOn>$(BuildDependsOn);SageNuGetPackage</BuildDependsOn>
+  </PropertyGroup>
+
+
+  <!-- 
+  Expects a SageBuildFileVersion target to have been run.
+  needs  
+  * SageFullBuildVersionString - Full version number as a string
+  * BuildDefinition - Build definition name or DEVBUILD
+  * SageBuildType - Expected to be TFSBUILD or DEVBUILD
+  -->
+
+  <Target Name="SageNuGetPackage"
+          DependsOnTargets="SageBuildFileVersion"
+        Inputs="$(OutDir)$(TargetFileName)"
+        Outputs="$(OutDir)$(TargetName).$(SageFullBuildVersionString).nupkg"
+        Condition="'$(CreateNuGetPackage)'=='true' or '$(PublishNuGetPackage)'=='true'">
+
+    <!-- Debugging/Testing support
+    <PropertyGroup>
+      <BuildDefinition>DEV_BUILD_IsREALYLONGANDLONGERSTILL</BuildDefinition>
+    </PropertyGroup>
+    <Message Importance="high"  Text="Value of BuildDefinition = '$(BuildDefinition)'" ></Message>
+    -->
+
+    <Message Importance="high"  Text="Value of CreateNuGetPackage = '$(CreateNuGetPackage)'" ></Message>
+    <Message Importance="high"  Text="Value of PublishNuGetPackage = '$(PublishNuGetPackage)'" ></Message>
+    <Message Importance="high"  Text="Value of SageBuildType = '$(SageBuildType)'" ></Message>
+    <Message Importance="high"  Text="Value of NuGetRepositoryPublishRoot = '$(NuGetRepositoryPublishRoot)'" ></Message>
+    <Message Importance="high"  Text="Value of RootBuildDefinition = '$(RootBuildDefinition)'" ></Message>
+    <Message Importance="high"  Text="Value of SageBuildType = '$(SageBuildType)'" ></Message>
+    <PropertyGroup>
+      <!-- compute the special name string based on the path variables-->
+      <!-- 
+      if were at root build definition use build def name, or the definition does not start with the RootBuildDefinitionCommon use the default name
+      If we are down the common path then factor it out of the name.
+      -->
+      <BaseBuildDefintionName Condition="'$(BuildDefinition.StartsWith($(RootBuildDefinitionCommon)))' == 'true' and '$(RootBuildDefinitionCommon.Length)' &gt;='1'">
+        $(BuildDefinition.Substring( $(RootBuildDefinitionCommon.Length),
+        $([MSBuild]::Subtract($(BuildDefinition.Length), $(RootBuildDefinitionCommon.Length))) ))
+      </BaseBuildDefintionName>
+      <BaseBuildDefintionName Condition="'$(RootBuildDefinition)' == '$(BuildDefinition)'">$(BuildDefinition)</BaseBuildDefintionName>
+      <BaseBuildDefintionName Condition="'$(BuildDefinition.StartsWith($(RootBuildDefinitionCommon)))' == 'false' or '$(RootBuildDefinitionCommon.Length)' &lt;'1'">$(BuildDefinition)</BaseBuildDefintionName>
+
+      <!-- under bar not being legal in nuget special version string but common in our build definitions -->
+      <CleanBuildDefinition>$(BaseBuildDefintionName.Replace('_','').Trim())</CleanBuildDefinition>
+    </PropertyGroup>
+
+    <!-- Debugging/Testing support
+      <Message Importance="high"  Text="Value of nuspec file = '$(nugetSpec)'" ></Message>
+      <Message Importance="high"  Text="Value of BaseBuildDefintionName = '$(BaseBuildDefintionName)'" ></Message>
+    -->
+
+    <PropertyGroup>
+      <!-- add support of limiting special version string as nuget has a short limit-->
+      <MaxSpecialVersionStringLength>20</MaxSpecialVersionStringLength>
+      <!-- address max special version string limit in current nuget. Take last 20 char of build definition name-->
+      <CleanTrimmedBuildDefinition Condition="'$(CleanBuildDefinition.Length)' &lt;= '$(MaxSpecialVersionStringLength)'" >$(CleanBuildDefinition)</CleanTrimmedBuildDefinition>
+      <CleanTrimmedBuildDefinition Condition="'$(CleanBuildDefinition.Length)' &gt; '$(MaxSpecialVersionStringLength)'" >$(CleanBuildDefinition.Substring ( $([MSBuild]::Subtract($(CleanBuildDefinition.Length), $(MaxSpecialVersionStringLength))) ,$(MaxSpecialVersionStringLength)))</CleanTrimmedBuildDefinition>
+
+      <SagePathedVersionString Condition="'$(RootBuildDefinition)' == '$(BuildDefinition)'">$(SageFullBuildVersionString)</SagePathedVersionString>
+      <SagePathedVersionString Condition="'$(RootBuildDefinition)' != '$(BuildDefinition)'">$(SageFullBuildVersionString)-$(CleanTrimmedBuildDefinition)</SagePathedVersionString>
+      <!-- 
+      <SagePathedVersionString Condition="'$(RootBuildDefinition)' != '$(BuildDefinition)'">$(SageFullBuildVersionString)-prerelease</SagePathedVersionString>-->
+    </PropertyGroup>
+
+    <!-- Debugging/Testing support
+      <Message Importance="high"  Text="Value of CleanBuildDefinition = '$(CleanBuildDefinition)'" ></Message>
+    -->
+
+    <PropertyGroup>
+      <NugetIncludeReferencedProjects Condition="'$(UseNugetIncludeReferencedProjects)' != 'true'"></NugetIncludeReferencedProjects>
+      <NugetIncludeReferencedProjects Condition="'$(UseNugetIncludeReferencedProjects)' == 'true'">-IncludeReferencedProjects</NugetIncludeReferencedProjects>
+    </PropertyGroup>
+
+    <PropertyGroup>
+      <NugetBasePath Condition="'$(UseNugetBasePath)' != 'true'"></NugetBasePath>
+      <NugetBasePath Condition="'$(UseNugetBasePath)' == 'true'">-BasePath &quot;$(OutDir).&quot;</NugetBasePath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+      <NugetNoPackageAnalysis Condition="'$(UseNugetNoPackageAnalysis)' != 'true'"></NugetNoPackageAnalysis>
+      <NugetNoPackageAnalysis Condition="'$(UseNugetNoPackageAnalysis)' == 'true'">-NoPackageAnalysis</NugetNoPackageAnalysis>
+    </PropertyGroup>
+
+    <PropertyGroup>
+      <ModifiedTargetName Condition="'$(RootBuildDefinition)' == '$(BuildDefinition)'">$(TargetName)</ModifiedTargetName>
+      <ModifiedTargetName Condition="'$(RootBuildDefinition)' != '$(BuildDefinition)'">$(TargetName).$(CleanTrimmedBuildDefinition)</ModifiedTargetName>
+    </PropertyGroup>
+
+    <!-- Testing/Debugging support
+    <PropertyGroup>
+      <SageBuildType>TFSBUILD</SageBuildType>
+      <CreateNuGetPackage>true</CreateNuGetPackage>
+      <PublishNuGetPackage>true</PublishNuGetPackage>
+    </PropertyGroup>
+    -->
+
+    <!-- actually run the pack command -->
+    <!-- removed Command="&quot;$(SolutionDir).nuget\nuget.exe&quot; pack &quot;$(MSBuildProjectDirectory)\$(ProjectName).csproj&quot; $(NugetIncludeReferencedProjects) -OutputDirectory &quot;$(OutDir).&quot; -Version &quot;$(SagePathedVersionString)&quot; $(NugetBasePath) $(NugetNoPackageAnalysis) -Prop TargetPath=&quot;$(OutDir)$(TargetFileName)&quot;;SagePathedVersionString=&quot;$(SagePathedVersionString)&quot;;SagePackageID=&quot;$(ModifiedTargetName)&quot;"
+        use of the SagePackageID it breaks the ability to process included projects.
+    -->
+    <Exec
+      Command="&quot;$(SolutionDir).nuget\nuget.exe&quot; pack &quot;$(MSBuildProjectDirectory)\$(ProjectName).csproj&quot; $(NugetIncludeReferencedProjects) -OutputDirectory &quot;$(OutDir).&quot; -Version &quot;$(SagePathedVersionString)&quot; $(NugetBasePath) $(NugetNoPackageAnalysis) -Prop TargetPath=&quot;$(OutDir)$(TargetFileName)&quot;;SagePathedVersionString=&quot;$(SagePathedVersionString)&quot;"
+      
+      WorkingDirectory="$(MSBuildProjectDirectory)"
+      Condition="'$(CreateNuGetPackage)'=='true'"/>
+
+    <!-- Publish/copy the resulting package-->
+
+    <!-- NuGetRepositoryPublishRoot is et via sln level nuget.config. left in case we need to add build file level overrides.-->
+    <!--<Copy
+      SourceFiles="$(OutDir)$(TargetName).$(SagePathedVersionString).nupkg"
+      DestinationFolder="$(NuGetRepositoryPublishRoot)"
+      SkipUnchangedFiles="true"
+      Condition="'$(SageBuildType)'=='TFSBUILD' and '$(CreateNuGetPackage)'=='true' and '$(PublishNuGetPackage)'=='true'"/>-->
+
+    <!-- Publish/copy the resulting package-->
+    <!-- removed use of MOdifiedTargetName 
+    Command="&quot;$(SolutionDir).nuget\nuget.exe&quot; push &quot;$(OutDir)$(ModifiedTargetName).$(SagePathedVersionString).nupkg&quot; platform_connector -ConfigFile &quot;$(SolutionDir)\NuGet.config&quot;" -->
+    <Exec
+        Command="&quot;$(SolutionDir).nuget\nuget.exe&quot; push &quot;$(OutDir)$(TargetName).$(SagePathedVersionString).nupkg&quot; platform_connector -ConfigFile &quot;$(SolutionDir)\NuGet.config&quot;"
+        WorkingDirectory="$(MSBuildProjectDirectory)"
+        Condition="'$(SageBuildType)'=='TFSBUILD' and '$(CreateNuGetPackage)'=='true' and '$(PublishNuGetPackage)'=='true'"/>
+
+  </Target>
+</Project>
+

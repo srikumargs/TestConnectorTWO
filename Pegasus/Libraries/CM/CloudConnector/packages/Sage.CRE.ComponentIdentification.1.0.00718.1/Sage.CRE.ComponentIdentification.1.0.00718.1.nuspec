@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Sage.CRE.ComponentIdentification</id>
+    <version>1.0.00718.1</version>
+    <title>Sage.CRE.ComponentIdentification</title>
+    <authors>Sage</authors>
+    <owners>Sage</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Common infrastructure for component identification</description>
+    <dependencies>
+      <dependency id="StyleCop.MSBuild" version="4.7.44.1" />
+    </dependencies>
+  </metadata>
+</package>

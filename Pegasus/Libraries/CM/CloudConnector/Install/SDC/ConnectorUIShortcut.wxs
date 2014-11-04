@@ -1,0 +1,65 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <Fragment>
+    <DirectoryRef Id="DIR_PMF_Sage">
+
+      <Directory Id='DIR_PMF_Sage_SCA' Name='Sage Data Cloud Connector'>
+        <Component Id='COM_ConnectorUIShortcut' Guid='4A8AA4F1-5541-4B1B-A8AB-15392F9C70A9'>
+          <!-- this Registry value serves as the KeyPath for this component. it is required, not by WiX, but by Windows Installer -->
+          <RegistryValue Root='HKCU' Key='SOFTWARE\Sage\SageConnector\$(var.SkyfireProduct)\Shortcut_ConnectorUI' Name='installed' Type='integer' Value='1' KeyPath='yes'/>
+
+          <!-- force existence of the StartMenu\Sage\Sage Connector folder -->
+          <CreateFolder Directory="DIR_PMF_Sage_SCA" />
+
+          <Shortcut Id="Shortcut_ConnectorUI" Name="Sage Data Cloud Connector" Target="[INSTALLDIR]SageConnect.exe" WorkingDirectory="INSTALLDIR" Icon="Icon_ConnectorUI" IconIndex="0" />
+          <RemoveFolder Id="RemoveFolder_DIR_PMF_Sage_SCA" Directory="DIR_PMF_Sage_SCA" On="uninstall" />
+          <RemoveFolder Id="RemoveFolder_DIR_PMF_Sage" Directory="DIR_PMF_Sage" On="uninstall" />
+        </Component>
+
+        <Component Id='COM_MonitorShortcut' Guid='C244639F-4BCB-48FA-AB3E-B0BAE3FA1111'>
+          <!-- this Registry value serves as the KeyPath for this component. it is required, not by WiX, but by Windows Installer -->
+          <RegistryValue Root='HKCU' Key='SOFTWARE\Sage\SageConnector\$(var.SkyfireProduct)\Shortcut_Monitor' Name='installed' Type='integer' Value='1' KeyPath='yes'/>
+
+          <Shortcut Id="Shortcut_Monitor" Name="Sage Data Cloud Connector Monitor" Target="[INSTALLDIR]Monitor\Tray\ConnectorServiceMonitor.exe" Arguments="/forcegui" WorkingDirectory="DIR_MonitorTray" Icon="Icon_Monitor" IconIndex="0" />
+        </Component>
+      </Directory>
+      
+    </DirectoryRef>
+	
+	<DirectoryRef Id="DesktopFolder">
+        <Component Id="COM_ConnectorShortcutDesktop" Guid="FFE687E9-040B-44F0-A55A-96B077ABD5F8">
+          <Shortcut Id="DesktopConnectorShortcut"
+             Name="Sage Data Cloud Connector"
+             Target="[INSTALLDIR]SageConnect.exe"
+             WorkingDirectory="INSTALLDIR"
+			 Icon="Icon_ConnectorUI"
+			 IconIndex="0"/>
+          <RegistryValue
+            Root="HKCU"
+            Key="SOFTWARE\Sage\SageConnector\$(var.SkyfireProduct)\Shortcut_Desktop_Connector"
+            Name="installed"
+            Type="integer"
+            Value="1"
+            KeyPath="yes"/>
+        </Component>
+		<Component Id="COM_ServiceMonitorShortcutDesktop" Guid="AADB53F3-D821-4727-97CF-2C62BE8184A7">
+          <Shortcut Id="DesktopServiceMonitorShortcut"
+             Name="Sage Data Cloud Connector Monitor"
+             Target="[INSTALLDIR]Monitor/Tray/ConnectorServiceMonitor.exe"
+             WorkingDirectory="INSTALLDIR"
+			 Icon="Icon_Monitor"
+			 IconIndex="0"/>
+          <RegistryValue
+            Root="HKCU"
+            Key="SOFTWARE\Sage\SageConnector\$(var.SkyfireProduct)\Shortcut_Desktop_Connector_Monitor"
+            Name="installed"
+            Type="integer"
+            Value="1"
+            KeyPath="yes"/>
+        </Component>
+	  </DirectoryRef>
+  </Fragment>
+
+
+</Wix>

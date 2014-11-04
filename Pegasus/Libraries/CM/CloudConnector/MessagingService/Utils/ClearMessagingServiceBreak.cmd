@@ -1,0 +1,1 @@
+..\..\..\..\Tools\Bin\setx.exe SAGE_CONNECTOR_MESSAGING_SERVICE_BREAK "" -m

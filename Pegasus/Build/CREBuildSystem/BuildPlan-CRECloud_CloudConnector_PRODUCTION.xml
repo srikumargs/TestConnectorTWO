@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+The BuildPlan contains configuration that describes how the build system should go about building this particular "flavor"
+of product build (e.g., PRODUCTION, DevBranch, etc.).  Additional parameters which influence the build behavior can be
+found in the build params file (typically located in $/Architecture/CREBuildSystem/Main/Params/<Build Definition Name>).
+-->
+<BuildPlan>
+  <!-- These libraries should be downloaded from the package repository -->
+  <PinnedLibraries>
+    <LibraryParams LibrarySetId="Sandbox" LibraryName="Tools" />
+    <LibraryParams LibrarySetId="CM" LibraryName="Core" />
+    <LibraryParams LibrarySetId="CM" LibraryName="HostingFramework" />
+    <LibraryParams LibrarySetId="CM" LibraryName="Microsoft" />
+    <LibraryParams LibrarySetId="CM" LibraryName="Resources" />
+    <LibraryParams LibrarySetId="CM" LibraryName="NUnit" />
+  </PinnedLibraries>
+
+  <Stamping>
+    <DefaultParams>
+      <!--
+      Stamping params:  FileVersion
+      Description:      Controls stamping of FileVersion
+      -->
+      <Param Name="StampFileVersion">true</Param>
+      <Param Name="StampFileVersionTag">TAG_CREBuildSystem_FileVersion</Param>
+      <Param Name="StampFileVersionValue">%BUILD_VERSION%</Param>
+
+      <!--
+      Stamping params:  FileVersion1
+      Description:      Controls stamping of FileVersion1
+      -->
+      <Param Name="StampFileVersion1">true</Param>
+      <Param Name="StampFileVersion1Tag">TAG_CREBuildSystem_FileVersion1</Param>
+      <Param Name="StampFileVersion1Value">%BUILD_VERSION_1%</Param>
+
+      <!--
+      Stamping params:  FileVersion2
+      Description:      Controls stamping of FileVersion2
+      -->
+      <Param Name="StampFileVersion2">true</Param>
+      <Param Name="StampFileVersion2Tag">TAG_CREBuildSystem_FileVersion2</Param>
+      <Param Name="StampFileVersion2Value">%BUILD_VERSION_2%</Param>
+
+      <!--
+      Stamping params:  FileVersion3
+      Description:      Controls stamping of FileVersion3
+      -->
+      <Param Name="StampFileVersion3">true</Param>
+      <Param Name="StampFileVersion3Tag">TAG_CREBuildSystem_FileVersion3</Param>
+      <Param Name="StampFileVersion3Value">%BUILD_VERSION_3%</Param>
+
+      <!--
+      Stamping params:  FileVersion4
+      Description:      Controls stamping of FileVersion4
+      -->
+      <Param Name="StampFileVersion4">true</Param>
+      <Param Name="StampFileVersion4Tag">TAG_CREBuildSystem_FileVersion4</Param>
+      <Param Name="StampFileVersion4Value">%BUILD_VERSION_4%</Param>
+
+      <!--
+      Stamping params:  Company
+      Description:      Controls stamping of Company
+      -->
+      <Param Name="StampCompany">true</Param>
+      <Param Name="StampCompanyTag">TAG_CREBuildSystem_Company</Param>
+      <Param Name="StampCompanyValue">Sage Software, Inc.</Param>
+
+      <!--
+      Stamping params:  Copyright
+      Description:      Controls stamping of Copyright
+      -->
+      <Param Name="StampCopyright">true</Param>
+      <Param Name="StampCopyrightTag">TAG_CREBuildSystem_Copyright</Param>
+      <Param Name="StampCopyrightValue">© 2010 - 2011 Sage Software, Inc. All rights reserved.</Param>
+
+      <!--
+      Stamping params:  Trademark
+      Description:      Controls stamping of Trademark
+      -->
+      <Param Name="StampTrademark">true</Param>
+      <Param Name="StampTrademarkTag">TAG_CREBuildSystem_Trademark</Param>
+      <Param Name="StampTrademarkValue">© 2010 - 2011 Sage Software, Inc. All rights reserved.</Param>
+
+      <!--
+      Stamping params:  Configuration
+      Description:      Controls stamping of Configuration
+      -->
+      <Param Name="StampConfiguration">true</Param>
+      <Param Name="StampConfigurationTag">TAG_CREBuildSystem_Configuration</Param>
+      <Param Name="StampConfigurationValue">%LIBRARY_SET_ID%\\%LIBRARY_NAME%</Param>
+
+      <!--
+      Stamping params:  AssemblyVersion
+      Description:      Controls stamping of AssemblyVersion
+      -->
+      <Param Name="StampAssemblyVersion">true</Param>
+      <Param Name="StampAssemblyVersionTag">TAG_CREBuildSystem_AssemblyVersion</Param>
+      <Param Name="StampAssemblyVersionValue">%LIBRARY_VERSION%.0.0</Param>
+
+      <!--
+      Stamping params:  InformationalVersion
+      Description:      Controls stamping of InformationalVersion
+      -->
+      <Param Name="StampAssemblyInformationalVersion">true</Param>
+      <Param Name="StampAssemblyInformationalVersionTag">TAG_CREBuildSystem_AssemblyInformationalVersion</Param>
+      <Param Name="StampAssemblyInformationalVersionValue">%LIBRARY_VERSION%.0.0</Param>
+
+      <!--
+      Stamping params:  Title
+      Description:      Controls stamping of Title
+      -->
+      <Param Name="StampTitle">false</Param>
+      <Param Name="StampTitleTag">TAG_CREBuildSystem_Title</Param>
+      <Param Name="StampTitleValue"></Param>
+
+      <!--
+      Stamping params:  Description
+      Description:      Controls stamping of Description
+      -->
+      <Param Name="StampDescription">false</Param>
+      <Param Name="StampDescriptionTag">TAG_CREBuildSystem_Description</Param>
+      <Param Name="StampDescriptionValue"></Param>
+
+      <!--
+      Stamping params:  Product
+      Description:      Controls stamping of Product
+      -->
+      <Param Name="StampProduct">false</Param>
+      <Param Name="StampProductTag">TAG_CREBuildSystem_Product</Param>
+      <Param Name="StampProductValue"></Param>
+
+      <!--
+      Stamping params:  Culture
+      Description:      Controls stamping of Culture
+      -->
+      <Param Name="StampCulture">false</Param>
+      <Param Name="StampCultureTag">TAG_CREBuildSystem_Culture</Param>
+      <Param Name="StampCultureValue"></Param>
+    </DefaultParams>
+    <!--
+    Parameter configuration for individual libraries.  Anything mentioned here overrides the DefaultParams above and
+    any libraries or parameters NOT mentioned here inherit their values from the DefaultParams.
+    -->
+  </Stamping>
+
+  <!-- Build the Install first -->
+  <BuildPhase Id="Install" TargetLibraryRootPath="Libraries\CM\CloudConnector">
+    <DefaultParams>
+      <!-- 
+      Parameter name: Enabled
+      Description:    Enables/disables all processing for this library
+      Values:
+          true        this library will be built
+          false       do nothing with this library
+      -->
+      <Param Name="Enabled">true</Param>
+
+      <!-- 
+      Parameter name: BuildSource
+      Description:    Whether the source for this library should be built; only valid if Enabled="true"
+      Values:
+          true        build the source
+          false       do not build the source
+      -->
+      <Param Name="BuildSource">true</Param> 
+
+      <!-- 
+      Parameter name: BuildDebug
+      Description:    Whether to build the Debug configuration; only valid if Enabled="true" and BuildSource="true"
+      Values:
+          true        build the Debug configuration
+          false       do not build the Debug configuration
+      -->
+      <Param Name="BuildDebug">false</Param>
+
+      <!-- 
+      Parameter name: BuildRelease
+      Description:    Whether to build the Release configuration; only valid if Enabled="true" and BuildSource="true"
+      Values:
+          true        build the Release configuration
+          false       do not build the Release configuration
+      -->
+      <Param Name="BuildRelease">true</Param>
+
+      <!-- 
+      Parameter name: Activate
+      Description:    Whether to run the SandboxActivate action; always true if BuildSource="true"
+      Values:
+          true        run the SandboxActivate action
+          false       do not run the SandboxActivate action
+      -->
+      <Param Name="Activate">true</Param>
+
+      <!-- 
+      Parameter name: CreateDeployment
+      Description:    Whether to run the CreateDeployment action; only valid if Enabled="true"
+      Values:
+          true        run the CreateDeployment action
+          false       do not run the CreateDeployment action
+      -->
+      <Param Name="CreateDeployment">true</Param>
+
+      <!-- 
+      Parameter name: CreateDevPackage
+      Description:    Whether to run the CreateDevPackage action; only valid if Enabled="true"
+      Values:
+          true        run the CreateDevPackage action
+          false       do not run the CreateDevPackage action
+      -->
+      <Param Name="CreateDevPackage">true</Param>
+    </DefaultParams>
+    <!--
+    Parameter configuration for individual libraries.  Anything mentioned here overrides the DefaultParams above and
+    any libraries or parameters NOT mentioned here inherit their values from the DefaultParams.
+    -->
+    <!--
+    <LibraryParams LibrarySetId="MMCRE" LibraryName="Install" CreateDevPackage="false" />
+    -->
+  </BuildPhase>
+
+</BuildPlan>

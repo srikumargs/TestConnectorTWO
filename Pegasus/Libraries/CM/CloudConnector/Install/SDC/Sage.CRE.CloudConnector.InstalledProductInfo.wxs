@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLDIR">
+      <Component Id='COM_Sage.CRE.CloudConnector.InstalledProductInfo.dll' Guid="D89663C5-A3AB-4A8C-9F0E-C545EC0E45C3"  DiskId="1">
+        <File Id='FIL_Sage.CRE.CloudConnector.InstalledProductInfo.dll' Name="Sage.CRE.CloudConnector.InstalledProductInfo.dll" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector ($(var.SkyfireProduct))\Sage.CRE.CloudConnector.InstalledProductInfo.dll" Vital="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+</Wix>

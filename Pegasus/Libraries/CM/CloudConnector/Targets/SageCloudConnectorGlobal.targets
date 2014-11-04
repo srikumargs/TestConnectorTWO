@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0"
+         xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- A set of pure MSBuild 4.0 tasks that generate build version information 
+       for a TFS 2010 Team Build in order to have your file versions match 
+       exactly the TFS build numbers. Everything is in this file, you don't 
+       need to install any other DLLs, assemblies, or magic on your TFS build 
+       server. MSBuild 4.0 really is quite wonderful!
+       
+       The idea behind using these task is to follow best practices of not 
+       checking in/out any assembly version files as part of a build. The 
+       version files are created every time you run a Team Build. If the 
+       version files aren't checked in, how will you do a build on a 
+       developer machine? You'll be OK, because when you call these tasks from  
+       a developer (AKA desktop build), it will still create the version files. 
+       However, instead of using a TFS build identifier, the version files will
+       be created with the following rules:
+          - If the version file already exists, it will not be created. For
+            TFS Builds, the file is always created.
+          - The build number will be based of the current date.
+          - The revision number is hard coded to 65535 to indicate it was a 
+            developer build. (If you are doing more than 65,535 builds in a 
+            day you have bigger problems than version files! :) )
+
+       These tasks can be integrated directly into your .csproj and .vcxproj files.
+  -->
+
+  <PropertyGroup>
+    <BuildDependsOn>SageWriteTextAssemblyVersionFile;SageWriteCSharpGeneratedAssemblyInfoFile;$(BuildDependsOn)</BuildDependsOn>
+    <CleanDependsOn>SageClean;$(CleanDependsOn)</CleanDependsOn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="bin\$(Configuration)\Generated.AssemblyInfo.cs"/>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- Figure out where the TFS build tasks are. -->
+    <TeamBuildRefPath Condition="'$(TeamBuildRefPath)'==''">$(VS100COMNTOOLS)..\IDE\PrivateAssemblies\</TeamBuildRefPath>
+
+    <!-- Figure out where this target is being called from, TFS Build or a developer 
+         machine. BuildUri and TeamFoundationServerUrl properties are the 
+         ones that indicate this is running under TFS Build.-->
+    <SageBuildType>DEVBUILD</SageBuildType>
+    <SageBuildType Condition="'$(BuildUri)'!='' and '$(TeamFoundationServerUrl)'!=''">TFSBUILD</SageBuildType>
+  </PropertyGroup>
+
+  <!-- Set appropriate defaults for all version files. -->
+  <PropertyGroup>
+    <!-- The output directory for all linked source version files. -->
+    <SageLinkedSourceDirectory Condition=" '$(SageLinkedSourceDirectory)'=='' ">$(LibraryDir)\LinkedSource</SageLinkedSourceDirectory>
+
+    <!-- The name of the C# version file. -->
+    <CSharpGeneratedAssemblyInfoFile Condition=" '$(CSharpGeneratedAssemblyInfoFile)'=='' ">$(MSBuildProjectDirectory)\bin\$(Configuration)\Generated.AssemblyInfo.cs</CSharpGeneratedAssemblyInfoFile>
+
+    <!-- The name of the Text version file. -->
+    <TextAssemblyVersionFile Condition=" '$(TextAssemblyVersionFile)'=='' ">$(SageLinkedSourceDirectory)\AssemblyFileVersion.txt</TextAssemblyVersionFile>
+
+    <TextAssemblyDescriptionFile Condition=" '$(TextAssemblyDescriptionFile)'=='' ">$(MSBuildProjectDirectory)\bin\$(Configuration)\AssemblyDescription.txt</TextAssemblyDescriptionFile>
+
+    <TextSageBuildSourceInfoFile Condition=" '$(TextSageBuildSourceInfoFile)'=='' ">$(SageLinkedSourceDirectory)\SageBuildSourceInfo.txt</TextSageBuildSourceInfoFile>
+
+    <SageServerPathFile Condition=" '$(SageServerPathFile)'=='' ">$(SageLinkedSourceDirectory)\SageServerPath.txt</SageServerPathFile>
+
+    <SageBuildDirectory Condition=" '$(SageBuildDirectory)'=='' ">$(SageLinkedSourceDirectory)\..\Build</SageBuildDirectory>
+
+    <SageRootDirectory Condition=" '$(SageRootDirectory)'=='' ">$(SageLinkedSourceDirectory)\..\..\..\..</SageRootDirectory>
+
+  </PropertyGroup>
+
+  <!-- Pull in the VS 2010 version of the TFS build components only if doing a full 
+       TFS Build.-->
+  <UsingTask TaskName="Microsoft.TeamFoundation.Build.Tasks.GetBuildProperties"
+             AssemblyFile="$(TeamBuildRefPath)\Microsoft.TeamFoundation.Build.ProcessComponents.dll"
+             Condition="'$(SageBuildType)'=='TFSBUILD'"/>
+
+  <!-- The one target needed from TFS Build to pull out the build information. -->
+  <Target Name="SageInitializeBuildProperties"
+          Condition="'$(SageBuildType)'=='TFSBUILD'">
+
+    <GetBuildProperties TeamFoundationServerUrl="$(TeamFoundationServerUrl)"
+                        BuildUri="$(BuildUri)"
+                        Condition=" '$(IsDesktopBuild)' != 'true' ">
+      <!-- Output only the values that are needed. -->
+      <Output TaskParameter="BuildDefinitionName" PropertyName="BuildDefinitionName" />
+      <Output TaskParameter="BuildNumber" PropertyName="BuildNumber" />
+    </GetBuildProperties>
+    <Message Importance="high" Text="BuildUri=$(BuildUri)"/>
+
+  </Target>
+
+
+  <!-- The SageBuildFileVersion target builds the string suitable for using to 
+       generate an acceptable AssemblyFileVersion attribute with the exact
+       build being done by TFS Build 2010.
+       
+       This assumes a format of $(BuildDefinitionName)_$(Date:yyyyMMdd)$(Rev:.r) 
+       for the build number format. Tweak if you are using a different format.
+       
+       For the code below, the $(BuildNumber) property from TFS Build 2010 will 
+       look like: Dev Branch Daily Build_20091107.14
+       The important properties output of this task are those that start with 
+       'Sage' and are shown below.
+       (Property)                 (Example Value)
+       SageFullBuildVersionString 3.1.21107.14
+       SageBuildNumbe             21107
+       SageCalculatedYear         2
+       SageBuildYear              2009
+       SageBuildMonth             11
+       SageBuildDay               07
+       SageBuildRevision          14
+       -->
+  <Target Name="SageBuildFileVersion"
+          DependsOnTargets="SageInitializeBuildProperties">
+
+    <Exec Command="powershell.exe -file &quot;$(SageBuildDirectory)\GetServerPath.ps1&quot; &quot;http://orbdevtfs2:8080/tfs/SageCRE&quot; &quot;$(SageRootDirectory)&quot; &quot;$(SageServerPathFile)&quot;" />
+
+    <ReadLinesFromFile File="$(SageServerPathFile)">
+      <Output PropertyName="SageServerPath" TaskParameter="Lines"/>
+    </ReadLinesFromFile>
+
+    <Exec Command="LibraryConfigTool.exe /sandbox:&quot;$(SandboxDir)&quot; /query:$%28MajorMinorFileVersion%29 /lc:&quot;$(LibraryDir)\LibraryConfig-Library.xml&quot; > &quot;$(LibraryDir)\MajorMinorFileVersion.txt&quot;"
+          WorkingDirectory="$(ToolsBinDir)"/>
+
+    <ReadLinesFromFile File="$(LibraryDir)\MajorMinorFileVersion.txt">
+      <Output TaskParameter="Lines" ItemName="FileContents" />
+    </ReadLinesFromFile>
+    <Message Importance="Normal" Text="Lines: @(FileContents)"/>
+
+    <PropertyGroup>
+      <MajorMinorFileVersion>@(FileContents)</MajorMinorFileVersion>
+      <SageMajorBuildNumber>$([System.Text.RegularExpressions.Regex]::Replace($(MajorMinorFileVersion), '(\d+)\.(\d+)', '$1', System.Text.RegularExpressions.RegexOptions.IgnoreCase))</SageMajorBuildNumber>
+      <SageMinorBuildNumber>$([System.Text.RegularExpressions.Regex]::Replace($(MajorMinorFileVersion), '(\d+)\.(\d+)', '$2', System.Text.RegularExpressions.RegexOptions.IgnoreCase))</SageMinorBuildNumber>
+    </PropertyGroup>
+
+    <Message Importance="Normal" Text="SageMajorBuildNumber: $(SageMajorBuildNumber)"/>
+    <Message Importance="Normal" Text="SageMinorBuildNumber: $(SageMinorBuildNumber)"/>
+
+
+    <!-- Do the error checking to ensure the appropriate items are defined.-->
+    <Error Condition="'$(SageMajorBuildNumber)'==''"
+           Text="SageMajorBuildNumber is not defined."/>
+    <Error Condition="'$(SageMinorBuildNumber)'==''"
+           Text="SageMinorBuildNumber is not defined."/>
+
+    <PropertyGroup>
+      <!-- The separator string between the $(BuildDefinition) and the date 
+           revision.-->
+      <BuildDefSeparatorValue>_</BuildDefSeparatorValue>
+
+      <!-- The separator between the date and revision.-->
+      <DateVerSeparatorValue>.</DateVerSeparatorValue>
+    </PropertyGroup>
+
+    <!-- The calculations when run on a TFS Build Server.-->
+    <PropertyGroup Condition="'$(SageBuildType)'=='TFSBUILD'">
+      <!-- Get where the timestamp starts-->
+      <tmpStartPosition>$([MSBuild]::Add($(BuildDefinitionName.Length), $(BuildDefSeparatorValue.Length)))</tmpStartPosition>
+
+      <!-- Get the date and version portion. ex: 20091107.14-->
+      <tmpFullDateAndVersion>$(BuildNumber.Substring($(tmpStartPosition)))</tmpFullDateAndVersion>
+
+      <!-- Find the position where the date and version separator splits the string. -->
+      <tmpDateVerSepPos>$(tmpFullDateAndVersion.IndexOf($(DateVerSeparatorValue)))</tmpDateVerSepPos>
+
+      <!-- Grab the date. ex: 20081107-->
+      <tmpFullBuildDate>$(tmpFullDateAndVersion.SubString(0,$(tmpDateVerSepPos)))</tmpFullBuildDate>
+
+      <!-- Bump past the separator. -->
+      <tmpVerStartPos>$([MSBuild]::Add($(tmpDateVerSepPos),1))</tmpVerStartPos>
+
+      <!-- Get the revision string. ex: 14-->
+      <SageBuildRevision>$(tmpFullDateAndVersion.SubString($(tmpVerStartPos)))</SageBuildRevision>
+
+      <!-- Get the pieces so if someone wants to customize, they have them.-->
+      <SageBuildYear>$(tmpFullBuildDate.SubString(0,4))</SageBuildYear>
+      <SageBuildMonth>$(tmpFullBuildDate.SubString(4,2))</SageBuildMonth>
+      <SageBuildDay>$(tmpFullBuildDate.SubString(6,2))</SageBuildDay>
+      <BuildDefinition>$(BuildDefinitionName)</BuildDefinition>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(SageBuildType)'=='DEVBUILD'">
+      <SageBuildRevision>65535</SageBuildRevision>
+      <SageBuildYear>$([System.DateTime]::Now.Year.ToString("0000"))</SageBuildYear>
+      <SageBuildMonth>$([System.DateTime]::Now.Month.ToString("00"))</SageBuildMonth>
+      <SageBuildDay>$([System.DateTime]::Now.Day.ToString("00"))</SageBuildDay>
+      <BuildDefinition>DEVBUILD</BuildDefinition>
+    </PropertyGroup>
+
+    <PropertyGroup>
+      <BuildSourceInfo>$(BuildDefinition) - $(SageServerPath)</BuildSourceInfo>
+      <AssemblyDescription>$(AssemblyName) ($(BuildSourceInfo))</AssemblyDescription>
+    </PropertyGroup>
+
+    <!-- Save resources to a text file, for reference-->
+    <MakeDir Directories="$(MSBuildProjectDirectory)\bin\$(Configuration)"/>
+
+    <WriteLinesToFile Overwrite="true"
+                      File="$(TextSageBuildSourceInfoFile)"
+                      Lines="$(BuildSourceInfo)" />
+
+    <WriteLinesToFile Overwrite="true"
+                      File="$(TextAssemblyDescriptionFile)"
+                      Lines="$(AssemblyDescription)" />
+
+    <PropertyGroup>
+      <!-- This is the Excel calculation "=MOD(year-2001,6)"-->
+      <!-- That's what it looks like Microsoft's Developer Division is using for their calculations. -->
+      <SageCalculatedYear>$([MSBuild]::Modulo($([MSBuild]::Subtract($(SageBuildYear),2001)),6))</SageCalculatedYear>
+
+      <SageBuildNumber>$(SageCalculatedYear)$(SageBuildMonth)$(SageBuildDay)</SageBuildNumber>
+
+      <SageFullBuildVersionString>$(SageMajorBuildNumber).$(SageMinorBuildNumber).$(SageBuildNumber).$(SageBuildRevision)</SageFullBuildVersionString>
+    </PropertyGroup>
+
+    <!-- Do some error checking as empty properties screw up everything.-->
+    <Error Condition="'$(SageFullBuildVersionString)'==''"
+           Text="Error building the SageFullBuildVersionString property"/>
+    <Error Condition="'$(SageBuildNumber)'==''"
+           Text="Error building the SageBuildNumber property"/>
+    <Error Condition="'$(SageCalculatedYear)'==''"
+           Text="Error building the SageCalculatedYear property"/>
+    <Error Condition="'$(SageBuildDay)'==''"
+           Text="Error building the SageBuildDay property"/>
+    <Error Condition="'$(SageBuildMonth)'==''"
+           Text="Error building the SageBuildMonth property"/>
+    <Error Condition="'$(SageBuildYear)'==''"
+           Text="Error building the SageBuildYear property"/>
+    <Error Condition="'$(SageBuildRevision)'==''"
+           Text="Error building the SageBuildRevision property"/>
+    <Error Condition="'$(SageServerPath)'==''"
+           Text="Error building the SageServerPath property"/>
+    <Error Condition="'$(AssemblyDescription)'==''"
+           Text="Error building the AssemblyDescription property"/>
+  </Target>
+
+  <Target Name="SageWriteCSharpGeneratedAssemblyInfoFile"
+          DependsOnTargets="SageBuildFileVersion"
+          Condition="('$(SageBuildType)'=='TFSBUILD') or 
+                (('$(SageBuildType)'=='DEVBUILD') and 
+                 (!Exists($(CSharpGeneratedAssemblyInfoFile))))">
+    <ItemGroup>
+      <CSharpLines Include="
+// This file auto generated by the SageCloudConnectorGlobal.targets.
+using System%3B 
+using System.Reflection%3B 
+[assembly:AssemblyFileVersion(&quot;$(SageFullBuildVersionString)&quot;)]
+[assembly:AssemblyConfiguration(&quot;AssemblyName=$(AssemblyName)%3bConfiguration=$(Configuration)%3bSageFullBuildVersionString=$(SageFullBuildVersionString)%3bSageBuildType=$(SageBuildType)%3bSageServerPath=$(SageServerPath)%3bBuildDefinitionName=$(BuildDefinitionName)%3bBuildNumber=$(BuildNumber)&quot;)]
+[assembly:AssemblyDescription(&quot;$(AssemblyDescription)&quot;)]
+"/>
+    </ItemGroup>
+    
+    <WriteLinesToFile Overwrite="true"
+                      File="$(CSharpGeneratedAssemblyInfoFile)"
+                      Lines="@(CSharpLines)" Encoding="" />
+  </Target>
+
+  <Target Name="SageWriteTextAssemblyVersionFile"
+          DependsOnTargets="SageBuildFileVersion"
+          Condition="('$(SageBuildType)'=='TFSBUILD') or 
+                (('$(SageBuildType)'=='DEVBUILD') and 
+                 (!Exists($(TextAssemblyVersionFile))))">
+    <ItemGroup>
+      <TXTLines Include="$(SageFullBuildVersionString)"/>
+    </ItemGroup>
+
+    <WriteLinesToFile Overwrite="true"
+                      File="$(TextAssemblyVersionFile)"
+                      Lines="@(TXTLines)"/>
+  </Target>
+
+  <Target Name="SageClean">
+    <Delete Files="$(CSharpGeneratedAssemblyInfoFile)" />
+    <Delete Files="$(TextAssemblyVersionFile)" />
+    <Delete Files="$(TextAssemblyDescriptionFile)" />
+    <Delete Files="$(TextSageBuildSourceInfoFile)" />
+    <Delete Files="$(SageServerPathFile)" />
+  </Target>
+
+
+</Project>

@@ -1,0 +1,218 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Configuration", "MockPlugin.Configuration\MockPlugin.Configuration.csproj", "{9FD07756-5806-4A46-B63D-C94988229106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Sales", "MockPlugin.Sales\MockPlugin.Sales.csproj", "{A37DE16F-F4BE-4BAD-8CFD-2B5F736B65D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Service", "MockPlugin.Service\MockPlugin.Service.csproj", "{F841DAE9-2255-4897-9C8E-5616674B8962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOfficePluginTest.Core", "BackOfficePluginTest.Core\BackOfficePluginTest.Core.csproj", "{4EB2B763-1867-46CC-894F-31CBF45436BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Sales.Tests", "MockPlugin.Sales.Tests\MockPlugin.Sales.Tests.csproj", "{95EAA06E-C7C1-4B80-A61E-C1137CA27074}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Service.Tests", "MockPlugin.Service.Tests\MockPlugin.Service.Tests.csproj", "{A74CA59D-43B2-4188-A083-3129B7EB4704}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Configuration.Tests", "MockPlugin.Configuration.Tests\MockPlugin.Configuration.Tests.csproj", "{169094C4-2254-48FE-85F4-EBA9C1BE19E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DD9D908B-147E-4901-9124-6B87161999E0}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Discovery", "MockPlugin.Discovery\MockPlugin.Discovery.csproj", "{30B0F032-4FAA-42FA-B5D9-16CF8A1FC943}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Discovery.Tests", "MockPlugin.Discovery.Tests\MockPlugin.Discovery.Tests.csproj", "{71C6B9FC-6E9C-438E-A129-4495C74A5F19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Customers", "MockPlugin.Customers\MockPlugin.Customers.csproj", "{494E1877-94E3-452C-AFEC-08467D855705}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Statements", "MockPlugin.Statements\MockPlugin.Statements.csproj", "{87C555D5-9364-4390-B78D-4827D54DC0B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Taxes", "MockPlugin.Taxes\MockPlugin.Taxes.csproj", "{B9B7EBD0-D85B-4FF2-9EFA-A7E2DE0AF6CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.ProductCatalog", "MockPlugin.ProductCatalog\MockPlugin.ProductCatalog.csproj", "{EC055EA2-EB8E-4A02-9CA6-AE80FCE5EB02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Customers.Tests", "MockPlugin.Customers.Tests\MockPlugin.Customers.Tests.csproj", "{5255197A-0236-4F6B-9D24-1A2A775FE9EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Taxes.Tests", "MockPlugin.Taxes.Tests\MockPlugin.Taxes.Tests.csproj", "{ED909C3F-59C6-47D7-BC21-1EC44AEC91D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.ProductCatalog.Tests", "MockPlugin.ProductCatalog.Tests\MockPlugin.ProductCatalog.Tests.csproj", "{5255DAA1-1EEB-4244-84AB-0DEEF3F34533}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Statements.Tests", "MockPlugin.Statements.Tests\MockPlugin.Statements.Tests.csproj", "{02714959-1D8A-4229-B5EA-62F0EC770CA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Invoices", "MockPlugin.Invoices\MockPlugin.Invoices.csproj", "{3E6DBD60-92C7-4D3B-83A9-0805ABE51BC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Invoices.Tests", "MockPlugin.Invoices.Tests\MockPlugin.Invoices.Tests.csproj", "{07CE51AC-6815-4B7D-BA52-2D0FEC325951}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Payments", "MockPlugin.Payments\MockPlugin.Payments.csproj", "{756D7571-70D5-438C-BBEE-84FB01E7E1DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Payments.Tests", "MockPlugin.Payments.Tests\MockPlugin.Payments.Tests.csproj", "{47B4A247-C488-490E-BD30-94A0AD9D9AA6}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 22
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://orbdevtfs2:8080/tfs/sagecre
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BackOfficePluginTest.Core\\BackOfficePluginTest.Core.csproj
+		SccProjectName1 = BackOfficePluginTest.Core
+		SccLocalPath1 = BackOfficePluginTest.Core
+		SccProjectUniqueName2 = MockPlugin.Configuration.Tests\\MockPlugin.Configuration.Tests.csproj
+		SccProjectName2 = MockPlugin.Configuration.Tests
+		SccLocalPath2 = MockPlugin.Configuration.Tests
+		SccProjectUniqueName3 = MockPlugin.Configuration\\MockPlugin.Configuration.csproj
+		SccProjectName3 = MockPlugin.Configuration
+		SccLocalPath3 = MockPlugin.Configuration
+		SccProjectUniqueName4 = MockPlugin.Sales.Tests\\MockPlugin.Sales.Tests.csproj
+		SccProjectName4 = MockPlugin.Sales.Tests
+		SccLocalPath4 = MockPlugin.Sales.Tests
+		SccProjectUniqueName5 = MockPlugin.Sales\\MockPlugin.Sales.csproj
+		SccProjectName5 = MockPlugin.Sales
+		SccLocalPath5 = MockPlugin.Sales
+		SccProjectUniqueName6 = MockPlugin.Service.Tests\\MockPlugin.Service.Tests.csproj
+		SccProjectName6 = MockPlugin.Service.Tests
+		SccLocalPath6 = MockPlugin.Service.Tests
+		SccProjectUniqueName7 = MockPlugin.Service\\MockPlugin.Service.csproj
+		SccProjectName7 = MockPlugin.Service
+		SccLocalPath7 = MockPlugin.Service
+		SccProjectUniqueName8 = MockPlugin.Discovery\\MockPlugin.Discovery.csproj
+		SccProjectName8 = MockPlugin.Discovery
+		SccLocalPath8 = MockPlugin.Discovery
+		SccProjectUniqueName9 = MockPlugin.Discovery.Tests\\MockPlugin.Discovery.Tests.csproj
+		SccProjectName9 = MockPlugin.Discovery.Tests
+		SccLocalPath9 = MockPlugin.Discovery.Tests
+		SccProjectUniqueName10 = MockPlugin.Customers\\MockPlugin.Customers.csproj
+		SccProjectName10 = MockPlugin.Customers
+		SccLocalPath10 = MockPlugin.Customers
+		SccProjectUniqueName11 = MockPlugin.Statements\\MockPlugin.Statements.csproj
+		SccProjectName11 = MockPlugin.Statements
+		SccLocalPath11 = MockPlugin.Statements
+		SccProjectUniqueName12 = MockPlugin.Taxes\\MockPlugin.Taxes.csproj
+		SccProjectName12 = MockPlugin.Taxes
+		SccLocalPath12 = MockPlugin.Taxes
+		SccProjectUniqueName13 = MockPlugin.ProductCatalog\\MockPlugin.ProductCatalog.csproj
+		SccProjectName13 = MockPlugin.ProductCatalog
+		SccLocalPath13 = MockPlugin.ProductCatalog
+		SccProjectUniqueName14 = MockPlugin.Customers.Tests\\MockPlugin.Customers.Tests.csproj
+		SccProjectName14 = MockPlugin.Customers.Tests
+		SccLocalPath14 = MockPlugin.Customers.Tests
+		SccProjectUniqueName15 = MockPlugin.Taxes.Tests\\MockPlugin.Taxes.Tests.csproj
+		SccProjectName15 = MockPlugin.Taxes.Tests
+		SccLocalPath15 = MockPlugin.Taxes.Tests
+		SccProjectUniqueName16 = MockPlugin.ProductCatalog.Tests\\MockPlugin.ProductCatalog.Tests.csproj
+		SccProjectName16 = MockPlugin.ProductCatalog.Tests
+		SccLocalPath16 = MockPlugin.ProductCatalog.Tests
+		SccProjectUniqueName17 = MockPlugin.Statements.Tests\\MockPlugin.Statements.Tests.csproj
+		SccProjectName17 = MockPlugin.Statements.Tests
+		SccLocalPath17 = MockPlugin.Statements.Tests
+		SccProjectUniqueName18 = MockPlugin.Invoices\\MockPlugin.Invoices.csproj
+		SccProjectName18 = MockPlugin.Invoices
+		SccLocalPath18 = MockPlugin.Invoices
+		SccProjectUniqueName19 = MockPlugin.Invoices.Tests\\MockPlugin.Invoices.Tests.csproj
+		SccProjectName19 = MockPlugin.Invoices.Tests
+		SccLocalPath19 = MockPlugin.Invoices.Tests
+		SccProjectUniqueName20 = MockPlugin.Payments\\MockPlugin.Payments.csproj
+		SccProjectName20 = MockPlugin.Payments
+		SccLocalPath20 = MockPlugin.Payments
+		SccProjectUniqueName21 = MockPlugin.Payments.Tests\\MockPlugin.Payments.Tests.csproj
+		SccProjectName21 = MockPlugin.Payments.Tests
+		SccLocalPath21 = MockPlugin.Payments.Tests
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FD07756-5806-4A46-B63D-C94988229106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD07756-5806-4A46-B63D-C94988229106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD07756-5806-4A46-B63D-C94988229106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD07756-5806-4A46-B63D-C94988229106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A37DE16F-F4BE-4BAD-8CFD-2B5F736B65D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A37DE16F-F4BE-4BAD-8CFD-2B5F736B65D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A37DE16F-F4BE-4BAD-8CFD-2B5F736B65D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A37DE16F-F4BE-4BAD-8CFD-2B5F736B65D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F841DAE9-2255-4897-9C8E-5616674B8962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F841DAE9-2255-4897-9C8E-5616674B8962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F841DAE9-2255-4897-9C8E-5616674B8962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F841DAE9-2255-4897-9C8E-5616674B8962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EB2B763-1867-46CC-894F-31CBF45436BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB2B763-1867-46CC-894F-31CBF45436BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB2B763-1867-46CC-894F-31CBF45436BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB2B763-1867-46CC-894F-31CBF45436BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95EAA06E-C7C1-4B80-A61E-C1137CA27074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95EAA06E-C7C1-4B80-A61E-C1137CA27074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95EAA06E-C7C1-4B80-A61E-C1137CA27074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95EAA06E-C7C1-4B80-A61E-C1137CA27074}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A74CA59D-43B2-4188-A083-3129B7EB4704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A74CA59D-43B2-4188-A083-3129B7EB4704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A74CA59D-43B2-4188-A083-3129B7EB4704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A74CA59D-43B2-4188-A083-3129B7EB4704}.Release|Any CPU.Build.0 = Release|Any CPU
+		{169094C4-2254-48FE-85F4-EBA9C1BE19E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{169094C4-2254-48FE-85F4-EBA9C1BE19E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{169094C4-2254-48FE-85F4-EBA9C1BE19E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{169094C4-2254-48FE-85F4-EBA9C1BE19E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B0F032-4FAA-42FA-B5D9-16CF8A1FC943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B0F032-4FAA-42FA-B5D9-16CF8A1FC943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B0F032-4FAA-42FA-B5D9-16CF8A1FC943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B0F032-4FAA-42FA-B5D9-16CF8A1FC943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71C6B9FC-6E9C-438E-A129-4495C74A5F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C6B9FC-6E9C-438E-A129-4495C74A5F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C6B9FC-6E9C-438E-A129-4495C74A5F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C6B9FC-6E9C-438E-A129-4495C74A5F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{494E1877-94E3-452C-AFEC-08467D855705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{494E1877-94E3-452C-AFEC-08467D855705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{494E1877-94E3-452C-AFEC-08467D855705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{494E1877-94E3-452C-AFEC-08467D855705}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87C555D5-9364-4390-B78D-4827D54DC0B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87C555D5-9364-4390-B78D-4827D54DC0B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87C555D5-9364-4390-B78D-4827D54DC0B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87C555D5-9364-4390-B78D-4827D54DC0B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9B7EBD0-D85B-4FF2-9EFA-A7E2DE0AF6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9B7EBD0-D85B-4FF2-9EFA-A7E2DE0AF6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9B7EBD0-D85B-4FF2-9EFA-A7E2DE0AF6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9B7EBD0-D85B-4FF2-9EFA-A7E2DE0AF6CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC055EA2-EB8E-4A02-9CA6-AE80FCE5EB02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC055EA2-EB8E-4A02-9CA6-AE80FCE5EB02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC055EA2-EB8E-4A02-9CA6-AE80FCE5EB02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC055EA2-EB8E-4A02-9CA6-AE80FCE5EB02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5255197A-0236-4F6B-9D24-1A2A775FE9EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5255197A-0236-4F6B-9D24-1A2A775FE9EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5255197A-0236-4F6B-9D24-1A2A775FE9EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5255197A-0236-4F6B-9D24-1A2A775FE9EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED909C3F-59C6-47D7-BC21-1EC44AEC91D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED909C3F-59C6-47D7-BC21-1EC44AEC91D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED909C3F-59C6-47D7-BC21-1EC44AEC91D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED909C3F-59C6-47D7-BC21-1EC44AEC91D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5255DAA1-1EEB-4244-84AB-0DEEF3F34533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5255DAA1-1EEB-4244-84AB-0DEEF3F34533}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5255DAA1-1EEB-4244-84AB-0DEEF3F34533}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5255DAA1-1EEB-4244-84AB-0DEEF3F34533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02714959-1D8A-4229-B5EA-62F0EC770CA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02714959-1D8A-4229-B5EA-62F0EC770CA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02714959-1D8A-4229-B5EA-62F0EC770CA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02714959-1D8A-4229-B5EA-62F0EC770CA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E6DBD60-92C7-4D3B-83A9-0805ABE51BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E6DBD60-92C7-4D3B-83A9-0805ABE51BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E6DBD60-92C7-4D3B-83A9-0805ABE51BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E6DBD60-92C7-4D3B-83A9-0805ABE51BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07CE51AC-6815-4B7D-BA52-2D0FEC325951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07CE51AC-6815-4B7D-BA52-2D0FEC325951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07CE51AC-6815-4B7D-BA52-2D0FEC325951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07CE51AC-6815-4B7D-BA52-2D0FEC325951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{756D7571-70D5-438C-BBEE-84FB01E7E1DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{756D7571-70D5-438C-BBEE-84FB01E7E1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{756D7571-70D5-438C-BBEE-84FB01E7E1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{756D7571-70D5-438C-BBEE-84FB01E7E1DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B4A247-C488-490E-BD30-94A0AD9D9AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B4A247-C488-490E-BD30-94A0AD9D9AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B4A247-C488-490E-BD30-94A0AD9D9AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B4A247-C488-490E-BD30-94A0AD9D9AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

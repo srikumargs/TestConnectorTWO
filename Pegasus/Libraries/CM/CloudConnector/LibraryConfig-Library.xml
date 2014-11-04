@@ -1,0 +1,1917 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LibraryConfigTool>
+  <!--
+  Library Config File
+
+  This file is processed by the LibraryConfigTool (located in the
+  %SAGE_SANDBOX%\Tools\Bin folder). It contains information specific to this
+  Library.
+  
+  See http://orbdevtfs/Sites/Architecture/Technology/LibraryConfigTool/All%20Pages/Home.aspx
+  for documentation information about the tool and its usage of XML configuration files.
+  -->
+
+  <!-- 
+  Reference other shared config XML files.
+  
+  NOTE:  Unlike other attributes in the library config, no variables other than
+         $(System::SandboxDir) may be used in this particular Path attribute.
+  -->
+  <Includes>
+    <Include Path="$(System::SandboxDir)\Libraries\CM\LibraryConfig-LibrarySet.xml" />
+    <Include Path="$(System::SandboxDir)\Libraries\CM\CloudConnector\LibraryConfig-SDC.xml" />
+    <Include Path="$(System::SandboxDir)\Build\LibraryConfig-CommonCreateBuildScript.xml" />
+    <Include Path="$(System::SandboxDir)\Build\LibraryConfig-CommonCreateVersionStampFileList.xml" />
+    <Include Path="$(System::SandboxDir)\Build\LibraryConfig-CommonCreateCheckInFileList.xml" />
+    <Include Path="$(System::SandboxDir)\Build\LibraryConfig-CommonPackage.xml" />
+    <Include Path="$(System::SandboxDir)\Build\LibraryConfig-DigitallySign.xml" />
+    <Include Path="$(System::SandboxDir)\Build\LibraryConfig-EmbedAdminManifest.xml" />
+  </Includes>
+
+  <!-- Describes the other Libraries that this Library is dependent upon. -->
+  <References>
+    <Reference LibrarySetId="Sandbox" LibraryName="Tools" />
+    <Reference LibrarySetId="CM" LibraryName="Core" />
+    <Reference LibrarySetId="CM" LibraryName="HostingFramework" />
+  </References>
+
+  <!--
+  Define values of variables for use in this and other shared config XML
+  files.  Variables may be expressed in terms of other variables.
+  -->
+  <Variables>
+
+    <Variable Name="LibraryName"           Value="CloudConnector" />
+    <!-- The LibraryVersion drives the AssemblyVersion (and hence, the assembly Identity); this value changes 
+    only when a new side-by-side release is required  -->
+    <Variable Name="LibraryVersion"        Value="1.0" />
+
+    <!-- 
+    The MajorMinorFileVersion is used to manufacture the AssemblyFileVersion
+    TurnTheCrank: put a new value here after each planned release
+    -->
+    <Variable Name="MajorMinorFileVersion" Value="3.0" />
+
+
+    <Variable Name="WXS_INSTALLDIRPath"                           Value="Program Files\CloudConnector (COMMON_STAGING)" Override="true"/>
+    <Variable Name="LibraryRuntimeFilesDir"                       Value="$(ProgramFilesDir)\CloudConnector (COMMON_STAGING)"  Override="true"/>
+    <Variable Name="ProductSpecificLibraryRuntimeFilesDir"        Value="$(ProgramFilesDir)\CloudConnector ($(SkyfireProduct))"/>
+    <Variable Name="ProductSpecificMonitorRuntimeFilesDir"        Value="$(ProductSpecificLibraryRuntimeFilesDir)\Monitor" />
+    <Variable Name="ProductSpecificMonitorServiceRuntimeFilesDir" Value="$(ProductSpecificMonitorRuntimeFilesDir)\Service" />
+    <Variable Name="ProductSpecificMonitorTrayRuntimeFilesDir"    Value="$(ProductSpecificMonitorRuntimeFilesDir)\Tray" />
+
+
+    <!-- This file will be used by the build driver to create the build script; used by LibraryConfig-CommonCreateBuildScript.xml -->
+    <Variable Name="BuildScriptFile" Value="$(LibraryDir)\$(LibrarySetId)_$(LibraryName).fbp7"/>
+
+    <Variable Name="HostingFrameworkServicesDir" Value="$(LibraryRuntimeFilesDir)\HostingFrameworkServices" />
+    <Variable Name="MonitorRuntimeFilesDir" Value="$(LibraryRuntimeFilesDir)\Monitor" />
+    <Variable Name="MonitorServiceRuntimeFilesDir" Value="$(MonitorRuntimeFilesDir)\Service" />
+    <Variable Name="MonitorTrayRuntimeFilesDir" Value="$(MonitorRuntimeFilesDir)\Tray" />
+    <Variable Name="MonitorHostingFrameworkServicesDir" Value="$(MonitorServiceRuntimeFilesDir)\HostingFrameworkServices" />
+    <Variable Name="BinderPluginsDir" Value="$(LibraryRuntimeFilesDir)\BinderPlugins" />
+
+    <Variable Name="PipelineDir" Value="$(LibraryRuntimeFilesDir)\Pipeline" />
+    <Variable Name="PipelineContractsDir" Value="$(PipelineDir)\Contracts" />
+    <Variable Name="PipelineHostSideAdaptersDir" Value="$(PipelineDir)\HostSideAdapters" />
+    <Variable Name="PipelineAddinViewsDir" Value="$(PipelineDir)\AddinViews" />
+    <Variable Name="PipelineAddinSideAdaptersDir" Value="$(PipelineDir)\AddinSideAdapters" />
+    <Variable Name="PipelineAddinsDir" Value="$(PipelineDir)\Addins" />
+    <Variable Name="PipelineAddinsProcessExecutionDir" Value="$(PipelineAddinsDir)\ProcessExecution" />
+
+    <Variable Name="DomainMediatorsDir" Value="$(PipelineAddinsProcessExecutionDir)" />
+
+    <Variable Name="HostingFrameworkServiceAppDataDir" Value="$(AllUsersApplicationDataDir)\Sage\CM\HostingFramework\$($(SkyfireProduct)_ConnectorHostingFxServiceName)" />
+    <Variable Name="HostingFrameworkServiceAppDataBaselineDir" Value="$(HostingFrameworkServiceAppDataDir)\Baseline" />
+
+    <Variable Name="ConfigurationSDFSourceFile" Value="$(LibraryDir)\Sage.Connector.PremiseStore\ConfigurationStore\ConfigurationStore.sdf"/>
+    <Variable Name="ConfigurationSDFDestinationFile" Value="$(HostingFrameworkServiceAppDataDir)\ConfigurationStore.sdf" />
+    <Variable Name="ConfigurationSDFDestinationBaselineFile" Value="$(HostingFrameworkServiceAppDataBaselineDir)\ConfigurationStore.sdf" />
+    <Variable Name="ConfigurationSDFUnitTestBaselineFile" Value="$(HostingFrameworkServiceAppDataDir)\ConfigurationStore_UNITTESTBASELINE.sdf" />
+
+    <Variable Name="LogSDFSourceFile" Value="$(LibraryDir)\Sage.Connector.PremiseStore\LogStore\LogStore.sdf"/>
+    <Variable Name="LogSDFDestinationFile" Value="$(HostingFrameworkServiceAppDataDir)\LogStore.sdf" />
+    <Variable Name="LogSDFDestinationBaselineFile" Value="$(HostingFrameworkServiceAppDataBaselineDir)\LogStore.sdf" />
+    <Variable Name="LogSDFUnitTestBaselineFile" Value="$(HostingFrameworkServiceAppDataDir)\LogStore_UNITTESTBASELINE.sdf" />
+
+    <Variable Name="QueueSDFSourceFile" Value="$(LibraryDir)\Sage.Connector.PremiseStore\QueueStore\QueueStore.sdf"/>
+    <Variable Name="QueueSDFDestinationFile" Value="$(HostingFrameworkServiceAppDataDir)\QueueStore.sdf" />
+    <Variable Name="QueueSDFDestinationBaselineFile" Value="$(HostingFrameworkServiceAppDataBaselineDir)\QueueStore.sdf" />
+    <Variable Name="QueueSDFUnitTestBaselineFile" Value="$(HostingFrameworkServiceAppDataDir)\QueueStore_UNITTESTBASELINE.sdf" />
+
+    <!--
+    The collection of Skyfire product ID's used throughout the solution. (Also must adjust AdditionalPackageExclusions
+    below when adding new products).
+    -->
+    <CollectionVariable Name="SkyfireProductIdsToUse">
+      <Element Value="SDC" />
+    </CollectionVariable>
+
+
+    <Variable Name="AdditionalPackageExclusions" Value="*.opensdf;*.sdf;**\TestResults\*.*;**\Install\SDC\Build\*.*;**\Install\*.log" Override="true"/>
+
+    <Variable Name="BuildVersion3Segment" Value="FormatVersionString($(BuildVersion), {0}.{1}.{2})" />
+
+    <Variable Name="AssemblyCompany" Value="Sage Software, Inc." />
+    <Variable Name="AssemblyCopyright" Value="© 2010 - 2014 Sage Software, Inc. All rights reserved." />
+    <Variable Name="AssemblyTrademark" Value="© 2010 - 2014 Sage Software, Inc. All rights reserved." />
+    <Variable Name="AssemblyVersion" Value="$(LibraryVersion).0.0" />
+    <Variable Name="AssemblyInformationalVersion" Value="$(AssemblyVersion)" />
+
+    <CollectionVariable Name="WXSIconElements">
+    </CollectionVariable>
+  </Variables>
+
+  <!-- Describes the the build-time attributes of the targets in this library. -->
+  <TargetGroups>
+
+    <TargetGroup Id="Common">
+      <Target Name="DBTool">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="TargetFileExtension" Value=".exe" />
+        <!-- Turn off LCT embedding of asInvoker manifest, it is being done through the app.manifest now-->
+        <Setting Name="EmbedManifest" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.PremiseStore">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.Data">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.Common">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.ConnectorServiceCommon">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.Utilities.Platform.DotNet">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.Signalr.Client">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.Signalr.Interfaces">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.Signalr.Common">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.Signalr.Controller">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.Management">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.AutoUpdate">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+
+      <Target Name="Sage.Connector.Binding.RemoteConfig">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(BinderPluginsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Binding.StateCheck">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(BinderPluginsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Binding.LoopBack">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(BinderPluginsDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.Binding.DomainMediation">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(BinderPluginsDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.ProcessExecution.RequestActivator">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(BinderPluginsDir)" />
+      </Target>
+
+      <!-- Process Execution Addin Pipeline-->
+      <Target Name="Sage.Connector.ProcessExecution.Interfaces">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+
+      <Target Name="Sage.Connector.ProcessExecution.Contract">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(PipelineContractsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.ProcessExecution.HostSideAdapter">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(PipelineHostSideAdaptersDir)" />
+      </Target>
+      <Target Name="Sage.Connector.ProcessExecution.AddinView">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(PipelineAddinViewsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.ProcessExecution.AddinSideAdapter">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(PipelineAddinSideAdaptersDir)" />
+      </Target>
+      <Target Name="Sage.Connector.ProcessExecution.Addin">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(PipelineAddinsProcessExecutionDir)" />
+      </Target>
+
+
+
+      <!-- Domain Contracts -->
+      <Target Name="Sage.Connector.Discovery.Contracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Discovery.Contracts.BackOffice">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Discovery.Contracts.Integration">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      
+      <Target Name="Sage.Connector.Configuration.Contracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Configuration.Contracts.BackOffice">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+
+
+      <Target Name="Sage.Connector.DomainContracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.DomainContracts.Responses">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.DomainContracts.BackOffice">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.Sync.Contracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Sync.Contracts.CloudIntegration">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.Taxes.Contracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Taxes.Contracts.CloudIntegration">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Taxes.Contracts.BackOffice">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.Customers.Contracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Customers.Contracts.CloudIntegration">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Customers.Contracts.BackOffice">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.ProductCatalog.Contracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.ProductCatalog.Contracts.BackOffice">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.ProductCatalog.Contracts.CloudIntegration">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.Invoices.Contracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Invoices.Contracts.CloudIntegration">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Invoices.Contracts.BackOffice">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.Payments.Contracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Payments.Contracts.CloudIntegration">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Payments.Contracts.BackOffice">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      
+      <Target Name="Sage.Connector.Sales.Contracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Sales.Contracts.CloudIntegration">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Sales.Contracts.BackOffice">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+
+      <Target Name="Sage.Connector.Service.Contracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Service.Contracts.CloudIntegration">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Service.Contracts.BackOffice">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+
+      <Target Name="Sage.Connector.Statements.Contracts.Data">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Statements.Contracts.CloudIntegration">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Statements.Contracts.BackOffice">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+      <!-- Contracts  -->
+
+      <!-- Mediators -->
+
+      <Target Name="Sage.Connector.DomainMediator.Core">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Discovery.Mediator">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Configuration.Mediator">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+
+      <Target Name="Sage.Connector.Payments.Mediator">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Sales.Mediator">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Service.Mediator">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.Taxes.Mediator">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.Customers.Mediator">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.ProductCatalog.Mediator">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      
+      <Target Name="Sage.Connector.Invoices.Mediator">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+
+      <Target Name="Sage.Connector.Statements.Mediator">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+      <!-- End Mediators Refactor-->
+
+      <!-- Sync Engine -->
+
+      <Target Name="Sage.Connector.Sync">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+      <Target Name="Sage.Connector.Sync.Interfaces">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(DomainMediatorsDir)" />
+      </Target>
+
+
+      <!-- Configuration -->
+      <Target Name="Sage.Connector.ConfigurationService">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.ConfigurationService.Interfaces">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.ConfigurationService.Proxy">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+
+      <!-- Dispatch Service-->
+      <Target Name="Sage.Connector.DispatchService">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.DispatchService.Interfaces">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.DispatchService.Proxy">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+
+
+      <Target Name="Sage.Connector.Logging">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+
+      <!-- Messaging Service-->
+      <Target Name="Sage.Connector.MessagingService">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.MessagingService.Interfaces">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.MessagingService.Proxy">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+
+      <!-- Monitoring Service-->
+      <Target Name="Sage.Connector.MonitorService">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(MonitorServiceRuntimeFilesDir)" />
+      </Target>
+      <Target Name="Sage.Connector.MonitorService.Interfaces">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(MonitorServiceRuntimeFilesDir)" />
+      </Target>
+      <Target Name="Sage.Connector.MonitorService.Proxy">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(MonitorServiceRuntimeFilesDir)" />
+      </Target>
+
+      <!-- Miscellaneous -->
+      <Target Name="Sage.Connector.Documents">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+
+      <!-- Notification Service -->
+      <Target Name="Sage.Connector.NotificationService">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.NotificationService.Interfaces">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.NotificationService.Proxy">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+
+      <!-- Miscellaneous -->
+      <Target Name="Sage.Connector.Queues">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+
+      <!-- State Service -->
+      <Target Name="Sage.Connector.StateService">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.StateService.Interfaces">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+      <Target Name="Sage.Connector.StateService.Proxy">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+
+      <!-- Miscellaneous -->
+      <Target Name="Sage.Connector.Utilities">
+        <Setting Name="Installed" Value="true"/>
+      </Target>
+
+      <Target Name="SageConnector">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="TargetFileExtension" Value=".exe" />
+        <!-- Turn off LCT embedding of asInvoker manifest, it is being done through the app.manifest now-->
+        <Setting Name="EmbedManifest" Value="false" />
+        <Setting Name="DigitallySignedDescription" Value="Sage Connector" />
+      </Target>
+
+      <Target Name="SageConnector.ViewModel">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="TargetFileExtension" Value=".dll" />
+      </Target>
+
+      <Target Name="SageConnectorConfiguration">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="TargetFileExtension" Value=".exe" />
+        <!-- Turn off LCT embedding of asInvoker manifest, it is being done through the app.manifest now-->
+        <Setting Name="EmbedManifest" Value="false" />
+        <Setting Name="DigitallySignedDescription" Value="Sage Connector Configuration" />
+      </Target>
+
+      <Target Name="SageConnectorConfiguration.ViewModel">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="TargetFileExtension" Value=".dll" />
+      </Target>
+      
+      <Target Name="SageConnect">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="TargetFileExtension" Value=".exe" />
+        <!-- Turn off LCT embedding of asInvoker manifest, it is being done through the app.manifest now-->
+        <Setting Name="EmbedManifest" Value="false" />
+        <Setting Name="DigitallySignedDescription" Value="Sage Connect" />
+      </Target>
+      <Target Name="SageConnect.Control">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="TargetFileExtension" Value=".dll" />
+      </Target>
+      <Target Name="SageConnect.ViewModels">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="TargetFileExtension" Value=".dll" />
+      </Target>
+    
+      
+      <Target Name="ConnectorServiceMonitor">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="TargetFileExtension" Value=".exe" />
+        <!-- Turn off LCT embedding of asInvoker manifest, it is being done through the app.manifest now-->
+        <Setting Name="EmbedManifest" Value="false" />
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(MonitorTrayRuntimeFilesDir)" />
+      </Target>
+
+      <Target Name="ConnectorServiceMonitor.ViewModel">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="TargetFileExtension" Value=".dll" />
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(MonitorTrayRuntimeFilesDir)" />
+      </Target>
+
+      <Target Name="Sage.Connector.Cloud.Integration.Interfaces">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="Built" Value="false"/>
+      </Target>
+      <Target Name="Sage.Connector.Cloud.Integration.Proxy">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="Built" Value="false"/>
+      </Target>
+
+      <Target Name="Sage.CRE.CloudConnector.Integration.Interfaces">
+        <Setting Name="Installed" Value="true"/>
+        <Setting Name="Built" Value="false"/>
+      </Target>
+    </TargetGroup>
+
+    <TargetGroup Id="InstallTools">
+
+      <Target Name="SageLauncher">
+        <Setting Name="CopyToLibraryRuntimeFilesDir" Value="false"/>
+        <Setting Name="UseConfigurationNameDir" Value="false"/>
+        <Setting Name="TargetFileExtension" Value=".exe" />
+      </Target>
+      <Target Name="LaunchSelector">
+        <Setting Name="CopyToLibraryRuntimeFilesDir" Value="false"/>
+        <Setting Name="UseConfigurationNameDir" Value="false"/>
+        <Setting Name="TargetFileExtension" Value=".exe" />
+      </Target>
+      <Target Name="SageBrowser">
+        <Setting Name="CopyToLibraryRuntimeFilesDir" Value="false"/>
+        <Setting Name="UseConfigurationNameDir" Value="false"/>
+        <Setting Name="TargetFileExtension" Value=".exe" />
+      </Target>
+      <Target Name="SageUpgrade">
+        <Setting Name="CopyToLibraryRuntimeFilesDir" Value="false"/>
+        <Setting Name="UseConfigurationNameDir" Value="false"/>
+        <Setting Name="TargetFileExtension" Value=".exe" />
+        <Setting Name="EmbedManifest" Value="false" />
+        <Setting Name="EmbedAdminManifest" Value="true" />
+      </Target>
+      <Target Name="InstallHelper">
+        <Setting Name="CopyToLibraryRuntimeFilesDir" Value="false"/>
+        <Setting Name="UseConfigurationNameDir" Value="false"/>
+        <Setting Name="TargetFileExtension" Value=".exe" />
+      </Target>
+      <Target Name="Sage.CRE.CloudConnector.InstalledProductInfo">
+        <Setting Name="CopyToLibraryRuntimeFilesDir" Value="false"/>
+        <Setting Name="UseConfigurationNameDir" Value="false"/>
+      </Target>
+
+    </TargetGroup>
+
+    <TargetGroup Id="Server">
+    </TargetGroup>
+
+    <TargetGroup Id="Client">
+    </TargetGroup>
+    
+    <TargetGroup Id="Test">
+      <Target Name="Sage.Connector.ConnectorServiceCommon.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.ConfigurationService.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.DispatchService.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.Documents.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.Logging.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.Queues.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.MessagingService.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.MonitorService.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+        <Setting Name="LibraryRuntimeFilesDir" Value="$(MonitorServiceRuntimeFilesDir)" />
+      </Target>
+      <Target Name="Sage.Connector.NotificationService.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.IntegrationTest">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.StateService.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.Utilities.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.MockCloudHostApp">
+        <Setting Name="TargetFileExtension" Value=".exe" />
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+        <!-- Turn off LCT embedding of asInvoker manifest, requireAdministrator is being done through the app.manifest now-->
+        <Setting Name="EmbedManifest" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.MockCloudService">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.TestUtilities">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="SageConnector.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="SageConnectorConfiguration.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.CRE.CloudConnector.Integration.MockServicer">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="Built" Value="false"/>
+      </Target>
+      <Target Name="Sage.Connector.Signalr.Client.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+      <Target Name="Sage.Connector.Management.Test">
+        <Setting Name="Installed" Value="false"/>
+        <Setting Name="CopyXmlDocFile" Value="false" />
+      </Target>
+    </TargetGroup>
+  </TargetGroups>
+  <FileGroups>
+    <!-- 
+    Exclude expressions are ';'-delimited lists of file exculsion specifications.  Format can include:
+      - complete filename;  (path is relative from the source directory)
+      
+           E.g., SomeDirectory\ExcludeMe.txt
+           
+      - file spec with wildcards;  (path is relative from the source directory)
+      
+           E.g., SomeDirectory\SomeOtherDirectory\Excl?deMe.txt
+           
+      - either a complete filename or a file spec prefixed with additional path information
+
+           E.g., **\SomeOtherDirectory\Excl?deMe.txt (exclude anything like Excl?deMe.txt whose path ends in SomeOtherDirectory)
+    -->
+
+    <!-- Non-target files that should be included in packages intended for end-users -->
+    <FileGroup Id="EndUser">
+      <!-- NOTE:  all files in this file group should be product agnostic because this file group feeds
+      into the CloudConnector wixlib ... which is consumed by each product-specific install.
+      -->
+
+      <!-- Manually add 3rd-party assembly files from our local runtime files directory; these are files we do not build -->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Microsoft.WindowsAzure.Configuration.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Microsoft.WindowsAzure.Storage.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll" />
+
+      <!-- SignalR support for client and mock -->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Newtonsoft.Json.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Microsoft.AspNet.SignalR.Client.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Microsoft.AspNet.SignalR.Core.dll" />
+
+      <!-- general Http support -->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="System.Net.Http.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="System.Net.Http.Formatting.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="System.Web.Http.dll" />
+
+
+      <!-- add files that need to live in both addin and root folders because of StateService, native home is in addin so add for root -->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Connector.DomainContracts.Data.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Connector.DomainContracts.Responses.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Connector.Configuration.Contracts.Data.dll" />
+
+      <!-- needed by the request activator used by state service -->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Connector.DomainContracts.BackOffice.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Connector.ProcessExecution.RequestActivator.dll" />
+
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Connector.Configuration.Mediator.dll" />
+      
+      
+      <!-- add files that need to live in both addin and root folders because of SageConnector, native home is in addin so add for root -->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Connector.DomainMediator.Core.dll" />
+
+      <!-- For AutoUpdate libraries -->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Ssdp.Security.Client.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Passport.Util.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Passport.Client.Xrpc.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Passport.Client.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="ICSharpCode.SharpZipLib.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="BouncyCastle.Crypto.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="AutoUpdate.config.xml" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="addin.update.txt" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="AutoUpdateProductVersion.txt" />
+      
+
+      <!-- remove or move once we get final deployment strategy for this 
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="AutoUpdate.NonProduction.config.xml" />
+		-->
+      <!-- For SageID libraries -->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Obsidian.Client.Support.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Authorisation.Client.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Authorisation.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.Authorisation.Server.dll" />
+
+      <!-- for configuration and management-->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="CloudSite.config.xml" />
+      
+      <!-- remove or move once we get final deployment strategy for this    
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="CloudSite.NonProduction.config.xml" />
+	-->  
+      <!-- add the lose help files for the connector and connector monitor links -->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="SageConnect.ViewModels.HelpLinks.resx" />
+      
+      <!-- remove or move this once we know dist strategy for non production files
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="SageConnect.ViewModels.HelpLinks.NonProduction.resx" />
+-->
+      
+
+
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Sage.CRE.ComponentIdentification.dll" />
+
+      <!-- Service config files -->
+      <AddFiles SourceDir="$(HostingFrameworkServicesDir)"  FileSpec="Sage.Connector.MessagingService.Config.xml" />
+      <AddFiles SourceDir="$(HostingFrameworkServicesDir)"  FileSpec="Sage.Connector.DispatchService.Config.xml" />
+      <AddFiles SourceDir="$(HostingFrameworkServicesDir)"  FileSpec="Sage.Connector.ConfigurationService.Config.xml" />
+      <AddFiles SourceDir="$(HostingFrameworkServicesDir)"  FileSpec="Sage.Connector.NotificationService.Config.xml" />
+      <AddFiles SourceDir="$(HostingFrameworkServicesDir)"  FileSpec="Sage.Connector.StateService.Config.xml" />
+
+      <!-- Manually add-in the Monitor service-->
+      <AddFiles SourceDir="$(MonitorServiceRuntimeFilesDir)" FileSpec="Sage.Connector.Common.dll"/>
+      <AddFiles SourceDir="$(MonitorServiceRuntimeFilesDir)" FileSpec="Sage.CRE.HostingFramework.Service.config"/>
+      <AddFiles SourceDir="$(MonitorServiceRuntimeFilesDir)" FileSpec="Sage.CRE.HostingFramework.Service.exe.config"/>
+      <AddFiles SourceDir="$(MonitorServiceRuntimeFilesDir)" FileSpec="Sage.CRE.HostingFramework.Service.exe"/>
+      <AddFiles SourceDir="$(MonitorServiceRuntimeFilesDir)" FileSpec="Sage.CRE.HostingFramework.ServiceLibrary.dll"/>
+      <AddFiles SourceDir="$(MonitorServiceRuntimeFilesDir)" FileSpec="Sage.CRE.HostingFramework.ServiceMonitor.config"/>
+      <AddFiles SourceDir="$(MonitorServiceRuntimeFilesDir)" FileSpec="Sage.CRE.HostingFramework.ServiceMonitor.exe.config"/>
+      <AddFiles SourceDir="$(MonitorServiceRuntimeFilesDir)" FileSpec="Sage.CRE.HostingFramework.ServiceMonitor.exe"/>
+      <AddFiles SourceDir="$(MonitorServiceRuntimeFilesDir)" FileSpec="Sage.Connector.StateService.Interfaces.dll"/>
+      <AddFiles SourceDir="$(MonitorServiceRuntimeFilesDir)" FileSpec="Sage.Connector.StateService.Proxy.dll"/>
+      <AddFiles SourceDir="$(MonitorHostingFrameworkServicesDir)" FileSpec="Sage.CRE.HostingFramework.CatalogService.xml"/>
+      <AddFiles SourceDir="$(MonitorHostingFrameworkServicesDir)" FileSpec="Sage.CRE.HostingFramework.MonitorService.xml"/>
+      <AddFiles SourceDir="$(MonitorHostingFrameworkServicesDir)" FileSpec="Sage.Connector.MonitorService.Config.xml"/>
+
+      <!-- Manually add-in Monitor tray -->
+      <AddFiles SourceDir="$(MonitorTrayRuntimeFilesDir)" FileSpec="Sage.Connector.Common.dll"/>
+      <AddFiles SourceDir="$(MonitorTrayRuntimeFilesDir)" FileSpec="Sage.Connector.MonitorService.Interfaces.dll"/>
+      <AddFiles SourceDir="$(MonitorTrayRuntimeFilesDir)" FileSpec="Sage.Connector.MonitorService.Proxy.dll"/>
+      <AddFiles SourceDir="$(MonitorTrayRuntimeFilesDir)" FileSpec="Sage.Connector.StateService.Interfaces.dll"/>
+      <AddFiles SourceDir="$(MonitorTrayRuntimeFilesDir)" FileSpec="Sage.CRE.Core.dll"/>
+      <AddFiles SourceDir="$(MonitorTrayRuntimeFilesDir)" FileSpec="Sage.CRE.Core.UI.dll"/>
+      <AddFiles SourceDir="$(MonitorTrayRuntimeFilesDir)" FileSpec="Sage.CRE.HostingFramework.Interfaces.dll"/>
+      <AddFiles SourceDir="$(MonitorTrayRuntimeFilesDir)" FileSpec="Sage.CRE.HostingFramework.Proxy.dll"/>
+      <AddFiles SourceDir="$(MonitorTrayRuntimeFilesDir)" FileSpec="Sage.CRE.Resources.dll"/>
+
+      <AddFiles SourceDir="$(DomainMediatorsDir)" FileSpec="Newtonsoft.Json.dll"/>
+      
+    <!-- Manually add-in SageConnect needed 3rd party libs  -->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="WPFToolkit.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="System.Windows.Controls.Input.Toolkit.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="System.Windows.Controls.Layout.Toolkit.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Xceed.Wpf.AvalonDock.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Xceed.Wpf.AvalonDock.Themes.Aero.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Xceed.Wpf.AvalonDock.Themes.Metro.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Xceed.Wpf.AvalonDock.Themes.VS2010.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Xceed.Wpf.DataGrid.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Xceed.Wpf.Toolkit.dll" />
+
+    </FileGroup>
+
+    <!-- Non-target files that should be included in packages intended for Developers -->
+    <FileGroup Id="Developer">
+      <AddFiles SourceDir="$(DeploymentsDir)" FileSpec="Sage.$(LibrarySetId).$(LibraryName).wixlib" />
+      <AddFiles SourceDir="$(DeploymentsDir)" FileSpec="Sage.$(LibrarySetId).$(LibraryName)_Test.msi" />
+
+      <ForEach IterationVariableName="SkyfireProductIdToUse" Collection="$(SkyfireProductIdsToUse)">
+        <AddFiles SourceDir="$(DeploymentsDir)" FileSpec="SageConnector.exe" />
+      </ForEach>
+
+      <AddFiles SourceDir="$(LibraryDir)"  FileSpec="$(LibrarySetId)_$(LibraryName).fbp7" />
+      <AddFiles SourceDir="$(LibraryDir)\Sage.Connector.PremiseStore\ConfigurationStore"  FileSpec="ConfigurationStore.sdf" />
+      <AddFiles SourceDir="$(LibraryDir)\Sage.Connector.PremiseStore\LogStore"  FileSpec="LogStore.sdf" />
+      <AddFiles SourceDir="$(LibraryDir)\Sage.Connector.PremiseStore\QueueStore"  FileSpec="QueueStore.sdf" />
+
+      <AddFiles SourceDir="$(LibraryDir)\Sage.Connector.PremiseStore"  FileSpec="ViewConfigurations.ps1" />
+      <AddFiles SourceDir="$(LibraryDir)\Sage.Connector.PremiseStore"  FileSpec="ViewLog.ps1" />
+      <AddFiles SourceDir="$(LibraryDir)\Sage.Connector.PremiseStore"  FileSpec="ViewActivity.ps1" />
+    </FileGroup>
+
+    <!-- The UnitTest file group contains additional file necessary to run unit tests.  Intended to be laid down on top of an install.-->
+    <FileGroup Id="UnitTest">
+      <!-- only need for unit tests and mockcloud -->
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Owin.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Microsoft.Owin.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Microsoft.Owin.Diagnostics.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Microsoft.Owin.Host.HttpListener.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Microsoft.Owin.Hosting.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="Microsoft.Owin.Security.dll" />
+      <AddFiles SourceDir="$(LibraryRuntimeFilesDir)" FileSpec="System.Web.Http.Owin.dll" />
+    </FileGroup>
+
+    <!-- These files will be version stamped by the build driver during production builds; used by LibraryConfig-CommonCreateVersionStampFileList.xml -->
+    <FileGroup Id="VersionStampFiles">
+      <AddFile FileName="$(LibraryDir)\LinkedSource\AssemblyAttributes.cs" />
+    </FileGroup>
+
+    <!-- These files will be checked-in by the build driver during production builds; used by LibraryConfig-CommonCreateCheckInFileList.xml -->
+    <FileGroup Id="CheckInFiles">
+      <AddFiles SourceDir="$(LibraryDir)" FileSpec="LibraryConfig-WXSComponentGuids-*.xml" Recursive="false" FailIfMissing="false" />
+    </FileGroup>
+
+    <FileGroup Id="Integration">
+      <AddFiles SourceDir="$(AssembliesDir)" FileSpec="Sage.CRE.CloudConnector.Integration.*" Recursive="false" FailIfMissing="false" />
+    </FileGroup>
+
+  </FileGroups>
+
+  <Actions>
+
+    <Action Id="PostBuild" RequiresTarget="true" OnFailureAction="PostBuild_OnFailure">
+      <If Test="'$(TargetName)' == 'Sage.Connector.Common'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Sage.Connector.Common.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorServiceRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Sage.Connector.Common.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorTrayRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+       <If Test="'$(TargetName)' == 'SageConnect.ViewModels'">
+        <!-- Copy the resx to serve as dynamic string resource -->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\SageConnect.ViewModels.HelpLinks.resx"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+         <!-- Copy the resx to serve as dynamic string resource -->
+         <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+           <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\SageConnect.ViewModels.HelpLinks.NonProduction.resx"/>
+           <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+         </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.ConnectorServiceCommon'">
+        <!-- Copy the azure dependencies from the messaging service added via NuGet/>-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.MessagingService'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\MessagingService\Service\Sage.Connector.MessagingService.Config.xml"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(HostingFrameworkServicesDir)"/>
+        </CallAction>
+        
+        <!-- copy the Sage.Connector.Cloud.Integration.Interfaces and Proxy files into the correct locations-->  
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Sage.Connector.Cloud.Integration.Interfaces.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Sage.Connector.Cloud.Integration.Proxy.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        
+        <!-- Copy the azure dependencies from the messaging service added via NuGet/>-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.Data.Edm.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.Data.OData.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.WindowsAzure.Configuration.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.WindowsAzure.Storage.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Newtonsoft.Json.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\System.Net.Http.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\System.Net.Http.Formatting.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.DispatchService'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\DispatchService\Service\Sage.Connector.DispatchService.Config.xml"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(HostingFrameworkServicesDir)"/>
+        </CallAction>
+
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.AutoUpdate'">
+        <!-- copy over the auto update supporting dlls-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.AutoUpdate\Libraries\Sage.Ssdp.Security.Client.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.AutoUpdate\Libraries\Sage.Passport.Util.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.AutoUpdate\Libraries\Sage.Passport.Client.Xrpc.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.AutoUpdate\Libraries\Sage.Passport.Client.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.AutoUpdate\Libraries\ICSharpCode.SharpZipLib.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.AutoUpdate\Libraries\BouncyCastle.Crypto.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <!-- copy config file for auto update-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.AutoUpdate\AutoUpdate.config.xml"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.AutoUpdate\addin.update.txt"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.AutoUpdate\AutoUpdate.NonProduction.config.xml"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.AutoUpdate\AutoUpdateProductVersion.txt"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.Management'">
+        <!-- copy over the Sage ID supporting dlls-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.Management\Libraries\Obsidian.Client.Support.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.Management\Libraries\Sage.Authorisation.Client.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.Management\Libraries\Sage.Authorisation.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.Management\Libraries\Sage.Authorisation.Server.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <!-- copy config file for configuration / management-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.Management\CloudSite.config.xml"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\Sage.Connector.Management\CloudSite.NonProduction.config.xml"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.ConfigurationService'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\ConfigurationService\Service\Sage.Connector.ConfigurationService.Config.xml"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(HostingFrameworkServicesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.NotificationService'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\NotificationService\Service\Sage.Connector.NotificationService.Config.xml"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(HostingFrameworkServicesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.StateService'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\StateService\Service\Sage.Connector.StateService.Config.xml"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(HostingFrameworkServicesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Sage.Connector.ProcessExecution.RequestActivator.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.StateService.Interfaces'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Sage.Connector.StateService.Interfaces.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorServiceRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Sage.Connector.StateService.Interfaces.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorTrayRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.StateService.Proxy'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Sage.Connector.StateService.Proxy.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorServiceRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.MonitorService'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\MonitorService\Service\Sage.Connector.MonitorService.Config.xml"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorHostingFrameworkServicesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.MonitorService.Interfaces'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Sage.Connector.MonitorService.Interfaces.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorTrayRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.MonitorService.Proxy'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Sage.Connector.MonitorService.Proxy.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorTrayRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.Signalr.Controller'">
+        <!-- Copy the Nuget dependencies added via NuGet/>-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.AspNet.SignalR.Core.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.Owin.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.Owin.Diagnostics.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.Owin.Host.HttpListener.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.Owin.Hosting.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.Owin.Security.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Newtonsoft.Json.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Owin.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.Signalr.Client'">
+        <!-- Copy the Nuget dependencies added via NuGet/>-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Microsoft.AspNet.SignalR.Client.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.DomainMediator.Core'">
+        <!-- Copy the Nuget dependencies added via NuGet/>-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Newtonsoft.Json.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(DomainMediatorsDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'SageConnector'">
+        <!-- Create the SageConnector.config -->
+        <CopyFile SourceFile="$(LibraryDir)\SageConnector\SageConnector\SageConnector.exe.config" DestinationFile="$(LibraryDir)\SageConnector\SageConnector\SageConnector.config" />
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\SageConnector\SageConnector\SageConnector.exe.config"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\SageConnector\SageConnector\SageConnector.config"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'SageConnect'">
+        <!-- Create the SageConnector.config -->
+        <!--<CopyFile SourceFile="$(LibraryDir)\SageConnector\SageConnector\SageConnect.exe.config" DestinationFile="$(LibraryDir)\SageConnector\SageConnector\SageConnector.config" />-->
+
+        <!--<CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\SageConnector\SageConnector\SageConnector.exe.config"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(LibraryDir)\SageConnector\SageConnector\SageConnector.config"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>-->
+          <!-- Copy the Nuget dependencies added via NuGet/>-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\WPFToolkit.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+            <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\System.Windows.Controls.Input.Toolkit.dll"/>
+            <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+            <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\System.Windows.Controls.Layout.Toolkit.dll"/>
+            <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Xceed.Wpf.AvalonDock.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Xceed.Wpf.DataGrid.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Xceed.Wpf.Toolkit.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'SageConnect.Control'">
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Xceed.Wpf.AvalonDock.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Xceed.Wpf.AvalonDock.Themes.Aero.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Xceed.Wpf.AvalonDock.Themes.Metro.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Xceed.Wpf.AvalonDock.Themes.VS2010.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Xceed.Wpf.DataGrid.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Xceed.Wpf.Toolkit.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.PremiseStore'">
+        <ForEach IterationVariableName="SkyfireProductIdToUse" Collection="$(SkyfireProductIdsToUse)">
+          <!-- Copy the PS1 files into the runtime location for the product -->
+          <WithLocalVariable Name="SkyfireProduct" Value="$(SkyfireProductIdToUse)">
+            <CopyFile SourceFile="$(LibraryDir)\Sage.Connector.PremiseStore\ViewConfigurations.ps1" DestinationFile="$(HostingFrameworkServiceAppDataBaselineDir)\ViewConfigurations.ps1"/>
+            <CopyFile SourceFile="$(LibraryDir)\Sage.Connector.PremiseStore\ViewLog.ps1" DestinationFile="$(HostingFrameworkServiceAppDataBaselineDir)\ViewLog.ps1"/>
+            <CopyFile SourceFile="$(LibraryDir)\Sage.Connector.PremiseStore\ViewActivity.ps1" DestinationFile="$(HostingFrameworkServiceAppDataBaselineDir)\ViewActivity.ps1"/>
+          </WithLocalVariable>
+
+          <!-- Copy the SDF files into the runtime location for the product -->
+          <CallAction ActionId="CopyConfigurationSDF">
+            <WithParam Name="SkyfireProduct" Value="$(SkyfireProductIdToUse)"/>
+          </CallAction>
+
+          <CallAction ActionId="CopyLogSDF">
+            <WithParam Name="SkyfireProduct" Value="$(SkyfireProductIdToUse)"/>
+          </CallAction>
+
+          <CallAction ActionId="CopyQueueSDF">
+            <WithParam Name="SkyfireProduct" Value="$(SkyfireProductIdToUse)"/>
+          </CallAction>
+        </ForEach>
+      </If>
+      <If Test="'$(TargetName)' == 'SageConnectorConfiguration'">
+        <!-- Copy the azure dependencies from the messaging service added via NuGet/>-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\Sage.CRE.ComponentIdentification.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.Connector.MockCloudService'">
+        <!-- Copy the Owin dependencies from the messaging service added via NuGet/>-->
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\System.Net.Http.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\System.Net.Http.Formatting.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\System.Web.Http.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+
+        <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+          <WithParam Name="_SourceFileSpec" Value="$(TargetDir)\System.Web.Http.Owin.dll"/>
+          <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+        </CallAction>
+      </If>
+
+
+
+
+
+      <!-- Any targets that have "CopyToLibraryRuntimeFilesDir" should also be copied to the product-specific version of the folder as well -->
+      <If Test="'$($(TargetName)::CopyToLibraryRuntimeFilesDir)' == 'true'">
+        <ForEach IterationVariableName="SkyfireProduct" Collection="$(SkyfireProductIdsToUse)">
+          <CallAction ActionId="PostBuild" Path="$(BuildDir)\LibraryConfig-PostBuildCopyToDestinationDir.xml">
+            <WithParam Name="PostBuildCopyToDestinationDir" Value="StringReplace($($(TargetName)::LibraryRuntimeFilesDir), $(LibraryRuntimeFilesDir), $(ProductSpecificLibraryRuntimeFilesDir))"/>
+          </CallAction>
+        </ForEach>
+      </If>
+
+
+
+
+      <If Test="'$(TargetName)' == 'SageLauncher'">
+        <CallAction ActionId="PostBuild" Path="$(BuildDir)\LibraryConfig-PostBuildCopyToDestinationDir.xml">
+          <WithParam Name="PostBuildCopyToDestinationDir" Value="$(TargetDir)..\..\Output"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'LaunchSelector'">
+        <CallAction ActionId="PostBuild" Path="$(BuildDir)\LibraryConfig-PostBuildCopyToDestinationDir.xml">
+          <WithParam Name="PostBuildCopyToDestinationDir" Value="$(TargetDir)..\..\Output"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'SageBrowser'">
+        <CallAction ActionId="PostBuild" Path="$(BuildDir)\LibraryConfig-PostBuildCopyToDestinationDir.xml">
+          <WithParam Name="PostBuildCopyToDestinationDir" Value="$(TargetDir)..\..\Output"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'SageUpgrade'">
+        <CallAction ActionId="PostBuild" Path="$(BuildDir)\LibraryConfig-PostBuildCopyToDestinationDir.xml">
+          <WithParam Name="PostBuildCopyToDestinationDir" Value="$(TargetDir)..\..\Output"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'InstallHelper'">
+        <CallAction ActionId="PostBuild" Path="$(BuildDir)\LibraryConfig-PostBuildCopyToDestinationDir.xml">
+          <WithParam Name="PostBuildCopyToDestinationDir" Value="$(TargetDir)..\..\Output"/>
+        </CallAction>
+      </If>
+      <If Test="'$(TargetName)' == 'Sage.CRE.CloudConnector.InstalledProductInfo'">
+        <CallAction ActionId="PostBuild" Path="$(BuildDir)\LibraryConfig-PostBuildCopyToDestinationDir.xml">
+          <WithParam Name="PostBuildCopyToDestinationDir" Value="$(TargetDir)..\..\..\Output"/>
+        </CallAction>
+      </If>
+    </Action>
+
+    <Action Id="CopyFileToVariousLocationsInRuntimeFilesDir">
+      <!-- first copy to the product-neutral location-->
+      <CopyFiles SourceFileSpec="$(_SourceFileSpec)" DestinationDir="$(_ProductNeutralDestinationDir)" />
+
+      <!-- then copy to the product-specific location(s) -->
+      <CallAction ActionId="CopyFileToProductSpecificLocationsInRuntimeFilesDir" />
+    </Action>
+
+    <Action Id="CopyFileToProductSpecificLocationsInRuntimeFilesDir">
+      <!-- copy the file to each product-specific location-->
+      <ForEach IterationVariableName="SkyfireProduct" Collection="$(SkyfireProductIdsToUse)">
+        <CopyFiles SourceFileSpec="$(_SourceFileSpec)" DestinationDir="StringReplace($(_ProductNeutralDestinationDir), $(LibraryRuntimeFilesDir), $(ProductSpecificLibraryRuntimeFilesDir))" />
+      </ForEach>
+    </Action>
+
+
+    <Action Id="SandboxActivate">
+      <!-- Invoke default common sandbox activate logic -->
+      <CallAction ActionId="SandboxActivate"  Path="$(System::SandboxDir)\Build\LibraryConfig-CommonSandboxActivate.xml" />
+
+      <!-- Allow DEV SSL certificates to pass client-side validation -->
+      <If Test="!IsVariableDefined(Environment::Variable::SAGE_CONNECTOR_ALLOW_DEV_SSL_CERTS)">
+        <Execute FileName="$(ToolsBinDir)\setx.exe" Arguments="SAGE_CONNECTOR_ALLOW_DEV_SSL_CERTS 1 -m" WorkingDirectory="$(ToolsBinDir)" />
+      </If>
+
+      <!-- Copy INSTALLDIR stuff to our logical installation directory;  stuff in INSTALLDIR includes installable files 
+           distributed by Platform
+       -->
+      <CopyDirectory SourceDir="$(RuntimeFilesDir)\INSTALLDIR" DestinationDir="$(LibraryRuntimeFilesDir)" Recursive="true" />
+      <ForEach IterationVariableName="SkyfireProduct" Collection="$(SkyfireProductIdsToUse)">
+        <CopyDirectory SourceDir="$(RuntimeFilesDir)\INSTALLDIR" DestinationDir="StringReplace($(LibraryRuntimeFilesDir), $(LibraryRuntimeFilesDir), $(ProductSpecificLibraryRuntimeFilesDir))" Recursive="true" />
+      </ForEach>
+
+
+      <!-- Copy INSTALLDIR stuff to our Monitor service subdir installation directory -->
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesDir)\INSTALLDIR\Sage.CRE.HostingFramework.Service.config"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorServiceRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesDir)\INSTALLDIR\Sage.CRE.HostingFramework.Service.exe.config"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorServiceRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesDir)\INSTALLDIR\Sage.CRE.HostingFramework.Service.exe"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorServiceRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesDir)\INSTALLDIR\Sage.CRE.HostingFramework.ServiceLibrary.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorServiceRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesDir)\INSTALLDIR\Sage.CRE.HostingFramework.ServiceMonitor.config"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorServiceRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesDir)\INSTALLDIR\Sage.CRE.HostingFramework.ServiceMonitor.exe.config"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorServiceRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesDir)\INSTALLDIR\Sage.CRE.HostingFramework.ServiceMonitor.exe"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorServiceRuntimeFilesDir)"/>
+      </CallAction>
+
+
+      <!-- Copy INSTALLDIR stuff to our Monitor service Hosting Framework Service subdir installation directory -->
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesDir)\INSTALLDIR\HostingFrameworkServices\Sage.CRE.HostingFramework.CatalogService.xml"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorHostingFrameworkServicesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesDir)\INSTALLDIR\HostingFrameworkServices\Sage.CRE.HostingFramework.MonitorService.xml"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorHostingFrameworkServicesDir)"/>
+      </CallAction>
+
+
+      <!-- Copy INSTALLDIR stuff to our Monitor tray subdir installation directory -->
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesGacDir)\Sage.CRE.Core.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorTrayRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesGacDir)\Sage.CRE.Core.UI.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorTrayRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesGacDir)\Sage.CRE.HostingFramework.Interfaces.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorTrayRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesGacDir)\Sage.CRE.HostingFramework.Proxy.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorTrayRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(RuntimeFilesGacDir)\Sage.CRE.Resources.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(MonitorTrayRuntimeFilesDir)"/>
+      </CallAction>
+
+      <!-- Copy LibraryConfigTool to the RuntimeFilesDir so that we know where to find it during TFS build unit testing -->
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(ToolsBinDir)\LibraryConfigTool.exe"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+
+      <!-- Copy Sage.Connector.Cloud.Integration.* to the both sets of runtime folders product-specific runtime tiles dir this is part of messaging service activation now-->
+      <!--<CallAction ActionId="CopyFileToProductSpecificLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(LibraryRuntimeFilesDir)\Sage.Connector.Cloud.Integration.Interfaces.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>-->
+      <!--<CallAction ActionId="CopyFileToProductSpecificLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(LibraryRuntimeFilesDir)\Sage.Connector.Cloud.Integration.Interfaces.pdb"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>-->
+      <!--<CallAction ActionId="CopyFileToProductSpecificLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(LibraryRuntimeFilesDir)\Sage.Connector.Cloud.Integration.Proxy.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>-->
+      <!--<CallAction ActionId="CopyFileToProductSpecificLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(LibraryRuntimeFilesDir)\Sage.Connector.Cloud.Integration.Proxy.pdb"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>-->
+
+      <!-- Copy Sage.CRE.CloudConnector.Integration.* to the product-specific runtime tiles dir -->
+      <CallAction ActionId="CopyFileToProductSpecificLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(LibraryRuntimeFilesDir)\Sage.CRE.CloudConnector.Integration.Interfaces.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToProductSpecificLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(LibraryRuntimeFilesDir)\Sage.CRE.CloudConnector.Integration.Interfaces.pdb"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToProductSpecificLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(LibraryRuntimeFilesDir)\Sage.CRE.CloudConnector.Integration.MockServicer.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToProductSpecificLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(LibraryRuntimeFilesDir)\Sage.CRE.CloudConnector.Integration.MockServicer.pdb"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+
+      <!-- Copy the "Sage.Connector.DomainContracts.Core" file to the LibraryRuntimeFilesDir folder, from its location in pipeline needed in two places now.-->
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.DomainContracts.BackOffice.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.DomainContracts.BackOffice.pdb"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.DomainContracts.Data.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.DomainContracts.Data.pdb"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.DomainContracts.Responses.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.DomainContracts.Responses.pdb"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.DomainMediator.Core.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.DomainMediator.Core.pdb"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.Configuration.Mediator.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.Configuration.Mediator.pdb"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.Configuration.Contracts.Data.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.Configuration.Contracts.Data.pdb"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <!--<CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.Discovery.Contracts.Integration.dll"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>
+      <CallAction ActionId="CopyFileToVariousLocationsInRuntimeFilesDir">
+        <WithParam Name="_SourceFileSpec" Value="$(PipelineAddinsProcessExecutionDir)\Sage.Connector.Discovery.Contracts.Integration.pdb"/>
+        <WithParam Name="_ProductNeutralDestinationDir" Value="$(LibraryRuntimeFilesDir)"/>
+      </CallAction>-->
+
+
+      <!-- Setup all product-specific files -->
+      <ForEach IterationVariableName="SkyfireProductIdToUse" Collection="$(SkyfireProductIdsToUse)">
+
+        <CallAction ActionId="ActivateForProduct">
+          <WithParam Name="SkyfireProduct" Value="$(SkyfireProductIdToUse)"/>
+        </CallAction>
+
+
+        <!-- Register the product-specific services -->
+        <WithLocalVariable Name="SkyfireProduct" Value="$(SkyfireProductIdToUse)">
+          <Execute
+            FileName="$(ProductSpecificLibraryRuntimeFilesDir)\Sage.CRE.HostingFramework.Service.exe"
+            Arguments="/silent /uninstall"
+            WorkingDirectory="$(ProductSpecificLibraryRuntimeFilesDir)"
+            IgnoreExitCode="true"/>
+
+          <Execute
+            FileName="$(ProductSpecificLibraryRuntimeFilesDir)\Sage.CRE.HostingFramework.Service.exe"
+            Arguments="/silent /install /user=localsystem /starttype=manual /firstfailure=none /secondfailure=none /subsequentfailure=none"
+            WorkingDirectory="$(ProductSpecificLibraryRuntimeFilesDir)"
+            IgnoreExitCode="true"/>
+
+          <Execute
+            FileName="$(ProductSpecificMonitorServiceRuntimeFilesDir)\Sage.CRE.HostingFramework.Service.exe"
+            Arguments="/silent /uninstall"
+            WorkingDirectory="$(ProductSpecificMonitorServiceRuntimeFilesDir)"
+            IgnoreExitCode="true"/>
+
+          <Execute
+            FileName="$(ProductSpecificMonitorServiceRuntimeFilesDir)\Sage.CRE.HostingFramework.Service.exe"
+            Arguments="/silent /install /user=localservice /starttype=manual /firstfailure=none /secondfailure=none /subsequentfailure=none"
+            WorkingDirectory="$(ProductSpecificMonitorServiceRuntimeFilesDir)"
+            IgnoreExitCode="true"/>
+        </WithLocalVariable>
+      </ForEach>
+
+    </Action>
+
+    <Action Id="CreateDeployment">
+
+      <CallAction ActionId="CreateDeployment" Path="$(BuildDir)\LibraryConfig-CommonCreateDeploymentCore.xml">
+        <WithParam Name="Param_LibraryInstallFileName" Value="Sage.$(LibrarySetId).$(LibraryName)"/>
+        <WithParam Name="Param_LibraryTestInstallerProductGuid" Value="F8752FBB-2FF8-469B-B28E-B4908D0EF81B"/>
+        <WithParam Name="Param_LibraryTestInstallerUpgradeCodeGuid" Value="318E2F63-DCD9-4AA3-A22A-7CA4E83A6038"/>
+        <WithParam Name="Param_Description" Value="Sage $(LibrarySetId) $(LibraryName)"/>
+        <WithParam Name="Param_WXSIconElementsCollectionName" Value="WXSIconElements"/>
+        <WithParam Name="Param_EndUserFileGroupCollectionName" Value="System::FileGroups::EndUser"/>
+        <WithParam Name="Param_TargetsToPackageCollectionName" Value="System::TargetGroups::Common"/>
+        <WithParam Name="Param_SageProgramsMenuFolderWXSDirectoryId" Value="DIR_PMF_Sage"/>
+      </CallAction>
+
+    </Action>
+
+    <Action Id="CopySDF">
+      <If Test="FileExists($(SDFUnitTestBaselineFile))">
+        <DeleteFiles FileSpec="$(SDFUnitTestBaselineFile)" Recursive="false"/>
+      </If>
+
+      <CopyFile SourceFile="$(SDFSourceFile)" DestinationFile="$(SDFDestinationFile)" />
+      <Execute
+                FileName="$(Environment::Variable::WINDIR)\system32\attrib.exe"
+                Arguments="-R &quot;$(SDFDestinationFile)&quot;"
+                WorkingDirectory="$(Environment::Variable::WINDIR)"/>
+
+      <CopyFile SourceFile="$(SDFSourceFile)" DestinationFile="$(SDFDestinationBaselineFile)" />
+      <Execute
+                FileName="$(Environment::Variable::WINDIR)\system32\attrib.exe"
+                Arguments="-R &quot;$(SDFDestinationBaselineFile)&quot;"
+                WorkingDirectory="$(Environment::Variable::WINDIR)"/>
+    </Action>
+
+    <Action Id="CopyConfigurationSDF">
+      <CallAction ActionId="CopySDF">
+        <WithParam Name="SDFUnitTestBaselineFile" Value="$(ConfigurationSDFUnitTestBaselineFile)"/>
+        <WithParam Name="SDFSourceFile" Value="$(ConfigurationSDFSourceFile)"/>
+        <WithParam Name="SDFDestinationFile" Value="$(ConfigurationSDFDestinationFile)"/>
+        <WithParam Name="SDFDestinationBaselineFile" Value="$(ConfigurationSDFDestinationBaselineFile)"/>
+      </CallAction>
+    </Action>
+
+    <Action Id="CopyLogSDF">
+      <CallAction ActionId="CopySDF">
+        <WithParam Name="SDFUnitTestBaselineFile" Value="$(LogSDFUnitTestBaselineFile)"/>
+        <WithParam Name="SDFSourceFile" Value="$(LogSDFSourceFile)"/>
+        <WithParam Name="SDFDestinationFile" Value="$(LogSDFDestinationFile)"/>
+        <WithParam Name="SDFDestinationBaselineFile" Value="$(LogSDFDestinationBaselineFile)"/>
+      </CallAction>
+    </Action>
+
+    <Action Id="CopyQueueSDF">
+      <CallAction ActionId="CopySDF">
+        <WithParam Name="SDFUnitTestBaselineFile" Value="$(QueueSDFUnitTestBaselineFile)"/>
+        <WithParam Name="SDFSourceFile" Value="$(QueueSDFSourceFile)"/>
+        <WithParam Name="SDFDestinationFile" Value="$(QueueSDFDestinationFile)"/>
+        <WithParam Name="SDFDestinationBaselineFile" Value="$(QueueSDFDestinationBaselineFile)"/>
+      </CallAction>
+    </Action>
+
+    <Action Id="ActivateForProduct">
+
+      <!-- Sage.CRE.HostingFramework.Service-InstanceConfigDefaults.xml (for Connector Service) -->
+      <If Test="FileExists($(ProductSpecificLibraryRuntimeFilesDir)\Sage.CRE.HostingFramework.Service-InstanceConfig.xml)">
+        <DeleteFiles FileSpec="$(ProductSpecificLibraryRuntimeFilesDir)\Sage.CRE.HostingFramework.Service-InstanceConfig.xml" Recursive="false"/>
+      </If>
+
+      <WithLocalVariable Name="DestFile" Value="$(LibraryDir)\Install\$(SkyfireProduct)\Build\ConnectorService-InstanceConfigDefaults.xml">
+        <CopyFile SourceFile="$(LibraryDir)\Install\$(SkyfireProduct)\ConnectorService-InstanceConfigDefaults-template.xml" DestinationFile="$(DestFile)"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_BriefProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_BriefProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_FullProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_FullProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_HostingFxInstanceConfigVersion=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ConnectorHostingFxInstanceConfigVersion)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_HostingFxInstanceConfigBaseName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ConnectorHostingFxInstanceConfigBaseName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_StartingPort=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ConnectorHostingFxStartingPort)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+
+        <CopyFile SourceFile="$(DestFile)" DestinationFile="$(ProductSpecificLibraryRuntimeFilesDir)\Sage.CRE.HostingFramework.Service-InstanceConfigDefaults.xml"/>
+      </WithLocalVariable>
+
+
+
+
+      <!-- Sage.CRE.HostingFramework.Service-InstanceConfigDefaults.xml (for Connector Monitor Service) -->
+      <If Test="FileExists($(ProductSpecificMonitorServiceRuntimeFilesDir)\Sage.CRE.HostingFramework.Service-InstanceConfig.xml)">
+        <DeleteFiles FileSpec="$(ProductSpecificMonitorServiceRuntimeFilesDir)\Sage.CRE.HostingFramework.Service-InstanceConfig.xml" Recursive="false"/>
+      </If>
+
+      <WithLocalVariable Name="DestFile" Value="$(LibraryDir)\Install\$(SkyfireProduct)\Build\ConnectorMonitorService-InstanceConfigDefaults.xml">
+        <CopyFile SourceFile="$(LibraryDir)\Install\$(SkyfireProduct)\ConnectorMonitorService-InstanceConfigDefaults-template.xml" DestinationFile="$(DestFile)"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_BriefProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorBriefProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_FullProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorFullProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_HostingFxInstanceConfigVersion=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorHostingFxInstanceConfigVersion)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_HostingFxInstanceConfigBaseName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorHostingFxInstanceConfigBaseName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_StartingPort=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorHostingFxStartingPort)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+
+        <CopyFile SourceFile="$(DestFile)" DestinationFile="$(ProductSpecificMonitorServiceRuntimeFilesDir)\Sage.CRE.HostingFramework.Service-InstanceConfigDefaults.xml"/>
+      </WithLocalVariable>
+
+      <!-- Configuration.xml (for Connector Monitor Tray) -->
+      <WithLocalVariable Name="DestFile" Value="$(LibraryDir)\Install\$(SkyfireProduct)\Build\ConnectorMonitorTray-Configuration.xml">
+        <CopyFile SourceFile="$(LibraryDir)\Install\$(SkyfireProduct)\ConnectorMonitorTray-Configuration-template.xml" DestinationFile="$(DestFile)"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_BriefProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_BriefProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_MonitorBriefProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorBriefProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_DefaultCatalogServicePortNumber=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorHostingFxStartingPort)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ProductHelpBaseUrl=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ProductHelpBaseUrl)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+
+        <CopyFile SourceFile="$(DestFile)" DestinationFile="$(ProductSpecificMonitorTrayRuntimeFilesDir)\Configuration.xml"/>
+      </WithLocalVariable>
+
+      <WithLocalVariable Name="RegistryKey" Value="HKEY_LOCAL_MACHINE\SOFTWARE\Sage\SageConnector\$($(SkyfireProduct)_ConnectorHostingFxServiceName)">
+        <RegSetValue KeyName="$(RegistryKey)" ValueName="ProductId" Value="$($(SkyfireProduct)_ProductId)" />
+      </WithLocalVariable>
+
+      <WithLocalVariable Name="RegistryKey" Value="HKEY_LOCAL_MACHINE\SOFTWARE\Sage\SageConnector\$($(SkyfireProduct)_ProductId)">
+        <RegSetValue KeyName="$(RegistryKey)" ValueName="BriefProductName" Value="$($(SkyfireProduct)_BriefProductName)" />
+        <RegSetValue KeyName="$(RegistryKey)" ValueName="FullProductName" Value="$($(SkyfireProduct)_FullProductName)" />
+        <RegSetValue KeyName="$(RegistryKey)" ValueName="InstallPath" Value="$(ProductSpecificLibraryRuntimeFilesDir)\" />
+        <RegSetValue KeyName="$(RegistryKey)" ValueName="MinimumConnectorIntegrationInterfacesVersion" Value="$($(SkyfireProduct)_MinimumConnectorIntegrationInterfacesVersion)" />
+        <RegSetValue KeyName="$(RegistryKey)" ValueName="ProductCode" Value="{$($(SkyfireProduct)_ProductCode)}" />
+        <RegSetValue KeyName="$(RegistryKey)" ValueName="ProductHelpBaseUrl" Value="$($(SkyfireProduct)_ProductHelpBaseUrl)" />
+        <RegSetValue KeyName="$(RegistryKey)" ValueName="ProductId" Value="$($(SkyfireProduct)_ProductId)" />
+
+        <!-- 
+        Provide some plausible mock value for the ProductVersion.  Note that this value will be replaced be a real value during
+        an actual installation.
+        -->
+        <RegSetValue KeyName="$(RegistryKey)" ValueName="ProductVersion" Value="1.5.225.1" />
+      </WithLocalVariable>
+
+    </Action>
+
+    <Action Id="BuildProductInstallTools_Setup" RequiresTarget="false">
+
+      <!-- Copy projects to product-specific build folder -->
+      <CopyDirectory SourceDir="$(LibraryDir)\Install\LinkedSource" DestinationDir="$(LibraryDir)\Install\$(SkyfireProduct)\Build\LinkedSource" Recursive="true" />
+      <CopyDirectory SourceDir="$(LibraryDir)\Install\Sage.CRE.CloudConnector.InstalledProductInfo" DestinationDir="$(LibraryDir)\Install\$(SkyfireProduct)\Build\Sage.CRE.CloudConnector.InstalledProductInfo" Recursive="true" />
+      <CopyDirectory SourceDir="$(LibraryDir)\Install\ProductInfo" DestinationDir="$(LibraryDir)\Install\$(SkyfireProduct)\Build\ProductInfo" Recursive="true" />
+      <CopyDirectory SourceDir="$(LibraryDir)\Install\SageLauncher" DestinationDir="$(LibraryDir)\Install\$(SkyfireProduct)\Build\SageLauncher" Recursive="true" />
+      <CopyDirectory SourceDir="$(LibraryDir)\Install\SageBrowser" DestinationDir="$(LibraryDir)\Install\$(SkyfireProduct)\Build\SageBrowser" Recursive="true" />
+      <CopyDirectory SourceDir="$(LibraryDir)\Install\SageUpgrade" DestinationDir="$(LibraryDir)\Install\$(SkyfireProduct)\Build\SageUpgrade" Recursive="true" />
+      <CopyDirectory SourceDir="$(LibraryDir)\Install\LaunchSelector" DestinationDir="$(LibraryDir)\Install\$(SkyfireProduct)\Build\LaunchSelector" Recursive="true" />
+      <CopyDirectory SourceDir="$(LibraryDir)\Install\InstallHelper" DestinationDir="$(LibraryDir)\Install\$(SkyfireProduct)\Build\InstallHelper" Recursive="true" />
+
+      <!-- Sage.CRE.CloudConnector.InstalledProductInfo -->
+      <WithLocalVariable Name="DestFile" Value="$(LibraryDir)\Install\$(SkyfireProduct)\Build\Sage.CRE.CloudConnector.InstalledProductInfo\Product.cs">
+        <CopyFile SourceFile="$(LibraryDir)\Install\$(SkyfireProduct)\Build\Sage.CRE.CloudConnector.InstalledProductInfo\Product-template.cs" DestinationFile="$(DestFile)"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ProductCode=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ProductCode)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+      </WithLocalVariable>
+
+      <!-- ProductInfo -->
+      <WithLocalVariable Name="DestFile" Value="$(LibraryDir)\Install\$(SkyfireProduct)\Build\ProductInfo\ProductInfo.cpp">
+        <CopyFile SourceFile="$(LibraryDir)\Install\$(SkyfireProduct)\ProductInfo-template.cpp" DestinationFile="$(DestFile)"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ProductId=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ProductId)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_HostingFxServiceName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ConnectorHostingFxServiceName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_HostingFxServiceReadyMutexName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ConnectorHostingFxServiceReadyMutexName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_HostingFxServiceProcessRunningMutexName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ConnectorHostingFxServiceProcessRunningMutexName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_MonitorHostingFxServiceName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorHostingFxServiceName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_MonitorHostingFxServiceReadyMutexName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorHostingFxServiceReadyMutexName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_MonitorHostingFxServiceProcessRunningMutexName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorHostingFxServiceProcessRunningMutexName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_BriefProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_BriefProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_FullProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_FullProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_MonitorBriefProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorBriefProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_MonitorFullProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MonitorFullProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+      </WithLocalVariable>
+    </Action>
+
+    <Action Id="BuildProductInstall_Setup" RequiresTarget="false">
+      <!-- SageBrowser.ini -->
+      <WithLocalVariable Name="DestFile" Value="$(LibraryDir)\Install\$(SkyfireProduct)\Build\Output\SageBrowser.ini">
+        <CopyFile SourceFile="$(LibraryDir)\Install\Resources\SageBrowser-template.ini" DestinationFile="$(DestFile)"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=VERSION_TAG=-)(.*)" ReplaceExpression="${1}$(BuildVersion3Segment)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ProductId=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ProductId)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_BriefProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_BriefProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_FullProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_FullProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_InstallationGuideUrl=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_InstallationGuideUrl)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ReleaseNotesUrl=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ReleaseNotesUrl)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ReleaseNotesConnectorUrl=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ReleaseNotesConnectorUrl)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+      </WithLocalVariable>
+
+      <!-- SageUpgrade.ini -->
+      <WithLocalVariable Name="DestFile" Value="$(LibraryDir)\Install\$(SkyfireProduct)\Build\Output\SageUpgrade.ini">
+        <CopyFile SourceFile="$(LibraryDir)\Install\Resources\SageUpgrade-template.ini" DestinationFile="$(DestFile)"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=VERSION_TAG=-)(.*)" ReplaceExpression="${1}$(BuildVersion3Segment)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ProductId=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ProductId)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_BriefProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_BriefProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_FullProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_FullProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_InstallationGuideUrl=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_InstallationGuideUrl)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ReleaseNotesUrl=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ReleaseNotesUrl)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ReleaseNotesConnectorUrl=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ReleaseNotesConnectorUrl)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+      </WithLocalVariable>
+
+      <!-- SFX config.txt-->
+      <CopyFile SourceFile="$(LibraryDir)\Install\SFX\config-template.txt" DestinationFile="$(LibraryDir)\Install\$(SkyfireProduct)\Build\SFX\config.txt"/>
+      <RegexReplaceInFile FileSpec="$(LibraryDir)\Install\$(SkyfireProduct)\Build\SFX\config.txt" SearchExpression="(.*)(VERSION_TAG)(.*)" ReplaceExpression="${1}$(BuildVersion)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+
+      <!-- SageConnector.wxs -->
+      <WithLocalVariable Name="DestFile" Value="$(LibraryDir)\Install\$(SkyfireProduct)\Build\SageConnector\SageConnector.wxs">
+        <CopyFile SourceFile="$(LibraryDir)\Install\SageConnector\SageConnector-template.wxs" DestinationFile="$(DestFile)"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_BriefProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_BriefProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_FullProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_FullProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_UpgradeCode=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_UpgradeCode)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+      </WithLocalVariable>
+
+      <!-- ConnectorRegistry.wxs -->
+      <WithLocalVariable Name="DestFile" Value="$(LibraryDir)\Install\$(SkyfireProduct)\Build\ConnectorRegistry.wxs">
+        <CopyFile SourceFile="$(LibraryDir)\Install\$(SkyfireProduct)\ConnectorRegistry-template.wxs" DestinationFile="$(DestFile)"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_HostingFxServiceName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ConnectorHostingFxServiceName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ProductId=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ProductId)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ProductHelpBaseUrl=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ProductHelpBaseUrl)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_FullProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_FullProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_BriefProductName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_BriefProductName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_MinimumConnectorIntegrationInterfacesVersion=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_MinimumConnectorIntegrationInterfacesVersion)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+      </WithLocalVariable>
+
+      <!-- AppData.wxs -->
+      <WithLocalVariable Name="DestFile" Value="$(LibraryDir)\Install\$(SkyfireProduct)\Build\AppData.wxs">
+        <CopyFile SourceFile="$(LibraryDir)\Install\$(SkyfireProduct)\AppData-template.wxs" DestinationFile="$(DestFile)"/>
+        <RegexReplaceInFile FileSpec="$(DestFile)" SearchExpression="(.*)(-=TAG_ConnectorHostingFxServiceName=-)(.*)" ReplaceExpression="${1}$($(SkyfireProduct)_ConnectorHostingFxServiceName)${3}" MultiplePasses="true" UseDefaultEncoding="true"/>
+      </WithLocalVariable>
+    </Action>
+
+    <Action Id="LibraryPreBuild" RequiresTarget="false">
+      <CallAction ActionId="LibraryPreBuild"  Path="$(System::SandboxDir)\Build\LibraryConfig-CommonLibraryPreBuild.xml" />
+
+      <!-- Create a FolderRedirect-Skyfire.xml so a Skyfire dev environment can exist on a machine with STO on it -->
+      <WithLocalVariable Name="FolderRedirectPath" Value="$(Environment::Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common AppData)\Sage\FolderRedirect-SkyFire-$(MajorMinorFileVersion).xml">
+
+        <!-- Create the FolderRedirect-Skyfire.xml -->
+        <Emit Id="FolderRedirectXml" Type="xml" Path="$(FolderRedirectPath)">
+          <EmitData EmitId="FolderRedirectXml">
+            <![CDATA[
+<FolderRedirect>
+  <SharedLibraries Location="$(CommonFilesSageDir)" />
+  <SharedDocuments Location="$(AllUsersDir)\Shared Documents" />
+  <SharedConfiguration Location="$(AllUsersApplicationDataDir)\Sage" />
+  <UserConfigurationBase Location="$(DocsAndSettingsDir)" />
+  <CommonProgramFiles Location="$(CommonFilesDir)" />
+</FolderRedirect>
+          ]]>
+          </EmitData>
+        </Emit>
+
+        <!-- Create the registry entry that will point the FolderManager to the FolderRedirect-Skyfire.xml -->
+        <RegSetValue KeyName="HKEY_LOCAL_MACHINE\SOFTWARE\Sage\Sandbox\Tools\FolderRedirects" ValueName="$(System::SandboxDir)" Value="$(FolderRedirectPath)" />
+
+        <!-- Create another registry entry for the alternate location used by TFS builds during unit testing -->
+        <RegSetValue KeyName="HKEY_LOCAL_MACHINE\SOFTWARE\Sage\Sandbox\Tools\FolderRedirects" ValueName="FullPath($(System::SandboxDir)\..\TestResults)" Value="$(FolderRedirectPath)" />
+      </WithLocalVariable>
+
+      <Emit Id="AssemblyAttributes_cs" Type="txt" Path="$(LibraryDir)\LinkedSource\AssemblyAttributes.cs">
+        <EmitData EmitId="AssemblyAttributes_cs" WriteLine="false">
+          <![CDATA[
+// NOTE: this source file is GENERATED by the LibraryPreBuild LibraryConfig named action.
+// DO NOT EDIT THIS FILE, IT IS NOT CHECKED IN TO SOURCE CONTROL!
+using System.Reflection;
+using System.Runtime.CompilerServices;
+
+[assembly: AssemblyCompany("$(AssemblyCompany)")]
+[assembly: AssemblyCopyright("$(AssemblyCopyright)")]
+[assembly: AssemblyTrademark("$(AssemblyTrademark)")]
+
+// AssemblyVersion and AssemblyInformationalVersion changes only by release
+[assembly: AssemblyVersion("$(AssemblyVersion)")]
+[assembly: AssemblyInformationalVersion("$(AssemblyInformationalVersion)")]
+    ]]>
+        </EmitData>
+      </Emit>
+
+
+    </Action>
+
+    <Action Id="CreateDevPackage">
+
+      <WithLocalVariable Name="FileDirectoryName" Value="DirectoryNameForPath($(PackageFile))">
+        <WithLocalVariable Name="FileNameWithoutExtension" Value="FileNameWithoutExtensionForPath($(PackageFile))">
+          <WithLocalVariable Name="FileExtension" Value="FileExtensionForPath($(PackageFile))">
+            <Emit Id="Integration" Type="zip" Path="$(FileDirectoryName)\$(FileNameWithoutExtension)-Integration$(FileExtension)">
+              <ForEach IterationVariableName="TargetToPackage" Collection="$(System::FileGroup::Integration)">
+                <EmitData EmitId="Integration">$(AssembliesDir)\$(TargetToPackage)$($(TargetToPackage)::TargetFileExtension)</EmitData>
+              </ForEach>
+            </Emit>
+          </WithLocalVariable>
+        </WithLocalVariable>
+      </WithLocalVariable>
+
+    </Action>
+
+  </Actions>
+
+</LibraryConfigTool>
+

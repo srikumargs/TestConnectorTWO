@@ -1,0 +1,38 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <Fragment>
+    <DirectoryRef Id="DIR_AppDataHostingFramework">
+      <Directory Id='DIR_AppDataServiceName' Name='-=TAG_ConnectorHostingFxServiceName=-'>
+        <Directory Id='DIR_AppDataBaseline' Name='Baseline'>
+
+          <Component Id='COM_ConfigurationStore' Guid="19EF84AF-C4FA-4902-9448-C2549F1D9730"  DiskId="1">
+            <File Id='FIL_ConfigurationStore' Name="ConfigurationStore.sdf" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CM\HostingFramework\-=TAG_ConnectorHostingFxServiceName=-\Baseline\ConfigurationStore.sdf" Vital="yes"/>
+          </Component>
+
+          <Component Id='COM_LogStore' Guid="EB19AB18-6D8C-4455-9889-54168AC5F775"  DiskId="1">
+            <File Id='FIL_LogStore' Name="LogStore.sdf" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CM\HostingFramework\-=TAG_ConnectorHostingFxServiceName=-\Baseline\LogStore.sdf" Vital="yes"/>
+          </Component>
+
+          <Component Id='COM_QueueStore' Guid="294E0396-1E70-4D0E-89F7-11668DF400E3"  DiskId="1">
+            <File Id='FIL_QueueStore' Name="QueueStore.sdf" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CM\HostingFramework\-=TAG_ConnectorHostingFxServiceName=-\Baseline\QueueStore.sdf" Vital="yes"/>
+          </Component>
+
+          <Component Id='COM_ViewConfigurations' Guid="985BF5AF-2395-4414-8FB6-66EB19BD32DB"  DiskId="1">
+            <File Id='FIL_ViewConfigurations' Name="ViewConfigurations.ps1" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CM\HostingFramework\-=TAG_ConnectorHostingFxServiceName=-\Baseline\ViewConfigurations.ps1" Vital="yes"/>
+          </Component>
+
+          <Component Id='COM_ViewLog' Guid="23797145-0D26-4D7F-864F-CAE59A540DBF"  DiskId="1">
+            <File Id='FIL_ViewLog' Name="ViewLog.ps1" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CM\HostingFramework\-=TAG_ConnectorHostingFxServiceName=-\Baseline\ViewLog.ps1" Vital="yes"/>
+          </Component>
+
+          <Component Id='COM_ViewActivity' Guid="B035B3FB-89B9-4453-9E7A-EB37DD0396EE"  DiskId="1">
+            <File Id='FIL_ViewActivity' Name="ViewActivity.ps1" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CM\HostingFramework\-=TAG_ConnectorHostingFxServiceName=-\Baseline\ViewActivity.ps1" Vital="yes"/>
+          </Component>
+
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+</Wix>

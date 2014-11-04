@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<InstanceConfig Version="1">
+  <!--
+  The InstanceConfig is used to specialize an instance of the CRE HostingFramework to a particular Product.
+  This file should be REPLACED by the consuming Product with a version of the file that contains
+  product-specific values.
+  -->
+
+  <!-- BaseName: the identifier to be used as the <BaseName> portion of this instance's service name. Used to derive the complete service name: <BaseName>.<Version> -->
+  <BaseName>-=TAG_HostingFxInstanceConfigBaseName=-</BaseName>
+
+  <!-- Version: the identifier to be used as the <Version> portion of this instance's service name. Used to derive the complete service name: <BaseName>.<Version> -->
+  <Version>-=TAG_HostingFxInstanceConfigVersion=-</Version>
+
+  <!-- DisplayName: the display name of this instance (shown as the Name for the service in the Services Control Panel) -->
+  <DisplayName>-=TAG_FullProductName=-</DisplayName>
+
+  <!-- Description: the desciption of this instance (shown as the Description for the service in the Services Control Panel) -->
+  <Description>Provides monitoring for on-premise integration with Sage Connector.</Description>
+
+  <!-- NotifyHostReadyTimeout: the timeout value to use (in milliseconds) when attempting to notify clients that the host is ready -->
+  <NotifyHostReadyTimeout>10000</NotifyHostReadyTimeout>
+
+  <BaseAddresses>
+    <BaseAddress Id="tcp">
+      <!-- The template which will be usued in conjunction with the dynamic port number to assign base addresses to services -->
+      <AddressTemplate>net.tcp://localhost:{0}</AddressTemplate>
+      <!-- The TCP starting port number used by this service to expose services via tcp; ports starting at this number will be used -->
+      <!-- NOTE:  as of last check, according to http://www.iana.org/assignments/port-numbers, 48620-49150 is unassigned -->
+      <!-- Usage:
+        - Architecture/Platform is using 48620
+        - STE is using 48650
+        - SCA Connector is using 48730(service), and 48740(monitor)
+        - SMB is using 48750
+        - Sage Connector is using 48800(monitor), and 48810(service)
+      -->
+      <StartingPort>-=TAG_StartingPort=-</StartingPort>
+    </BaseAddress>
+  </BaseAddresses>
+
+  <!-- Whether the local Users group should have access permissions to the service's ProgramData folder -->
+  <RemoveUsersPermissionToAppData>true</RemoveUsersPermissionToAppData>
+  
+  <!-- Whether the Windows Firewall should be configured to block incoming connection requests to this 
+  application (from remote machines) -->
+  <BlockApplicationIncomingConnections>false</BlockApplicationIncomingConnections>
+</InstanceConfig>

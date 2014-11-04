@@ -1,0 +1,6 @@
+﻿<Configuration>
+  <BriefProductName>-=TAG_BriefProductName=-</BriefProductName>
+  <MonitorBriefProductName>-=TAG_MonitorBriefProductName=-</MonitorBriefProductName>
+  <DefaultCatalogServicePortNumber>-=TAG_DefaultCatalogServicePortNumber=-</DefaultCatalogServicePortNumber>
+  <ProductHelpBaseUrl>-=TAG_ProductHelpBaseUrl=-</ProductHelpBaseUrl>
+</Configuration>

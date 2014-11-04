@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="SageConnectorCommonCodeAnalysisRules" ToolsVersion="10.0">
+  <Include Path="SageConnectorMicrosoftMinimumRecommendedRulesAsError.ruleset" Action="Default" />
+  <Include Path="SageCloudMicrosoftSecurityRulesMinusCodeSigning.ruleset" Action="Default" />
+  <Include Path="SageCloudBasicCorrectnessRules.ruleset" Action="None" />
+  <Include Path="SageCloudBasicDesignGuidelineRules.ruleset" Action="None" />
+</RuleSet>

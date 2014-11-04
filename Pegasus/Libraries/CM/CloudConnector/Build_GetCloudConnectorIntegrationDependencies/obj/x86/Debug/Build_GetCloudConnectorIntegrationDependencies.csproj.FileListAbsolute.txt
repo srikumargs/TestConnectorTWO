@@ -1,0 +1,1 @@
+C:\Explore\TestConnectorworkspace\Pegasus\Libraries\CM\CloudConnector\Build_GetCloudConnectorIntegrationDependencies\bin\Debug\Build_GetCloudConnectorIntegrationDependencies.exe.config

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7CE8BA3D-170E-4A5F-9E92-D7E272A9D9B4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Install</RootNamespace>
+    <AssemblyName>Install</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SandboxDir>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..\..\..'))</SandboxDir>
+    <LibraryDir>$(SandboxDir)\Libraries\CM\CloudConnector</LibraryDir>
+    <LibraryConfigFile>$(LibraryDir)\LibraryConfig-Library.xml</LibraryConfigFile>
+    <ToolsBinDir>$(SandboxDir)\Tools\Bin</ToolsBinDir>
+    <RuntimeDirectory>$(SandboxDir)\Runtime Files\Program Files\CloudConnector (COMMON_STAGING)</RuntimeDirectory>
+    <SkipCopyBuildProduct>true</SkipCopyBuildProduct>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <!-- Figure out where this target is being called from, TFS Build or a developer 
+         machine. BuildUri and TeamFoundationServerUrl properties are the 
+         ones that indicate this is running under TFS Build.-->
+    <SageBuildType>DEVBUILD</SageBuildType>
+    <SageBuildType Condition="'$(BuildUri)'!='' and '$(TeamFoundationServerUrl)'!=''">TFSBUILD</SageBuildType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\TeamBuild\Microsoft.TeamFoundation.Build.targets" />
+  <UsingTask TaskName="FinalBuilder.FBCmd" AssemblyName="FinalBuilder.MSBuild.Tasks, Version=7.0.0.0, Culture=neutral, PublicKeyToken=300e5b79bda2b697" />
+  <Target Name="CreateManifestResourceNames" />
+  <Target Name="CoreCompile" />
+  <Target Name="Build" DependsOnTargets="$(BuildDependsOn)">
+    <ReadLinesFromFile File="$(LibraryDir)\LinkedSource\Generated.AssemblyFileVersion.txt">
+      <Output TaskParameter="Lines" ItemName="FileContents" />
+    </ReadLinesFromFile>
+    <PropertyGroup>
+      <BuildVersion>@(FileContents)</BuildVersion>
+    </PropertyGroup>
+    <Exec Command="&quot;$(VS100COMNTOOLS)..\IDE\tf.exe&quot; checkout ..\LibraryConfig-WXSComponentGuids-Sage.CM.CloudConnector.xml" WorkingDirectory="$(MSBuildProjectDirectory)" />
+    <Message Importance="Normal" Text="BuildVersion: $(BuildVersion)" />
+    <Message Importance="Normal" Text="Running FinalBuilder project..." />
+    <FBCmd ProjectFile="$(LibraryDir)\CloudConnector.fbp7" Variables="SANDBOX_DIR=&quot;$(SandboxDir)&quot;;BUILD_SOURCE=False;CREATE_DEPLOYMENT=True;CREATE_DEV_PACKAGE=True;BUILD_VERSION=$(BuildVersion)" />
+    <ItemGroup>
+      <FilesToDrop Include="$(LibraryDir)\Publish\**\*.*" />
+    </ItemGroup>
+    <Message Text="FilesToDrop=@(FilesToDrop)" />
+    <Copy SourceFiles="@(FilesToDrop)" DestinationFiles="@(FilesToDrop ->'$(SolutionRoot)\..\..\..\Binaries\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Exec Command="&quot;$(VS100COMNTOOLS)..\IDE\tf.exe&quot; checkin ..\LibraryConfig-WXSComponentGuids-Sage.CM.CloudConnector.xml /noprompt /comment:&quot;Automatic checkin from $(Computername) for $(BuildVersion) ***NO_CI***&quot;" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="'$(SageBuildType)'=='TFSBUILD'" IgnoreExitCode="true" />
+    <OnError ExecuteTargets="UndoCheckout" />
+  </Target>
+  <Target Name="UndoCheckout">
+    <Exec Command="&quot;$(VS100COMNTOOLS)..\IDE\tf.exe&quot; undo ..\LibraryConfig-WXSComponentGuids-Sage.CM.CloudConnector.xml /noprompt" WorkingDirectory="$(MSBuildProjectDirectory)" Condition="'$(SageBuildType)'=='TFSBUILD'" IgnoreExitCode="true" />
+  </Target>
+  <Target Name="CoreClean" DependsOnTargets="$(CoreCleanDependsOn)">
+  </Target>
+</Project>

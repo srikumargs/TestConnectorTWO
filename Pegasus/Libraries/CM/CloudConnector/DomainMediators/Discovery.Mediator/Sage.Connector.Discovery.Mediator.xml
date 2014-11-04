@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sage.Connector.Discovery.Mediator</name>
+    </assembly>
+    <members>
+        <member name="T:Sage.Connector.Discovery.Mediator.Features.FeatureMessageTypes">
+            <summary>
+            The supported set of features by the configuration domain mediator. 
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Discovery.Mediator.Features.FeatureMessageTypes.ValidateBackOfficeIsInstalled">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Discovery.Mediator.Features.FeatureMessageTypes.GetPluginInformation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Discovery.Mediator.Features.FeatureMessageTypes.GetPluginInformationCollection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Discovery.Mediator.Features.FeatureMessageTypes.GetInstalledBackOfficePluginInformationCollection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Discovery.Mediator.Features.FeatureMessageTypes.GetBackOfficeConfiguration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.Discovery.Mediator.Features.FeatureDescriptions">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Discovery.Mediator.Features.FeatureDescriptions.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Discovery.Mediator.Features.FeatureDescriptions.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Discovery.Mediator.Features.FeatureDescriptions.GetBackOfficeConfiguration">
+            <summary>
+              Looks up a localized string similar to Get Back OfficeConfiguration.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Discovery.Mediator.Features.FeatureDescriptions.GetInstalledBackOfficePluginInformationCollection">
+            <summary>
+              Looks up a localized string similar to GetInstalledBackOfficePluginInformationCollection.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Discovery.Mediator.Features.FeatureDescriptions.GetPluginInformation">
+            <summary>
+              Looks up a localized string similar to Get Plugin Information.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Discovery.Mediator.Features.FeatureDescriptions.GetPluginInformationCollection">
+            <summary>
+              Looks up a localized string similar to GetPluginInformationCollection.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Discovery.Mediator.Features.FeatureDescriptions.ValidateIsBackOfficeIsInstalled">
+            <summary>
+              Looks up a localized string similar to Validate Is Back Office Is Installed.
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.Discovery.Mediator.Features.GetBackOfficeConfiguration">
+            <summary>
+            This class uses the back office metadata to find all the plugins installed. 
+            May not be needed many more but allows for meta data only resolution of meta data so preserved for now.
+            Not currently use in from core connector
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Discovery.Mediator.Features.GetBackOfficeConfiguration.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Find plugs installed via their meta data and return the meta data information
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="requestPayload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.Discovery.Mediator.Features.GetInstalledBackOfficePluginInformationCollection">
+            <summary>
+            Gets information form plugins with installed back offices.
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Discovery.Mediator.Features.GetInstalledBackOfficePluginInformationCollection.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            For each of the plug ins get the plugin information
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="requestPayload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.Configuration.Mediator.Features.GetPluginInformation">
+            <summary>
+            Get information about a specific plugin
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Configuration.Mediator.Features.GetPluginInformation.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            get information for a specific plugin
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="requestPayload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.Discovery.Mediator.Features.GetPluginInformationCollection">
+            <summary>
+            This class finds all plugins and returns a collection of their information
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Discovery.Mediator.Features.GetPluginInformationCollection.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            For each of the plug ins get the plugin information
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="requestPayload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.Discovery.Mediator.Features.ValidateBackOfficeIsInstalled">
+            <summary>
+            Validate Back Office is installed
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Discovery.Mediator.Features.ValidateBackOfficeIsInstalled.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Report if the back office is installed 
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="requestPayload">String representing the payload to process.</param>
+        </member>
+    </members>
+</doc>

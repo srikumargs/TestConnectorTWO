@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <Fragment>
+    <DirectoryRef Id="DIR_Sage.CM.CloudConnector_Service">
+      <Component Id='COM_ConnectorMonitorServiceInstanceConfigDefaults' Guid="6402B97F-DE5E-4B6B-8999-FC778EA6CB87"  DiskId="1">
+        <File Id='FIL_ConnectorMonitorServiceInstanceConfigDefaults' Name="Sage.CRE.HostingFramework.Service-InstanceConfigDefaults.xml" Source="$(var.SandboxDir)\Libraries\CM\CloudConnector\Install\$(var.SkyfireProduct)\Build\ConnectorMonitorService-InstanceConfigDefaults.xml" Vital="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+</Wix>

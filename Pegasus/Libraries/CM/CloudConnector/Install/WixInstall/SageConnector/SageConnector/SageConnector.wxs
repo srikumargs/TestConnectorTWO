@@ -1,0 +1,871 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="{0A00D9AC-6DC2-4E62-8A93-32B231B8D415}" Codepage="1252" Language="1033" Manufacturer="Sage" Name="Sage Connector" UpgradeCode="{A53A6887-79CA-49B5-B35D-6492C66E3554}" Version="99.9.9.9">
+        <Package Comments="Sage Connector" Compressed="yes" Description="Sage Connector" InstallerVersion="200" Languages="1033" Manufacturer="Sage" Platform="x86" />
+        <Binary Id="InstallHelperEXE" SourceFile="$(var.SandboxDir)\Libraries\CRE\CloudConnector\Install\$(var.SkyfireProduct)\Build\Output\InstallHelper.exe" />
+        <Condition Message="A later version of [ProductName] is already installed.">NOT NEWERFOUND</Condition>
+        <Condition Message="[ProductName] has already been updated to 99.9.9.9 or newer.">NOT SELFFOUND</Condition>
+        <CustomAction Id="CUS_Uninstall" BinaryKey="InstallHelperEXE" ExeCommand="/mode:uninstall /installpath:&quot;[INSTALLDIR]&quot; /version:99.9.9.9" Return="asyncNoWait" Execute="deferred" Impersonate="no" />
+        <CustomAction Id="SetINSTALLDIR_FromOneDotTwoOrOlderINSTALLDIRAppSearch" Property="INSTALLDIR" Value="[ONE_DOT_TWO_OR_OLDER_INSTALLDIR_APP_SEARCH]" />
+        <CustomAction Id="SetINSTALLDIR_FromPreviousINSTALLDIRAppSearch" Property="INSTALLDIR" Value="[PREVIOUS_INSTALLDIR_APP_SEARCH]" />
+        <CustomAction Id="CUS_UninstallCloseAll" BinaryKey="InstallHelperEXE" ExeCommand="/mode:closeall /installpath:&quot;[INSTALLDIR]&quot; /version:99.9.9.9" Return="ignore" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Component Id="COM_Sage.CRE.Core.PInvoke.dll_GAC_4.1.0.0" Guid="{995E075B-C791-4530-8EE7-97B0E0DEA988}">
+                <File Id="FIL_Sage.CRE.Core.PInvoke.dll_GAC_4.1.0.0" Name="Sage.CRE.Core.PInvoke.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.Core.PInvoke.dll" Vital="yes" />
+            </Component>
+            <Component Id="COM_Sage.CRE.Core.dll_GAC_4.1.0.0" Guid="{65284016-1383-415A-B248-A63C33B9E1E9}">
+                <File Id="FIL_Sage.CRE.Core.dll_GAC_4.1.0.0" Name="Sage.CRE.Core.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.Core.dll" Vital="yes"/>
+            </Component>
+            <Component Id="COM_Sage.CRE.Core.LibraryManagement.dll_GAC_4.1.0.0" Guid="{A9683BCB-438C-42FE-8E02-961A75ABD635}">
+                <File Id="FIL_Sage.CRE.Core.LibraryManagement.dll_GAC_4.1.0.0" Name="Sage.CRE.Core.LibraryManagement.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.Core.LibraryManagement.dll" Vital="yes"/>
+            </Component>
+            <Component Id="COM_Sage.CRE.Core.SQL.dll_GAC_4.1.0.0" Guid="{F9F5D8E6-DDCE-42C0-8C0A-99EDF621E6B8}">
+                <File Id="FIL_Sage.CRE.Core.SQL.dll_GAC_4.1.0.0" Name="Sage.CRE.Core.SQL.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.Core.SQL.dll" Vital="yes" />
+            </Component>
+            <Component Id="COM_Sage.CRE.Core.UI.dll_GAC_4.1.0.0" Guid="{AB7AA27D-E6BE-4918-852B-3B5EC6F095F5}">
+                <File Id="FIL_Sage.CRE.Core.UI.dll_GAC_4.1.0.0" Name="Sage.CRE.Core.UI.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.Core.UI.dll" Vital="yes" />
+            </Component>
+            <Component Id="COM_Sage.CRE.Core.UI.Wpf.dll_GAC_4.1.0.0" Guid="{2A937697-EB71-4059-AFB0-3B03EB4E8537}">
+                <File Id="FIL_Sage.CRE.Core.UI.Wpf.dll_GAC_4.1.0.0" Name="Sage.CRE.Core.UI.Wpf.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.Core.UI.Wpf.dll" Vital="yes" />
+            </Component>
+            <Component Id="COM_Sage.CRE.Core.WpfApplicationFramework.dll_GAC_4.1.0.0" Guid="{09C7813D-C05B-4EBC-AF14-A6C9C8BA5180}">
+                <File Id="FIL_Sage.CRE.Core.WpfApplicationFramework.dll_GAC_4.1.0.0" Name="Sage.CRE.Core.WpfApplicationFramework.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.Core.WpfApplicationFramework.dll" Vital="yes" />
+            </Component>
+            <Component Id="COM_Sage.CRE.HostingFramework.Interfaces.dll_GAC_4.1.0.0" Guid="{ADF531D3-6749-4220-8789-6304622DDB32}">
+                <File Id="FIL_Sage.CRE.HostingFramework.Interfaces.dll_GAC_4.1.0.0" Name="Sage.CRE.HostingFramework.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.HostingFramework.Interfaces.dll" Vital="yes" />
+            </Component>
+            <Component Id="COM_Sage.CRE.HostingFramework.Proxy.dll_GAC_4.1.0.0" Guid="{63A96ED8-EF4E-46CE-A83E-DAFAF41A02F8}">
+                <File Id="FIL_Sage.CRE.HostingFramework.Proxy.dll_GAC_4.1.0.0" Name="Sage.CRE.HostingFramework.Proxy.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.HostingFramework.Proxy.dll" Vital="yes" />
+            </Component>
+            <Component Id="COM_Sage.CRE.Microsoft.NetFwInterop.dll_GAC_4.1.0.0" Guid="{9E0B20A8-8B01-4ECB-B2B1-A60DAAF19C5C}">
+                <File Id="FIL_Sage.CRE.Microsoft.NetFwInterop.dll_GAC_4.1.0.0" Name="Sage.CRE.Microsoft.NetFwInterop.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.Microsoft.NetFwInterop.dll" Vital="yes" />
+            </Component>
+            <Component Id="COM_Sage.CRE.Microsoft.FirewallAPIInterop.dll_GAC_4.1.0.0" Guid="{FCEE7E61-B4B1-4F74-BF79-ECD81EFA1640}">
+                <File Id="FIL_Sage.CRE.Microsoft.FirewallAPIInterop.dll_GAC_4.1.0.0" Name="Sage.CRE.Microsoft.FirewallAPIInterop.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.Microsoft.FirewallAPIInterop.dll" Vital="yes" />
+            </Component>
+            <Component Id="COM_Sage.CRE.Resources.dll_GAC_4.1.0.0" Guid="{598F5A76-35B6-470E-BCAB-77C003960459}">
+                <File Id="FIL_Sage.CRE.Resources.dll_GAC_4.1.0.0" Name="Sage.CRE.Resources.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\GAC\Sage.CRE.Resources.dll" Vital="yes" />
+            </Component>
+            <Directory Id="ProgramFilesFolder" Name="PFiles">
+                <Directory Id="INSTALLDIR" Name="Sage Connector" ShortName="bonb2ig-">
+                    <Component Id="COM_ConnectorRegistry" Guid="{6BED7BC1-B00A-4775-9575-9326BCD082BC}">
+                        <CreateFolder/>
+                        <RegistryKey Id="REG_SkyfireByService" Action="createAndRemoveOnUninstall" Root="HKLM"  Key="SOFTWARE\Sage\SageConnector\Sage.Connector.Service.1.0">
+                          <RegistryValue Id="REG_ProductId" Action="write" Name="ProductId" Type="string" Value="SCA" />
+                        </RegistryKey>
+                        <RegistryKey Id="REG_SkyfireByProduct" Action="createAndRemoveOnUninstall" Root="HKLM"  Key="SOFTWARE\Sage\SageConnector\SCA">
+                          <RegistryValue Id="REG_InstallPath" Action="write" Name="InstallPath" Type="string" Value="[INSTALLDIR]" />
+                          <RegistryValue Id="REG_ProductId2" Action="write" Name="ProductId" Type="string" Value="SCA" />
+                          <RegistryValue Id="REG_ProductCode" Action="write" Name="ProductCode" Type="string" Value="[ProductCode]" />
+                          <RegistryValue Id="REG_ProductHelpBaseUrl" Action="write" Name="ProductHelpBaseUrl" Type="string" Value="http://help.sageconstructionanywhere.com/2-0/connector/help/" />
+                          <RegistryValue Id="REG_BriefProductName" Action="write" Name="BriefProductName" Type="string" Value="Sage Connector" />
+                          <RegistryValue Id="REG_FullProductName" Action="write" Name="FullProductName" Type="string" Value="Sage Connector" />
+                          <RegistryValue Id="REG_ProductVersion" Action="write" Name="ProductVersion" Type="string" Value="[ProductVersion]" />
+                          <RegistryValue Id="REG_MinimumConnectorIntegrationInterfacesVersion" Action="write" Name="MinimumConnectorIntegrationInterfacesVersion" Type="string" Value="1.4.107.2" />
+                        </RegistryKey>
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector.InstalledProductInfo.dll" Guid="{D89663C5-A3AB-4A8C-9F0E-C545EC0E45C3}">
+                        <File Id="FIL_Sage.CRE.CloudConnector.InstalledProductInfo.dll" Name="Sage.CRE.CloudConnector.InstalledProductInfo.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.CloudConnector.InstalledProductInfo.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_ConnectorServiceInstanceConfigDefaults" Guid="{A4BA002B-2FD8-4F0C-A3EB-92A5BF503889}">
+                        <File Id="FIL_ConnectorServiceInstanceConfigDefaults" Name="Sage.CRE.HostingFramework.Service-InstanceConfigDefaults.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.HostingFramework.Service-InstanceConfigDefaults.xml" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_DBTool.exe" Guid="{50A7D2A9-0CDF-4C25-B10F-30D96C55E72B}">
+                        <File Id="FIL_DBTool.exe" Name="DBTool.exe" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\DBTool.exe" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_DBTool.exe.config" Guid="{E9B54E9F-6A48-447B-81D7-B24E2961D63E}">
+                        <File Id="FIL_DBTool.exe.config" Name="DBTool.exe.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\DBTool.exe.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_DBTool.config" Guid="{A8484E9D-EFFC-466F-9F76-CD71B2DD42D6}">
+                        <File Id="FIL_DBTool.config" Name="DBTool.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\DBTool.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.PremiseStore.dll" Guid="{CD66AC32-626B-4E1C-97E6-4D06B73156C4}">
+                        <File Id="FIL_Sage.Connector.PremiseStore.dll" Name="Sage.Connector.PremiseStore.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.PremiseStore.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.PremiseStore.dll.config" Guid="{5AADB771-8616-4997-A35D-E5A9EC87FC58}">
+                        <File Id="FIL_Sage.Connector.PremiseStore.dll.config" Name="Sage.Connector.PremiseStore.dll.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.PremiseStore.dll.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Data.dll" Guid="{3AF78881-19D4-4922-9772-3B33F19E412C}">
+                        <File Id="FIL_Sage.Connector.Data.dll" Name="Sage.Connector.Data.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Data.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Common.dll" Guid="{F62BC9F1-5ED1-4793-B990-180E6157CC2C}">
+                        <File Id="FIL_Sage.Connector.Common.dll" Name="Sage.Connector.Common.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Common.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.ConnectorServiceCommon.dll" Guid="{EFF95C92-B997-45F2-9A3F-0453F6535FBB}">
+                        <File Id="FIL_Sage.Connector.ConnectorServiceCommon.dll" Name="Sage.Connector.ConnectorServiceCommon.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.ConnectorServiceCommon.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Utilities.Platform.DotNet.dll" Guid="{8DC3DC81-6776-4DEB-B9CE-B381E3CC6521}">
+                        <File Id="FIL_Sage.Connector.Utilities.Platform.DotNet.dll" Name="Sage.Connector.Utilities.Platform.DotNet.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Utilities.Platform.DotNet.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Signalr.Client.dll" Guid="{CBAD8843-A62F-4ECC-A36F-FEBC94CD5BCE}">
+                        <File Id="FIL_Sage.Connector.Signalr.Client.dll" Name="Sage.Connector.Signalr.Client.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Signalr.Client.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Signalr.Interfaces.dll" Guid="{BBBA9224-958D-4E1A-A413-266416AA4686}">
+                        <File Id="FIL_Sage.Connector.Signalr.Interfaces.dll" Name="Sage.Connector.Signalr.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Signalr.Interfaces.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Signalr.Common.dll" Guid="{ABD6E066-2F51-4DCD-8EA5-79E9327B7979}">
+                        <File Id="FIL_Sage.Connector.Signalr.Common.dll" Name="Sage.Connector.Signalr.Common.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Signalr.Common.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Signalr.Controller.dll" Guid="{83EF0097-FF80-4C52-AB37-2166D25A0A33}">
+                        <File Id="FIL_Sage.Connector.Signalr.Controller.dll" Name="Sage.Connector.Signalr.Controller.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Signalr.Controller.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.ProcessExecution.Interfaces.dll" Guid="{58FA2BC9-BF1D-4611-BFF3-4AAE2D5322A8}">
+                        <File Id="FIL_Sage.Connector.ProcessExecution.Interfaces.dll" Name="Sage.Connector.ProcessExecution.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.ProcessExecution.Interfaces.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.ConfigurationService.dll" Guid="{C1776C3E-17B4-4C0A-A9BF-E3556618CDE2}">
+                        <File Id="FIL_Sage.Connector.ConfigurationService.dll" Name="Sage.Connector.ConfigurationService.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.ConfigurationService.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.ConfigurationService.dll.config" Guid="{00D49B97-BC20-417A-948A-9E3528F7727D}">
+                        <File Id="FIL_Sage.Connector.ConfigurationService.dll.config" Name="Sage.Connector.ConfigurationService.dll.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.ConfigurationService.dll.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.ConfigurationService.Interfaces.dll" Guid="{44B7A31C-4242-4DA6-8D82-F6EFA60D69E4}">
+                        <File Id="FIL_Sage.Connector.ConfigurationService.Interfaces.dll" Name="Sage.Connector.ConfigurationService.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.ConfigurationService.Interfaces.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.ConfigurationService.Proxy.dll" Guid="{83433FD0-7911-4536-8BED-37FD5EE670A8}">
+                        <File Id="FIL_Sage.Connector.ConfigurationService.Proxy.dll" Name="Sage.Connector.ConfigurationService.Proxy.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.ConfigurationService.Proxy.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.DispatchService.dll" Guid="{180B58AC-448B-4A83-B368-90E0F18ADF4F}">
+                        <File Id="FIL_Sage.Connector.DispatchService.dll" Name="Sage.Connector.DispatchService.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.DispatchService.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.DispatchService.Interfaces.dll" Guid="{16099F68-5BD7-4C3E-87C8-7627231A4DCD}">
+                        <File Id="FIL_Sage.Connector.DispatchService.Interfaces.dll" Name="Sage.Connector.DispatchService.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.DispatchService.Interfaces.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.DispatchService.Proxy.dll" Guid="{8583293E-45BA-4F47-B053-E93FD40345AA}">
+                        <File Id="FIL_Sage.Connector.DispatchService.Proxy.dll" Name="Sage.Connector.DispatchService.Proxy.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.DispatchService.Proxy.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Entities.dll" Guid="{EAAC4B3F-EB5B-4135-96A2-AB55ECEF49EF}">
+                        <File Id="FIL_Sage.Connector.Entities.dll" Name="Sage.Connector.Entities.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Entities.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Logging.dll" Guid="{D7E54A2E-5212-4E51-87F2-E41C937C92EF}">
+                        <File Id="FIL_Sage.Connector.Logging.dll" Name="Sage.Connector.Logging.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Logging.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.MessagingService.dll" Guid="{3B19D56F-13DF-4080-83B5-1E14FF5FE10F}">
+                        <File Id="FIL_Sage.Connector.MessagingService.dll" Name="Sage.Connector.MessagingService.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.MessagingService.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.MessagingService.Interfaces.dll" Guid="{F2EBBB0B-9F09-4DB8-A80F-D82B0D656AD9}">
+                        <File Id="FIL_Sage.Connector.MessagingService.Interfaces.dll" Name="Sage.Connector.MessagingService.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.MessagingService.Interfaces.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.MessagingService.Proxy.dll" Guid="{2ABF6D86-ECD4-4774-9280-178E1EC59BB6}">
+                        <File Id="FIL_Sage.Connector.MessagingService.Proxy.dll" Name="Sage.Connector.MessagingService.Proxy.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.MessagingService.Proxy.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Documents.dll" Guid="{5A2B9070-CF85-4CA2-A131-627D7109480D}">
+                        <File Id="FIL_Sage.Connector.Documents.dll" Name="Sage.Connector.Documents.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Documents.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.NotificationService.dll" Guid="{954825D6-1250-42D4-BB65-E95BEADF6E74}">
+                        <File Id="FIL_Sage.Connector.NotificationService.dll" Name="Sage.Connector.NotificationService.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.NotificationService.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.NotificationService.dll.config" Guid="{C7D009CD-0228-4006-B204-BC6279F656CF}">
+                        <File Id="FIL_Sage.Connector.NotificationService.dll.config" Name="Sage.Connector.NotificationService.dll.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.NotificationService.dll.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.NotificationService.Interfaces.dll" Guid="{41EFDDF6-F58A-468D-9221-A8B697DB1C29}">
+                        <File Id="FIL_Sage.Connector.NotificationService.Interfaces.dll" Name="Sage.Connector.NotificationService.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.NotificationService.Interfaces.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.NotificationService.Proxy.dll" Guid="{4BE66251-FB39-4C75-B2BA-D9C7C2CB4940}">
+                        <File Id="FIL_Sage.Connector.NotificationService.Proxy.dll" Name="Sage.Connector.NotificationService.Proxy.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.NotificationService.Proxy.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Queues.dll" Guid="{71A7C01D-816D-4F0C-B8E2-F9B8FB45B691}">
+                        <File Id="FIL_Sage.Connector.Queues.dll" Name="Sage.Connector.Queues.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Queues.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Reports.dll" Guid="{48EBBC90-8100-4D1D-ABA3-D542348F1B99}">
+                        <File Id="FIL_Sage.Connector.Reports.dll" Name="Sage.Connector.Reports.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Reports.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.StateService.dll" Guid="{E579AC31-85CA-4BCC-B59D-27A22F7730EC}">
+                        <File Id="FIL_Sage.Connector.StateService.dll" Name="Sage.Connector.StateService.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.StateService.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.StateService.dll.config" Guid="{DFD48374-D810-4F78-9FA5-9D4F38567CAC}">
+                        <File Id="FIL_Sage.Connector.StateService.dll.config" Name="Sage.Connector.StateService.dll.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.StateService.dll.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.StateService.Interfaces.dll" Guid="{A90C8364-C1B1-446E-B114-D6D740E578A5}">
+                        <File Id="FIL_Sage.Connector.StateService.Interfaces.dll" Name="Sage.Connector.StateService.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.StateService.Interfaces.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.StateService.Proxy.dll" Guid="{246F8C06-66C3-42E8-9E79-46CA5659F7A0}">
+                        <File Id="FIL_Sage.Connector.StateService.Proxy.dll" Name="Sage.Connector.StateService.Proxy.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.StateService.Proxy.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Utilities.dll" Guid="{9E17CB11-9883-43D5-A630-A46398F5CC99}">
+                        <File Id="FIL_Sage.Connector.Utilities.dll" Name="Sage.Connector.Utilities.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Utilities.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_SageConnector.exe" Guid="{8EAECB9E-3B80-4C4E-877C-DCF40C5A1717}">
+                        <File Id="FIL_SageConnector.exe" Name="SageConnector.exe" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\SageConnector.exe" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_SageConnector.exe.config" Guid="{12F403BA-2AF1-4880-A3B2-407EFD77580A}">
+                        <File Id="FIL_SageConnector.exe.config" Name="SageConnector.exe.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\SageConnector.exe.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_SageConnector.config" Guid="{905CD5B6-69B0-4E8B-8D87-2E78A78BF8C3}">
+                        <File Id="FIL_SageConnector.config" Name="SageConnector.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\SageConnector.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_SageConnector.ViewModel.dll" Guid="{F203A871-953A-4312-B458-2ACB0BEABF35}">
+                        <File Id="FIL_SageConnector.ViewModel.dll" Name="SageConnector.ViewModel.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\SageConnector.ViewModel.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_SageConnectorConfiguration.exe" Guid="{D4AD27A0-251C-4597-83BD-178ABA74115F}">
+                        <File Id="FIL_SageConnectorConfiguration.exe" Name="SageConnectorConfiguration.exe" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\SageConnectorConfiguration.exe" Vital="yes" />
+                    </Component>
+                   <Component Id="COM_SageConnectorConfiguration.exe.config" Guid="{E20A32B3-8CC1-441F-B8CE-187B0A0C1629}">
+                        <File Id="FIL_SageConnectorConfiguration.exe.config" Name="SageConnectorConfiguration.exe.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\SageConnectorConfiguration.exe.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_SageConnectorConfiguration.config" Guid="{CBA2CEB4-C365-427B-92E5-74D59C88FEFA}">
+                        <File Id="FIL_SageConnectorConfiguration.config" Name="SageConnectorConfiguration.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\SageConnectorConfiguration.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_SageConnectorConfiguration.ViewModel.dll" Guid="{814F3A78-D554-4F71-BAF8-D6FC8A691756}">
+                        <File Id="FIL_SageConnectorConfiguration.ViewModel.dll" Name="SageConnectorConfiguration.ViewModel.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\SageConnectorConfiguration.ViewModel.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector.PluginShim35.exe" Guid="{A7901CF3-66C3-4892-8AE8-4CA84A73DD67}">
+                        <File Id="FIL_Sage.CRE.CloudConnector.PluginShim35.exe" Name="Sage.CRE.CloudConnector.PluginShim35.exe" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.CloudConnector.PluginShim35.exe" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector.PluginShim35.exe.config" Guid="{81FEDCD0-4519-447F-A2F6-4422DD142293}">
+                        <File Id="FIL_Sage.CRE.CloudConnector.PluginShim35.exe.config" Name="Sage.CRE.CloudConnector.PluginShim35.exe.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.CloudConnector.PluginShim35.exe.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector.PluginShim35.config" Guid="{46E7E036-D425-4278-AD71-1E75CF385F4D}">
+                        <File Id="FIL_Sage.CRE.CloudConnector.PluginShim35.config" Name="Sage.CRE.CloudConnector.PluginShim35.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.CloudConnector.PluginShim35.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector.PluginShim40.exe" Guid="{7C492AD2-D2CA-43DF-A6DE-DE1464CDD763}">
+                        <File Id="FIL_Sage.CRE.CloudConnector.PluginShim40.exe" Name="Sage.CRE.CloudConnector.PluginShim40.exe" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.CloudConnector.PluginShim40.exe" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector.PluginShim40.exe.config" Guid="{36A51B0B-C60A-45E8-AC38-9AACB1D0D249}">
+                        <File Id="FIL_Sage.CRE.CloudConnector.PluginShim40.exe.config" Name="Sage.CRE.CloudConnector.PluginShim40.exe.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.CloudConnector.PluginShim40.exe.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector.PluginShim40.config" Guid="{E2793493-CAE7-4E9F-87F3-4EF1F3C399A2}">
+                        <File Id="FIL_Sage.CRE.CloudConnector.PluginShim40.config" Name="Sage.CRE.CloudConnector.PluginShim40.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.CloudConnector.PluginShim40.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector.PluginShimLibrary.dll" Guid="{86A21BCE-C182-4491-8653-CEED5BACC972}">
+                        <File Id="FIL_Sage.CRE.CloudConnector.PluginShimLibrary.dll" Name="Sage.CRE.CloudConnector.PluginShimLibrary.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.CloudConnector.PluginShimLibrary.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Cloud.Integration.Interfaces.dll" Guid="{450EEAF1-A34B-446F-97BC-308278DA4B95}">
+                        <File Id="FIL_Sage.Connector.Cloud.Integration.Interfaces.dll" Name="Sage.Connector.Cloud.Integration.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Cloud.Integration.Interfaces.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.Connector.Cloud.Integration.Proxy.dll" Guid="{6E989364-0B40-43A9-88D7-85F6648D8D1D}">
+                        <File Id="FIL_Sage.Connector.Cloud.Integration.Proxy.dll" Name="Sage.Connector.Cloud.Integration.Proxy.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Connector.Cloud.Integration.Proxy.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector.Integration.Interfaces.dll" Guid="{69609161-55F6-4145-B683-E6700F9146D6}">
+                        <File Id="FIL_Sage.CRE.CloudConnector.Integration.Interfaces.dll" Name="Sage.CRE.CloudConnector.Integration.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.CloudConnector.Integration.Interfaces.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Microsoft.WindowsAzure.Configuration.dll" Guid="{D5D07AB3-D766-4A9F-B948-4BC17A5F187C}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Microsoft.WindowsAzure.Configuration.dll" Name="Microsoft.WindowsAzure.Configuration.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Microsoft.WindowsAzure.Configuration.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Microsoft.WindowsAzure.Storage.dll" Guid="{886898F2-6D4C-49AC-B2B9-C6C6927D6E33}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Microsoft.WindowsAzure.Storage.dll" Name="Microsoft.WindowsAzure.Storage.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Microsoft.WindowsAzure.Storage.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Mcrsft.Prctcs.ntrprsLbrr.TrnsntFltHndlng.dll" Guid="{3426E040-6FBB-473B-98AB-C7C386A04488}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Mcrsft.Prctcs.ntrprsLbrr.TrnsntFltHndlng.dll" Name="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Microsoft.AspNet.SignalR.Client.dll" Guid="{FCCB6EE9-2F9A-40B8-AA10-02620446B64C}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Microsoft.AspNet.SignalR.Client.dll" Name="Microsoft.AspNet.SignalR.Client.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Microsoft.AspNet.SignalR.Client.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Microsoft.AspNet.SignalR.Core.dll" Guid="{16C425A4-94E4-4B6A-9859-701925E55832}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Microsoft.AspNet.SignalR.Core.dll" Name="Microsoft.AspNet.SignalR.Core.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Microsoft.AspNet.SignalR.Core.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Microsoft.Owin.dll" Guid="{3E49E2E2-2157-4609-8CFA-00E3569A774E}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Microsoft.Owin.dll" Name="Microsoft.Owin.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Microsoft.Owin.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Microsoft.Owin.Diagnostics.dll" Guid="{99B7EC4B-9434-4787-9D6C-2E8D2F452340}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Microsoft.Owin.Diagnostics.dll" Name="Microsoft.Owin.Diagnostics.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Microsoft.Owin.Diagnostics.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Microsoft.Owin.Host.HttpListener.dll" Guid="{44C9A9AA-70D7-4E7B-85C5-EB9B40B186F8}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Microsoft.Owin.Host.HttpListener.dll" Name="Microsoft.Owin.Host.HttpListener.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Microsoft.Owin.Host.HttpListener.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Microsoft.Owin.Hosting.dll" Guid="{42DA8DAD-448A-41E8-80DD-2651AAA6299C}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Microsoft.Owin.Hosting.dll" Name="Microsoft.Owin.Hosting.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Microsoft.Owin.Hosting.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Microsoft.Owin.Security.dll" Guid="{F1131B04-6943-42CE-B4CF-71399EF1369D}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Microsoft.Owin.Security.dll" Name="Microsoft.Owin.Security.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Microsoft.Owin.Security.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Newtonsoft.Json.dll" Guid="{EE2BDDCC-C95D-48BD-9310-3B6681C45FBA}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Newtonsoft.Json.dll" Name="Newtonsoft.Json.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Newtonsoft.Json.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Owin.dll" Guid="{C166B82E-0505-4F06-AEA8-5BEAEA279B73}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Owin.dll" Name="Owin.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Owin.dll" Vital="yes"/>
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_System.Net.Http.dll" Guid="{AEE095C8-4230-4D89-99C3-DAD56BE9C920}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_System.Net.Http.dll" Name="System.Net.Http.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\System.Net.Http.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_System.Net.Http.Formatting.dll" Guid="{792CD0D0-4382-4166-AAE5-73EFD373F738}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_System.Net.Http.Formatting.dll" Name="System.Net.Http.Formatting.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\System.Net.Http.Formatting.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_System.Web.Http.dll" Guid="{D0263805-8438-47C5-BF76-E1829C80AAA8}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_System.Web.Http.dll" Name="System.Web.Http.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\System.Web.Http.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_System.Web.Http.Owin.dll" Guid="{4412BCCE-EB8B-4EF3-83D8-A3487A45BA10}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_System.Web.Http.Owin.dll" Name="System.Web.Http.Owin.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\System.Web.Http.Owin.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Sage.Ssdp.Security.Client.dll" Guid="{CA0182BD-EBEB-4886-989F-6D031153F7C5}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Sage.Ssdp.Security.Client.dll" Name="Sage.Ssdp.Security.Client.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Ssdp.Security.Client.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Sage.Passport.Util.dll" Guid="{51F40063-A772-46AA-ABB3-E9E04443D122}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Sage.Passport.Util.dll" Name="Sage.Passport.Util.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Passport.Util.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Sage.Passport.Client.Xrpc.dll" Guid="{3E15C259-A367-47F0-95D2-6116FE25D772}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Sage.Passport.Client.Xrpc.dll" Name="Sage.Passport.Client.Xrpc.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Passport.Client.Xrpc.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Sage.Passport.Client.dll" Guid="{A66A3C82-8B59-4EC0-9C87-994D9EDC8F8D}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Sage.Passport.Client.dll" Name="Sage.Passport.Client.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.Passport.Client.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_ICSharpCode.SharpZipLib.dll" Guid="{069CD86E-D3B6-4A6F-91E5-7713B2DF9C08}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_ICSharpCode.SharpZipLib.dll" Name="ICSharpCode.SharpZipLib.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\ICSharpCode.SharpZipLib.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_BouncyCastle.Crypto.dll" Guid="{DA82060E-96AE-41FA-81B4-EA6ECB16EDC4}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_BouncyCastle.Crypto.dll" Name="BouncyCastle.Crypto.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\BouncyCastle.Crypto.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.ComponentIdentification.dll" Guid="{B1825546-3B49-44D0-B9E9-731AE5717128}">
+                        <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.ComponentIdentification.dll" Name="Sage.CRE.ComponentIdentification.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.ComponentIdentification.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.HostingFramework.ServiceMonitor.exe" Guid="{99E613ED-2D7E-432C-9BB0-107DC918B725}">
+                        <File Id="FIL_Sage.CRE.HostingFramework.ServiceMonitor.exe" Name="Sage.CRE.HostingFramework.ServiceMonitor.exe" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.HostingFramework.ServiceMonitor.exe" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.HostingFramework.ServiceMonitor.exe.config" Guid="{2A0E06F4-2600-4E0F-9C7D-9A49C8F8EA48}">  
+                        <File Id="FIL_Sage.CRE.HostingFramework.ServiceMonitor.exe.config" Name="Sage.CRE.HostingFramework.ServiceMonitor.exe.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.HostingFramework.ServiceMonitor.exe.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.HostingFramework.ServiceMonitor.config" Guid="{9A9B8EC0-667E-4376-BBF8-7820486906BD}">
+                        <File Id="FIL_Sage.CRE.HostingFramework.ServiceMonitor.config" Name="Sage.CRE.HostingFramework.ServiceMonitor.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.HostingFramework.ServiceMonitor.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.HostingFramework.Service.exe" Guid="{4657E06E-4C18-4A16-AF28-1828639E79F8}">
+                        <File Id="FIL_Sage.CRE.HostingFramework.Service.exe" Name="Sage.CRE.HostingFramework.Service.exe" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.HostingFramework.Service.exe" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.HostingFramework.Service.exe.config" Guid="{741011C6-F3F3-4706-819A-D3D0FDFE6BE0}">
+                        <File Id="FIL_Sage.CRE.HostingFramework.Service.exe.config" Name="Sage.CRE.HostingFramework.Service.exe.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.HostingFramework.Service.exe.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.HostingFramework.Service.config" Guid="{C69022D8-59A3-4D60-884E-00B938BF8F5D}">
+                        <File Id="FIL_Sage.CRE.HostingFramework.Service.config" Name="Sage.CRE.HostingFramework.Service.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.HostingFramework.Service.config" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.HostingFramework.ServiceLibrary.dll" Guid="{610700C6-0DD6-49E2-A7CA-BAD1E8D7EBA7}">
+                        <File Id="FIL_Sage.CRE.HostingFramework.ServiceLibrary.dll" Name="Sage.CRE.HostingFramework.ServiceLibrary.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.HostingFramework.ServiceLibrary.dll" Vital="yes" />
+                    </Component>
+                    <Component Id="COM_Sage.CRE.HostingFramework.ServiceLibrary.dll.config" Guid="{FE81BE21-22B0-41FF-A378-1A9E18C224DB}">
+                        <File Id="FIL_Sage.CRE.HostingFramework.ServiceLibrary.dll.config" Name="Sage.CRE.HostingFramework.ServiceLibrary.dll.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Sage.CRE.HostingFramework.ServiceLibrary.dll.config" Vital="yes" />
+                    </Component>
+                    <Directory Id="DIR_Sage.CRE.CloudConnector_BinderPlugins" Name="BinderPlugins">
+                        <Component Id="COM_Sage.Connector.Binding.RemoteConfig.dll" Guid="{722FF230-9795-488E-8336-A7D03E6B7669}">
+                            <File Id="FIL_Sage.Connector.Binding.RemoteConfig.dll" Name="Sage.Connector.Binding.RemoteConfig.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\BinderPlugins\Sage.Connector.Binding.RemoteConfig.dll" Vital="yes"/>
+                        </Component>
+                        <Component Id="COM_Sage.Connector.Binding.List.dll" Guid="{6C3A20FD-B533-4390-9D2F-0B28B6F628F1}">
+                            <File Id="FIL_Sage.Connector.Binding.List.dll" Name="Sage.Connector.Binding.List.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\BinderPlugins\Sage.Connector.Binding.List.dll" Vital="yes"/>
+                        </Component>
+                        <Component Id="COM_Sage.Connector.Binding.StateCheck.dll" Guid="{0702BF18-CE4A-4252-B644-11BCEC0D71B8}">
+                            <File Id="FIL_Sage.Connector.Binding.StateCheck.dll" Name="Sage.Connector.Binding.StateCheck.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\BinderPlugins\Sage.Connector.Binding.StateCheck.dll" Vital="yes"/>
+                        </Component>
+                        <Component Id="COM_Sage.Connector.Binding.Posting.dll" Guid="{C81DAF98-4CA0-4EAB-82D2-835D205AC222}">
+                            <File Id="FIL_Sage.Connector.Binding.Posting.dll" Name="Sage.Connector.Binding.Posting.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\BinderPlugins\Sage.Connector.Binding.Posting.dll" Vital="yes"/>
+                        </Component>
+                        <Component Id="COM_Sage.Connector.Binding.Reporting.dll" Guid="{676ED3D8-12A2-4DE3-9799-BE165F178312}">
+                            <File Id="FIL_Sage.Connector.Binding.Reporting.dll" Name="Sage.Connector.Binding.Reporting.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\BinderPlugins\Sage.Connector.Binding.Reporting.dll" Vital="yes"/>
+                        </Component>
+                        <Component Id="COM_Sage.Connector.Binding.LoopBack.dll" Guid="{9DC28DC9-1642-4FF7-9EF7-3310D55AEA6A}">
+                            <File Id="FIL_Sage.Connector.Binding.LoopBack.dll" Name="Sage.Connector.Binding.LoopBack.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\BinderPlugins\Sage.Connector.Binding.LoopBack.dll" Vital="yes"/>
+                        </Component>
+                        <Component Id="COM_Sage.Connector.Binding.DomainMediation.dll" Guid="{C5C87B51-0279-4588-8C87-E8D37BE7042B}">
+                            <File Id="FIL_Sage.Connector.Binding.DomainMediation.dll" Name="Sage.Connector.Binding.DomainMediation.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\BinderPlugins\Sage.Connector.Binding.DomainMediation.dll" Vital="yes"/>
+                        </Component>
+                    </Directory>
+                    <Directory Id="DIR_Sage.CRE.CloudConnector_HostingFrameworkServices" Name="HostingFrameworkServices">
+                        <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.MessagingService.Config.xml" Guid="{4D85EA7C-D2E1-4D2A-9CFE-7858EDCF8390}">
+                            <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.MessagingService.Config.xml" Name="Sage.Connector.MessagingService.Config.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\HostingFrameworkServices\Sage.Connector.MessagingService.Config.xml" Vital="yes"/>
+                        </Component>
+                        <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.DispatchService.Config.xml" Guid="{3E3DAECE-8F8D-4F23-8CE8-026DDFA35380}">
+                            <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.DispatchService.Config.xml" Name="Sage.Connector.DispatchService.Config.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\HostingFrameworkServices\Sage.Connector.DispatchService.Config.xml" Vital="yes"/>
+                        </Component>
+                        <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.ConfigurationService.Cnfg.xml" Guid="{2A0514DC-5A42-4BCC-90B1-CE5A39498609}">
+                            <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.ConfigurationService.Cnfg.xml" Name="Sage.Connector.ConfigurationService.Config.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\HostingFrameworkServices\Sage.Connector.ConfigurationService.Config.xml" Vital="yes"/>
+                        </Component>
+                        <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.NotificationService.Confg.xml" Guid="{AF20AD0D-5530-4E19-B65A-E909F89FE64C}">
+                            <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.NotificationService.Confg.xml" Name="Sage.Connector.NotificationService.Config.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\HostingFrameworkServices\Sage.Connector.NotificationService.Config.xml" Vital="yes"/>
+                        </Component>
+                        <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.StateService.Config.xml" Guid="{F9DEACBC-9DAC-4BF3-A158-B892EE4B3668}">
+                            <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.StateService.Config.xml" Name="Sage.Connector.StateService.Config.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\HostingFrameworkServices\Sage.Connector.StateService.Config.xml" Vital="yes"/>
+                        </Component>
+                    </Directory>
+                    <Directory Id="DIR_Sage.CRE.HostingFrameworkServer_HostingFrameworkServices" Name="HostingFrameworkServices">
+                        <Component Id="COM_Sage.CRE.HostingFrameworkServer_Sage.CRE.HostngFrmwrk.MntrSrvc.xml_0" Guid="{53ABA91A-59F5-469D-9147-D152CC3A1608}">
+                            <File Id="FIL_Sage.CRE.HostingFrameworkServer_Sage.CRE.HostngFrmwrk.MntrSrvc.xml_0" Name="Sage.CRE.HostingFramework.MonitorService.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\HostingFrameworkServices\Sage.CRE.HostingFramework.MonitorService.xml" Vital="yes"/>
+                        </Component>
+                        <Component Id="COM_Sage.CRE.HostingFrameworkServer_Sage.CRE.HostngFrmwrk.CtlgSrvc.xml_0" Guid="{40649830-744D-4F39-813F-E1C0F19A9D4F}">
+                            <File Id="FIL_Sage.CRE.HostingFrameworkServer_Sage.CRE.HostngFrmwrk.CtlgSrvc.xml_0" Name="Sage.CRE.HostingFramework.CatalogService.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\HostingFrameworkServices\Sage.CRE.HostingFramework.CatalogService.xml" Vital="yes"/>
+                        </Component>
+                    </Directory>
+                    <Directory Id="DIR_Monitor" Name="Monitor">
+                        <Directory Id="Dir_MonitorTray" Name="Tray" />
+                    </Directory>
+                    <Directory Id="DIR_Sage.CRE.CloudConnector_Monitor" Name="Monitor">
+                        <Directory Id="DIR_Sage.CRE.CloudConnector_Service" Name="Service">
+                            <Component Id="COM_ConnectorMonitorServiceInstanceConfigDefaults" Guid="{6402B97F-DE5E-4B6B-8999-FC778EA6CB87}">
+                                <File Id="FIL_ConnectorMonitorServiceInstanceConfigDefaults" Name="Sage.CRE.HostingFramework.Service-InstanceConfigDefaults.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.CRE.HostingFramework.Service-InstanceConfigDefaults.xml" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.Connector.MonitorService.dll" Guid="{02548E33-6108-4F4D-B742-06C65B4C8F13}">
+                                <File Id="FIL_Sage.Connector.MonitorService.dll" Name="Sage.Connector.MonitorService.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.Connector.MonitorService.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.Connector.MonitorService.dll.config" Guid="{99FFA52B-2AA2-4138-9061-56B5D2274A30}">
+                                <File Id="FIL_Sage.Connector.MonitorService.dll.config" Name="Sage.Connector.MonitorService.dll.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.Connector.MonitorService.dll.config" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.Connector.MonitorService.Interfaces.dll" Guid="{EC3C6796-6783-4B4B-A11C-B3F26023F991}">
+                                <File Id="FIL_Sage.Connector.MonitorService.Interfaces.dll" Name="Sage.Connector.MonitorService.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.Connector.MonitorService.Interfaces.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.Connector.MonitorService.Proxy.dll" Guid="{B04B3F83-C3B3-4E33-8602-B31F2BE34ADD}">
+                                <File Id="FIL_Sage.Connector.MonitorService.Proxy.dll" Name="Sage.Connector.MonitorService.Proxy.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.Connector.MonitorService.Proxy.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.Common.dll" Guid="{15523A6B-C5A3-430E-B93C-063D4AB90B81}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.Common.dll" Name="Sage.Connector.Common.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.Connector.Common.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Service.config" Guid="{0786400C-896B-4DF8-BF5F-31D626156C0F}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Service.config" Name="Sage.CRE.HostingFramework.Service.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.CRE.HostingFramework.Service.config" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Service.exe.config" Guid="{9A265B67-11F9-4486-A841-6793148E0715}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Service.exe.config" Name="Sage.CRE.HostingFramework.Service.exe.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.CRE.HostingFramework.Service.exe.config" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Service.exe" Guid="{252E2486-16E1-40F6-8A17-475407974CA8}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Service.exe" Name="Sage.CRE.HostingFramework.Service.exe" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.CRE.HostingFramework.Service.exe" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceLibrary.dll" Guid="{6A4456CC-9C96-41CD-BB9F-B8B0E7194FAF}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceLibrary.dll" Name="Sage.CRE.HostingFramework.ServiceLibrary.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.CRE.HostingFramework.ServiceLibrary.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceMonitr.cnfg" Guid="{DF789BDC-A63B-4B29-B219-94907FB7CD51}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceMonitr.cnfg" Name="Sage.CRE.HostingFramework.ServiceMonitor.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.CRE.HostingFramework.ServiceMonitor.config" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceMntr.x.cnfg" Guid="{685BBCDC-9AD3-4323-9856-1B99681AE703}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceMntr.x.cnfg" Name="Sage.CRE.HostingFramework.ServiceMonitor.exe.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.CRE.HostingFramework.ServiceMonitor.exe.config" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceMonitor.exe" Guid="{C8A91D3A-CB58-4641-9D79-0B094ACE065F}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceMonitor.exe" Name="Sage.CRE.HostingFramework.ServiceMonitor.exe" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.CRE.HostingFramework.ServiceMonitor.exe" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.StateService.Interfaces.dll" Guid="{114F131D-FEED-4632-91D6-76C494B73B3B}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.StateService.Interfaces.dll" Name="Sage.Connector.StateService.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.Connector.StateService.Interfaces.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.StateService.Proxy.dll" Guid="{3F409D68-7B4C-4F2D-9464-ACC0611AAA07}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.StateService.Proxy.dll" Name="Sage.Connector.StateService.Proxy.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\Sage.Connector.StateService.Proxy.dll" Vital="yes"/>
+                            </Component>
+                            <Directory Id="DIR_Sage.CRE.CloudConnector_HostingFrameworkServices_0" Name="HostingFrameworkServices">
+                                <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.CatalogService.xml" Guid="{7C3A585B-2D45-4A8A-A400-FA18C41BB489}">
+                                    <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.CatalogService.xml" Name="Sage.CRE.HostingFramework.CatalogService.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\HostingFrameworkServices\Sage.CRE.HostingFramework.CatalogService.xml" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.MonitorService.xml" Guid="{FA2177FC-E74A-4A49-B327-F6CBB7C01115}">
+                                    <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.MonitorService.xml" Name="Sage.CRE.HostingFramework.MonitorService.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\HostingFrameworkServices\Sage.CRE.HostingFramework.MonitorService.xml" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.MonitorService.Config.xml" Guid="{F35D57F9-25DE-47C7-870F-902F083430E5}">
+                                    <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.MonitorService.Config.xml" Name="Sage.Connector.MonitorService.Config.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Service\HostingFrameworkServices\Sage.Connector.MonitorService.Config.xml" Vital="yes"/>
+                                </Component>
+                            </Directory>
+                        </Directory>
+                        <Directory Id="DIR_Sage.CRE.CloudConnector_Tray" Name="Tray">
+                            <Component Id="COM_ConnectorServiceMonitor.exe" Guid="{62515525-8C49-4332-BC80-367B0DBEDC1A}">
+                                <File Id="FIL_ConnectorServiceMonitor.exe" Name="ConnectorServiceMonitor.exe" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\ConnectorServiceMonitor.exe" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_ConnectorServiceMonitor.exe.config" Guid="{0A995A42-818F-4AAB-BF31-F6FD1D5B46F1}">
+                                <File Id="FIL_ConnectorServiceMonitor.exe.config" Name="ConnectorServiceMonitor.exe.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\ConnectorServiceMonitor.exe.config" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_ConnectorServiceMonitor.config" Guid="{9232BFB1-A24A-4705-ABB2-87F5B7CD5623}">
+                                <File Id="FIL_ConnectorServiceMonitor.config" Name="ConnectorServiceMonitor.config" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\ConnectorServiceMonitor.config" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_ConnectorServiceMonitor.ViewModel.dll" Guid="{DEA1B4DE-AC67-406B-9F5C-78A801C00F3B}">
+                                <File Id="FIL_ConnectorServiceMonitor.ViewModel.dll" Name="ConnectorServiceMonitor.ViewModel.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\ConnectorServiceMonitor.ViewModel.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.Common.dll_0" Guid="{8296DEC7-E523-4D59-9DAF-A529908C4AD9}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.Common.dll_0" Name="Sage.Connector.Common.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\Sage.Connector.Common.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.MonitorService.Interfaces.dll" Guid="{9C2E56D5-D9E6-4A49-919C-25487BE646BB}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.MonitorService.Interfaces.dll" Name="Sage.Connector.MonitorService.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\Sage.Connector.MonitorService.Interfaces.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.MonitorService.Proxy.dll" Guid="{5B153C73-A6EF-4B1D-9651-3EE9C98F27AC}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.MonitorService.Proxy.dll" Name="Sage.Connector.MonitorService.Proxy.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\Sage.Connector.MonitorService.Proxy.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.Connector.StateService.Interfaces.dll_0" Guid="{4E0D1F16-5F98-455B-A6AC-01906A96DA3B}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.Connector.StateService.Interfaces.dll_0" Name="Sage.Connector.StateService.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\Sage.Connector.StateService.Interfaces.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.Core.dll" Guid="{BB7FAFEE-FF18-4EE1-8C6E-775EE559EC3F}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.Core.dll" Name="Sage.CRE.Core.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\Sage.CRE.Core.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.Core.UI.dll" Guid="{F21962CA-125C-48B0-9DB9-B5F39C24324A}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.Core.UI.dll" Name="Sage.CRE.Core.UI.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\Sage.CRE.Core.UI.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Interfaces.dll" Guid="{63D57186-1D08-4ED1-A015-C558F138CD61}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Interfaces.dll" Name="Sage.CRE.HostingFramework.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\Sage.CRE.HostingFramework.Interfaces.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Proxy.dll" Guid="{43927EC9-BFE4-4540-9AA9-CBAAF86F53AF}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Proxy.dll" Name="Sage.CRE.HostingFramework.Proxy.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\Sage.CRE.HostingFramework.Proxy.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_Sage.CRE.CloudConnector_Sage.CRE.Resources.dll" Guid="{87B28050-BBC6-41BA-9906-6E1EDD3BED31}">
+                                <File Id="FIL_Sage.CRE.CloudConnector_Sage.CRE.Resources.dll" Name="Sage.CRE.Resources.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\Sage.CRE.Resources.dll" Vital="yes"/>
+                            </Component>
+                            <Component Id="COM_ConnectorMonitorTrayConfiguration" Guid="{2CAFFA90-8B1A-4C61-BB8B-5EA8FF08A1B8}">
+                                <File Id="FIL_ConnectorMonitorTrayConfiguration" Name="Configuration.xml" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Monitor\Tray\Configuration.xml" Vital="yes"/>
+                            </Component>
+                        </Directory>
+                    </Directory>
+                    <Directory Id="DIR_Sage.CRE.CloudConnector_Pipeline" Name="Pipeline">
+                        <Directory Id="DIR_Sage.CRE.CloudConnector_AddinSideAdapters" Name="AddinSideAdapters">
+                            <Component Id="COM_Sage.Connector.ProcessExecution.AddinSideAdapter.dll" Guid="{87E99A36-F243-4DC4-85FE-BC00F98FCE63}">
+                                <File Id="FIL_Sage.Connector.ProcessExecution.AddinSideAdapter.dll" Name="Sage.Connector.ProcessExecution.AddinSideAdapter.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\AddinSideAdapters\Sage.Connector.ProcessExecution.AddinSideAdapter.dll" Vital="yes"/>
+                            </Component>
+                        </Directory>
+                        <Directory Id="DIR_Sage.CRE.CloudConnector_AddinViews" Name="AddinViews">
+                            <Component Id="COM_Sage.Connector.ProcessExecution.AddinView.dll" Guid="{8AAD17ED-BEE5-42D4-A857-9C635236C3D3}">
+                                <File Id="FIL_Sage.Connector.ProcessExecution.AddinView.dll" Name="Sage.Connector.ProcessExecution.AddinView.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\AddinViews\Sage.Connector.ProcessExecution.AddinView.dll" Vital="yes"/>
+                            </Component>
+                        </Directory>
+                        <Directory Id="DIR_Sage.CRE.CloudConnector_Contracts" Name="Contracts">
+                            <Component Id="COM_Sage.Connector.ProcessExecution.Contract.dll" Guid="{CA4AEF9A-AA3E-48B1-AFF6-59BC14CE2872}">
+                                <File Id="FIL_Sage.Connector.ProcessExecution.Contract.dll" Name="Sage.Connector.ProcessExecution.Contract.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Contracts\Sage.Connector.ProcessExecution.Contract.dll" Vital="yes"/>
+                            </Component>
+                        </Directory>
+                        <Directory Id="DIR_Sage.CRE.CloudConnector_HostSideAdapters" Name="HostSideAdapters">
+                            <Component Id="COM_Sage.Connector.ProcessExecution.HostSideAdapter.dll" Guid="{849C4BE0-65A2-4A66-BB0D-54897C477F2B}">
+                                <File Id="FIL_Sage.Connector.ProcessExecution.HostSideAdapter.dll" Name="Sage.Connector.ProcessExecution.HostSideAdapter.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\HostSideAdapters\Sage.Connector.ProcessExecution.HostSideAdapter.dll" Vital="yes"/>
+                            </Component>
+                        </Directory>
+                        <Directory Id="DIR_Sage.CRE.CloudConnector_Addins" Name="Addins">
+                            <Directory Id="DIR_Sage.CRE.CloudConnector_ProcessExecution" Name="ProcessExecution">
+                                <Component Id="COM_Sage.Connector.ProcessExecution.Addin.dll" Guid="{0D77FF4A-F1BC-4869-9F03-82E8434EE510}">
+                                    <File Id="FIL_Sage.Connector.ProcessExecution.Addin.dll" Name="Sage.Connector.ProcessExecution.Addin.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Sage.Connector.ProcessExecution.Addin.dll" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.Connector.DomainMediator.Core.dll" Guid="{226F47BC-5950-48B9-94AA-F3027094587A}">
+                                    <File Id="FIL_Sage.Connector.DomainMediator.Core.dll" Name="Sage.Connector.DomainMediator.Core.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Sage.Connector.DomainMediator.Core.dll" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.Connector.Domain.DataContract.dll" Guid="{07B67BB6-28E0-4F50-9C09-BEFF626D3F08}">
+                                    <File Id="FIL_Sage.Connector.Domain.DataContract.dll" Name="Sage.Connector.Domain.DataContract.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Sage.Connector.Domain.DataContract.dll" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.Connector.SyncShared.Contracts.dll" Guid="{FF648B0D-CB5B-4EA9-8A7E-90B9E768E071}">
+                                    <File Id="FIL_Sage.Connector.SyncShared.Contracts.dll" Name="Sage.Connector.SyncShared.Contracts.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Sage.Connector.SyncShared.Contracts.dll" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.Connector.Sales.Contracts.dll" Guid="{0E828D93-BAAF-48A8-91FB-4EF59705E71A}">
+                                    <File Id="FIL_Sage.Connector.Sales.Contracts.dll" Name="Sage.Connector.Sales.Contracts.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Sage.Connector.Sales.Contracts.dll" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.Connector.SyncShared.Mediator.dll" Guid="{A99AF106-AE0D-4C1A-9A16-76AB91551D9B}">
+                                    <File Id="FIL_Sage.Connector.SyncShared.Mediator.dll" Name="Sage.Connector.SyncShared.Mediator.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Sage.Connector.SyncShared.Mediator.dll" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.Connector.Sales.Mediator.dll" Guid="{E326D0A5-A3FD-4AF2-B48B-E9A7DC1166A3}">
+                                    <File Id="FIL_Sage.Connector.Sales.Mediator.dll" Name="Sage.Connector.Sales.Mediator.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Sage.Connector.Sales.Mediator.dll" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.Connector.Sync.dll" Guid="{37A20BD5-E1C9-455C-B3EE-0A030A97F107}">
+                                    <File Id="FIL_Sage.Connector.Sync.dll" Name="Sage.Connector.Sync.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Sage.Connector.Sync.dll" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.Connector.Sync.Interfaces.dll" Guid="{63D0CFC3-E0C6-4B0A-B68C-0F71FDCFF37F}">
+                                    <File Id="FIL_Sage.Connector.Sync.Interfaces.dll" Name="Sage.Connector.Sync.Interfaces.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Sage.Connector.Sync.Interfaces.dll" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.Connector.MockPlugin.dll" Guid="{85777DD2-3C40-480E-A16F-84642FB81828}">
+                                    <File Id="FIL_Sage.Connector.MockPlugin.dll" Name="Sage.Connector.MockPlugin.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Sage.Connector.MockPlugin.dll" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.Connector.MockSage300ERPPlugin.dll" Guid="{18256B43-CB27-433D-A159-7D3B829ADCF8}">
+                                    <File Id="FIL_Sage.Connector.MockSage300ERPPlugin.dll" Name="Sage.Connector.MockSage300ERPPlugin.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Sage.Connector.MockSage300ERPPlugin.dll" Vital="yes"/>
+                                </Component>
+                                <Component Id="COM_Sage.CRE.CloudConnector_Newtonsoft.Json.dll_0" Guid="{3070BF06-5EEA-4DC9-902C-DBB2DD8293C4}">
+                                    <File Id="FIL_Sage.CRE.CloudConnector_Newtonsoft.Json.dll_0" Name="Newtonsoft.Json.dll" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (SCA)\Pipeline\Addins\ProcessExecution\Newtonsoft.Json.dll" Vital="yes"/>
+                                </Component>
+                            </Directory>
+                        </Directory>
+                    </Directory>
+                </Directory>
+            </Directory>
+            <Directory Id="CommonFilesFolder" />
+            <Directory Id="CommonAppDataFolder">
+                <Directory Id="DIR_AppDataSage" Name="Sage">
+                    <Directory Id="DIR_AppDataCRE" Name="CRE">
+                        <Directory Id="DIR_AppDataHostingFramework" Name="HostingFramework">
+                            <Directory Id="DIR_AppDataServiceName" Name="Sage.Connector.Service.1.0">
+                                <Directory Id="DIR_AppDataBaseline" Name="Baseline">
+                                    <Component Id="COM_ConfigurationStore" Guid="{19EF84AF-C4FA-4902-9448-C2549F1D9730}">
+                                        <File Id="FIL_ConfigurationStore" Name="ConfigurationStore.sdf" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CRE\HostingFramework\Sage.Connector.Service.1.0\Baseline\ConfigurationStore.sdf" Vital="yes" />
+                                    </Component>
+                                    <Component Id="COM_LogStore" Guid="{EB19AB18-6D8C-4455-9889-54168AC5F775}">
+                                        <File Id="FIL_LogStore" Name="LogStore.sdf" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CRE\HostingFramework\Sage.Connector.Service.1.0\Baseline\LogStore.sdf" Vital="yes"/>
+                                    </Component>
+                                    <Component Id="COM_QueueStore" Guid="{294E0396-1E70-4D0E-89F7-11668DF400E3}">
+                                        <File Id="FIL_QueueStore" Name="QueueStore.sdf" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CRE\HostingFramework\Sage.Connector.Service.1.0\Baseline\QueueStore.sdf" Vital="yes"/>
+                                    </Component>
+                                    <Component Id="COM_ViewConfigurations" Guid="{985BF5AF-2395-4414-8FB6-66EB19BD32DB}">
+                                        <File Id="FIL_ViewConfigurations" Name="ViewConfigurations.ps1" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CRE\HostingFramework\Sage.Connector.Service.1.0\Baseline\ViewConfigurations.ps1" Vital="yes"/>
+                                    </Component>
+                                    <Component Id="COM_ViewLog" Guid="{23797145-0D26-4D7F-864F-CAE59A540DBF}">
+                                        <File Id="FIL_ViewLog" Name="ViewLog.ps1" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CRE\HostingFramework\Sage.Connector.Service.1.0\Baseline\ViewLog.ps1" Vital="yes"/>
+                                    </Component>
+                                    <Component Id="COM_ViewActivity" Guid="{B035B3FB-89B9-4453-9E7A-EB37DD0396EE}">
+                                        <File Id="FIL_ViewActivity" Name="ViewActivity.ps1" KeyPath="yes" Source="$(var.SandboxDir)\Runtime Files\Documents and Settings\All Users\Application Data\Sage\CRE\HostingFramework\Sage.Connector.Service.1.0\Baseline\ViewActivity.ps1" Vital="yes"/>
+                                    </Component>
+                                </Directory>
+                            </Directory>
+                        </Directory>
+                    </Directory>
+                </Directory>
+            </Directory>
+            <Directory Id="DesktopFolder" Name="Desktop" />
+            <Directory Id="SystemFolder" />
+            <Directory Id="ProgramMenuFolder" Name="Programs">
+                <Directory Id="DIR_PMF_Sage" Name="Sage">
+                    <Directory Id="DIR_PMF_Sage_SCA" Name="Sage Connector" ShortName="6hqlolsl">
+                        <Component Id="COM_ConnectorUIShortcut" Guid="{4A8AA4F1-5541-4B1B-A8AB-15392F9C70A9}">
+                            <CreateFolder Directory="DIR_PMF_Sage_SCA" />
+                            <RegistryValue Id="reg4EC1AD2FE19C59338A7E10AB72316B68" Root="HKCU" Key="SOFTWARE\Sage\SageConnector\$(var.SkyfireProduct)\Shortcut_ConnectorUI" Name="installed" Value="1" Type="integer" KeyPath="yes" />
+                            <RemoveFolder Id="RemoveFolder_DIR_PMF_Sage_SCA" Directory="DIR_PMF_Sage_SCA" On="uninstall" />
+                            <RemoveFolder Id="RemoveFolder_DIR_PMF_Sage" Directory="DIR_PMF_Sage" On="uninstall" />
+                            <Shortcut Id="Shortcut_ConnectorUI" Directory="DIR_PMF_Sage_SCA" Name="Sage Connector" Icon="Icon_ConnectorUI" IconIndex="0" WorkingDirectory="INSTALLDIR"/>
+                        </Component>
+                        <Component Id="COM_MonitorShortcut" Guid="{C244639F-4BCB-48FA-AB3E-B0BAE3FA1111}">
+                            <RegistryValue Id="reg258CCCB253BB07BD5AC795E227C392E0" Root="HKCU" Key="SOFTWARE\Sage\SageConnector\SCA\Shortcut_Monitor" Name="installed" Value="1" Type="integer" KeyPath="yes" />
+                            <Shortcut Id="Shortcut_Monitor" Directory="DIR_PMF_Sage_SCA" Name="Sage Connector Monitor" Arguments="/forcegui" Icon="Icon_Monitor" IconIndex="0" WorkingDirectory="DIR_MonitorTray"/>
+                        </Component>
+                    </Directory>
+                </Directory>
+                <Directory Id="StartupFolder" Name="Startup" />
+            </Directory>
+        </Directory>
+        <Feature Id="Complete" ConfigurableDirectory="INSTALLDIR" Description="The complete package." Display="expand" Level="1" Title="Sage Connector">
+            <ComponentRef Id="COM_ConnectorUIShortcut" />
+            <ComponentRef Id="COM_MonitorShortcut" />
+            <ComponentRef Id="COM_ConfigurationStore" />
+            <ComponentRef Id="COM_LogStore" />
+            <ComponentRef Id="COM_QueueStore" />
+            <ComponentRef Id="COM_ViewConfigurations" />
+            <ComponentRef Id="COM_ViewLog" />
+            <ComponentRef Id="COM_ViewActivity" />
+            <ComponentRef Id="COM_ConnectorRegistry" />
+            <Feature Id="FEA_ConMonSvcInstanceConfigDefaults" Display="hidden" Level="1">
+                <ComponentRef Id="COM_ConnectorMonitorServiceInstanceConfigDefaults" />
+            </Feature>
+            <Feature Id="FEA_ConnectorMonitorTrayConfiguration" Display="hidden" Level="1">
+                <ComponentRef Id="COM_ConnectorMonitorTrayConfiguration" />
+            </Feature>
+            <Feature Id="FEA_ConSvcInstanceConfigDefaults" Display="hidden" Level="1">
+                <ComponentRef Id="COM_ConnectorServiceInstanceConfigDefaults" />
+            </Feature>
+            <Feature Id="FEA_InstalledProductInfo" Display="hidden" Level="1">
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector.InstalledProductInfo.dll" />
+            </Feature>
+            <Feature Id="FEA_Sage.CRE.CloudConnector" Display="hidden" Level="1">
+                <ComponentRef Id="COM_DBTool.exe" />
+                <ComponentRef Id="COM_DBTool.exe.config" />
+                <ComponentRef Id="COM_DBTool.config" />
+                <ComponentRef Id="COM_Sage.Connector.PremiseStore.dll" />
+                <ComponentRef Id="COM_Sage.Connector.PremiseStore.dll.config" />
+                <ComponentRef Id="COM_Sage.Connector.Data.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Common.dll" />
+                <ComponentRef Id="COM_Sage.Connector.ConnectorServiceCommon.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Utilities.Platform.DotNet.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Signalr.Client.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Signalr.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Signalr.Common.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Signalr.Controller.dll" />
+                <ComponentRef Id="COM_Sage.Connector.ProcessExecution.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.Connector.ConfigurationService.dll" />
+                <ComponentRef Id="COM_Sage.Connector.ConfigurationService.dll.config" />
+                <ComponentRef Id="COM_Sage.Connector.ConfigurationService.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.Connector.ConfigurationService.Proxy.dll" />
+                <ComponentRef Id="COM_Sage.Connector.DispatchService.dll" />
+                <ComponentRef Id="COM_Sage.Connector.DispatchService.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.Connector.DispatchService.Proxy.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Entities.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Logging.dll" />
+                <ComponentRef Id="COM_Sage.Connector.MessagingService.dll" />
+                <ComponentRef Id="COM_Sage.Connector.MessagingService.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.Connector.MessagingService.Proxy.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Documents.dll" />
+                <ComponentRef Id="COM_Sage.Connector.NotificationService.dll" />
+              <ComponentRef Id="COM_Sage.Connector.NotificationService.dll.config" />
+              <ComponentRef Id="COM_Sage.Connector.NotificationService.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.Connector.NotificationService.Proxy.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Queues.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Reports.dll" />
+                <ComponentRef Id="COM_Sage.Connector.StateService.dll" />
+              <ComponentRef Id="COM_Sage.Connector.StateService.dll.config" />
+                <ComponentRef Id="COM_Sage.Connector.StateService.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.Connector.StateService.Proxy.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Utilities.dll" />
+
+              <ComponentRef Id="COM_SageConnector.config" />
+                <ComponentRef Id="COM_SageConnector.exe" />
+              <ComponentRef Id="COM_SageConnector.exe.config" />
+                <ComponentRef Id="COM_SageConnector.ViewModel.dll" />
+              <ComponentRef Id="COM_SageConnectorConfiguration.config" />
+              
+              <ComponentRef Id="COM_SageConnectorConfiguration.exe" />
+              <ComponentRef Id="COM_SageConnectorConfiguration.exe.config" />
+                <ComponentRef Id="COM_SageConnectorConfiguration.ViewModel.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector.PluginShim35.exe" />
+              <ComponentRef Id="COM_Sage.CRE.CloudConnector.PluginShim35.exe.config" />
+              <ComponentRef Id="COM_Sage.CRE.CloudConnector.PluginShim35.config" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector.PluginShim40.exe" />
+              <ComponentRef Id="COM_Sage.CRE.CloudConnector.PluginShim40.exe.config" />
+              <ComponentRef Id="COM_Sage.CRE.CloudConnector.PluginShim40.config" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector.PluginShimLibrary.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Cloud.Integration.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Cloud.Integration.Proxy.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector.Integration.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Microsoft.WindowsAzure.Configuration.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Microsoft.WindowsAzure.Storage.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Mcrsft.Prctcs.ntrprsLbrr.TrnsntFltHndlng.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Microsoft.AspNet.SignalR.Client.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Microsoft.AspNet.SignalR.Core.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Microsoft.Owin.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Microsoft.Owin.Diagnostics.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Microsoft.Owin.Host.HttpListener.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Microsoft.Owin.Hosting.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Microsoft.Owin.Security.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Newtonsoft.Json.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Owin.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_System.Net.Http.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_System.Net.Http.Formatting.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_System.Web.Http.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_System.Web.Http.Owin.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Ssdp.Security.Client.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Passport.Util.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Passport.Client.Xrpc.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Passport.Client.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_ICSharpCode.SharpZipLib.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_BouncyCastle.Crypto.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.ComponentIdentification.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Binding.RemoteConfig.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Binding.List.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Binding.StateCheck.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Binding.Posting.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Binding.Reporting.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Binding.LoopBack.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Binding.DomainMediation.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.MessagingService.Config.xml" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.DispatchService.Config.xml" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.ConfigurationService.Cnfg.xml" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.NotificationService.Confg.xml" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.StateService.Config.xml" />
+                <ComponentRef Id="COM_Sage.Connector.MonitorService.dll" />
+              <ComponentRef Id="COM_Sage.Connector.MonitorService.dll.config" />
+                <ComponentRef Id="COM_Sage.Connector.MonitorService.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.Connector.MonitorService.Proxy.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.Common.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Service.config" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Service.exe.config" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Service.exe" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceLibrary.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceMonitr.cnfg" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceMntr.x.cnfg" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.ServiceMonitor.exe" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.StateService.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.StateService.Proxy.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.CatalogService.xml" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.MonitorService.xml" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.MonitorService.Config.xml" />
+                <ComponentRef Id="COM_ConnectorServiceMonitor.exe" />
+              <ComponentRef Id="COM_ConnectorServiceMonitor.exe.config" />
+              <ComponentRef Id="COM_ConnectorServiceMonitor.config" />
+                <ComponentRef Id="COM_ConnectorServiceMonitor.ViewModel.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.Common.dll_0" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.MonitorService.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.MonitorService.Proxy.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.Connector.StateService.Interfaces.dll_0" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.Core.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.Core.UI.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.HostingFramework.Proxy.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Sage.CRE.Resources.dll" />
+                <ComponentRef Id="COM_Sage.Connector.ProcessExecution.Addin.dll" />
+                <ComponentRef Id="COM_Sage.Connector.DomainMediator.Core.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Domain.DataContract.dll" />
+                <ComponentRef Id="COM_Sage.Connector.SyncShared.Contracts.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Sales.Contracts.dll" />
+                <ComponentRef Id="COM_Sage.Connector.SyncShared.Mediator.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Sales.Mediator.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Sync.dll" />
+                <ComponentRef Id="COM_Sage.Connector.Sync.Interfaces.dll" />
+                <ComponentRef Id="COM_Sage.Connector.MockPlugin.dll" />
+                <ComponentRef Id="COM_Sage.Connector.MockSage300ERPPlugin.dll" />
+                <ComponentRef Id="COM_Sage.CRE.CloudConnector_Newtonsoft.Json.dll_0" />
+                <ComponentRef Id="COM_Sage.Connector.ProcessExecution.AddinSideAdapter.dll" />
+                <ComponentRef Id="COM_Sage.Connector.ProcessExecution.AddinView.dll" />
+                <ComponentRef Id="COM_Sage.Connector.ProcessExecution.Contract.dll" />
+                <ComponentRef Id="COM_Sage.Connector.ProcessExecution.HostSideAdapter.dll" />
+            </Feature>
+            <Feature Id="FEA_Sage.CRE.Core" Display="hidden" Level="1">
+                <ComponentRef Id="COM_Sage.CRE.Core.PInvoke.dll_GAC_4.1.0.0" Primary="yes" />
+                <ComponentRef Id="COM_Sage.CRE.Core.dll_GAC_4.1.0.0" Primary="yes" />
+                <ComponentRef Id="COM_Sage.CRE.Core.LibraryManagement.dll_GAC_4.1.0.0" Primary="yes" />
+                <ComponentRef Id="COM_Sage.CRE.Core.SQL.dll_GAC_4.1.0.0" Primary="yes" />
+                <ComponentRef Id="COM_Sage.CRE.Core.UI.dll_GAC_4.1.0.0" Primary="yes" />
+                <ComponentRef Id="COM_Sage.CRE.Core.UI.Wpf.dll_GAC_4.1.0.0" Primary="yes" />
+                <ComponentRef Id="COM_Sage.CRE.Core.WpfApplicationFramework.dll_GAC_4.1.0.0" Primary="yes" />
+            </Feature>
+            <Feature Id="FEA_Sage.CRE.HostingFrameworkClient" Display="hidden" Level="1" />
+            <Feature Id="FEA_Sage.CRE.HostingFrameworkCommon" Display="hidden" Level="1">
+                <ComponentRef Id="COM_Sage.CRE.HostingFramework.Interfaces.dll_GAC_4.1.0.0" Primary="yes" />
+                <ComponentRef Id="COM_Sage.CRE.HostingFramework.Proxy.dll_GAC_4.1.0.0" Primary="yes" />
+                <ComponentRef Id="COM_Sage.CRE.HostingFramework.ServiceMonitor.exe" />
+              <ComponentRef Id="COM_Sage.CRE.HostingFramework.ServiceMonitor.exe.config" />
+              <ComponentRef Id="COM_Sage.CRE.HostingFramework.ServiceMonitor.config" />
+            </Feature>
+            <Feature Id="FEA_Sage.CRE.HostingFrameworkServer" Display="hidden" Level="1">
+                <ComponentRef Id="COM_Sage.CRE.HostingFramework.Service.exe" />
+              <ComponentRef Id="COM_Sage.CRE.HostingFramework.Service.exe.config" />
+              <ComponentRef Id="COM_Sage.CRE.HostingFramework.Service.config" />
+                <ComponentRef Id="COM_Sage.CRE.HostingFramework.ServiceLibrary.dll" />
+              <ComponentRef Id="COM_Sage.CRE.HostingFramework.ServiceLibrary.dll.config" />
+                <ComponentRef Id="COM_Sage.CRE.HostingFrameworkServer_Sage.CRE.HostngFrmwrk.MntrSrvc.xml_0" />
+                <ComponentRef Id="COM_Sage.CRE.HostingFrameworkServer_Sage.CRE.HostngFrmwrk.CtlgSrvc.xml_0" />
+            </Feature>
+            <Feature Id="FEA_Sage.CRE.Microsoft" Display="hidden" Level="1">
+                <ComponentRef Id="COM_Sage.CRE.Microsoft.NetFwInterop.dll_GAC_4.1.0.0" Primary="yes" />
+                <ComponentRef Id="COM_Sage.CRE.Microsoft.FirewallAPIInterop.dll_GAC_4.1.0.0" Primary="yes" />
+            </Feature>
+            <Feature Id="FEA_Sage.CRE.Resources" Display="hidden" Level="1">
+                <ComponentRef Id="COM_Sage.CRE.Resources.dll_GAC_4.1.0.0" Primary="yes" />
+            </Feature>
+        </Feature>
+        <Icon Id="SetupIcon.ico" SourceFile="$(var.SandboxDir)\Libraries\CRE\CloudConnector\Install\Resources\SetupIcon.ico" />
+        <Icon Id='Icon_ConnectorUI' SourceFile='$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (COMMON_STAGING)\SageConnector.exe' />
+        <Icon Id='Icon_Monitor' SourceFile='$(var.SandboxDir)\Runtime Files\Program Files\CloudConnector (COMMON_STAGING)\Monitor\Tray\ConnectorServiceMonitor.exe' />
+        <Media Id="1" Cabinet="Sample.cab" DiskPrompt="CD-ROM #1" EmbedCab="yes" />
+        <Property Id="DiskPrompt" Value="Sage Connector Installation [1]" />
+        <Property Id="ALLUSERS" Value="1" />
+        <Property Id="ARPCOMMENTS" Value="Sage Connector Install" />
+        <Property Id="ARPCONTACT" Value="Customer Support Department" />
+        <Property Id="ARPHELPLINK" Value="http://www.sagecre.com/support_and_services" />
+        <Property Id="ARPHELPTELEPHONE" Value="1-800-551-8307" />
+        <Property Id="ARPURLINFOABOUT" Value="http://www.sagecre.com/" />
+        <Property Id="ARPURLUPDATEINFO" Value="https://customers.sagenorthamerica.com/irj/portal/anonymous/login" />
+        <Property Id="ARPPRODUCTICON" Value="SetupIcon.ico" />
+        <Property Id="REINSTALLMODE" Value="amus" />
+        <Property Id="NEWERFOUND" Secure="yes" />
+        <Property Id="OLDERFOUND" Secure="yes" />
+        <Property Id="SELFFOUND" Secure="yes" />
+        <Property Id="PREVIOUS_INSTALLDIR_APP_SEARCH">
+            <RegistrySearch Id="PreviousInstalldirAppSearch" Root="HKLM" Key="SOFTWARE\Sage\SageConnector\SCA" Name="InstallPath" Type="raw" />
+        </Property>
+        <Property Id="ONE_DOT_TWO_OR_OLDER_INSTALLDIR_APP_SEARCH">
+            <RegistrySearch Id="OneDotTwoOrOlderInstalldirAppSearch" Root="HKLM" Key="SOFTWARE\Sage\SageConnector\STO" Name="InstallPath" Type="raw" />
+        </Property>
+        <UI>
+            <ProgressText Action="CUS_Uninstall">Uninstall cleanup</ProgressText>
+            <Dialog Id="CustomWelcomeDlg" X="50" Y="50" Width="370" Height="270" Title="[ProductName] Setup">
+                <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Text="&amp;Next" TabSkip="no" Default="yes">
+                    <Publish Property="WixUI_InstallMode" Value="Update">Installed AND PATCH</Publish>
+                    <Publish Event="NewDialog" Value="LicenseAgreementDlg">NOT Installed</Publish>
+                    <Publish Event="NewDialog" Value="VerifyReadyDlg">Installed AND PATCH</Publish>
+                </Control>
+                <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Text="Cancel" TabSkip="no" Cancel="yes">
+                    <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+                </Control>
+                <Control Id="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" Text="WixUI_Bmp_Dialog" TabSkip="no" Disabled="yes" />
+                <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="&amp;Back" TabSkip="no" Disabled="yes" />
+                <Control Id="Description" Type="Text" X="135" Y="80" Width="220" Height="60" Text="The Setup Wizard will install [ProductName] on your computer. Click Next to continue or Cancel to exit the Setup Wizard. cheese" TabSkip="yes" Transparent="yes" NoPrefix="yes">
+                    <Condition Action="show">NOT Installed OR NOT PATCH</Condition>
+                    <Condition Action="hide">Installed AND PATCH</Condition>
+                </Control>
+                <Control Id="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Text="{\WixUI_Font_Bigger}Welcome to the [ProductName] Setup Wizard" TabSkip="yes" Transparent="yes" NoPrefix="yes" />
+                <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" TabSkip="yes" Disabled="yes" />
+                <Control Id="PatchDescription" Type="Text" X="135" Y="80" Width="220" Height="60" Text="The Setup Wizard will update [ProductName] on your computer. Click Next to continue or Cancel to exit the Setup Wizard." TabSkip="yes" Transparent="yes" NoPrefix="yes">
+                    <Condition Action="show">Installed AND PATCH</Condition>
+                    <Condition Action="hide">NOT Installed OR NOT PATCH</Condition>
+                </Control>
+            </Dialog>
+        </UI>
+        <UIRef Id="WixUI_InstallDir" />
+        <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+        <Upgrade Id="{A53A6887-79CA-49B5-B35D-6492C66E3554}">
+            <UpgradeVersion Minimum="99.9.9.9" Language="1033" Property="NEWERFOUND" OnlyDetect="yes" />
+            <UpgradeVersion Minimum="99.9.9.9" Maximum="99.9.9.9" Language="1033" Property="SELFFOUND" OnlyDetect="yes" IncludeMinimum="yes" IncludeMaximum="yes" />
+            <UpgradeVersion Minimum="0.0.0" Maximum="99.9.9.9" Language="1033" Property="OLDERFOUND" IncludeMinimum="yes" />
+        </Upgrade>
+        <InstallExecuteSequence>
+            <Custom Action="CUS_UninstallCloseAll" Before="InstallValidate">(NOT UPGRADINGPRODUCTCODE) AND (REMOVE ~= "ALL")</Custom>
+            <Custom Action="CUS_Uninstall" Before="InstallFinalize">(NOT UPGRADINGPRODUCTCODE) AND (REMOVE ~= "ALL")</Custom>
+            <RemoveExistingProducts After="InstallFinalize" />
+        </InstallExecuteSequence>
+        <InstallUISequence>
+          <Custom Action="SetINSTALLDIR_FromOneDotTwoOrOlderINSTALLDIRAppSearch" After="AppSearch">
+            ONE_DOT_TWO_OR_OLDER_INSTALLDIR_APP_SEARCH
+          </Custom>
+          <Custom Action="SetINSTALLDIR_FromPreviousINSTALLDIRAppSearch" After="SetINSTALLDIR_FromOneDotTwoOrOlderINSTALLDIRAppSearch">
+            PREVIOUS_INSTALLDIR_APP_SEARCH
+          </Custom>
+        </InstallUISequence>
+    </Product>
+</Wix>

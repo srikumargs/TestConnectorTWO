@@ -1,0 +1,23 @@
+﻿<Include>
+  <!-- 1.2 and older Connector was for STO only -->
+  <Property Id="ONE_DOT_TWO_OR_OLDER_INSTALLDIR_APP_SEARCH">
+    <RegistrySearch Id='OneDotTwoOrOlderInstalldirAppSearch'
+                             Root='HKLM'
+                             Key='SOFTWARE\Sage\SageConnector\STO'
+                             Name='InstallPath'
+                             Type='raw'>
+    </RegistrySearch>
+  </Property>
+  <!-- adjusted from SCA to SDC, if we do upgrades from SCA connector this may need to be adjusted -->
+  <Property Id="PREVIOUS_INSTALLDIR_APP_SEARCH">
+    <RegistrySearch Id='PreviousInstalldirAppSearch'
+                             Root='HKLM'
+                             Key='SOFTWARE\Sage\SageConnector\SDC'
+                             Name='InstallPath'
+                             Type='raw'>
+    </RegistrySearch>
+  </Property>
+
+  <CustomAction Id='SetINSTALLDIR_FromOneDotTwoOrOlderINSTALLDIRAppSearch' Property='INSTALLDIR' Value='[ONE_DOT_TWO_OR_OLDER_INSTALLDIR_APP_SEARCH]'/>
+  <CustomAction Id='SetINSTALLDIR_FromPreviousINSTALLDIRAppSearch' Property='INSTALLDIR' Value='[PREVIOUS_INSTALLDIR_APP_SEARCH]'/>
+</Include>

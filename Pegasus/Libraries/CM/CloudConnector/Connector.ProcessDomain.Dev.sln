@@ -1,0 +1,179 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomanContracts.Common.Dev", "DomainContracts\DomainContracts.Common\DomanContracts.Common.Dev.csproj", "{A8FE4330-22CC-4AB6-8306-3CF015F4F19D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainContracts", "DomainContracts", "{97B86E71-B5F0-4840-A40B-F367CAA2782A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainMediators", "DomainMediators", "{B200FA80-7314-4A48-BE60-2E5B65D22A32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.Contracts.Dev", "DomainContracts\Sales.Contracts\Sales.Contracts.Dev.csproj", "{4BCB6F63-1BB8-41C1-A0DF-3EB17D6A20D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.Mediator.Dev", "DomainMediators\Sales.Mediator\Sales.Mediator.Dev.csproj", "{EA017515-E7CE-4332-BBD3-8A63293B6DBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainMediator.Core.Dev", "DomainMediators\DomainMediator.Core\DomainMediator.Core.Dev.csproj", "{F4AFCD9E-F3B0-4B58-BEE2-C881DE6558B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProcessExecution", "ProcessExecution", "{B86FAE4A-0E63-490D-9C5D-202BC7DD7219}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessExecution.Addin.Dev", "ProcessExecution\ProcessExecution.Addin\ProcessExecution.Addin.Dev.csproj", "{BA742080-14CC-4CD7-997D-61C2AF525BF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessExecution.AddinSideAdapter.Dev", "ProcessExecution\ProcessExecution.AddinSideAdapter\ProcessExecution.AddinSideAdapter.Dev.csproj", "{283005DE-4CAE-4435-B712-245F17DF4DB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessExecution.AddinView.Dev", "ProcessExecution\ProcessExecution.AddinView\ProcessExecution.AddinView.Dev.csproj", "{DBD1B7CA-28B1-4876-A6D9-7CEDFDE19917}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessExecution.Contract.Dev", "ProcessExecution\ProcessExecution.Contract\ProcessExecution.Contract.Dev.csproj", "{84B8F6CF-58A1-40F0-A737-8AA35CDB2B58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessExecution.HostSideAdapter.Dev", "ProcessExecution\ProcessExecution.HostSideAdapter\ProcessExecution.HostSideAdapter.Dev.csproj", "{4E3055E1-F7AB-44D7-A5D9-8DD547D0A156}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessExecution.Interfaces.Dev", "ProcessExecution\ProcessExecution.Interfaces\ProcessExecution.Interfaces.Dev.csproj", "{A3C5E2FF-F6F5-45B5-9F11-0A194337D53F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{501B1982-4927-4ED7-9F15-9DC858534EDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessExecution.UnitTests", "UnitTests\ProcessExecution.UnitTests\ProcessExecution.UnitTests.csproj", "{839B945C-C785-44A4-AE89-3FA1CC2D100B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesContracts.UnitTests", "UnitTests\SalesContracts.UnitTests\SalesContracts.UnitTests.csproj", "{C96A88B4-B217-438D-B7F2-DCC026129651}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackOfficePlugins", "BackOfficePlugins", "{94B36CC3-62BF-4237-AF5C-8CD54D8E7FB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOfficePlugins.Core.Dev", "BackOfficePlugins\BackOfficePlugins.Core\BackOfficePlugins.Core.Dev.csproj", "{941B318C-4D50-4206-AFBD-800B546F7FF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockPlugin.Dev", "BackOfficePlugins\MockPlugin\MockPlugin.Dev.csproj", "{66DCCBCA-1C27-4639-B5DB-01C3BE4F78AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncShared.Contracts.Dev", "DomainContracts\SyncShared.Contracts\SyncShared.Contracts.Dev.csproj", "{D6D727AF-3E9E-4E08-A2F0-E49CF59B2F7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncShared.Mediator.Dev", "DomainMediators\SyncShared.Mediator\SyncShared.Mediator.Dev.csproj", "{1DC6BC8B-30E1-46D0-906B-A70129E771AF}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://orbdevtfs2:8080/tfs/sagecre
+		SccProjectUniqueName0 = UnitTests\\ProcessExecution.UnitTests\\ProcessExecution.UnitTests.csproj
+		SccProjectTopLevelParentUniqueName0 = Connector.ProcessDomain.Dev.sln
+		SccProjectName0 = UnitTests/ProcessExecution.UnitTests
+		SccAuxPath0 = http://orbdevtfs2:8080/tfs/sagecre
+		SccLocalPath0 = UnitTests\\ProcessExecution.UnitTests
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = UnitTests\\SalesContracts.UnitTests\\SalesContracts.UnitTests.csproj
+		SccProjectTopLevelParentUniqueName1 = Connector.ProcessDomain.Dev.sln
+		SccProjectName1 = UnitTests/SalesContracts.UnitTests
+		SccAuxPath1 = http://orbdevtfs2:8080/tfs/sagecre
+		SccLocalPath1 = UnitTests\\SalesContracts.UnitTests
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = BackOfficePlugins\\BackOfficePlugins.Core\\BackOfficePlugins.Core.Dev.csproj
+		SccProjectTopLevelParentUniqueName2 = Connector.ProcessDomain.Dev.sln
+		SccProjectName2 = BackOfficePlugins/BackOfficePlugins.Core
+		SccAuxPath2 = http://orbdevtfs2:8080/tfs/sagecre
+		SccLocalPath2 = BackOfficePlugins\\BackOfficePlugins.Core
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = BackOfficePlugins\\MockPlugin\\MockPlugin.Dev.csproj
+		SccProjectTopLevelParentUniqueName3 = Connector.ProcessDomain.Dev.sln
+		SccProjectName3 = BackOfficePlugins/MockPlugin
+		SccAuxPath3 = http://orbdevtfs2:8080/tfs/sagecre
+		SccLocalPath3 = BackOfficePlugins\\MockPlugin
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName4 = DomainContracts\\SyncShared.Contracts\\SyncShared.Contracts.Dev.csproj
+		SccProjectTopLevelParentUniqueName4 = Connector.ProcessDomain.Dev.sln
+		SccProjectName4 = DomainContracts/SyncShared.Contracts
+		SccAuxPath4 = http://orbdevtfs2:8080/tfs/sagecre
+		SccLocalPath4 = DomainContracts\\SyncShared.Contracts
+		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName5 = DomainMediators\\SyncShared.Mediator\\SyncShared.Mediator.Dev.csproj
+		SccProjectTopLevelParentUniqueName5 = Connector.ProcessDomain.Dev.sln
+		SccProjectName5 = DomainMediators/SyncShared.Mediator
+		SccAuxPath5 = http://orbdevtfs2:8080/tfs/sagecre
+		SccLocalPath5 = DomainMediators\\SyncShared.Mediator
+		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8FE4330-22CC-4AB6-8306-3CF015F4F19D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8FE4330-22CC-4AB6-8306-3CF015F4F19D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8FE4330-22CC-4AB6-8306-3CF015F4F19D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8FE4330-22CC-4AB6-8306-3CF015F4F19D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BCB6F63-1BB8-41C1-A0DF-3EB17D6A20D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BCB6F63-1BB8-41C1-A0DF-3EB17D6A20D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BCB6F63-1BB8-41C1-A0DF-3EB17D6A20D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BCB6F63-1BB8-41C1-A0DF-3EB17D6A20D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA017515-E7CE-4332-BBD3-8A63293B6DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA017515-E7CE-4332-BBD3-8A63293B6DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA017515-E7CE-4332-BBD3-8A63293B6DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA017515-E7CE-4332-BBD3-8A63293B6DBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4AFCD9E-F3B0-4B58-BEE2-C881DE6558B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4AFCD9E-F3B0-4B58-BEE2-C881DE6558B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4AFCD9E-F3B0-4B58-BEE2-C881DE6558B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4AFCD9E-F3B0-4B58-BEE2-C881DE6558B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA742080-14CC-4CD7-997D-61C2AF525BF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA742080-14CC-4CD7-997D-61C2AF525BF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA742080-14CC-4CD7-997D-61C2AF525BF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA742080-14CC-4CD7-997D-61C2AF525BF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{283005DE-4CAE-4435-B712-245F17DF4DB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{283005DE-4CAE-4435-B712-245F17DF4DB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{283005DE-4CAE-4435-B712-245F17DF4DB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{283005DE-4CAE-4435-B712-245F17DF4DB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBD1B7CA-28B1-4876-A6D9-7CEDFDE19917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD1B7CA-28B1-4876-A6D9-7CEDFDE19917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD1B7CA-28B1-4876-A6D9-7CEDFDE19917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD1B7CA-28B1-4876-A6D9-7CEDFDE19917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84B8F6CF-58A1-40F0-A737-8AA35CDB2B58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84B8F6CF-58A1-40F0-A737-8AA35CDB2B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84B8F6CF-58A1-40F0-A737-8AA35CDB2B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84B8F6CF-58A1-40F0-A737-8AA35CDB2B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E3055E1-F7AB-44D7-A5D9-8DD547D0A156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E3055E1-F7AB-44D7-A5D9-8DD547D0A156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E3055E1-F7AB-44D7-A5D9-8DD547D0A156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E3055E1-F7AB-44D7-A5D9-8DD547D0A156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3C5E2FF-F6F5-45B5-9F11-0A194337D53F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3C5E2FF-F6F5-45B5-9F11-0A194337D53F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3C5E2FF-F6F5-45B5-9F11-0A194337D53F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3C5E2FF-F6F5-45B5-9F11-0A194337D53F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{839B945C-C785-44A4-AE89-3FA1CC2D100B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{839B945C-C785-44A4-AE89-3FA1CC2D100B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{839B945C-C785-44A4-AE89-3FA1CC2D100B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{839B945C-C785-44A4-AE89-3FA1CC2D100B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C96A88B4-B217-438D-B7F2-DCC026129651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C96A88B4-B217-438D-B7F2-DCC026129651}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C96A88B4-B217-438D-B7F2-DCC026129651}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C96A88B4-B217-438D-B7F2-DCC026129651}.Release|Any CPU.Build.0 = Release|Any CPU
+		{941B318C-4D50-4206-AFBD-800B546F7FF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{941B318C-4D50-4206-AFBD-800B546F7FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{941B318C-4D50-4206-AFBD-800B546F7FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{941B318C-4D50-4206-AFBD-800B546F7FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66DCCBCA-1C27-4639-B5DB-01C3BE4F78AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66DCCBCA-1C27-4639-B5DB-01C3BE4F78AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66DCCBCA-1C27-4639-B5DB-01C3BE4F78AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66DCCBCA-1C27-4639-B5DB-01C3BE4F78AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6D727AF-3E9E-4E08-A2F0-E49CF59B2F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6D727AF-3E9E-4E08-A2F0-E49CF59B2F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6D727AF-3E9E-4E08-A2F0-E49CF59B2F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6D727AF-3E9E-4E08-A2F0-E49CF59B2F7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DC6BC8B-30E1-46D0-906B-A70129E771AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC6BC8B-30E1-46D0-906B-A70129E771AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC6BC8B-30E1-46D0-906B-A70129E771AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC6BC8B-30E1-46D0-906B-A70129E771AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A8FE4330-22CC-4AB6-8306-3CF015F4F19D} = {97B86E71-B5F0-4840-A40B-F367CAA2782A}
+		{4BCB6F63-1BB8-41C1-A0DF-3EB17D6A20D3} = {97B86E71-B5F0-4840-A40B-F367CAA2782A}
+		{D6D727AF-3E9E-4E08-A2F0-E49CF59B2F7A} = {97B86E71-B5F0-4840-A40B-F367CAA2782A}
+		{EA017515-E7CE-4332-BBD3-8A63293B6DBA} = {B200FA80-7314-4A48-BE60-2E5B65D22A32}
+		{F4AFCD9E-F3B0-4B58-BEE2-C881DE6558B7} = {B200FA80-7314-4A48-BE60-2E5B65D22A32}
+		{1DC6BC8B-30E1-46D0-906B-A70129E771AF} = {B200FA80-7314-4A48-BE60-2E5B65D22A32}
+		{BA742080-14CC-4CD7-997D-61C2AF525BF6} = {B86FAE4A-0E63-490D-9C5D-202BC7DD7219}
+		{283005DE-4CAE-4435-B712-245F17DF4DB4} = {B86FAE4A-0E63-490D-9C5D-202BC7DD7219}
+		{DBD1B7CA-28B1-4876-A6D9-7CEDFDE19917} = {B86FAE4A-0E63-490D-9C5D-202BC7DD7219}
+		{84B8F6CF-58A1-40F0-A737-8AA35CDB2B58} = {B86FAE4A-0E63-490D-9C5D-202BC7DD7219}
+		{4E3055E1-F7AB-44D7-A5D9-8DD547D0A156} = {B86FAE4A-0E63-490D-9C5D-202BC7DD7219}
+		{A3C5E2FF-F6F5-45B5-9F11-0A194337D53F} = {B86FAE4A-0E63-490D-9C5D-202BC7DD7219}
+		{839B945C-C785-44A4-AE89-3FA1CC2D100B} = {501B1982-4927-4ED7-9F15-9DC858534EDB}
+		{C96A88B4-B217-438D-B7F2-DCC026129651} = {501B1982-4927-4ED7-9F15-9DC858534EDB}
+		{941B318C-4D50-4206-AFBD-800B546F7FF6} = {94B36CC3-62BF-4237-AF5C-8CD54D8E7FB2}
+		{66DCCBCA-1C27-4639-B5DB-01C3BE4F78AD} = {94B36CC3-62BF-4237-AF5C-8CD54D8E7FB2}
+	EndGlobalSection
+EndGlobal

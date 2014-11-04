@@ -1,0 +1,7 @@
+﻿;!@Install@!UTF-8!
+Title="Sage Connector VERSION_TAG"
+ExtractTitle="Extracting Contents"
+AutoInstall="msiexec /i SageConnector.msi"
+RunProgram="setup.exe"
+GUIMode="1"
+;!@InstallEnd@!

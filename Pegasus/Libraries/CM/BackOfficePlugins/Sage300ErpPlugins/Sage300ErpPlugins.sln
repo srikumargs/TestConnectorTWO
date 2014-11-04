@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sage300Erp.Plugin.Native.Interfaces", "Sage300Erp.Plugin.Native.Interfaces\Sage300Erp.Plugin.Native.Interfaces.csproj", "{C189A213-B84F-4314-AE3E-458F5E43D4CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sage300Erp.Plugin.Native", "Sage300Erp.Plugin.Native\Sage300Erp.Plugin.Native.csproj", "{45D22642-E0FF-4304-A7E8-886C75D6B4E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sage300Erp.Plugin.Model", "Sage300Erp.Plugin.Model\Sage300Erp.Plugin.Model.csproj", "{D297C8FF-32AF-4914-9F94-A57918F3BB2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1C52A069-F701-4734-B5BB-A54E8A98643C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sage300Erp.Plugin.Configuration", "Sage300Erp.Plugin.Configuration\Sage300Erp.Plugin.Configuration.csproj", "{78C7902B-7356-4FB9-B2EC-F8F2C85FEEBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sage300Erp.Plugin.Sync", "Sage300Erp.Plugin.Sync\Sage300Erp.Plugin.Sync.csproj", "{6D00FE06-93AA-40F4-9E69-729F17629373}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://orbdevtfs2:8080/tfs/sagecre
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Sage300Erp.Plugin.Configuration\\Sage300Erp.Plugin.Configuration.csproj
+		SccProjectName1 = Sage300Erp.Plugin.Configuration
+		SccLocalPath1 = Sage300Erp.Plugin.Configuration
+		SccProjectUniqueName2 = Sage300Erp.Plugin.Model\\Sage300Erp.Plugin.Model.csproj
+		SccProjectName2 = Sage300Erp.Plugin.Model
+		SccLocalPath2 = Sage300Erp.Plugin.Model
+		SccProjectUniqueName3 = Sage300Erp.Plugin.Native.Interfaces\\Sage300Erp.Plugin.Native.Interfaces.csproj
+		SccProjectName3 = Sage300Erp.Plugin.Native.Interfaces
+		SccLocalPath3 = Sage300Erp.Plugin.Native.Interfaces
+		SccProjectUniqueName4 = Sage300Erp.Plugin.Native\\Sage300Erp.Plugin.Native.csproj
+		SccProjectName4 = Sage300Erp.Plugin.Native
+		SccLocalPath4 = Sage300Erp.Plugin.Native
+		SccProjectUniqueName5 = Sage300Erp.Plugin.Sync\\Sage300Erp.Plugin.Sync.csproj
+		SccProjectName5 = Sage300Erp.Plugin.Sync
+		SccLocalPath5 = Sage300Erp.Plugin.Sync
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C189A213-B84F-4314-AE3E-458F5E43D4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C189A213-B84F-4314-AE3E-458F5E43D4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C189A213-B84F-4314-AE3E-458F5E43D4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C189A213-B84F-4314-AE3E-458F5E43D4CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45D22642-E0FF-4304-A7E8-886C75D6B4E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45D22642-E0FF-4304-A7E8-886C75D6B4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45D22642-E0FF-4304-A7E8-886C75D6B4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45D22642-E0FF-4304-A7E8-886C75D6B4E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D297C8FF-32AF-4914-9F94-A57918F3BB2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D297C8FF-32AF-4914-9F94-A57918F3BB2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D297C8FF-32AF-4914-9F94-A57918F3BB2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D297C8FF-32AF-4914-9F94-A57918F3BB2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78C7902B-7356-4FB9-B2EC-F8F2C85FEEBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C7902B-7356-4FB9-B2EC-F8F2C85FEEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C7902B-7356-4FB9-B2EC-F8F2C85FEEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C7902B-7356-4FB9-B2EC-F8F2C85FEEBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D00FE06-93AA-40F4-9E69-729F17629373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D00FE06-93AA-40F4-9E69-729F17629373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D00FE06-93AA-40F4-9E69-729F17629373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D00FE06-93AA-40F4-9E69-729F17629373}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

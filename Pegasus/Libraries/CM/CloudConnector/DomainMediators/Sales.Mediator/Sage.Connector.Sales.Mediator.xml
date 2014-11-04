@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sage.Connector.Sales.Mediator</name>
+    </assembly>
+    <members>
+        <member name="T:Sage.Connector.Sales.Mediator.ProcessQuoteToOrder">
+            <summary>
+            Process Quote To Order Domain Mediator Feature Request
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Sales.Mediator.ProcessQuoteToOrder.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Feature request for the ProcessQuote sales domain implementation.
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeCompanyConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="payload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.Sales.Mediator.ProcessPaidOrder">
+            <summary>
+            Process Paid Order Domain Mediator Feature Request
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Sales.Mediator.ProcessPaidOrder.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Feature request for the ProcessPaidOrder sales domain implementation.
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeCompanyConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="payload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.Sales.Mediator.FeatureDescriptions">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Sales.Mediator.FeatureDescriptions.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Sales.Mediator.FeatureDescriptions.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Sales.Mediator.FeatureDescriptions.ProcessPaidOrder">
+            <summary>
+              Looks up a localized string similar to Process Paid Order.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Sales.Mediator.FeatureDescriptions.ProcessQuote">
+            <summary>
+              Looks up a localized string similar to Process Quote.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Sales.Mediator.FeatureDescriptions.ProcessQuoteToOrder">
+            <summary>
+              Looks up a localized string similar to Process Quote To Order.
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.Sales.Mediator.FeatureMessageTypes">
+            <summary>
+            The supported set of features by the core domain mediator. 
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Sales.Mediator.FeatureMessageTypes.ProcessQuote">
+            <summary>
+            Process Quote Message Type
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Sales.Mediator.FeatureMessageTypes.ProcessPaidOrder">
+            <summary>
+            Process Paid Order Message Type
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Sales.Mediator.FeatureMessageTypes.ProcessQuoteToOrder">
+            <summary>
+            Process Quote to Order Message Type
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.Sales.Mediator.ProcessQuote">
+            <summary>
+            Process Quote Domain Mediator Feature Request
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Sales.Mediator.ProcessQuote.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Feature request for the ProcessQuote sales domain implementation.
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeCompanyConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="payload">String representing the payload to process.</param>
+        </member>
+    </members>
+</doc>

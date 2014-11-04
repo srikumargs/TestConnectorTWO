@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SageConnect", "SageConnect.csproj", "{070D538C-3331-49AA-A017-ED0362458240}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewConnectionControl", "..\NewConnectionControl\NewConnectionControl.csproj", "{6B8B87E2-3312-4449-B7F6-338AE8134E0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOfficeLogin", "..\BackOfficeLogin\BackOfficeLogin.csproj", "{1D0E0ED9-63F5-4FC8-B077-C6761AADAEB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{070D538C-3331-49AA-A017-ED0362458240}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{070D538C-3331-49AA-A017-ED0362458240}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{070D538C-3331-49AA-A017-ED0362458240}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{070D538C-3331-49AA-A017-ED0362458240}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B8B87E2-3312-4449-B7F6-338AE8134E0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B8B87E2-3312-4449-B7F6-338AE8134E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B8B87E2-3312-4449-B7F6-338AE8134E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B8B87E2-3312-4449-B7F6-338AE8134E0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D0E0ED9-63F5-4FC8-B077-C6761AADAEB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0E0ED9-63F5-4FC8-B077-C6761AADAEB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0E0ED9-63F5-4FC8-B077-C6761AADAEB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0E0ED9-63F5-4FC8-B077-C6761AADAEB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

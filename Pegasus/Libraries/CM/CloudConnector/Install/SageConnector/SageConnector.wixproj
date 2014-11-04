@@ -1,0 +1,87 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.0</ProductVersion>
+    <ProjectGuid>{c523055d-a9d0-4318-ae85-ec934d33204b}</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>SageConnector</OutputName>
+    <OutputType>Package</OutputType>
+    <DefineSolutionProperties>false</DefineSolutionProperties>
+    <SandboxDir>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..\..\..\..'))</SandboxDir>
+    <LibraryDir>$(SandboxDir)\Libraries\CM\CloudConnector</LibraryDir>
+    <LibraryConfigFile>$(LibraryDir)\LibraryConfig-Library.xml</LibraryConfigFile>
+    <ToolsBinDir>$(SandboxDir)\Tools\Bin</ToolsBinDir>
+    <WixToolPath>$(SandboxDir)\Tools\Bin\WiX38\</WixToolPath>
+    <WixTasksPath>$(WixToolPath)WixTasks.dll</WixTasksPath>
+    <WixTargetsPath>$(WixToolPath)Wix.targets</WixTargetsPath>
+    <SuppressIces>ICE99;ICE38;ICE30;ICE27;ICE40</SuppressIces>
+    <SkyfireProduct>SDC</SkyfireProduct>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>..\$(SkyfireProduct)\Build\Output</OutputPath>
+    <IntermediateOutputPath>..\$(SkyfireProduct)\Build\Output</IntermediateOutputPath>
+    <DefineConstants>Debug</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>..\$(SkyfireProduct)\Build\Output</OutputPath>
+    <IntermediateOutputPath>..\$(SkyfireProduct)\Build\Output</IntermediateOutputPath>
+  </PropertyGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <ItemGroup>
+    <WixExtension Include="$(WixToolPath)WixUtilExtension.dll" />
+    <WixExtension Include="$(WixToolPath)WixUIExtension.dll" />
+    <Compile Include="..\$(SkyfireProduct)\ConnectorService-InstanceConfigDefaults.wxs" />
+    <Compile Include="..\$(SkyfireProduct)\ConnectorMonitorService-InstanceConfigDefaults.wxs" />
+    <Compile Include="..\$(SkyfireProduct)\ConnectorMonitorTray-Configuration.wxs" />
+    <Compile Include="..\$(SkyfireProduct)\Build\ConnectorRegistry.wxs" />
+    <Compile Include="..\$(SkyfireProduct)\ConnectorUIShortcut.wxs" />
+    <Compile Include="..\$(SkyfireProduct)\ConnectorUIStartupShortcut.wxs" />
+    <Compile Include="..\$(SkyfireProduct)\Sage.CRE.CloudConnector.InstalledProductInfo.wxs" />
+    <Compile Include="..\$(SkyfireProduct)\Build\SageConnector\SageConnector.wxs" />
+    <Compile Include="..\$(SkyfireProduct)\Build\AppData.wxs" />
+    <WixLibrary Include="$(SandboxDir)\Deployments\Sage.CM.Core.wixlib" />
+    <WixLibrary Include="$(SandboxDir)\Deployments\Sage.CM.HostingFrameworkClient.wixlib" />
+    <WixLibrary Include="$(SandboxDir)\Deployments\Sage.CM.HostingFrameworkCommon.wixlib" />
+    <WixLibrary Include="$(SandboxDir)\Deployments\Sage.CM.HostingFrameworkServer.wixlib" />
+    <WixLibrary Include="$(SandboxDir)\Deployments\Sage.CM.Microsoft.wixlib" />
+    <WixLibrary Include="$(SandboxDir)\Deployments\Sage.CM.Resources.wixlib" />
+    <WixLibrary Include="$(SandboxDir)\Deployments\Sage.CM.CloudConnector.wixlib" />
+  </ItemGroup>
+  <!-- Create .Net 4.0 boostrapper to be used by Wix to install .net 4.0 if the user computer does not exist -->
+  <ItemGroup>
+    <BootstrapperFile Include="Microsoft.Windows.Installer.3.1">
+      <ProductName>Windows Installer 3.1</ProductName>
+    </BootstrapperFile>
+    <BootstrapperFile Include=".NETFramework,Version=v4.5.1">
+      <ProductName>Microsoft .NET Framework 4.5.1</ProductName>
+    </BootstrapperFile>
+    <BootstrapperFile Include="Microsoft.SQL.Server.Compact.4.0">
+      <ProductName>Microsoft SQL Server Compact Edition v4.0</ProductName>
+    </BootstrapperFile>
+  </ItemGroup>
+  <Target Name="BuildWix" DependsOnTargets="ValidateGenericWix;Build">
+    <GenerateBootstrapper ApplicationFile="SageConnector.msi" ApplicationName="Sage Connector $(Version)" BootstrapperItems="@(BootstrapperFile)" OutputPath="$(OutputPath)" ComponentsLocation="HomeSite" Culture="en" CopyComponents="false" Path="$(SandboxDir)\Libraries\CM\CloudConnector\Install\Bootstrapper" SupportUrl="http://www.microsoft.com/download/en/details.aspx?id=17851" />
+  </Target>
+  <Target Name="ValidateGenericWix">
+    <Error Condition="'$(OutputName)'==''" Text="REQUIRED OutputName. used for naming msi. i.e. [OutputName].msi" />
+    <Error Condition="'$(OutputType)'==''" Text="REQUIRED OutputType. Package(.msi), Module(.msm), Library(.wixlib)" />
+    <Error Condition="'$(WixToolPath)'==''" Text="REQUIRED WixToolPath. Provide path to where Wix is installed." />
+    <!--
+    <Error Condition="'$(MsiOutputPath)'==''" Text="REQUIRED MsiOutputPath. Where msi will be created to."/>
+    <Error Condition="'$(LicenseFile)'==''" Text="REQUIRED LicenseFile. EULA for the company."/>
+    <Error Condition="'$(WixSetupFile)'==''" Text="REQUIRED WixSetupFile. Main entry point of Wix script we can swap it with different Setup to compltely change the behavior of Wix script."/>
+    <Error Condition="'$(WixUIDialogBmp)'==''" Text="REQUIRED WixUIDialogBmp. Branding company setup."/>
+    <Error Condition="'$(WixUIBannerBmp)'==''" Text="REQUIRED WixUIBannerBmp. Branding company setup."/>
+    <Error Condition="'$(ApplicationName)'==''" Text="REQUIRED ApplicationName"/>
+    <Error Condition="'$(InstallVersion)'==''" Text="REQUIRED InstallVersion"/>
+    <Error Condition="'$(CompanyName)'==''" Text="REQUIRED CompanyName."/>
+    <Error Condition="'$(WixDirectoryFregment)'==''"  Text="REQUIRED WixDirectoryFregment. Every application provide its own directory, registry, components."/>
+    <Error Condition="'$(UpgradeCode)'==''"  Text="REQUIRED UpgradeCode."/>
+    <Error Condition="'$(ProductId)'==''"  Text="REQUIRED ProductId."/>
+    <Error Condition="'$(CompanyUID)'==''"  Text="REQUIRED CompanyUID. It is used as unique required by Wix"/>
+    <Error Condition="'$(Compressed)'==''"  Text="REQUIRED Compressed. Set it to no if admin install needed for patching."/>
+    <Error Condition="'$(Description)'==''"  Text="REQUIRED Description."/>
+    -->
+  </Target>
+</Project>

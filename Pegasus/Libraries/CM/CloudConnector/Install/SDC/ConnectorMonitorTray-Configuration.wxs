@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <Fragment>
+    <DirectoryRef Id="DIR_Sage.CM.CloudConnector_Tray">
+      <Component Id='COM_ConnectorMonitorTrayConfiguration' Guid="2CAFFA90-8B1A-4C61-BB8B-5EA8FF08A1B8"  DiskId="1">
+        <File Id='FIL_ConnectorMonitorTrayConfiguration' Name="Configuration.xml" Source="$(var.SandboxDir)\Libraries\CM\CloudConnector\Install\$(var.SkyfireProduct)\Build\ConnectorMonitorTray-Configuration.xml" Vital="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+</Wix>

@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LibraryConfigTool>
+  <Components>
+    <Component Id="COM_DBTool.exe" Guid="D55DC156-1988-4F57-B5F5-CE9477CD126C" Path="PUT_DIRECTORYID_HERE\DBTool.exe" />
+    <Component Id="COM_Sage.Connector.PremiseStore.dll" Guid="BBAC0610-0F38-46B3-A6DE-7286916AB249" Path="PUT_DIRECTORYID_HERE\Sage.Connector.PremiseStore.dll" />
+    <Component Id="COM_Sage.Connector.Data.dll" Guid="226F65F5-F75A-4B62-BDD1-F8CFDB3B409C" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Data.dll" />
+    <Component Id="COM_Sage.Connector.Common.dll" Guid="5DD6CCFE-B380-41B8-A78F-47A99BEE6EF5" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Common.dll" />
+    <Component Id="COM_Sage.Connector.ConnectorServiceCommon.dll" Guid="C54258D3-C729-456B-A30D-A067228A5A1C" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ConnectorServiceCommon.dll" />
+    <Component Id="COM_Sage.Connector.Utilities.Platform.DotNet.dll" Guid="61FC7E52-4C8D-453C-B058-1F0E646F96E2" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Utilities.Platform.DotNet.dll" />
+    <Component Id="COM_Sage.Connector.Signalr.Client.dll" Guid="F11F8770-65EC-406B-95F7-BC3025A64427" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Signalr.Client.dll" />
+    <Component Id="COM_Sage.Connector.Signalr.Interfaces.dll" Guid="297E4E79-B93F-4A1F-9C24-EC1590C36AF8" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Signalr.Interfaces.dll" />
+    <Component Id="COM_Sage.Connector.Signalr.Common.dll" Guid="FD36FB29-DA77-42E7-8750-19C88899D940" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Signalr.Common.dll" />
+    <Component Id="COM_Sage.Connector.Signalr.Controller.dll" Guid="44DA80F7-0D51-441E-9632-6324594DDB75" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Signalr.Controller.dll" />
+    <Component Id="COM_Sage.Connector.Management.dll" Guid="933DCD66-81C3-40B5-ACE0-AD1C6C065AC6" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Management.dll" />
+    <Component Id="COM_Sage.Connector.AutoUpdate.dll" Guid="DBAFD585-E5EE-4372-A4DD-F80DC1C64514" Path="PUT_DIRECTORYID_HERE\Sage.Connector.AutoUpdate.dll" />
+    <Component Id="COM_Sage.Connector.Binding.RemoteConfig.dll" Guid="D2D631C8-EAB1-4E12-960D-B177FACDF9BC" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Binding.RemoteConfig.dll" />
+    <Component Id="COM_Sage.Connector.Binding.StateCheck.dll" Guid="B65D4AF6-3FF8-4F7F-BFDF-65B01A1D5F71" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Binding.StateCheck.dll" />
+    <Component Id="COM_Sage.Connector.Binding.LoopBack.dll" Guid="9109DD3A-74E9-4DAF-AF68-EA07C35BD457" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Binding.LoopBack.dll" />
+    <Component Id="COM_Sage.Connector.Binding.DomainMediation.dll" Guid="B897A0FB-8FC4-43FC-A7CC-D49E15AC1121" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Binding.DomainMediation.dll" />
+    <Component Id="COM_Sage.Connector.ProcessExecution.RequestActivator.dll" Guid="35533412-495A-4BB5-9520-DB2087E06349" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ProcessExecution.RequestActivator.dll" />
+    <Component Id="COM_Sage.Connector.ProcessExecution.Interfaces.dll" Guid="A365D27C-1A5D-4168-88D1-D600E4401785" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ProcessExecution.Interfaces.dll" />
+    <Component Id="COM_Sage.Connector.ProcessExecution.Contract.dll" Guid="8F63AEA7-6A36-4684-AC5D-107BA8DBE03A" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ProcessExecution.Contract.dll" />
+    <Component Id="COM_Sage.Connector.ProcessExecution.HostSideAdapter.dll" Guid="937A0AFF-4359-47F6-9C17-DA09492DC96E" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ProcessExecution.HostSideAdapter.dll" />
+    <Component Id="COM_Sage.Connector.ProcessExecution.AddinView.dll" Guid="2843C80C-75E2-4BFE-9D2D-652BD2643DFD" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ProcessExecution.AddinView.dll" />
+    <Component Id="COM_Sage.Connector.ProcessExecution.AddinSideAdapter.dll" Guid="100E94F2-23C7-45E6-8F30-8F57D0C713D8" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ProcessExecution.AddinSideAdapter.dll" />
+    <Component Id="COM_Sage.Connector.ProcessExecution.Addin.dll" Guid="2A287DCD-D840-4EA4-BD86-2FB25F3DB97D" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ProcessExecution.Addin.dll" />
+    <Component Id="COM_Sage.Connector.Discovery.Contracts.Data.dll" Guid="051805FA-2616-4C95-BE48-74859A2ABDEC" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Discovery.Contracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.Discovery.Contracts.BackOffice.dll" Guid="1E0DA776-4C83-458E-8756-21A19DA476A8" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Discovery.Contracts.BackOffice.dll" />
+    <Component Id="COM_Sage.Connector.Discovery.Contracts.Integration.dll" Guid="C549AC98-AD94-4C50-8BB6-037EC36C59DF" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Discovery.Contracts.Integration.dll" />
+    <Component Id="COM_Sage.Connector.Configuration.Contracts.Data.dll" Guid="FC796357-CD42-46BF-B11D-06A250A698A6" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Configuration.Contracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.Configuration.Contracts.BackOffice.dll" Guid="268881BC-78D5-4FB2-BCA6-69580A0308A1" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Configuration.Contracts.BackOffice.dll" />
+    <Component Id="COM_Sage.Connector.DomainContracts.Data.dll" Guid="24ACD512-2A60-4D13-8684-6918CAE6FCE4" Path="PUT_DIRECTORYID_HERE\Sage.Connector.DomainContracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.DomainContracts.Responses.dll" Guid="4E058AEB-17F3-46F1-887B-09EF8277088B" Path="PUT_DIRECTORYID_HERE\Sage.Connector.DomainContracts.Responses.dll" />
+    <Component Id="COM_Sage.Connector.DomainContracts.BackOffice.dll" Guid="F904E1EE-72CF-47D4-870C-CB79F7805131" Path="PUT_DIRECTORYID_HERE\Sage.Connector.DomainContracts.BackOffice.dll" />
+    <Component Id="COM_Sage.Connector.Sync.Contracts.Data.dll" Guid="8C178643-86F5-4ED1-8F6E-7067215B1C2B" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Sync.Contracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.Sync.Contracts.CloudIntegration.dll" Guid="D3363A62-B97D-4EDF-A8D5-E7FB6DE51148" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Sync.Contracts.CloudIntegration.dll" />
+    <Component Id="COM_Sage.Connector.Taxes.Contracts.Data.dll" Guid="C3240660-576F-486B-A387-C6ECA36F0ED6" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Taxes.Contracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.Taxes.Contracts.CloudIntegration.dll" Guid="365E1EEB-C66E-4077-870A-A21EE6360D51" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Taxes.Contracts.CloudIntegration.dll" />
+    <Component Id="COM_Sage.Connector.Taxes.Contracts.BackOffice.dll" Guid="DF699912-BBA7-42F7-BDF2-4F8B9BEFB84F" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Taxes.Contracts.BackOffice.dll" />
+    <Component Id="COM_Sage.Connector.Customers.Contracts.Data.dll" Guid="6F4D9390-F4EB-4AE5-A4AC-9B730198C032" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Customers.Contracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.Customers.Contracts.CloudIntegration.dll" Guid="6038A78F-BB4E-4C71-96D5-33BF4046B872" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Customers.Contracts.CloudIntegration.dll" />
+    <Component Id="COM_Sage.Connector.Customers.Contracts.BackOffice.dll" Guid="562CA581-ADD1-405A-A590-41125A233409" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Customers.Contracts.BackOffice.dll" />
+    <Component Id="COM_Sage.Connector.ProductCatalog.Contracts.Data.dll" Guid="CA80A968-6862-4FA4-A0BB-788F30E6442B" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ProductCatalog.Contracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.ProductCatalog.Contracts.BackOffice.dll" Guid="C475DA96-0687-4143-9590-8A73C9F58019" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ProductCatalog.Contracts.BackOffice.dll" />
+    <Component Id="COM_Sage.Connector.ProductCatalog.Contracts.CloudIntegration.dll" Guid="4EE9B132-5442-4A61-A8E4-39B0520E5790" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ProductCatalog.Contracts.CloudIntegration.dll" />
+    <Component Id="COM_Sage.Connector.Invoices.Contracts.Data.dll" Guid="D30DB144-A4A5-4001-904D-B76610D554EE" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Invoices.Contracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.Invoices.Contracts.CloudIntegration.dll" Guid="EAABEBC7-128A-4B15-9D45-02E5DF8981DB" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Invoices.Contracts.CloudIntegration.dll" />
+    <Component Id="COM_Sage.Connector.Invoices.Contracts.BackOffice.dll" Guid="D171CE2B-D8CB-43F4-AFC5-E1BCD842E58B" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Invoices.Contracts.BackOffice.dll" />
+    <Component Id="COM_Sage.Connector.Payments.Contracts.Data.dll" Guid="174E2711-101C-4824-82A9-2C0B77E21C36" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Payments.Contracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.Payments.Contracts.CloudIntegration.dll" Guid="13990D7E-1B49-4BBA-A7F0-08510E66375A" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Payments.Contracts.CloudIntegration.dll" />
+    <Component Id="COM_Sage.Connector.Payments.Contracts.BackOffice.dll" Guid="D25EAE06-FAE2-4DD3-B9EF-3B3415B9C933" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Payments.Contracts.BackOffice.dll" />
+    <Component Id="COM_Sage.Connector.Sales.Contracts.Data.dll" Guid="6BE5C3AB-3BA4-4016-A0C4-7ABACC88989B" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Sales.Contracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.Sales.Contracts.CloudIntegration.dll" Guid="57093313-448C-425F-B39A-4F57B6C1CA54" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Sales.Contracts.CloudIntegration.dll" />
+    <Component Id="COM_Sage.Connector.Sales.Contracts.BackOffice.dll" Guid="9475A31D-B502-4987-99BA-0037FF0BC0C0" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Sales.Contracts.BackOffice.dll" />
+    <Component Id="COM_Sage.Connector.Service.Contracts.Data.dll" Guid="15C7216D-86A1-4EE9-8662-12473B2D10D7" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Service.Contracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.Service.Contracts.CloudIntegration.dll" Guid="90B703E3-350C-4910-8D73-8F86D1067B6B" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Service.Contracts.CloudIntegration.dll" />
+    <Component Id="COM_Sage.Connector.Service.Contracts.BackOffice.dll" Guid="3275DC23-C3CA-41AD-B7E9-BC4B5D3887FC" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Service.Contracts.BackOffice.dll" />
+    <Component Id="COM_Sage.Connector.Statements.Contracts.Data.dll" Guid="0D0917BF-A15A-40F2-9560-B0ADEB523BA3" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Statements.Contracts.Data.dll" />
+    <Component Id="COM_Sage.Connector.Statements.Contracts.CloudIntegration.dll" Guid="36154404-946E-4E4D-B853-1E945BC247E9" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Statements.Contracts.CloudIntegration.dll" />
+    <Component Id="COM_Sage.Connector.Statements.Contracts.BackOffice.dll" Guid="9AC2D711-B451-4A74-AE45-D8CD53417800" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Statements.Contracts.BackOffice.dll" />
+    <Component Id="COM_Sage.Connector.DomainMediator.Core.dll" Guid="547D1D8A-47FB-46F9-9A64-5F31657BE1D1" Path="PUT_DIRECTORYID_HERE\Sage.Connector.DomainMediator.Core.dll" />
+    <Component Id="COM_Sage.Connector.Discovery.Mediator.dll" Guid="0EAC14AE-6378-4FFC-A5FB-EC747C9753AC" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Discovery.Mediator.dll" />
+    <Component Id="COM_Sage.Connector.Configuration.Mediator.dll" Guid="62CF4105-BC82-44E5-8518-EA8CC45615FC" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Configuration.Mediator.dll" />
+    <Component Id="COM_Sage.Connector.Payments.Mediator.dll" Guid="6ECDA253-9B8B-41AE-96D2-7502758E05CF" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Payments.Mediator.dll" />
+    <Component Id="COM_Sage.Connector.Sales.Mediator.dll" Guid="17D0B7F6-A8CE-4611-8789-94A21247BCEB" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Sales.Mediator.dll" />
+    <Component Id="COM_Sage.Connector.Service.Mediator.dll" Guid="F49AD5E9-FC86-4EAE-A64E-54661732ACC6" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Service.Mediator.dll" />
+    <Component Id="COM_Sage.Connector.Taxes.Mediator.dll" Guid="ED77D738-5D41-4D4D-BED3-228A82E9BE95" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Taxes.Mediator.dll" />
+    <Component Id="COM_Sage.Connector.Customers.Mediator.dll" Guid="AC115141-0EFA-4D01-955D-0CF403700042" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Customers.Mediator.dll" />
+    <Component Id="COM_Sage.Connector.ProductCatalog.Mediator.dll" Guid="F760656F-979F-4593-8714-FC5FE1F9999C" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ProductCatalog.Mediator.dll" />
+    <Component Id="COM_Sage.Connector.Invoices.Mediator.dll" Guid="751A18C3-4B0B-428E-8158-B8E8BC44156D" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Invoices.Mediator.dll" />
+    <Component Id="COM_Sage.Connector.Statements.Mediator.dll" Guid="8E2E1D17-84A4-41E0-9340-4E10FEB96AFC" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Statements.Mediator.dll" />
+    <Component Id="COM_Sage.Connector.Sync.dll" Guid="A7DFF2A2-0C23-427D-AF8F-6999E83EF27C" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Sync.dll" />
+    <Component Id="COM_Sage.Connector.Sync.Interfaces.dll" Guid="2F8C09E4-9756-413F-B098-9DFA1D1FCB78" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Sync.Interfaces.dll" />
+    <Component Id="COM_Sage.Connector.ConfigurationService.dll" Guid="C981FB5B-5B78-4157-95CB-91EC0D3F0EF9" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ConfigurationService.dll" />
+    <Component Id="COM_Sage.Connector.ConfigurationService.Interfaces.dll" Guid="4C5EE878-4EFE-420C-A4E5-773D6AB51DA3" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ConfigurationService.Interfaces.dll" />
+    <Component Id="COM_Sage.Connector.ConfigurationService.Proxy.dll" Guid="0886CBB2-2879-468B-A7AC-FFD91FFCB0D5" Path="PUT_DIRECTORYID_HERE\Sage.Connector.ConfigurationService.Proxy.dll" />
+    <Component Id="COM_Sage.Connector.DispatchService.dll" Guid="8D0FEC39-B39B-4E32-82A4-CAE432909EC1" Path="PUT_DIRECTORYID_HERE\Sage.Connector.DispatchService.dll" />
+    <Component Id="COM_Sage.Connector.DispatchService.Interfaces.dll" Guid="D28F8B97-7F3A-49DA-B5C9-180E5443080B" Path="PUT_DIRECTORYID_HERE\Sage.Connector.DispatchService.Interfaces.dll" />
+    <Component Id="COM_Sage.Connector.DispatchService.Proxy.dll" Guid="1B1145CE-55DC-40A7-B4FD-35603536BC2A" Path="PUT_DIRECTORYID_HERE\Sage.Connector.DispatchService.Proxy.dll" />
+    <Component Id="COM_Sage.Connector.Logging.dll" Guid="F62F6CC1-ABD9-42EF-91AB-ECEA39C8B89B" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Logging.dll" />
+    <Component Id="COM_Sage.Connector.MessagingService.dll" Guid="91311A58-037F-45BB-A23C-FDBED6E46F29" Path="PUT_DIRECTORYID_HERE\Sage.Connector.MessagingService.dll" />
+    <Component Id="COM_Sage.Connector.MessagingService.Interfaces.dll" Guid="D736D714-1FC0-418F-B469-3638D407760D" Path="PUT_DIRECTORYID_HERE\Sage.Connector.MessagingService.Interfaces.dll" />
+    <Component Id="COM_Sage.Connector.MessagingService.Proxy.dll" Guid="875A507A-1EF3-4647-99D9-9A9EEDB78F57" Path="PUT_DIRECTORYID_HERE\Sage.Connector.MessagingService.Proxy.dll" />
+    <Component Id="COM_Sage.Connector.MonitorService.dll" Guid="B732509D-3C89-4DF5-AA1A-9534C72B0FD9" Path="PUT_DIRECTORYID_HERE\Sage.Connector.MonitorService.dll" />
+    <Component Id="COM_Sage.Connector.MonitorService.Interfaces.dll" Guid="53988654-1784-4F3A-8E8F-6BE724971470" Path="PUT_DIRECTORYID_HERE\Sage.Connector.MonitorService.Interfaces.dll" />
+    <Component Id="COM_Sage.Connector.MonitorService.Proxy.dll" Guid="6185E8C3-D20E-4170-855B-09271CEF787A" Path="PUT_DIRECTORYID_HERE\Sage.Connector.MonitorService.Proxy.dll" />
+    <Component Id="COM_Sage.Connector.Documents.dll" Guid="FA2EA682-5AF0-4279-8E73-12803A719EDE" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Documents.dll" />
+    <Component Id="COM_Sage.Connector.NotificationService.dll" Guid="D43AD679-B283-432E-A381-05AA7D1C9703" Path="PUT_DIRECTORYID_HERE\Sage.Connector.NotificationService.dll" />
+    <Component Id="COM_Sage.Connector.NotificationService.Interfaces.dll" Guid="7A184D39-6916-4EDD-A1F2-591C77074603" Path="PUT_DIRECTORYID_HERE\Sage.Connector.NotificationService.Interfaces.dll" />
+    <Component Id="COM_Sage.Connector.NotificationService.Proxy.dll" Guid="F28A7897-B5BA-4755-9D4D-E5A1D4932836" Path="PUT_DIRECTORYID_HERE\Sage.Connector.NotificationService.Proxy.dll" />
+    <Component Id="COM_Sage.Connector.Queues.dll" Guid="6AEC464D-C277-48EF-87F6-5167AEAC1BD2" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Queues.dll" />
+    <Component Id="COM_Sage.Connector.StateService.dll" Guid="31B1312D-D838-4252-891B-A5CF1744BF61" Path="PUT_DIRECTORYID_HERE\Sage.Connector.StateService.dll" />
+    <Component Id="COM_Sage.Connector.StateService.Interfaces.dll" Guid="6A499C22-7AFD-4E4E-A143-60CAB8EA31E8" Path="PUT_DIRECTORYID_HERE\Sage.Connector.StateService.Interfaces.dll" />
+    <Component Id="COM_Sage.Connector.StateService.Proxy.dll" Guid="401C9F04-A6C1-4836-AF7D-07057AF3FEE6" Path="PUT_DIRECTORYID_HERE\Sage.Connector.StateService.Proxy.dll" />
+    <Component Id="COM_Sage.Connector.Utilities.dll" Guid="1B46CD84-02A3-4092-A303-5CE486F07BD4" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Utilities.dll" />
+    <Component Id="COM_SageConnector.exe" Guid="34DCD4AB-7EC8-4497-96C6-4089441E79F5" Path="PUT_DIRECTORYID_HERE\SageConnector.exe" />
+    <Component Id="COM_SageConnector.ViewModel.dll" Guid="43D47760-17F5-456B-9B20-E748293E2214" Path="PUT_DIRECTORYID_HERE\SageConnector.ViewModel.dll" />
+    <Component Id="COM_SageConnectorConfiguration.exe" Guid="49A4F5A1-1250-4CD9-A612-4C261F818677" Path="PUT_DIRECTORYID_HERE\SageConnectorConfiguration.exe" />
+    <Component Id="COM_SageConnectorConfiguration.ViewModel.dll" Guid="ADB6CA9A-C2DF-476A-9A18-6BD71908B1D8" Path="PUT_DIRECTORYID_HERE\SageConnectorConfiguration.ViewModel.dll" />
+    <Component Id="COM_SageConnect.exe" Guid="9F5A90F5-7DF4-43DA-92F9-59E0170BAC01" Path="PUT_DIRECTORYID_HERE\SageConnect.exe" />
+    <Component Id="COM_SageConnect.Control.dll" Guid="18F397AE-F6DF-4C16-9DC6-9ECBFB30CD4A" Path="PUT_DIRECTORYID_HERE\SageConnect.Control.dll" />
+    <Component Id="COM_SageConnect.ViewModels.dll" Guid="453FED09-5F20-4403-9E06-70172F858513" Path="PUT_DIRECTORYID_HERE\SageConnect.ViewModels.dll" />
+    <Component Id="COM_ConnectorServiceMonitor.exe" Guid="DC24A2E3-DED7-4693-8317-0999DE227CB0" Path="PUT_DIRECTORYID_HERE\ConnectorServiceMonitor.exe" />
+    <Component Id="COM_ConnectorServiceMonitor.ViewModel.dll" Guid="771A8421-8A97-4E5A-B0D6-494D3EED431C" Path="PUT_DIRECTORYID_HERE\ConnectorServiceMonitor.ViewModel.dll" />
+    <Component Id="COM_Sage.Connector.Cloud.Integration.Interfaces.dll" Guid="34B246B1-2E46-4674-8933-9125B65C20D5" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Cloud.Integration.Interfaces.dll" />
+    <Component Id="COM_Sage.Connector.Cloud.Integration.Proxy.dll" Guid="0098833A-1CE6-4AD5-8BFF-F7BB7CB7B923" Path="PUT_DIRECTORYID_HERE\Sage.Connector.Cloud.Integration.Proxy.dll" />
+    <Component Id="COM_Sage.CRE.CloudConnector.Integration.Interfaces.dll" Guid="78488942-4634-4100-B24C-3F5A495704C3" Path="PUT_DIRECTORYID_HERE\Sage.CRE.CloudConnector.Integration.Interfaces.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Microsoft.WindowsAzure.Configuration.dll" Guid="02C22384-ACF9-4738-986B-AB03B0523EA8" Path="INSTALLDIR\Microsoft.WindowsAzure.Configuration.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Microsoft.WindowsAzure.Storage.dll" Guid="5F1E0874-92FE-46BA-964C-A21C6CEF946C" Path="INSTALLDIR\Microsoft.WindowsAzure.Storage.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Micrsft.Prctcs.ntrprsLbrr.TrnsntFltHndlng.dll" Guid="250D8E7E-8274-4B75-9BD2-D80A47E5C32F" Path="INSTALLDIR\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Newtonsoft.Json.dll" Guid="5E1DEF72-25EE-4965-AF73-C87D4F7BE54E" Path="INSTALLDIR\Newtonsoft.Json.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Microsoft.AspNet.SignalR.Client.dll" Guid="118C883D-1D6C-4B59-B4F5-17F128AE8F64" Path="INSTALLDIR\Microsoft.AspNet.SignalR.Client.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Microsoft.AspNet.SignalR.Core.dll" Guid="F725C6AC-2BFE-44BA-94B1-C0B060F4373A" Path="INSTALLDIR\Microsoft.AspNet.SignalR.Core.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_System.Net.Http.dll" Guid="BCC9ADF4-90F2-41B1-B129-EBC4A28B68E9" Path="INSTALLDIR\System.Net.Http.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_System.Net.Http.Formatting.dll" Guid="CAC6DDA9-2755-4317-B923-EDE4F6817185" Path="INSTALLDIR\System.Net.Http.Formatting.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_System.Web.Http.dll" Guid="1E194982-63B8-4740-B60A-7339B02B1061" Path="INSTALLDIR\System.Web.Http.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.DomainContracts.Data.dll" Guid="49A2B5BC-2F8A-427F-93DE-DCF18DF853C0" Path="INSTALLDIR\Sage.Connector.DomainContracts.Data.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.DomainContracts.Responses.dll" Guid="CABACE80-019F-405C-AD09-C01D70425973" Path="INSTALLDIR\Sage.Connector.DomainContracts.Responses.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.Configuration.Contracts.Dt.dll" Guid="2544E8AB-8DE8-453F-A820-4906E4394316" Path="INSTALLDIR\Sage.Connector.Configuration.Contracts.Data.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.DomainContracts.BackOffice.dll" Guid="C365D713-77A5-451F-BC9D-7BE485E12C43" Path="INSTALLDIR\Sage.Connector.DomainContracts.BackOffice.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.ProcessExecution.Rqstctvtr.dll" Guid="6191AD76-ECD5-414E-8941-FF7A67F8ECEC" Path="INSTALLDIR\Sage.Connector.ProcessExecution.RequestActivator.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.Configuration.Mediator.dll" Guid="E80CD281-6789-459F-BBBE-F57A0A0C0FCC" Path="INSTALLDIR\Sage.Connector.Configuration.Mediator.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.DomainMediator.Core.dll" Guid="548C532B-1CA2-43D1-BDA1-E072B347E717" Path="INSTALLDIR\Sage.Connector.DomainMediator.Core.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Ssdp.Security.Client.dll" Guid="590A9BF4-D6E8-4BF1-A526-CEEC3396DFE0" Path="INSTALLDIR\Sage.Ssdp.Security.Client.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Passport.Util.dll" Guid="68F91A6A-CF8D-4DE3-9FBB-7962AC93E2C8" Path="INSTALLDIR\Sage.Passport.Util.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Passport.Client.Xrpc.dll" Guid="72C8C954-0FEC-49D0-BC9E-0C0E21AD33CB" Path="INSTALLDIR\Sage.Passport.Client.Xrpc.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Passport.Client.dll" Guid="17533F6C-7815-4BFC-AF91-2D2AADDD3BFA" Path="INSTALLDIR\Sage.Passport.Client.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_ICSharpCode.SharpZipLib.dll" Guid="E7B0D69B-9892-48DC-8921-084CCC33C6B7" Path="INSTALLDIR\ICSharpCode.SharpZipLib.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_BouncyCastle.Crypto.dll" Guid="92087DD8-8464-4A0D-ADE0-90766E32A2DE" Path="INSTALLDIR\BouncyCastle.Crypto.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_AutoUpdate.config.xml" Guid="7216B985-54FC-42D4-8CB6-5FA22C3C8949" Path="INSTALLDIR\AutoUpdate.config.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_Obsidian.Client.Support.dll" Guid="D6D076DF-CF52-45ED-9107-C3701C01F632" Path="INSTALLDIR\Obsidian.Client.Support.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Authorisation.Client.dll" Guid="F4B6AB3F-94F9-443D-8A8C-47E1CB5FB80C" Path="INSTALLDIR\Sage.Authorisation.Client.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Authorisation.dll" Guid="DF7253FF-6F50-47C3-B20B-5C1A4048F9DE" Path="INSTALLDIR\Sage.Authorisation.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Authorisation.Server.dll" Guid="8B85B254-33DD-4017-9084-CB86B16E8008" Path="INSTALLDIR\Sage.Authorisation.Server.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_CloudSite.config.xml" Guid="1D20A375-C3AE-4D5A-9F79-53DD22EBF503" Path="INSTALLDIR\CloudSite.config.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.ComponentIdentification.dll" Guid="1D09EE28-7676-4DA0-A3E3-88E7A6E37ABE" Path="INSTALLDIR\Sage.CRE.ComponentIdentification.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_WPFToolkit.dll" Guid="E1C07EBD-4A79-4957-B217-CE6F88B37230" Path="INSTALLDIR\WPFToolkit.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_System.Windows.Controls.Input.Toolkit.dll" Guid="0907BB1D-7E3F-43CE-8326-C44F8B7A6249" Path="INSTALLDIR\System.Windows.Controls.Input.Toolkit.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_System.Windows.Controls.Layout.Toolkit.dll" Guid="6BC8E568-7F3A-435E-8515-F81A4C05BD0B" Path="INSTALLDIR\System.Windows.Controls.Layout.Toolkit.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Xceed.Wpf.AvalonDock.dll" Guid="C37D755A-7095-4741-AEB7-52DF2E17A967" Path="INSTALLDIR\Xceed.Wpf.AvalonDock.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Xceed.Wpf.AvalonDock.Themes.Aero.dll" Guid="4A1ED141-9FD2-4E04-8C3E-0C2C6195D311" Path="INSTALLDIR\Xceed.Wpf.AvalonDock.Themes.Aero.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Xceed.Wpf.AvalonDock.Themes.Metro.dll" Guid="3939832E-B103-4E8A-9E85-65B6FA24B583" Path="INSTALLDIR\Xceed.Wpf.AvalonDock.Themes.Metro.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Xceed.Wpf.AvalonDock.Themes.VS2010.dll" Guid="7F81295B-EC25-4C1D-B964-2D125E3A1D28" Path="INSTALLDIR\Xceed.Wpf.AvalonDock.Themes.VS2010.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Xceed.Wpf.DataGrid.dll" Guid="A8B420A7-D841-4D1E-B3EB-251B48B590B3" Path="INSTALLDIR\Xceed.Wpf.DataGrid.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Xceed.Wpf.Toolkit.dll" Guid="0EB858C3-CDEE-4FC2-B127-067B9BD2BA22" Path="INSTALLDIR\Xceed.Wpf.Toolkit.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.MessagingService.Config.xml" Guid="3AF26B5E-239A-49F5-B775-384F0A0D0E41" Path="INSTALLDIR\HostingFrameworkServices\Sage.Connector.MessagingService.Config.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.DispatchService.Config.xml" Guid="A636F26D-0D54-407E-9642-9D5246A8BEF8" Path="INSTALLDIR\HostingFrameworkServices\Sage.Connector.DispatchService.Config.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.ConfigurationService.Confg.xml" Guid="FC109169-1A06-4024-9BA0-06EE5787926C" Path="INSTALLDIR\HostingFrameworkServices\Sage.Connector.ConfigurationService.Config.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.NotificationService.Config.xml" Guid="DA8869F8-624F-4FB1-8525-BA30E899EB7B" Path="INSTALLDIR\HostingFrameworkServices\Sage.Connector.NotificationService.Config.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.StateService.Config.xml" Guid="AE8305E4-1D5A-434A-9903-6C5582267C73" Path="INSTALLDIR\HostingFrameworkServices\Sage.Connector.StateService.Config.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.Common.dll" Guid="EE52C56E-94FA-42E0-BA1F-F522BA796FA7" Path="INSTALLDIR\Monitor\Service\Sage.Connector.Common.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.Service.config" Guid="B3F0F7FD-1BCF-4BEC-863E-6C86CDC9E906" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.Service.config" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.Service.exe.config" Guid="2F9C7BA9-0A26-4818-B4A8-271274407342" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.Service.exe.config" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.Service.exe" Guid="08D2018E-C0B2-4C42-BECF-1A73614701C9" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.Service.exe" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.ServiceLibrary.dll" Guid="D763532F-31FF-4349-87E4-751A5F8815F6" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.ServiceLibrary.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.ServiceMonitor.cnfg" Guid="77F78E1B-E3B8-4962-AE38-5222CA9EFC1F" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.ServiceMonitor.config" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.ServiceMontr.x.cnfg" Guid="4AF27FA5-3F2C-43BD-8A17-8DDD3B83CEA4" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.ServiceMonitor.exe.config" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.ServiceMonitor.exe" Guid="C15FFDF6-94CB-4BFB-B9CB-EC200FC5CB45" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.ServiceMonitor.exe" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.StateService.Interfaces.dll" Guid="756B2C5F-E14C-4609-9ADA-B5A9CBBA122B" Path="INSTALLDIR\Monitor\Service\Sage.Connector.StateService.Interfaces.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.StateService.Proxy.dll" Guid="688E02D5-616F-4324-9218-2FE1BA7A0C79" Path="INSTALLDIR\Monitor\Service\Sage.Connector.StateService.Proxy.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.CatalogService.xml" Guid="0A01B1F3-271B-4729-8ECA-D1A826990CE1" Path="INSTALLDIR\Monitor\Service\HostingFrameworkServices\Sage.CRE.HostingFramework.CatalogService.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.MonitorService.xml" Guid="E05A4473-A0E5-4F74-87A1-5D2C01419835" Path="INSTALLDIR\Monitor\Service\HostingFrameworkServices\Sage.CRE.HostingFramework.MonitorService.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.MonitorService.Config.xml" Guid="A8F889A2-BBA3-43BE-A628-04EA1AC3F6EB" Path="INSTALLDIR\Monitor\Service\HostingFrameworkServices\Sage.Connector.MonitorService.Config.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.Common.dll_0" Guid="828A0936-9153-40F5-BF02-105AD62C5CAD" Path="INSTALLDIR\Monitor\Tray\Sage.Connector.Common.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.MonitorService.Interfaces.dll" Guid="E0DB1DB8-E2AE-4E9E-9F01-8C826987C987" Path="INSTALLDIR\Monitor\Tray\Sage.Connector.MonitorService.Interfaces.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.MonitorService.Proxy.dll" Guid="7A1794FC-585F-43B5-8D62-240681BE5909" Path="INSTALLDIR\Monitor\Tray\Sage.Connector.MonitorService.Proxy.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.Connector.StateService.Interfaces.dll_0" Guid="428EB324-D4D6-4498-8F87-228DCDDF7A48" Path="INSTALLDIR\Monitor\Tray\Sage.Connector.StateService.Interfaces.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.Core.dll" Guid="635072E2-20E0-43FD-B136-F93B9BBC1D00" Path="INSTALLDIR\Monitor\Tray\Sage.CRE.Core.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.Core.UI.dll" Guid="DDACABAD-38C3-46CB-A5EB-7EEDA27C537F" Path="INSTALLDIR\Monitor\Tray\Sage.CRE.Core.UI.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.Interfaces.dll" Guid="43E98D8A-6075-4310-8B85-7F06C56A96D7" Path="INSTALLDIR\Monitor\Tray\Sage.CRE.HostingFramework.Interfaces.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.Proxy.dll" Guid="6286CA81-B98A-4EE1-B9B5-ECAF37F01E2E" Path="INSTALLDIR\Monitor\Tray\Sage.CRE.HostingFramework.Proxy.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Sage.CRE.Resources.dll" Guid="6BABEB8E-5B79-4390-9252-2845CFCB1F13" Path="INSTALLDIR\Monitor\Tray\Sage.CRE.Resources.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_Newtonsoft.Json.dll_0" Guid="5D9BE40F-C84F-4DE4-9987-39DC78FF8902" Path="INSTALLDIR\Pipeline\Addins\ProcessExecution\Newtonsoft.Json.dll" />
+    <Component Id="COM_Sage.CM.CloudConnector_AutoUpdate.NonProduction.config.xml" Guid="059EB44E-FA23-4D0C-BE2E-C57C1CCA2658" Path="INSTALLDIR\AutoUpdate.NonProduction.config.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_CloudSite.NonProduction.config.xml" Guid="DC2F135B-BBF4-4794-A2DB-F2EA1C1D17E6" Path="INSTALLDIR\CloudSite.NonProduction.config.xml" />
+    <Component Id="COM_Sage.CM.CloudConnector_SageConnect.ViewModels.HelpLinks.resx" Guid="44BE04D8-F040-4C13-8933-C0575868E773" Path="INSTALLDIR\SageConnect.ViewModels.HelpLinks.resx" />
+    <Component Id="COM_Sage.CM.CloudConnector_SageConnect.ViewModels.HelpLinks.NnPrdctn.rsx" Guid="53608881-0A7B-4E8B-B60F-06991537B815" Path="INSTALLDIR\SageConnect.ViewModels.HelpLinks.NonProduction.resx" />
+    <Component Id="COM_Sage.CM.CloudConnector_addin.update.txt" Guid="9CFF1E32-E0DE-40D5-BD0F-939718541721" Path="INSTALLDIR\addin.update.txt" />
+    <Component Id="COM_Sage.CM.CloudConnector_AutoUpdateProductVersion.txt" Guid="9C979F7F-1FB4-4197-885B-DB0E256302B9" Path="INSTALLDIR\AutoUpdateProductVersion.txt" />
+  </Components>
+  <Files>
+    <File Id="FIL_Sage.CM.CloudConnector_Microsoft.WindowsAzure.Configuration.dll" Path="INSTALLDIR\Microsoft.WindowsAzure.Configuration.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Microsoft.WindowsAzure.Storage.dll" Path="INSTALLDIR\Microsoft.WindowsAzure.Storage.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Micrsft.Prctcs.ntrprsLbrr.TrnsntFltHndlng.dll" Path="INSTALLDIR\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Newtonsoft.Json.dll" Path="INSTALLDIR\Newtonsoft.Json.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Microsoft.AspNet.SignalR.Client.dll" Path="INSTALLDIR\Microsoft.AspNet.SignalR.Client.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Microsoft.AspNet.SignalR.Core.dll" Path="INSTALLDIR\Microsoft.AspNet.SignalR.Core.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_System.Net.Http.dll" Path="INSTALLDIR\System.Net.Http.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_System.Net.Http.Formatting.dll" Path="INSTALLDIR\System.Net.Http.Formatting.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_System.Web.Http.dll" Path="INSTALLDIR\System.Web.Http.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.DomainContracts.Data.dll" Path="INSTALLDIR\Sage.Connector.DomainContracts.Data.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.DomainContracts.Responses.dll" Path="INSTALLDIR\Sage.Connector.DomainContracts.Responses.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.Configuration.Contracts.Dt.dll" Path="INSTALLDIR\Sage.Connector.Configuration.Contracts.Data.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.DomainContracts.BackOffice.dll" Path="INSTALLDIR\Sage.Connector.DomainContracts.BackOffice.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.ProcessExecution.Rqstctvtr.dll" Path="INSTALLDIR\Sage.Connector.ProcessExecution.RequestActivator.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.Configuration.Mediator.dll" Path="INSTALLDIR\Sage.Connector.Configuration.Mediator.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.DomainMediator.Core.dll" Path="INSTALLDIR\Sage.Connector.DomainMediator.Core.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Ssdp.Security.Client.dll" Path="INSTALLDIR\Sage.Ssdp.Security.Client.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Passport.Util.dll" Path="INSTALLDIR\Sage.Passport.Util.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Passport.Client.Xrpc.dll" Path="INSTALLDIR\Sage.Passport.Client.Xrpc.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Passport.Client.dll" Path="INSTALLDIR\Sage.Passport.Client.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_ICSharpCode.SharpZipLib.dll" Path="INSTALLDIR\ICSharpCode.SharpZipLib.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_BouncyCastle.Crypto.dll" Path="INSTALLDIR\BouncyCastle.Crypto.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_AutoUpdate.config.xml" Path="INSTALLDIR\AutoUpdate.config.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_Obsidian.Client.Support.dll" Path="INSTALLDIR\Obsidian.Client.Support.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Authorisation.Client.dll" Path="INSTALLDIR\Sage.Authorisation.Client.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Authorisation.dll" Path="INSTALLDIR\Sage.Authorisation.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Authorisation.Server.dll" Path="INSTALLDIR\Sage.Authorisation.Server.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_CloudSite.config.xml" Path="INSTALLDIR\CloudSite.config.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.ComponentIdentification.dll" Path="INSTALLDIR\Sage.CRE.ComponentIdentification.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_WPFToolkit.dll" Path="INSTALLDIR\WPFToolkit.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_System.Windows.Controls.Input.Toolkit.dll" Path="INSTALLDIR\System.Windows.Controls.Input.Toolkit.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_System.Windows.Controls.Layout.Toolkit.dll" Path="INSTALLDIR\System.Windows.Controls.Layout.Toolkit.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Xceed.Wpf.AvalonDock.dll" Path="INSTALLDIR\Xceed.Wpf.AvalonDock.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Xceed.Wpf.AvalonDock.Themes.Aero.dll" Path="INSTALLDIR\Xceed.Wpf.AvalonDock.Themes.Aero.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Xceed.Wpf.AvalonDock.Themes.Metro.dll" Path="INSTALLDIR\Xceed.Wpf.AvalonDock.Themes.Metro.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Xceed.Wpf.AvalonDock.Themes.VS2010.dll" Path="INSTALLDIR\Xceed.Wpf.AvalonDock.Themes.VS2010.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Xceed.Wpf.DataGrid.dll" Path="INSTALLDIR\Xceed.Wpf.DataGrid.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Xceed.Wpf.Toolkit.dll" Path="INSTALLDIR\Xceed.Wpf.Toolkit.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.MessagingService.Config.xml" Path="INSTALLDIR\HostingFrameworkServices\Sage.Connector.MessagingService.Config.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.DispatchService.Config.xml" Path="INSTALLDIR\HostingFrameworkServices\Sage.Connector.DispatchService.Config.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.ConfigurationService.Confg.xml" Path="INSTALLDIR\HostingFrameworkServices\Sage.Connector.ConfigurationService.Config.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.NotificationService.Config.xml" Path="INSTALLDIR\HostingFrameworkServices\Sage.Connector.NotificationService.Config.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.StateService.Config.xml" Path="INSTALLDIR\HostingFrameworkServices\Sage.Connector.StateService.Config.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.Common.dll" Path="INSTALLDIR\Monitor\Service\Sage.Connector.Common.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.Service.config" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.Service.config" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.Service.exe.config" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.Service.exe.config" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.Service.exe" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.Service.exe" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.ServiceLibrary.dll" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.ServiceLibrary.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.ServiceMonitor.cnfg" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.ServiceMonitor.config" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.ServiceMontr.x.cnfg" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.ServiceMonitor.exe.config" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.ServiceMonitor.exe" Path="INSTALLDIR\Monitor\Service\Sage.CRE.HostingFramework.ServiceMonitor.exe" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.StateService.Interfaces.dll" Path="INSTALLDIR\Monitor\Service\Sage.Connector.StateService.Interfaces.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.StateService.Proxy.dll" Path="INSTALLDIR\Monitor\Service\Sage.Connector.StateService.Proxy.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.CatalogService.xml" Path="INSTALLDIR\Monitor\Service\HostingFrameworkServices\Sage.CRE.HostingFramework.CatalogService.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.MonitorService.xml" Path="INSTALLDIR\Monitor\Service\HostingFrameworkServices\Sage.CRE.HostingFramework.MonitorService.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.MonitorService.Config.xml" Path="INSTALLDIR\Monitor\Service\HostingFrameworkServices\Sage.Connector.MonitorService.Config.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.Common.dll_0" Path="INSTALLDIR\Monitor\Tray\Sage.Connector.Common.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.MonitorService.Interfaces.dll" Path="INSTALLDIR\Monitor\Tray\Sage.Connector.MonitorService.Interfaces.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.MonitorService.Proxy.dll" Path="INSTALLDIR\Monitor\Tray\Sage.Connector.MonitorService.Proxy.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.Connector.StateService.Interfaces.dll_0" Path="INSTALLDIR\Monitor\Tray\Sage.Connector.StateService.Interfaces.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.Core.dll" Path="INSTALLDIR\Monitor\Tray\Sage.CRE.Core.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.Core.UI.dll" Path="INSTALLDIR\Monitor\Tray\Sage.CRE.Core.UI.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.Interfaces.dll" Path="INSTALLDIR\Monitor\Tray\Sage.CRE.HostingFramework.Interfaces.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.HostingFramework.Proxy.dll" Path="INSTALLDIR\Monitor\Tray\Sage.CRE.HostingFramework.Proxy.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Sage.CRE.Resources.dll" Path="INSTALLDIR\Monitor\Tray\Sage.CRE.Resources.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_Newtonsoft.Json.dll_0" Path="INSTALLDIR\Pipeline\Addins\ProcessExecution\Newtonsoft.Json.dll" />
+    <File Id="FIL_Sage.CM.CloudConnector_AutoUpdate.NonProduction.config.xml" Path="INSTALLDIR\AutoUpdate.NonProduction.config.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_CloudSite.NonProduction.config.xml" Path="INSTALLDIR\CloudSite.NonProduction.config.xml" />
+    <File Id="FIL_Sage.CM.CloudConnector_SageConnect.ViewModels.HelpLinks.resx" Path="INSTALLDIR\SageConnect.ViewModels.HelpLinks.resx" />
+    <File Id="FIL_Sage.CM.CloudConnector_SageConnect.ViewModels.HelpLinks.NnPrdctn.rsx" Path="INSTALLDIR\SageConnect.ViewModels.HelpLinks.NonProduction.resx" />
+    <File Id="FIL_Sage.CM.CloudConnector_addin.update.txt" Path="INSTALLDIR\addin.update.txt" />
+    <File Id="FIL_Sage.CM.CloudConnector_AutoUpdateProductVersion.txt" Path="INSTALLDIR\AutoUpdateProductVersion.txt" />
+  </Files>
+  <Directories>
+    <Directory Id="DIR_Sage.CM.CloudConnector_BinderPlugins" Path="INSTALLDIR\BinderPlugins" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_HostingFrameworkServices" Path="INSTALLDIR\HostingFrameworkServices" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_Monitor" Path="INSTALLDIR\Monitor" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_Service" Path="INSTALLDIR\Monitor\Service" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_HostingFrameworkServices_0" Path="INSTALLDIR\Monitor\Service\HostingFrameworkServices" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_Tray" Path="INSTALLDIR\Monitor\Tray" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_Pipeline" Path="INSTALLDIR\Pipeline" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_Addins" Path="INSTALLDIR\Pipeline\Addins" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_ProcessExecution" Path="INSTALLDIR\Pipeline\Addins\ProcessExecution" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_AddinSideAdapters" Path="INSTALLDIR\Pipeline\AddinSideAdapters" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_AddinViews" Path="INSTALLDIR\Pipeline\AddinViews" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_Contracts" Path="INSTALLDIR\Pipeline\Contracts" />
+    <Directory Id="DIR_Sage.CM.CloudConnector_HostSideAdapters" Path="INSTALLDIR\Pipeline\HostSideAdapters" />
+  </Directories>
+</LibraryConfigTool>

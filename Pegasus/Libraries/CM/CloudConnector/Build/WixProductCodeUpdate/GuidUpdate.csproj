@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="ExecuteGenGuid" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <PropertyGroup>
+    <MSBuildCommunityTasksPath>.</MSBuildCommunityTasksPath>
+  </PropertyGroup>
+  
+  <Target Name="ExecuteGenGuid">
+    <GenGuid>
+      <Output PropertyName="GuidResult" TaskParameter="Id"/>
+    </GenGuid>
+    <Message Text="GuidResult: $(GuidResult)"/>
+	<Exec Command="attrib -R $(LibraryConfig_SCA_File)" />
+    <XmlUpdate XmlFileName="$(LibraryConfig_SCA_File)"
+           XPath="/LibraryConfigTool/Variables/Variable[@Name=&quot;SDC_ProductCode&quot;]/@Value"
+           Value="$(GuidResult)" />
+  </Target>
+
+  <!-- Using a custom task from the MSBuild.Cumminity.Tasks -->
+  <Import Project="$(SAGE_SANDBOX)/Libraries/CM/CloudConnector/Build/WixProductCodeUpdate/MSBuildTasks.1.4.0.74/tools/MSBuild.Community.Tasks.Targets" Condition="Exists('$(SAGE_SANDBOX)/Libraries/CM/CloudConnector/Build/WixProductCodeUpdate/MSBuildTasks.1.4.0.74/tools/MSBuild.Community.Tasks.Targets')"/>
+  
+  <!-- Custom inline task to Gen a guid -->
+  <UsingTask
+    TaskName="GenGuid"
+    TaskFactory="CodeTaskFactory"
+    AssemblyFile="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Bin\Microsoft.Build.Tasks.v12.0.dll">
+    <ParameterGroup>
+      <Id Output="true"/>
+    </ParameterGroup>
+    <Task>
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+            Id = System.Guid.NewGuid().ToString().ToUpper();
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+</Project>
+

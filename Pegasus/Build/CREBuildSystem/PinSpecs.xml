@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PinSpecs>
+  <DefaultParams>
+    <!-- 
+      Parameter name: PackageRepositoryRoot
+      Description:    Path to the primary package storage location.  
+      -->
+    <Param Name="PackageRepositoryRoot">\\ORBDEVFILE01\crebuild\Platform\Packages</Param>
+    
+    <!--
+      Parameter name: VersionFilePinnedTo
+      Description:    
+    -->
+    <Param Name="VersionFilePinnedTo">4.5.0\Latest.xml</Param>
+  </DefaultParams>
+
+  <!--
+  <LibraryParams LibrarySetId="MMCRE" LibraryName="Help" PackageRepositoryRoot="\\orbdd530-1\crebuild\ste\Packages" VersionFilePinnedTo="10.9.0\Latest.xml" />
+  -->
+</PinSpecs>

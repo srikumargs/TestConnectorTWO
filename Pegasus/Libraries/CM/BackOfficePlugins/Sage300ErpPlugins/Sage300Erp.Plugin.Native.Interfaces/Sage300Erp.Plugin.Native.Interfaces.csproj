@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C189A213-B84F-4314-AE3E-458F5E43D4CD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sage300Erp.Plugin.Native.Interfaces</RootNamespace>
+    <AssemblyName>Sage300Erp.Plugin.Native.Interfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\ProcessExecution\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Debug\ProcessExecution\Sage300Erp.Plugin.Native.Interfaces.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\ProcessExecution\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Release\ProcessExecution\Sage300Erp.Plugin.Native.Interfaces.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <KeyFileDir>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))</KeyFileDir>
+    <AssemblyOriginatorKeyFile>$(KeyFileDir)\Sage300ErpPluginKeyFile.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountType.cs" />
+    <Compile Include="AgedDocRecordType.cs" />
+    <Compile Include="ARInvoiceTransactionType.cs" />
+    <Compile Include="ITaxRateView.cs" />
+    <Compile Include="ITaxGroupView.cs" />
+    <Compile Include="ITaxClassView.cs" />
+    <Compile Include="IARStatementOption.cs" />
+    <Compile Include="IARAgedDocView .cs" />
+    <Compile Include="IARInvoiceBatchView.cs" />
+    <Compile Include="IARInvoiceDetailView.cs" />
+    <Compile Include="IARInvoiceView.cs" />
+    <Compile Include="IARItemsView.cs" />
+    <Compile Include="IARItemTaxView.cs" />
+    <Compile Include="IARPaymentCodeView.cs" />
+    <Compile Include="IARReceiptBatchView.cs" />
+    <Compile Include="IARReceiptView.cs" />
+    <Compile Include="IBaseView.cs" />
+    <Compile Include="IBrowseable.cs" />
+    <Compile Include="ICustomersView.cs" />
+    <Compile Include="IInvoiceDetailsView.cs" />
+    <Compile Include="IInvoicesView.cs" />
+    <Compile Include="IItemsView.cs" />
+    <Compile Include="IARItemPricingView.cs" />
+    <Compile Include="ITaxAuthorityView.cs" />
+    <Compile Include="IARAgedTrialBalanceView.cs" />
+    <Compile Include="IAROBLDocumentView.cs" />
+    <Compile Include="IOEInvoicesView.cs" />
+    <Compile Include="IOEPrepayment.cs" />
+    <Compile Include="IOrderDetailsView.cs" />
+    <Compile Include="IOrdersView.cs" />
+    <Compile Include="IUpdateable.cs" />
+    <Compile Include="LineType.cs" />
+    <Compile Include="OrderType.cs" />
+    <Compile Include="PaymentType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatusType.cs" />
+    <Compile Include="TaxClassType.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

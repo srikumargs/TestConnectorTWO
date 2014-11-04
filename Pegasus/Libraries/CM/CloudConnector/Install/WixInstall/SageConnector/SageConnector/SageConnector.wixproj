@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.8</ProductVersion>
+    <ProjectGuid>f166560b-7acd-4d8f-8539-00f0408ad9e3</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>SageConnector</OutputName>
+    <OutputType>Package</OutputType>
+    <SandboxDir>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..\..\..\..\..\..'))</SandboxDir>
+    <ToolsBinDir>$(SandboxDir)\Tools\Bin</ToolsBinDir>
+    <WixToolPath>$(SandboxDir)\Tools\Bin\WiX38\</WixToolPath>
+    <WixTasksPath>$(WixToolPath)WixTasks.dll</WixTasksPath>
+    <WixTargetsPath>$(WixToolPath)Wix.targets</WixTargetsPath>
+    <SuppressIces>ICE99;ICE38;ICE30;ICE27;ICE40</SuppressIces>
+    <SkyfireProduct>SCA</SkyfireProduct>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug;SkyfireProduct=SCA;SandboxDir=C:\sandbox\Pegasus</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>SkyfireProduct=SCA;SandboxDir=C:\sandbox\Pegasus</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>C:\sandbox\Tools\Bin\WiX38\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>C:\sandbox\Tools\Bin\WiX38\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+    <Compile Include="SageConnector.wxs" />
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it.
+	Other similar extension points exist, see Wix.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>

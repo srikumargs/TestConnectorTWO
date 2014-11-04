@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <!-- this Registry value serves as the KeyPath for this component. it is required, not by WiX, but by Windows Installer -->
+
+  <Fragment>
+    <!--
+    <DirectoryRef Id="StartupFolder">
+      <Component Id='COM_ConnectorUIStartupShortcut' Guid='8564B197-4B16-41AC-8FB2-945911D6072A'>
+        <RegistryValue Root='HKCU' Key='SOFTWARE\Sage\SageConnector\$(var.SkyfireProduct)\StartupShortcut_ConnectorUI' Name='installed' Type='integer' Value='1' KeyPath='yes'/>
+
+        <Shortcut Id="StartupShortcut_ConnectorUI" Name="Sage Timberline Office Construction Anywhere Connector" Target="[INSTALLDIR]SageConnector.exe" WorkingDirectory="INSTALLDIR" Icon="Icon_ConnectorUI" IconIndex="0" />
+      </Component>
+    </DirectoryRef>
+    -->
+  </Fragment>
+
+</Wix>

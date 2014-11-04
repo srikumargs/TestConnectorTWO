@@ -1,0 +1,25 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLDIR">
+      <Component Id='COM_ConnectorRegistry' Guid="6BED7BC1-B00A-4775-9575-9326BCD082BC">
+        <CreateFolder/>
+        <RegistryKey Id="REG_SkyfireByService" Action="createAndRemoveOnUninstall" Root="HKLM"  Key="SOFTWARE\Sage\SageConnector\-=TAG_HostingFxServiceName=-">
+          <RegistryValue Id="REG_ProductId" Action="write" Name="ProductId" Type="string" Value="-=TAG_ProductId=-" />
+        </RegistryKey>
+        <RegistryKey Id="REG_SkyfireByProduct" Action="createAndRemoveOnUninstall" Root="HKLM"  Key="SOFTWARE\Sage\SageConnector\-=TAG_ProductId=-">
+          <RegistryValue Id="REG_InstallPath" Action="write" Name="InstallPath" Type="string" Value="[INSTALLDIR]" />
+          <RegistryValue Id="REG_ProductId2" Action="write" Name="ProductId" Type="string" Value="-=TAG_ProductId=-" />
+          <RegistryValue Id="REG_ProductCode" Action="write" Name="ProductCode" Type="string" Value="[ProductCode]" />
+          <RegistryValue Id="REG_ProductHelpBaseUrl" Action="write" Name="ProductHelpBaseUrl" Type="string" Value="-=TAG_ProductHelpBaseUrl=-" />
+          <RegistryValue Id="REG_BriefProductName" Action="write" Name="BriefProductName" Type="string" Value="-=TAG_BriefProductName=-" />
+          <RegistryValue Id="REG_FullProductName" Action="write" Name="FullProductName" Type="string" Value="-=TAG_FullProductName=-" />
+          <RegistryValue Id="REG_ProductVersion" Action="write" Name="ProductVersion" Type="string" Value="[ProductVersion]" />
+          <RegistryValue Id="REG_MinimumConnectorIntegrationInterfacesVersion" Action="write" Name="MinimumConnectorIntegrationInterfacesVersion" Type="string" Value="-=TAG_MinimumConnectorIntegrationInterfacesVersion=-" />
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+</Wix>

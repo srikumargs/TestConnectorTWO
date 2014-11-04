@@ -1,0 +1,1242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Setup SuiteId="{C0AA2489-A907-41C7-9DEE-5FA16EBFF126}" xmlns="installshield/2014/bootstrap">
+	<PathVariables xmlns="installshield/2014/bootstrap/project">
+		<PathVariable Name="ISProjectDataFolder" Type="PreDefined"/>
+		<PathVariable Name="ISProjectFolder" Type="PreDefined"/>
+		<PathVariable Name="PATH_TO_SCA_FILES" Type="Custom" Value="C:\SRC\Sage Cloud\CloudConnector\Dev\vNextConWip\Pegasus\Runtime Files\Install\SDC"/>
+		<PathVariable Name="PATH_TO_LANGUAGE_INDEPE_FILES" Type="Custom" Value="&lt;ISProductFolder&gt;\redist\Language Independent"/>
+		<PathVariable Name="PATH_TO_OUTPUT_FILES" Type="Custom" Value="C:\sandbox\Pegasus\Libraries\CM\CloudConnector\Install\SDC\Build\Output"/>
+		<PathVariable Name="PATH_TO_LANGUAGE_INDEPE_FILES1" Type="Custom" Value="&lt;ISProductFolder&gt;\redist\Language Independent"/>
+		<PathVariable Name="PATH_TO_LANGUAGE_INDEPE_FILES2" Type="Custom" Value="&lt;ISProductFolder&gt;\redist\Language Independent"/>
+	</PathVariables>
+	<Releases ActiveRelease="Release" xmlns="installshield/2014/bootstrap/project">
+		<Release>
+			<Build>
+				<Name>Release</Name>
+				<BuildLocation>&lt;ISProjectDataFolder&gt;</BuildLocation>
+				<UILangs>1033</UILangs>
+				<DefaultLang>1033</DefaultLang>
+				<UpdateUrl>http://</UpdateUrl>
+				<CachePackagesLocally>Yes</CachePackagesLocally>
+				<ReleaseFlags>Production</ReleaseFlags>
+			</Build>
+			<Signing>
+				<SignatureURL>http://</SignatureURL>
+			</Signing>
+			<Setupexe>
+				<PackageLocation>EXE</PackageLocation>
+				<ExeFileName>MonitorSetup.exe</ExeFileName>
+				<RequiredExecutionLevel>Admin</RequiredExecutionLevel>
+				<SetupIcon>&lt;ISProjectFolder&gt;\SupportFiles\Images\sage_connector.ico,0</SetupIcon>
+			</Setupexe>
+		</Release>
+	</Releases>
+	<Properties>
+		<SetProperty Name="ProductName" Value="Sage Data Cloud Connector Monitor"/>
+		<SetProperty Name="ConnectorServiceName" Value="MSSQL$DEVTEST"/>
+		<SetProperty Name="INSTALL_VERSION" Value="1.00.0002"/>
+		<SetProperty Name="NephosUninstallCommand" Value="NA"/>
+		<SetProperty Name="MonitorFileExist" Value="false"/>
+		<SetProperty Name="ConfigurationFileExist" Value="false"/>
+		<SetProperty Name="SageConnectorMsiCommand" Value="INSTALLDIR=&quot;[ISInstallDir_Sage_Data_Cloud_Connector Monitor]&quot;" FormatPropertyValue="Yes"/>
+		<SetProperty Name="IsSilentInstall" Value="false"/>
+		<SetProperty Name="ProductName_LongVersion" Value="[ProductName]" FormatPropertyValue="Yes"/>
+		<SetProperty Name="InstallCancelled" Value="false"/>
+		<SetProperty Name="InstallationFinishMessage" Value="Installation Completed"/>
+		<SetProperty Name="UnsupportedPlatform" Value="false"/>
+		<SetProperty Name="PendingReboot" Value="false"/>
+		<SetProperty Name="RunDotNet" Value="false"/>
+		<SetProperty Name="ModernOS" Value="false"/>
+		<SetProperty Name="DotNetDisplayName" Value="Microsoft .NET Framework 4.5.1"/>
+		<SetProperty Name="ISInstallDir_Sage_Data_Cloud_Connector" Value="[ProgramFilesFolder]Sage\[ProductName]" FormatPropertyValue="Yes"/>
+		<SetProperty Name="PrevInstallDir" Value="NA"/>
+		<SetProperty Name="AdminUser" Value="true"/>
+		<SetProperty Name="ProductNameShort" Value="SDC Monitor"/>
+	</Properties>
+	<UserInterface xmlns="installshield/2014/bootstrap/ui">
+		<Resources>
+			<FontSet Name="BodyFonts">
+				<Font Name="Arial" Size="11"/>
+				<Font Name="Microsoft JhengHei UI" Size="10" Language="1028"/>
+				<Font Name="SimSun" Size="10" Language="1028"/>
+				<Font Name="Meiryo UI" Size="10" Language="1041"/>
+				<Font Name="MS Mincho" Size="10" Language="1041"/>
+				<Font Name="Malgun Gothic" Size="10" Language="1042"/>
+				<Font Name="Dotum" Size="10" Language="1042"/>
+				<Font Name="Microsoft YaHei UI" Size="10" Language="2052"/>
+				<Font Name="SimSun" Size="10" Language="2052"/>
+				<Font Name="Calibri" Size="10"/>
+				<Font Name="Verdana" Size="8"/>
+			</FontSet>
+			<Class Name="Header" Pen="0x000000">
+				<Class.FontSet BasedOn="BodyFonts" Size="180" Weight="400"/>
+			</Class>
+			<Class Name="Body" Pen="0x101010">
+				<Class.FontSet BasedOn="Arial11Reg#000000" Weight="400"/>
+			</Class>
+			<Class Name="BodyItalics" Pen="0x383838">
+				<Class.FontSet BasedOn="BodyFonts" Weight="500" Italic="true"/>
+			</Class>
+			<Class Name="BodyBold" Pen="0x101010">
+				<Class.FontSet BasedOn="BodyFonts" Weight="600"/>
+			</Class>
+			<Class Name="BodyCombo" Pen="0x383838" Background="0x3e3e3e">
+				<Class.FontSet BasedOn="BodyFonts"/>
+			</Class>
+			<Class Name="BodyList" Pen="0x101010">
+				<Class.FontSet BasedOn="Arial11Reg#000000" Size="100"/>
+			</Class>
+			<ImageBrush Name="Header" Resource="sage_data_cloud_connector_banner.png"/>
+			<ImageBrush Name="DialogBackground" Resource="install_background_footer_.png"/>
+			<GradientBrush Name="Body" Type="Vertical">
+				<Vertex X="0" Y="0" Color="0xFFDFCC"/>
+				<Vertex X="100" Y="100" Color="0xFFBE99"/>
+				<Rectangle UpperLeft="0" LowerRight="1"/>
+			</GradientBrush>
+			<SolidBrush Name="Footer" Color="0xFFFFFF"/>
+			<FontSet Name="Arial11Reg">
+				<Font Name="Arial" Size="11" Weight="400"/>
+			</FontSet>
+			<Class Name="SageBody000000" Pen="0x000000">
+				<Class.FontSet BasedOn="Arial11Reg"/>
+			</Class>
+			<Class Name="SageBody4C4C4C" Pen="0x4C4C4C">
+				<Class.FontSet BasedOn="Arial11Reg"/>
+			</Class>
+			<FontSet Name="Arial18Reg">
+				<Font Name="Arial" Size="18" Weight="400"/>
+			</FontSet>
+			<Class Name="SageComplete000000" Pen="0x000000">
+				<Class.FontSet BasedOn="Arial18Reg"/>
+			</Class>
+			<FontSet Name="Arial16Reg">
+				<Font Name="Arial" Size="16" Weight="400"/>
+			</FontSet>
+			<Class Name="SageMaint000000" Pen="0x000000">
+				<Class.FontSet BasedOn="Arial16Reg"/>
+			</Class>
+		</Resources>
+		<Wizard Format="Wizard97" Caption="IDS_PRODUCTNAME_INSTALLSHIELD" Resize="0" Icon="sage_connector.ico">
+			<Wizard.Header Background="Header"/>
+			<Wizard.View Margin="false" Height="225" Width="400" Transition="true" Background="DialogBackground"/>
+			<Wizard.Navigation Spacing="Group" Direction="RTL" Margin="10" Background="Footer"/>
+			<Page Name="UnsupportedPlatform">
+				<Page.Visible>
+					<All>
+						<Property Name="UnsupportedPlatform" Convert="String" Compare="Equal" CompareTo="true"/>
+					</All>
+				</Page.Visible>
+				<Label Name="Label" Position="20,10,370,30" Text="ID_STRING5" Class="SageBody000000"/>
+				<Finish/>
+				<Cancel>
+					<Cancel.Visible>
+						<Not/>
+					</Cancel.Visible>
+				</Cancel>
+				<HyperLink Name="HyperLinkInternal" Position="20,41,105,14" Text="ID_STRING44" Resource="http://help.connector.sageinternal.com/en-us/web/win/index.htm#cshid=9 " Class="SageBody000000">
+					<HyperLink.Visible>
+						<Any>
+							<Property Name="ISReleaseFlags" Convert="String" Compare="Contains" CompareTo="NonProduction"/>
+						</Any>
+					</HyperLink.Visible>
+				</HyperLink>
+				<HyperLink Name="HyperLinkExternal" Position="20,41,105,14" Text="ID_STRING44" Resource="http://help.connector.na.sage.com/en-us/web/win/index.htm#cshid=9" Class="SageBody000000">
+					<HyperLink.Visible>
+						<Not>
+							<Property Name="ISReleaseFlags" Convert="String" Compare="Contains" CompareTo="NonProduction"/>
+						</Not>
+					</HyperLink.Visible>
+				</HyperLink>
+			</Page>
+			<Page Name="BlockNonAdmin">
+				<Page.Visible>
+					<All>
+						<Property Name="AdminUser" Convert="String" Compare="Equal" CompareTo="false"/>
+					</All>
+				</Page.Visible>
+				<Label Name="Label" Position="20,10,370,43" Text="ID_STRING57" Class="SageBody000000"/>
+				<Finish/>
+				<Cancel>
+					<Cancel.Visible>
+						<Not/>
+					</Cancel.Visible>
+				</Cancel>
+				<HyperLink Name="HyperLinkInternal" Position="20,54,105,14" Text="ID_STRING44" Resource="http://help.connector.sageinternal.com/en-us/web/win/index.htm#cshid=10 " Class="SageBody000000">
+					<HyperLink.Visible>
+						<Any>
+							<Property Name="ISReleaseFlags" Convert="String" Compare="Contains" CompareTo="NonProduction"/>
+						</Any>
+					</HyperLink.Visible>
+				</HyperLink>
+				<HyperLink Name="HyperLinkExternal" Position="20,54,105,14" Text="ID_STRING44" Resource="http://help.connector.na.sage.com/en-us/web/win/index.htm#cshid=10 " Class="SageBody000000">
+					<HyperLink.Visible>
+						<Any>
+							<Property Name="ISReleaseFlags" Convert="String" Compare="Contains" CompareTo="NonProduction"/>
+						</Any>
+					</HyperLink.Visible>
+				</HyperLink>
+			</Page>
+			<Page Name="PendingReboot">
+				<Page.Visible>
+					<All>
+						<Property Name="PendingReboot" Convert="String" Compare="Equal" CompareTo="true"/>
+					</All>
+				</Page.Visible>
+				<Label Name="Label" Position="20,10,370,30" Text="ID_STRING47" Class="SageBody000000"/>
+				<Finish/>
+				<Cancel>
+					<Cancel.Visible>
+						<Not/>
+					</Cancel.Visible>
+				</Cancel>
+			</Page>
+			<Page Name="InstallationLanguage" Caption="IDS_INSTALLATION_LANGUAGE_CAPTION">
+				<Page.Visible>
+					<Any>
+						<Property Name="ISShowLanguageSelection" Convert="String" Compare="Equal" CompareTo="true"/>
+					</Any>
+				</Page.Visible>
+				<Label Name="IDC_LABEL1" Position="21,10,358,10" Text="IDS_INSTALLATION_LANGUAGE_DIRECTIONS" Class="Body" Anchor="SIZE_X"/>
+				<ComboBox Name="IDC_LANGUAGE" Position="19,21,358,15" Property="ISSelectedLanguage" Class="Body" Anchor="SIZE_X" Style="CBS_DROPDOWNLIST" Items="ISLanguageList"/>
+				<Next/>
+			</Page>
+			<Page Name="InstallationRemoval">
+				<Page.Visible>
+					<Any>
+						<Mode Value="remove"/>
+					</Any>
+				</Page.Visible>
+				<Image Name="IDB_BMP" Position="21,23,40,40" Resource="Remove.png"/>
+				<Label Name="IDC_LABEL1" Position="67,23,323,34" Text="IDS_WELCOME_UNINSTALL_DIRECTIONS" Class="Body" Anchor="SIZE_X"/>
+				<Install Text="IDS_REMOVE_BUTTON">
+					<Install.Click>
+						<SetProperty Name="ISProgressCaption" Value="IDS_PROGRESS_CAPTION_UNINSTALLING"/>
+						<SetProperty Name="ISProgressSummary" Value="IDS_PROGRESS_TITLE_UNINSTALLING"/>
+						<Install Page="InstallationProgress"/>
+					</Install.Click>
+				</Install>
+			</Page>
+			<Page Name="InstallationWelcome" Background="DialogBackground">
+				<Page.Header Image=""/>
+				<Page.Visible>
+					<All>
+						<Mode Value="install"/>
+					</All>
+				</Page.Visible>
+				<Label Name="IDC_CLEAN_INSTALL" Position="20,27,370,30" Text="IDS_WELCOME_INSTALL_DIRECTIONS" Class="SageBody000000" Anchor="SIZE_X|MOVE_Y">
+					<Label.Visible>
+						<Any>
+							<Property Name="DetectedConnectorUpgrade" Convert="String" Compare="NotEqual" CompareTo="true"/>
+						</Any>
+					</Label.Visible>
+				</Label>
+				<Next>
+					<Next.Click>
+						<SetProperty Name="ISProgressCaption" Value="IDS_PROGRESS_CAPTION_INSTALLING"/>
+						<SetProperty Name="ISProgressSummary" Value="IDS_PROGRESS_TITLE_INSTALLING"/>
+					</Next.Click>
+				</Next>
+				<HyperLink Name="HyperLinkInternal" Position="20,97,238,14" Text="ID_STRING13" Resource="http://help.connector.sageinternal.com/en-us/web/win/index.htm#cshid=11 " Class="SageBody000000">
+					<HyperLink.Visible>
+						<All>
+							<Property Name="ISReleaseFlags" Convert="String" Compare="Contains" CompareTo="NonProduction"/>
+						</All>
+					</HyperLink.Visible>
+				</HyperLink>
+				<Label Name="Label" Position="20,0,326,18" Text="ID_STRING42" Class="SageComplete000000"/>
+				<Cancel>
+					<Cancel.Click>
+						<SetProperty Name="InstallationFinishMessage" Value="Installation Cancelled"/>
+					</Cancel.Click>
+				</Cancel>
+				<Image Name="Image" Position="23,139,17,14" Resource="warning_triangle.png">
+					<Image.Visible>
+						<Any>
+							<Property/>
+							<Property Name="RunDotNet" Convert="String" Compare="Equal" CompareTo="true"/>
+						</Any>
+					</Image.Visible>
+				</Image>
+				<Label Name="DotNetRequireReboot" Position="60,130,320,69" Text="ID_STRING49" Class="SageBody000000">
+					<Label.Visible>
+						<All>
+							<Property Name="RunDotNet" Convert="String" Compare="Equal" CompareTo="true"/>
+							<Property Name="ModernOS" Convert="String" Compare="Equal" CompareTo="true"/>
+						</All>
+					</Label.Visible>
+				</Label>
+				<Label Name="DotNetMayReboot" Position="60,130,320,60" Text="ID_STRING48" Class="SageBody000000">
+					<Label.Visible>
+						<All>
+							<Property Name="RunDotNet" Convert="String" Compare="Equal" CompareTo="true"/>
+							<Property Name="ModernOS" Convert="String" Compare="Equal" CompareTo="false"/>
+						</All>
+					</Label.Visible>
+				</Label>
+				<Label Name="IDC_UPGRADE_INSTALL" Position="20,27,370,30" Text="ID_STRING50" Class="SageBody000000" Anchor="SIZE_X|MOVE_Y">
+					<Label.Visible>
+						<Any>
+							<Property Name="DetectedConnectorUpgrade" Convert="String" Compare="Equal" CompareTo="true"/>
+						</Any>
+					</Label.Visible>
+				</Label>
+				<Label Name="Label1" Position="20,60,370,28" Text="ID_STRING51" Class="SageBody000000">
+					<Label.Visible>
+						<Any>
+							<Property Name="DetectedConnectorUpgrade" Convert="String" Compare="Equal" CompareTo="true"/>
+						</Any>
+					</Label.Visible>
+				</Label>
+				<HyperLink Name="HyperLinkExternal" Position="20,97,238,14" Text="ID_STRING13" Resource="http://help.connector.na.sage.com/en-us/web/win/index.htm#cshid=11 " Class="SageBody000000">
+					<HyperLink.Visible>
+						<Not>
+							<Property Name="ISReleaseFlags" Convert="String" Compare="Contains" CompareTo="NonProduction"/>
+						</Not>
+					</HyperLink.Visible>
+				</HyperLink>
+			</Page>
+			<Page Name="MaintenanceWelcome">
+				<Page.Visible>
+					<All>
+						<Mode Value="maintenance"/>
+						<Property Name="ISUpdateAvailable" CompareTo="1" Convert="DWORD" Compare="NotEqual"/>
+					</All>
+				</Page.Visible>
+				<CommandLink Name="IDC_REPAIR" Position="20,14,380,44" Text="IDS_WELCOME_MAINTENANCE_REPAIR" Resource="repair_icon.png" Class="SageMaint000000" Anchor="SIZE_X">
+					<CommandLink.Note Text="IDS_WELCOME_MAINTENANCE_REPAIR_NOTE" Class="SageBody000000"/>
+					<CommandLink.Click>
+						<SetProperty Name="IsInstallMode" Value="repair"/>
+						<SetProperty Name="ISProgressCaption" Value="IDS_PROGRESS_CAPTION_INSTALLING"/>
+						<SetProperty Name="ISProgressSummary" Value="IDS_PROGRESS_TITLE_INSTALLING"/>
+						<Install Page="InstallationProgress"/>
+					</CommandLink.Click>
+				</CommandLink>
+				<CommandLink Name="IDC_REMOVE" Position="20,70,380,52" Text="IDS_WELCOME_MAINTENANCE_REMOVE" Resource="trash_icon.png" Class="SageMaint000000" Anchor="SIZE_X">
+					<CommandLink.Note Text="IDS_WELCOME_MAINTENANCE_REMOVE_NOTE" Class="SageBody000000"/>
+					<CommandLink.Click>
+						<SetProperty Name="IsInstallMode" Value="remove"/>
+						<SetProperty Name="ISProgressCaption" Value="IDS_PROGRESS_CAPTION_UNINSTALLING"/>
+						<SetProperty Name="ISProgressSummary" Value="IDS_PROGRESS_TITLE_UNINSTALLING"/>
+						<Install Page="InstallationProgress"/>
+					</CommandLink.Click>
+				</CommandLink>
+			</Page>
+			<Page Name="MaintenanceUpdateWelcome" Caption="IDS_WELCOME_MAINTENANCE_CAPTION">
+				<Page.Visible>
+					<All>
+						<Mode Value="maintenance"/>
+						<Property Name="ISUpdateAvailable" CompareTo="1" Convert="DWORD" Compare="Equal"/>
+					</All>
+				</Page.Visible>
+				<CommandLink Name="IDC_UPDATE" Position="10,23,380,48" Text="IDS_WELCOME_MAINTENANCE_UPDATE" Resource="Custom.png" Class="Header" Anchor="SIZE_X">
+					<CommandLink.Note Text="IDS_WELCOME_MAINTENANCE_UPDATE_NOTE" Class="BodyItalics"/>
+					<CommandLink.Click>
+						<SetProperty Name="IsInstallMode" Value="update"/>
+						<SetProperty Name="ISProgressCaption" Value="IDS_PROGRESS_CAPTION_UPDATING"/>
+						<SetProperty Name="ISProgressSummary" Value="IDS_PROGRESS_TITLE_UPDATING"/>
+						<Install Page="InstallationProgress"/>
+					</CommandLink.Click>
+				</CommandLink>
+				<CommandLink Name="IDC_MODIFY" Position="10,73,380,48" Text="IDS_WELCOME_MAINTENANCE_MODIFY" Resource="Custom.png" Class="Header" Anchor="SIZE_X">
+					<CommandLink.Note Text="IDS_WELCOME_MAINTENANCE_MODIFY_NOTE" Class="BodyItalics"/>
+					<CommandLink.Click>
+						<SetProperty Name="IsInstallMode" Value="modify"/>
+						<SetProperty Name="ISProgressCaption" Value="IDS_PROGRESS_CAPTION_INSTALLING"/>
+						<SetProperty Name="ISProgressSummary" Value="IDS_PROGRESS_TITLE_INSTALLING"/>
+						<SetActivePage Page="InstallationFeatures"/>
+					</CommandLink.Click>
+				</CommandLink>
+				<CommandLink Name="IDC_REPAIR" Position="10,123,380,48" Text="IDS_WELCOME_MAINTENANCE_REPAIR" Resource="Repair.png" Class="Header" Anchor="SIZE_X">
+					<CommandLink.Note Text="IDS_WELCOME_MAINTENANCE_REPAIR_NOTE" Class="BodyItalics"/>
+					<CommandLink.Click>
+						<SetProperty Name="IsInstallMode" Value="repair"/>
+						<SetProperty Name="ISProgressCaption" Value="IDS_PROGRESS_CAPTION_INSTALLING"/>
+						<SetProperty Name="ISProgressSummary" Value="IDS_PROGRESS_TITLE_INSTALLING"/>
+						<Install Page="InstallationProgress"/>
+					</CommandLink.Click>
+				</CommandLink>
+				<CommandLink Name="IDC_REMOVE" Position="10,173,380,48" Text="IDS_WELCOME_MAINTENANCE_REMOVE" Resource="Remove.png" Class="Header" Anchor="SIZE_X">
+					<CommandLink.Note Text="IDS_WELCOME_MAINTENANCE_REMOVE_NOTE" Class="BodyItalics"/>
+					<CommandLink.Click>
+						<SetProperty Name="IsInstallMode" Value="remove"/>
+						<SetProperty Name="ISProgressCaption" Value="IDS_PROGRESS_CAPTION_UNINSTALLING"/>
+						<SetProperty Name="ISProgressSummary" Value="IDS_PROGRESS_TITLE_UNINSTALLING"/>
+						<Install Page="InstallationProgress"/>
+					</CommandLink.Click>
+				</CommandLink>
+			</Page>
+			<Page Name="BrowseStageFolder">
+				<Page.Visible>
+					<Any>
+						<Mode Value="stage"/>
+					</Any>
+				</Page.Visible>
+				<Label Name="IDC_LABEL1" Position="10,10,380,33" Text="IDS_WELCOME_STAGE_DIRECTIONS" Class="Body" Anchor="SIZE_X"/>
+				<Image Name="IDC_IMAGE1" Position="26,45,24,28" Resource="Folder.png" Anchor="" Style="SS_REALSIZEIMAGE"/>
+				<Label Name="IDC_LABEL2" Position="53,45,280,10" Text="IDS_WELCOME_STAGE_NOTE" Class="Body" Anchor="SIZE_X"/>
+				<Label Name="IDC_LABEL3" Position="53,63,280,10" Class="Body" Anchor="SIZE_X" Property="ISRootStagePath"/>
+				<Button Name="IDC_FOLDER_DLG" Position="338,42,50,14" Text="IDS_CHANGE_BUTTON" Class="Body" Anchor="MOVE_X">
+					<Button.Click>
+						<BrowseFolder Property="ISRootStagePath" Caption="IDS_WELCOME_STAGE_BROWSE_CAPTION"/>
+					</Button.Click>
+				</Button>
+				<Install>
+					<Install.Click>
+						<Install Page="InstallationProgress"/>
+					</Install.Click>
+				</Install>
+			</Page>
+			<Page Name="InstallationType" Caption="IDS_INSTALLTYPE_CAPTION">
+				<Page.Visible>
+					<Not>
+						<Mode Value="install"/>
+					</Not>
+				</Page.Visible>
+				<CommandLink Name="IDC_COMPLETE" Position="10,23,380,52" Text="IDS_INSTALLTYPE_COMPLETE" Resource="Typical.png" Class="Header" Anchor="SIZE_X">
+					<CommandLink.Note Text="IDS_INSTALLTYPE_COMPLETE_NOTE" Class="BodyItalics"/>
+					<CommandLink.Click>
+						<Install Page="InstallationProgress"/>
+					</CommandLink.Click>
+				</CommandLink>
+				<CommandLink Name="IDC_CUSTOM" Position="10,90,380,52" Text="IDS_INSTALLTYPE_CUSTOM" Resource="Custom.png" Class="Header" Anchor="SIZE_X">
+					<CommandLink.Note Text="IDS_INSTALLTYPE_CUSTOM_NOTE" Class="BodyItalics"/>
+					<CommandLink.Click>
+						<SetActivePage Page="InstallationFeatures"/>
+					</CommandLink.Click>
+				</CommandLink>
+				<Back/>
+			</Page>
+			<Page Name="BrowseFolder_Sage_Data_Cloud_Connector">
+				<Page.Visible>
+					<All>
+						<Mode Value="install"/>
+						<Property Name="DetectedConnectorUpgrade" Convert="String" Compare="Equal" CompareTo="false"/>
+					</All>
+				</Page.Visible>
+				<Label Name="IDC_LABEL1" Position="20,10,323,30" Text="IDS_BROWSEFOLDER_CHANGEFOLDER" Class="SageBody000000" Anchor="SIZE_X">
+					<Label.Visible>
+						<All>
+							<Property Name="DetectedConnectorUpgrade" Convert="String" Compare="NotEqual" CompareTo="true"/>
+						</All>
+					</Label.Visible>
+				</Label>
+				<Image Name="IDC_IMAGE1" Position="20,46,25,20" Resource="folder_icon.png" Anchor="" Style="SS_REALSIZEIMAGE">
+					<Image.Visible>
+						<All/>
+					</Image.Visible>
+				</Image>
+				<Label Name="IDC_LABEL2" Position="52,45,215,10" Text="IDS_BROWSEFOLDER_INSTALLTO" Class="SageBody4C4C4C" Anchor="SIZE_X"/>
+				<Label Name="IDC_LABEL3" Position="52,56,239,58" Class="SageBody4C4C4C" Anchor="SIZE_X" Property="ISInstallDir_Sage_Data_Cloud_Connector"/>
+				<Button Name="IDC_FOLDER_DLG" Position="293,44,50,16" Text="IDS_CHANGE_BUTTON" Anchor="MOVE_X">
+					<Button.Click>
+						<BrowseFolder Caption="IDS_BROWSEFOLDER_INSTALLTO" Property="ISInstallDir_Sage_Data_Cloud_Connector"/>
+					</Button.Click>
+				</Button>
+				<Back/>
+				<Cancel>
+					<Cancel.Click>
+						<SetProperty Name="InstallationFinishMessage" Value="Installation Cancelled"/>
+					</Cancel.Click>
+				</Cancel>
+				<Install/>
+				<Image Name="Image" Position="23,90,17,14" Resource="warning_triangle.png">
+					<Image.Visible>
+						<All>
+							<Property Name="NephosUninstallCommand" Convert="String" Compare="NotEqual" CompareTo="NA"/>
+						</All>
+					</Image.Visible>
+				</Image>
+				<Label Name="InstallConfirmLabel" Position="52,86,313,35" Class="SageBody000000" Text="ID_STRING29">
+					<Label.Visible>
+						<All>
+							<Property Name="NephosUninstallCommand" Convert="String" Compare="NotEqual" CompareTo="NA"/>
+						</All>
+					</Label.Visible>
+				</Label>
+			</Page>
+			<Page Name="ReadytoUpgrade">
+				<Label Name="InstallConfirmLabel" Position="20,0,313,35" Text="ID_STRING25" Class="SageBody000000">
+					<Label.Visible>
+						<Any>
+							<Property Name="DetectedConnectorUpgrade" Convert="String" Compare="Equal" CompareTo="false"/>
+						</Any>
+					</Label.Visible>
+				</Label>
+				<Cancel>
+					<Cancel.Visible>
+						<All/>
+					</Cancel.Visible>
+					<Cancel.Click>
+						<SetProperty Name="InstallationFinishMessage" Value="Installation Cancelled"/>
+					</Cancel.Click>
+				</Cancel>
+				<Back/>
+				<Install/>
+				<Page.Visible>
+					<All>
+						<Property Name="DetectedConnectorUpgrade" Convert="String" Compare="Equal" CompareTo="true"/>
+					</All>
+				</Page.Visible>
+				<Label Name="LabelUpgradeText" Position="20,2,315,22" Text="ID_STRING38" Class="SageBody000000">
+					<Label.Visible>
+						<Any>
+							<Property Name="DetectedConnectorUpgrade" Convert="String" Compare="Equal" CompareTo="true"/>
+						</Any>
+					</Label.Visible>
+				</Label>
+				<Label Name="InstallConfirmLabel1" Position="43,41,314,35" Class="SageBody000000" Text="ID_STRING29">
+					<Label.Visible>
+						<All>
+							<Property Name="NephosUninstallCommand" Convert="String" Compare="NotEqual" CompareTo="NA"/>
+						</All>
+					</Label.Visible>
+				</Label>
+				<Image Name="Image" Position="20,45,17,14" Resource="warning_triangle.png">
+					<Image.Visible>
+						<All>
+							<Property Name="NephosUninstallCommand" Convert="String" Compare="NotEqual" CompareTo="NA"/>
+						</All>
+					</Image.Visible>
+				</Image>
+			</Page>
+			<Page Name="InstallationFeatures" Caption="IDS_CUSTOMSETUP_CAPTION">
+				<Label Name="IDC_LABEL1" Position="21,10,358,10" Text="IDS_CUSTOMSETUP_DIRECTIONS" Class="Body" Anchor="SIZE_X"/>
+				<FeatureSelectionTree Name="IDC_TV_1" Position="21,21,358,189" Class="BodyList" Background="transparent" Item.Height="24" Color.Focus="0xFFBE99" Color.NoFocus="0xFFE7D6"/>
+				<Install/>
+				<Back/>
+				<Page.Visible>
+					<Not/>
+				</Page.Visible>
+			</Page>
+			<Page Name="InstallationProgress">
+				<Label Name="IDC_LABEL1" Position="67,25,312,13" Text="[ISProgressSummary]" Class="SageBody000000" Anchor="SIZE_X"/>
+				<Label Name="IDC_INSTALL_STATUS" Position="67,36,312,13" Property="ISInstallStatus" Class="SageBody4C4C4C" Anchor="SIZE_X"/>
+				<Label Name="IDC_PARCEL_STATUS" Position="67,47,312,11" Property="ISParcelStatus" Class="SageBody4C4C4C" Anchor="SIZE_X" Style="SS_PATHELLIPSIS"/>
+				<ProgressBar Name="IDC_ALL_PROGRESS" Position="67,61,312,13" Property="ISInstallProgress" Style="WS_CLIPSIBLINGS" Anchor="SIZE_X">
+					<ProgressBar.Visible>
+						<Any>
+							<Property Name="ISInstallMode" Convert="String" Compare="NotEqual" CompareTo="update"/>
+						</Any>
+					</ProgressBar.Visible>
+				</ProgressBar>
+				<ProgressBar Name="IDC_UPDATE_PROGRESS" Position="67,61,312,13" Property="ISParcelProgress" Style="WS_CLIPSIBLINGS" Anchor="SIZE_X">
+					<ProgressBar.Visible>
+						<Any>
+							<Property Name="ISInstallMode" Convert="String" Compare="Equal" CompareTo="update"/>
+						</Any>
+					</ProgressBar.Visible>
+				</ProgressBar>
+				<Image Name="Image" Position="21,25,34,32" Resource="install_icon.png"/>
+				<Cancel>
+					<Cancel.Click>
+						<SetProperty Name="InstallationFinishMessage" Value="Installation Cancelled"/>
+					</Cancel.Click>
+				</Cancel>
+			</Page>
+			<Page Name="InstallationComplete" Caption="">
+				<Page.Header/>
+				<Label Name="IDC_LABEL1" Position="20,28,289,20" Text="IDS_COMPLETE_DIRECTIONS" Class="SageComplete000000" Anchor="SIZE_X">
+					<Label.Visible>
+						<Any/>
+					</Label.Visible>
+				</Label>
+				<Label Name="IDC_LABEL2" Position="20,52,290,21" Property="ISInstallStatus" Class="SageBody000000" Anchor="SIZE_X|MOVE_Y"/>
+				<Finish/>
+				<Cancel>
+					<Cancel.Visible>
+						<Not/>
+					</Cancel.Visible>
+				</Cancel>
+				<Page.Visible>
+					<All>
+						<Property Name="InstallCancelled" Convert="String" Compare="Equal" CompareTo="false"/>
+					</All>
+				</Page.Visible>
+			</Page>
+		</Wizard>
+		<Dialogs>
+			<Dialog Name="ISDownloadProgress" Caption="IDS_PRODUCTNAME_INSTALLSHIELD" Height="83" Width="315" Background="DialogBackground">
+				<Label Name="IDC_LABEL1" Position="20,10,275,20" Text="IDS_DOWNLOADING_UPDATE" Class="Body" Anchor="SIZE_X"/>
+				<Label Name="IDC_PARCEL_STATUS" Position="20,30,275,10" Property="ISParcelStatus" Class="BodyBold" Anchor="SIZE_X"/>
+				<ProgressBar Name="IDC_PARCEL_PROGRESS" Position="20,40,275,13" Property="ISParcelProgress" Style="WS_CLIPSIBLINGS" Anchor="SIZE_X"/>
+				<Button Name="IDCANCEL" Position="245,64,50,14" Text="IDS_CANCEL_BUTTON" Class="Body"/>
+			</Dialog>
+			<Dialog Name="ISPromptForSourceMedia" Caption="IDS_PRODUCTNAME_INSTALLSHIELD" Height="130" Width="350" Background="DialogBackground">
+				<Label Name="IDC_LABEL1" Position="20,17,275,22" Text="IDS_SUITEERROR_MEDIAFILEMISSING" Class="Body"/>
+				<Image Name="IDC_IMAGE1" Position="20,56,24,28" Resource="Folder.png" Style="SS_REALSIZEIMAGE"/>
+				<Label Name="IDC_LABEL2" Position="47,56,230,10" Text="IDS_SUITEERROR_MEDIAFILEMISSING_SOURCEPATH" Class="Body"/>
+				<Label Name="IDC_LABEL3" Position="47,74,230,10" Property="ISSourceMediaFile" Class="Body"/>
+				<Button Name="IDC_FOLDER_DLG" Position="284,56,50,14" Text="IDS_CHANGE_BUTTON" Class="Body">
+					<Button.Click>
+						<BrowseFile Property="ISSourceMediaFile" Caption="IDS_SUITEERROR_MEDIAFILEMISSING_SOURCEPATH"/>
+					</Button.Click>
+				</Button>
+				<Button Name="IDOK" Position="219,110,50,14" Text="IDS_OK_BUTTON" Class="Body"/>
+				<Button Name="IDCANCEL" Position="284,110,50,14" Text="IDS_CANCEL_BUTTON" Class="Body"/>
+			</Dialog>
+			<Dialog Name="ISFilesInUse" Caption="IDS_PRODUCTNAME_INSTALLSHIELD" Height="160" Width="350" Background="DialogBackground">
+				<Label Name="IDC_LABEL1" Position="20,10,310,22" Text="IDS_FILESINUSE_DIRECTIONS" Class="Body"/>
+				<ListBox Name="IDC_LIST" Position="20,35,310,100" Style="WS_CAPTION|LBS_NOSEL" Class="Body" Items="ISFilesInUseList"/>
+				<Button Name="IDRETRY" Position="154,140,50,14" Text="IDS_FILESINUSE_RETRY" Class="Body"/>
+				<Button Name="IDIGNORE" Position="219,140,50,14" Text="IDS_FILESINUSE_IGNORE" Class="Body"/>
+				<Button Name="IDCANCEL" Position="284,140,50,14" Text="IDS_FILESINUSE_EXIT" Class="Body"/>
+			</Dialog>
+			<Dialog Name="ISRMFilesInUse" Caption="IDS_PRODUCTNAME_INSTALLSHIELD" Height="190" Width="350" Background="DialogBackground">
+				<Label Name="IDC_LABEL1" Position="20,10,310,20" Text="IDS_RMFILESINUSE_DIRECTIONS" Class="Body"/>
+				<ListBox Name="IDC_LIST" Position="20,35,310,78" Style="WS_CAPTION|LBS_NOSEL" Class="Body" Items="ISFilesInUseList"/>
+				<RadioButton Name="IDC_RADIO_1" Property="ISCloseApplications==true" Position="20,122,310,10" Text="IDS_RMFILESINUSE_CLOSERESTART" Class="Body"/>
+				<RadioButton Name="IDC_RADIO_2" Property="ISCloseApplications==false" Position="20,135,310,10" Text="IDS_RMFILESINUSE_REBOOTAFTER" Class="Body"/>
+				<Button Name="IDOK" Position="219,170,50,14" Text="IDS_OK_BUTTON" Class="Body"/>
+				<Button Name="IDCANCEL" Position="284,170,50,14" Text="IDS_CANCEL_BUTTON" Class="Body"/>
+			</Dialog>
+			<Dialog Name="ISUpgradeParcel" Caption="IDS_PRODUCTNAME_INSTALLSHIELD" Height="190" Width="350" Background="DialogBackground">
+				<Label Name="IDC_LABEL1" Position="20,10,310,20" Text="IDS_SUITE_UPGRADE_PARCELS" Class="Body"/>
+				<ListBox Name="IDC_LIST" Position="20,35,310,120" Style="WS_CAPTION|LBS_NOSEL" Class="Body" Items="ISParcelUpgradeList"/>
+				<Button Name="IDOK" Position="219,170,50,14" Text="IDS_OK_BUTTON" Class="Body"/>
+				<Button Name="IDCANCEL" Position="284,170,50,14" Text="IDS_CANCEL_BUTTON" Class="Body"/>
+			</Dialog>
+			<Dialog Name="NephosInstallDetected" Caption="ID_STRING20" Width="400" Height="150" Background="DialogBackground">
+				<Label Name="NephosInstalledLabel" Position="50,30,277,14" Text="ID_STRING21"/>
+				<Label Name="RemoveNephosLabel" Position="51,45,261,15" Text="ID_STRING22"/>
+				<CheckBox Name="RemoveNephosCheckBox" Position="51,73,90,14" Text="ID_STRING23" Property="UninstallNephos"/>
+				<Button Name="IDOK" Position="326,111,40,15" Text="ID_STRING24">
+					<Button.Click>
+						<SetActivePage Page="BrowseFolder_SageConnector">
+							<Any/>
+						</SetActivePage>
+					</Button.Click>
+				</Button>
+			</Dialog>
+		</Dialogs>
+	</UserInterface>
+	<Resources>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\Application.png"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\Custom.png"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\Folder.png"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\Remove.png"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\Repair.png"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\Typical.png"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\ISLogoBig.png"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\ISLogoSmall.png"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-150\Application.png" Target="scale-150"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-150\Custom.png" Target="scale-150"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-150\Folder.png" Target="scale-150"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-150\Remove.png" Target="scale-150"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-150\Repair.png" Target="scale-150"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-150\Typical.png" Target="scale-150"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-150\ISLogoBig.png" Target="scale-150"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-150\ISLogoSmall.png" Target="scale-150"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-200\Application.png" Target="scale-200"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-200\Custom.png" Target="scale-200"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-200\Folder.png" Target="scale-200"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-200\Remove.png" Target="scale-200"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-200\Repair.png" Target="scale-200"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-200\Typical.png" Target="scale-200"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-200\ISLogoBig.png" Target="scale-200"/>
+		<Resource Source="&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\scale-200\ISLogoSmall.png" Target="scale-200"/>
+		<Resource Source="&lt;ISProductFolder&gt;\Redist\0409\EULA.rtf"/>
+		<Resource Target="UninstallNephos"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\NephosUninstall.iss"/>
+		<Resource Target="UninstallNephos" Source="&lt;ISProjectFolder&gt;\SupportFiles\NephosUninstall.iss"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Images\Sage_InstallGeneralHeader.png"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Images\Sage_InstallWelcomeHeader.PNG"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Images\folder_icon.png"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Images\install_icon.png"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Images\sage_connector_bg.bmp"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Images\warning_triangle.png"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Images\repair_icon.png"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Images\trash_icon.png"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Images\sage_connector.ico"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Subscription Agreement - Sage Cloud Products (030714).doc"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Subscription Agreement - Sage Cloud Products (030714).rtf"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Images\install_background_footer_.png"/>
+		<Resource Source="&lt;ISProjectFolder&gt;\SupportFiles\Images\sage_data_cloud_connector_banner.png"/>
+	</Resources>
+	<ARPInfo>
+		<Version>1.00.0047</Version>
+		<Icon>&lt;ISProjectFolder&gt;\SupportFiles\Images\sage_connector.ico,0</Icon>
+		<Modify>No</Modify>
+		<Publisher>ID_STRING39</Publisher>
+		<URLInfoAbout>ID_STRING62</URLInfoAbout>
+	</ARPInfo>
+	<Mode>
+		<Install>
+			<When>
+				<Any>
+					<Not>
+						<DetectPrimary Id="*"/>
+					</Not>
+					<SuiteInstalled SuiteId="*" Version="*" Compare="NotEqual"/>
+				</Any>
+			</When>
+		</Install>
+		<Maintenance>
+			<When>
+				<Any>
+					<DetectPrimary Id="*"/>
+				</Any>
+			</When>
+		</Maintenance>
+	</Mode>
+	<LanguageSelection RequireExactMatch="1028,2052" ShowLanguageSelection="yes" RTLLangs="1025,1037" Default="1033">1033</LanguageSelection>
+	<SelectionTree>
+		<Selection Name="PegasusConnector" DisplayName="ID_STRING" Install="{B7E2BD54-E2FF-4B38-A5A9-BA8C70BB54B3} {439BD42A-2F5B-44c8-9FF2-BEB31BC34E63} {3C6FDF70-37C1-46B3-846A-F374E556DF93}"/>
+	</SelectionTree>
+	<WindowsFeaturesDefinitions>
+		<IIS-WebServerRole>
+			<DependsOn>NetFx3</DependsOn>
+			<ItemAllOS>IIS-WebServerRole;IIS-WebServer;IIS-WebServerManagementTools;IIS-ManagementConsole;IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-StaticContent;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Performance;IIS-HttpCompressionStatic;IIS-Security;IIS-RequestFiltering;IIS-ApplicationDevelopment;IIS-ISAPIExtensions;IIS-ISAPIFilter;IIS-NetFxExtensibility;IIS-ASPNET</ItemAllOS>
+			<Client_0600>WAS-WindowsActivationService;WAS-ProcessModel;WAS-NetFxEnvironment;WAS-ConfigurationAPI;IIS-WebServerRole;IIS-WebServer;IIS-WebServerManagementTools;IIS-ManagementConsole;IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-StaticContent;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Performance;IIS-HttpCompressionStatic;IIS-Security;IIS-RequestFiltering;IIS-ApplicationDevelopment;IIS-ISAPIExtensions;IIS-ISAPIFilter;IIS-NetFxExtensibility;IIS-ASPNET</Client_0600>
+			<Server_0600>WAS-WindowsActivationService;WAS-ProcessModel;WAS-NetFxEnvironment;WAS-ConfigurationAPI;IIS-WebServerRole;IIS-WebServer;IIS-WebServerManagementTools;IIS-ManagementConsole;IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-StaticContent;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Performance;IIS-HttpCompressionStatic;IIS-Security;IIS-RequestFiltering;IIS-ApplicationDevelopment;IIS-ISAPIExtensions;IIS-ISAPIFilter;IIS-NetFxExtensibility;IIS-ASPNET</Server_0600>
+			<ServerCore_0600>WAS-WindowsActivationService;WAS-ProcessModel;IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-StaticContent;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Performance;IIS-HttpCompressionStatic;IIS-Security;IIS-RequestFiltering;IIS-ApplicationDevelopment;IIS-ISAPIExtensions;IIS-ISAPIFilter</ServerCore_0600>
+			<ServerCore_0601>IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-StaticContent;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Performance;IIS-HttpCompressionStatic;IIS-Security;IIS-RequestFiltering;IIS-ApplicationDevelopment;IIS-ISAPIExtensions;IIS-ISAPIFilter;IIS-NetFxExtensibility;IIS-ASPNET</ServerCore_0601>
+			<Client_0602>IIS-WebServerRole;IIS-WebServer;IIS-WebServerManagementTools;IIS-ManagementConsole;IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-StaticContent;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Performance;IIS-HttpCompressionStatic;IIS-Security;IIS-RequestFiltering;IIS-ApplicationDevelopment;IIS-ISAPIExtensions;IIS-ISAPIFilter;NetFx4Extended-ASPNET45;IIS-NetFxExtensibility;IIS-ASPNET</Client_0602>
+			<Server_0602>IIS-WebServerRole;IIS-WebServer;IIS-WebServerManagementTools;IIS-ManagementConsole;IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-StaticContent;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Performance;IIS-HttpCompressionStatic;IIS-Security;IIS-RequestFiltering;IIS-ApplicationDevelopment;IIS-ISAPIExtensions;IIS-ISAPIFilter;NetFx4Extended-ASPNET45;IIS-NetFxExtensibility;IIS-ASPNET</Server_0602>
+			<ServerCore_0602>IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-StaticContent;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Performance;IIS-HttpCompressionStatic;IIS-Security;IIS-RequestFiltering;IIS-ApplicationDevelopment;IIS-ISAPIExtensions;IIS-ISAPIFilter;NetFx4Extended-ASPNET45;IIS-NetFxExtensibility;IIS-ASPNET</ServerCore_0602>
+			<Client_0603>IIS-WebServerRole;IIS-WebServer;IIS-WebServerManagementTools;IIS-ManagementConsole;IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-StaticContent;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Performance;IIS-HttpCompressionStatic;IIS-Security;IIS-RequestFiltering;IIS-ApplicationDevelopment;IIS-ISAPIExtensions;IIS-ISAPIFilter;NetFx4Extended-ASPNET45;IIS-NetFxExtensibility;IIS-ASPNET</Client_0603>
+			<Server_0603>IIS-WebServerRole;IIS-WebServer;IIS-WebServerManagementTools;IIS-ManagementConsole;IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-StaticContent;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Performance;IIS-HttpCompressionStatic;IIS-Security;IIS-RequestFiltering;IIS-ApplicationDevelopment;IIS-ISAPIExtensions;IIS-ISAPIFilter;NetFx4Extended-ASPNET45;IIS-NetFxExtensibility;IIS-ASPNET</Server_0603>
+			<ServerCore_0603>IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-StaticContent;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-RequestMonitor;IIS-Performance;IIS-HttpCompressionStatic;IIS-Security;IIS-RequestFiltering;IIS-ApplicationDevelopment;IIS-ISAPIExtensions;IIS-ISAPIFilter;NetFx4Extended-ASPNET45;IIS-NetFxExtensibility;IIS-ASPNET</ServerCore_0603>
+		</IIS-WebServerRole>
+		<NetFx3>
+			<Client_0600>NetFx3</Client_0600>
+			<Server_0600>NetFx3</Server_0600>
+			<ServerCore_0600/>
+			<Client_0601>NetFx3</Client_0601>
+			<Server_0601>NetFx3</Server_0601>
+			<ServerCore_0601/>
+			<Client_0602>NetFx3</Client_0602>
+			<Server_0602>NetFx3ServerFeatures;NetFx3</Server_0602>
+			<ServerCore_0602>NetFx3ServerFeatures;NetFx3</ServerCore_0602>
+			<Client_0603>NetFx3</Client_0603>
+			<Server_0603>NetFx3ServerFeatures;NetFx3</Server_0603>
+			<ServerCore_0603>NetFx3ServerFeatures;NetFx3</ServerCore_0603>
+		</NetFx3>
+		<PowerShell>
+			<Client_0600/>
+			<Server_0600>MicrosoftWindowsPowerShell</Server_0600>
+			<ServerCore_0600/>
+			<Client_0601/>
+			<Server_0601/>
+			<ServerCore_0601>NetFx2-ServerCore;MicrosoftWindowsPowerShell</ServerCore_0601>
+			<Client_0602/>
+			<Server_0602>MicrosoftWindowsPowerShellRoot;MicrosoftWindowsPowerShell;MicrosoftWindowsPowerShellISE;MicrosoftWindowsPowerShellV2</Server_0602>
+			<ServerCore_0602>MicrosoftWindowsPowerShellRoot;MicrosoftWindowsPowerShell;MicrosoftWindowsPowerShellV2</ServerCore_0602>
+			<Client_0603/>
+			<Server_0603>MicrosoftWindowsPowerShellRoot;MicrosoftWindowsPowerShell;MicrosoftWindowsPowerShellISE;MicrosoftWindowsPowerShellV2</Server_0603>
+			<ServerCore_0603>MicrosoftWindowsPowerShellRoot;MicrosoftWindowsPowerShell;MicrosoftWindowsPowerShellV2</ServerCore_0603>
+		</PowerShell>
+	</WindowsFeaturesDefinitions>
+	<Parcels>
+		<Exe ParcelType="Dependency">
+			<UIProperties>
+				<DisplayName>ID_STRING9</DisplayName>
+				<Id>{439BD42A-2F5B-44c8-9FF2-BEB31BC34E63}</Id>
+			</UIProperties>
+			<Package Name="[LocalAppDataFolder]Downloaded Installations">
+				<Folder Name="{439BD42A-2F5B-44c8-9FF2-BEB31BC34E63}" Location="Source" Url="http://download.microsoft.com/download/1/6/7/167F0D79-9317-48AE-AEDB-17120579F8E2">
+					<File Name="NDP451-KB2858728-x86-x64-AllOS-ENU.exe" LinkPath="&lt;ISProjectFolder&gt;\Prereqs"/>
+				</Folder>
+			</Package>
+			<Operation Name="Install" Target="NDP451-KB2858728-x86-x64-AllOS-ENU.exe">
+				<CommandLine>/q /norestart</CommandLine>
+				<Silent>/q /norestart</Silent>
+				<Property Name="RebootCodes">1641,3010</Property>
+				<Property Name="RebootRequest">DetectDelay</Property>
+				<Property Name="ExitBehavior">DetectIgnore</Property>
+			</Operation>
+			<Detect>
+				<When>
+					<Any>
+						<Not>
+							<RegistryValue Key="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" ValueName="Release" Compare="LessThan" CompareTo="378675" Convert="DWORD" Check64Bit="False"/>
+							<Not>
+								<RegistryExists Key="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" ValueName="Release" Check64Bit="False"/>
+							</Not>
+						</Not>
+					</Any>
+				</When>
+			</Detect>
+			<Eligible>
+				<When>
+					<Any>
+						<Platform OSVersion="6.0-6.0" ServicePack="2-" ProductType="Server,DomainController"/>
+						<Platform OSVersion="6.1-6.1" ServicePack="1-"/>
+						<Platform OSVersion="6.2-6.2"/>
+						<Platform OSVersion="6.0-6.0" ServicePack="2-" ProductType="Workstation"/>
+					</Any>
+				</When>
+			</Eligible>
+			<Property Name="Elevation">Required</Property>
+			<Events>
+				<OnParcelConfiguring/>
+				<OnParcelConfigured/>
+			</Events>
+		</Exe>
+		<Exe ParcelType="Dependency" ReleaseFlags="none">
+			<UIProperties>
+				<DisplayName>ID_STRING43</DisplayName>
+				<Id>{3C6FDF70-37C1-46B3-846A-F374E556DF93}</Id>
+			</UIProperties>
+			<Package Name="[LocalAppDataFolder]Downloaded Installations">
+				<Folder Name="{3C6FDF70-37C1-46B3-846A-F374E556DF93}" Location="Source" Url="http://download.microsoft.com/download/1/6/7/167F0D79-9317-48AE-AEDB-17120579F8E2">
+					<File Name="NDP452-KB2901907-x86-x64-AllOS-ENU.exe" LinkPath="&lt;ISProjectFolder&gt;\Prereqs"/>
+				</Folder>
+			</Package>
+			<Operation Name="Install" Target="NDP452-KB2901907-x86-x64-AllOS-ENU.exe">
+				<CommandLine>/q /norestart</CommandLine>
+				<Silent>/q /norestart</Silent>
+				<Property Name="RebootCodes">1641,3010</Property>
+				<Property Name="RebootRequest">DetectDelay</Property>
+				<Property Name="ExitBehavior">DetectIgnore</Property>
+			</Operation>
+			<Detect>
+				<When>
+					<Any>
+						<Not>
+							<RegistryValue Key="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" ValueName="Release" Compare="LessThan" CompareTo="379893" Convert="DWORD" Check64Bit="False"/>
+							<Not>
+								<RegistryExists Key="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" ValueName="Release" Check64Bit="False"/>
+							</Not>
+						</Not>
+					</Any>
+				</When>
+			</Detect>
+			<Eligible>
+				<When>
+					<Any>
+						<Platform OSVersion="6.0-6.0" ServicePack="2-" ProductType="Server,DomainController"/>
+						<Platform OSVersion="6.1-6.1" ServicePack="1-"/>
+						<Platform OSVersion="6.2-6.2"/>
+						<Platform OSVersion="6.0-6.0" ServicePack="2-" ProductType="Workstation"/>
+					</Any>
+				</When>
+			</Eligible>
+			<Property Name="Elevation">Required</Property>
+		</Exe>
+		<Msi ReleaseFlags="Production">
+			<UIProperties>
+				<Id>{B7E2BD54-E2FF-4B38-A5A9-BA8C70BB54B3}</Id>
+				<DisplayName>ID_STRING1</DisplayName>
+			</UIProperties>
+			<Property Name="ProgressCapture">Full</Property>
+			<Package Name="[LocalAppDataFolder]Downloaded Installations">
+				<Folder Name="{5835AC3B-28CB-4005-A508-4EA7D2ACC8BC}" Location="Source">
+					<File Name="SageConnectorMonitor.msi" LinkPath="&lt;PATH_TO_SCA_FILES&gt;"/>
+				</Folder>
+			</Package>
+			<Property Name="Elevation">Required</Property>
+			<Operation Name="Install" Target="SageConnectorMonitor.msi">
+				<Property Name="ExitBehavior">DetectIgnore</Property>
+				<CommandLine>INSTALLDIR="[ISInstallDir_Sage_Data_Cloud_Connector]"</CommandLine>
+				<Silent>INSTALLDIR="[ISInstallDir_Sage_Data_Cloud_Connector]"</Silent>
+			</Operation>
+			<Operation Name="Remove">
+				<Property Name="ExitBehavior">DetectIgnore</Property>
+			</Operation>
+			<Operation Name="Repair">
+				<Property Name="ExitBehavior">DetectIgnore</Property>
+			</Operation>
+			<Operation Name="Modify">
+				<Property Name="ExitBehavior">DetectIgnore</Property>
+			</Operation>
+			<Eligible>
+				<When>
+					<Any>
+						<MsiInstalled ProductCode="*" PackageCode="*"/>
+						<Not>
+							<MsiInstalled ProductCode="*" ProductVersion="*" Compare="GreaterThan"/>
+						</Not>
+					</Any>
+				</When>
+			</Eligible>
+			<Events>
+				<OnParcelConfiguring/>
+				<OnParcelConfigured/>
+			</Events>
+			<Property Name="UpgradeType">NoUpgrade</Property>
+		</Msi>
+	</Parcels>
+	<Languages>
+		<Language lcid="1033">
+			<IDS_BACK_BUTTON TimeStamp="1000519215">&lt; &amp;Back</IDS_BACK_BUTTON>
+			<IDS_BROWSEFOLDER_CAPTION TimeStamp="1000519215">Destination Folder</IDS_BROWSEFOLDER_CAPTION>
+			<IDS_BROWSEFOLDER_CHANGEFOLDER TimeStamp="-878524050">Click Next to install to the default folder, or click Change to select a different folder.</IDS_BROWSEFOLDER_CHANGEFOLDER>
+			<IDS_BROWSEFOLDER_INSTALLTO TimeStamp="1000519215">Install [ProductName] to:</IDS_BROWSEFOLDER_INSTALLTO>
+			<IDS_CANCEL_BUTTON TimeStamp="1000519215">Cancel</IDS_CANCEL_BUTTON>
+			<IDS_CHANGE_BUTTON TimeStamp="1000519215">&amp;Change...</IDS_CHANGE_BUTTON>
+			<IDS_COMPLETE_DIRECTIONS TimeStamp="-1407015476">[InstallationFinishMessage]</IDS_COMPLETE_DIRECTIONS>
+			<IDS_CUSTOMERINFO_CAPTION TimeStamp="1000519215">Customer Information</IDS_CUSTOMERINFO_CAPTION>
+			<IDS_CUSTOMERINFO_ORGANIZATION TimeStamp="1000519215">&amp;Organization:</IDS_CUSTOMERINFO_ORGANIZATION>
+			<IDS_CUSTOMERINFO_SERIALNUMBER TimeStamp="1000519215">&amp;Serial Number:</IDS_CUSTOMERINFO_SERIALNUMBER>
+			<IDS_CUSTOMERINFO_USERNAME TimeStamp="1000519215">&amp;User Name:</IDS_CUSTOMERINFO_USERNAME>
+			<IDS_CUSTOMSETUP_CAPTION TimeStamp="1000519215">Custom Setup</IDS_CUSTOMSETUP_CAPTION>
+			<IDS_CUSTOMSETUP_CAPTION_TIER TimeStamp="1000519215">Tier Selection</IDS_CUSTOMSETUP_CAPTION_TIER>
+			<IDS_CUSTOMSETUP_DIRECTIONS TimeStamp="1000519215">Select the program features you want installed.</IDS_CUSTOMSETUP_DIRECTIONS>
+			<IDS_CUSTOMSETUP_DIRECTIONS_TIER TimeStamp="1000519215">Select the program tiers you want installed.</IDS_CUSTOMSETUP_DIRECTIONS_TIER>
+			<IDS_CUSTOMSETUP_FEATUREDESCRIPTION TimeStamp="1000519215">Feature Description</IDS_CUSTOMSETUP_FEATUREDESCRIPTION>
+			<IDS_CUSTOMSETUP_FEATURESIZE TimeStamp="1000519215">Feature size</IDS_CUSTOMSETUP_FEATURESIZE>
+			<IDS_DOWNLOADING_UPDATE TimeStamp="1000519215">The InstallShield Wizard is downloading an update for [ProductName]:</IDS_DOWNLOADING_UPDATE>
+			<IDS_ERROR_OPENREAD TimeStamp="1000519215">Error opening file for read: [3] GetLastError: [2].</IDS_ERROR_OPENREAD>
+			<IDS_FILE TimeStamp="1000519215">File: [1]</IDS_FILE>
+			<IDS_FILESINUSE_DIRECTIONS TimeStamp="1000519215">The following applications are using files that need to be updated by this setup. Close these applications and click Retry to continue.</IDS_FILESINUSE_DIRECTIONS>
+			<IDS_FILESINUSE_EXIT TimeStamp="1000519215">&amp;Exit</IDS_FILESINUSE_EXIT>
+			<IDS_FILESINUSE_IGNORE TimeStamp="1000519215">&amp;Ignore</IDS_FILESINUSE_IGNORE>
+			<IDS_FILESINUSE_RETRY TimeStamp="1000519215">&amp;Retry</IDS_FILESINUSE_RETRY>
+			<IDS_FINISH_BUTTON TimeStamp="1000519215">&amp;Finish</IDS_FINISH_BUTTON>
+			<IDS_INSTALLATION_LANGUAGE_CAPTION TimeStamp="1000519215">Choose Setup Language</IDS_INSTALLATION_LANGUAGE_CAPTION>
+			<IDS_INSTALLATION_LANGUAGE_DIRECTIONS TimeStamp="1000519215">Select the language for this installation from the choices below.</IDS_INSTALLATION_LANGUAGE_DIRECTIONS>
+			<IDS_INSTALLATION_PASSWORD TimeStamp="1000519215">Please enter the password</IDS_INSTALLATION_PASSWORD>
+			<IDS_INSTALLTYPE_CAPTION TimeStamp="1000519215">Setup Type</IDS_INSTALLTYPE_CAPTION>
+			<IDS_INSTALLTYPE_COMPLETE TimeStamp="1000519215">&amp;Complete</IDS_INSTALLTYPE_COMPLETE>
+			<IDS_INSTALLTYPE_COMPLETE_NOTE TimeStamp="1000519215">All program features will be installed. (Requires the most disk space.)</IDS_INSTALLTYPE_COMPLETE_NOTE>
+			<IDS_INSTALLTYPE_CUSTOM TimeStamp="1000519215">Cu&amp;stom</IDS_INSTALLTYPE_CUSTOM>
+			<IDS_INSTALLTYPE_CUSTOM_NOTE TimeStamp="1000519215">Choose which program features you want installed and where they will be installed. Recommended for advanced users.</IDS_INSTALLTYPE_CUSTOM_NOTE>
+			<IDS_INSTALL_BUTTON TimeStamp="1000519215">&amp;Install</IDS_INSTALL_BUTTON>
+			<IDS_INSTALL_SUCCESS TimeStamp="1000519215">The InstallShield Wizard has successfully installed [ProductName]. Click Finish to exit the wizard.</IDS_INSTALL_SUCCESS>
+			<IDS_INSTALL_WELCOME_CAPTION TimeStamp="1134690511">Welcome to [ProductName]</IDS_INSTALL_WELCOME_CAPTION>
+			<IDS_LANGUAGE_1025 TimeStamp="1000519215">Arabic</IDS_LANGUAGE_1025>
+			<IDS_LANGUAGE_1026 TimeStamp="1000519215">Bulgarian</IDS_LANGUAGE_1026>
+			<IDS_LANGUAGE_1027 TimeStamp="1000519215">Catalan</IDS_LANGUAGE_1027>
+			<IDS_LANGUAGE_1028 TimeStamp="1000519215">Chinese (Traditional)</IDS_LANGUAGE_1028>
+			<IDS_LANGUAGE_1029 TimeStamp="1000519215">Czech</IDS_LANGUAGE_1029>
+			<IDS_LANGUAGE_1030 TimeStamp="1000519215">Danish</IDS_LANGUAGE_1030>
+			<IDS_LANGUAGE_1031 TimeStamp="1000519215">German</IDS_LANGUAGE_1031>
+			<IDS_LANGUAGE_1032 TimeStamp="1000519215">Greek</IDS_LANGUAGE_1032>
+			<IDS_LANGUAGE_1033 TimeStamp="1000519215">English (United States)</IDS_LANGUAGE_1033>
+			<IDS_LANGUAGE_1034 TimeStamp="1000519215">Spanish</IDS_LANGUAGE_1034>
+			<IDS_LANGUAGE_1035 TimeStamp="1000519215">Finnish</IDS_LANGUAGE_1035>
+			<IDS_LANGUAGE_1036 TimeStamp="1000519215">French (Standard)</IDS_LANGUAGE_1036>
+			<IDS_LANGUAGE_1037 TimeStamp="1000519215">Hebrew</IDS_LANGUAGE_1037>
+			<IDS_LANGUAGE_1038 TimeStamp="1000519215">Hungarian</IDS_LANGUAGE_1038>
+			<IDS_LANGUAGE_1040 TimeStamp="1000519215">Italian</IDS_LANGUAGE_1040>
+			<IDS_LANGUAGE_1041 TimeStamp="1000519215">Japanese</IDS_LANGUAGE_1041>
+			<IDS_LANGUAGE_1042 TimeStamp="1000519215">Korean</IDS_LANGUAGE_1042>
+			<IDS_LANGUAGE_1043 TimeStamp="1000519215">Dutch</IDS_LANGUAGE_1043>
+			<IDS_LANGUAGE_1044 TimeStamp="1000519215">Norwegian</IDS_LANGUAGE_1044>
+			<IDS_LANGUAGE_1045 TimeStamp="1000519215">Polish</IDS_LANGUAGE_1045>
+			<IDS_LANGUAGE_1046 TimeStamp="1000519215">Portuguese (Brazilian)</IDS_LANGUAGE_1046>
+			<IDS_LANGUAGE_1048 TimeStamp="1000519215">Romanian</IDS_LANGUAGE_1048>
+			<IDS_LANGUAGE_1049 TimeStamp="1000519215">Russian</IDS_LANGUAGE_1049>
+			<IDS_LANGUAGE_1050 TimeStamp="1000519215">Croatian</IDS_LANGUAGE_1050>
+			<IDS_LANGUAGE_1051 TimeStamp="1000519215">Slovak</IDS_LANGUAGE_1051>
+			<IDS_LANGUAGE_1053 TimeStamp="1000519215">Swedish</IDS_LANGUAGE_1053>
+			<IDS_LANGUAGE_1054 TimeStamp="1000519215">Thai</IDS_LANGUAGE_1054>
+			<IDS_LANGUAGE_1055 TimeStamp="1000519215">Turkish</IDS_LANGUAGE_1055>
+			<IDS_LANGUAGE_1057 TimeStamp="1000519215">Indonesian</IDS_LANGUAGE_1057>
+			<IDS_LANGUAGE_1060 TimeStamp="1000519215">Slovenian</IDS_LANGUAGE_1060>
+			<IDS_LANGUAGE_1069 TimeStamp="1000519215">Basque</IDS_LANGUAGE_1069>
+			<IDS_LANGUAGE_2052 TimeStamp="1000519215">Chinese (Simplified)</IDS_LANGUAGE_2052>
+			<IDS_LANGUAGE_2070 TimeStamp="1000519215">Portuguese (Standard)</IDS_LANGUAGE_2070>
+			<IDS_LANGUAGE_3084 TimeStamp="1000519215">French (Canadian)</IDS_LANGUAGE_3084>
+			<IDS_LANGUAGE_3098 TimeStamp="1000519215">Serbian (Cyrillic)</IDS_LANGUAGE_3098>
+			<IDS_LICENSEAGREEMENT_ACCEPT TimeStamp="1000519215">I &amp;accept the terms in the license agreement</IDS_LICENSEAGREEMENT_ACCEPT>
+			<IDS_LICENSEAGREEMENT_CAPTION TimeStamp="1000519215">License Agreement</IDS_LICENSEAGREEMENT_CAPTION>
+			<IDS_LICENSEAGREEMENT_DIRECTIONS TimeStamp="-1818059990">Please read the following license agreement carefully. You must accept the terms to continue.</IDS_LICENSEAGREEMENT_DIRECTIONS>
+			<IDS_LICENSEAGREEMENT_REJECT TimeStamp="1000519215">I &amp;do not accept the terms in the license agreement</IDS_LICENSEAGREEMENT_REJECT>
+			<IDS_NEXT_BUTTON TimeStamp="1000519215">&amp;Next &gt;</IDS_NEXT_BUTTON>
+			<IDS_OK_BUTTON TimeStamp="1000519215">OK</IDS_OK_BUTTON>
+			<IDS_PRINT_BUTTON TimeStamp="1000519215">&amp;Print</IDS_PRINT_BUTTON>
+			<IDS_PRODUCTNAME_INSTALLSHIELD TimeStamp="-878556687">[ProductName]</IDS_PRODUCTNAME_INSTALLSHIELD>
+			<IDS_PROGRESS_CAPTION_INSTALLING TimeStamp="1000519215">Installing [ProductName]</IDS_PROGRESS_CAPTION_INSTALLING>
+			<IDS_PROGRESS_CAPTION_UNINSTALLING TimeStamp="1000519215">Uninstalling [ProductName]</IDS_PROGRESS_CAPTION_UNINSTALLING>
+			<IDS_PROGRESS_TITLE_INSTALLING TimeStamp="1000519215">The program features you selected are being installed.</IDS_PROGRESS_TITLE_INSTALLING>
+			<IDS_PROGRESS_TITLE_UNINSTALLING TimeStamp="1000519215">The program features you selected are being uninstalled.</IDS_PROGRESS_TITLE_UNINSTALLING>
+			<IDS_REMOVE_BUTTON TimeStamp="1000519215">&amp;Remove</IDS_REMOVE_BUTTON>
+			<IDS_RMFILESINUSE_CLOSERESTART TimeStamp="1000519215">Automatically close and attempt to restart applications.</IDS_RMFILESINUSE_CLOSERESTART>
+			<IDS_RMFILESINUSE_DIRECTIONS TimeStamp="1000519215">The following applications are using files that need to be updated by this setup.</IDS_RMFILESINUSE_DIRECTIONS>
+			<IDS_RMFILESINUSE_REBOOTAFTER TimeStamp="1000519215">Do not close applications. (A reboot will be required.)</IDS_RMFILESINUSE_REBOOTAFTER>
+			<IDS_STAGEDOWNLOAD_FAILRETRY TimeStamp="1000519215">An error occurred while downloading the file %s.  What would you like to do?</IDS_STAGEDOWNLOAD_FAILRETRY>
+			<IDS_SUITEERROR_ABORTCONDITION TimeStamp="1000519215">The following items are required to launch this setup:</IDS_SUITEERROR_ABORTCONDITION>
+			<IDS_SUITEERROR_FAILEDLAUNCHTEMP TimeStamp="1000519215">The setup could not start in a temporary folder. Contact your vendor for assistance.</IDS_SUITEERROR_FAILEDLAUNCHTEMP>
+			<IDS_SUITEERROR_INVALIDCMDLINE TimeStamp="1000519215">The setup command line is invalid. The setup cannot proceed.</IDS_SUITEERROR_INVALIDCMDLINE>
+			<IDS_SUITEERROR_INVALIDSTAGEPATH TimeStamp="1000519215">The destination folder that was entered for a staging-only operation could not be created.</IDS_SUITEERROR_INVALIDSTAGEPATH>
+			<IDS_SUITEERROR_MD5CHECKFAILED TimeStamp="1000519215">MD5 check failed for the current file to be staged. The file may be corrupted.</IDS_SUITEERROR_MD5CHECKFAILED>
+			<IDS_SUITEERROR_MEDIAFILEMISSING TimeStamp="1000519215">The package that you are trying to install requires a file that is not available. To continue, specify an alternate path to this file.</IDS_SUITEERROR_MEDIAFILEMISSING>
+			<IDS_SUITEERROR_MEDIAFILEMISSING_SOURCEPATH TimeStamp="1000519215">Specify the path to this file:</IDS_SUITEERROR_MEDIAFILEMISSING_SOURCEPATH>
+			<IDS_SUITEERROR_NORUNNINGUI TimeStamp="1000519215">No UI DLL was loaded and initialized, possibly due to a missing UI resource. Contact your vendor for assistance.</IDS_SUITEERROR_NORUNNINGUI>
+			<IDS_SUITEERROR_NOSETUPXML TimeStamp="1000519215">No setup.xml file was found in the running suite setup. Contact your vendor for assistance.</IDS_SUITEERROR_NOSETUPXML>
+			<IDS_SUITEERROR_PASSWORDINVALID TimeStamp="1000519215">The setup password is incorrect or was not entered. The setup cannot proceed.</IDS_SUITEERROR_PASSWORDINVALID>
+			<IDS_SUITEERROR_RESCOPY TimeStamp="1000519215">Failed to copy or download a file that is necessary to run this setup. Contact your vendor for assistance.</IDS_SUITEERROR_RESCOPY>
+			<IDS_SUITEERROR_RESEXTRACT TimeStamp="1000519215">Failed to extract a file that is necessary to run this setup. Contact your vendor for assistance.</IDS_SUITEERROR_RESEXTRACT>
+			<IDS_SUITEERROR_STAGEDOWNLOADFAIL TimeStamp="1000519215">An unknown failure occurred attempting to cache a file from either a remote server or a local path. Contact your vendor for assistance.</IDS_SUITEERROR_STAGEDOWNLOADFAIL>
+			<IDS_SUITEERROR_STAGEEXTRACT TimeStamp="1000519215">Failed to extract a file while staging. Either the file is not present in the stream or the file could not be written to the target machine.</IDS_SUITEERROR_STAGEEXTRACT>
+			<IDS_SUITEERROR_STATEINFOINIT TimeStamp="1000519215">Failed to read or initialize setup state information; missing SuiteId attribute on setup.xml setup element. Contact your vendor for assistance.</IDS_SUITEERROR_STATEINFOINIT>
+			<IDS_SUITEERROR_TXFAILED TimeStamp="1000519215">Failed to communicate with the current out-of-process transaction handler. Contact your vendor for assistance.</IDS_SUITEERROR_TXFAILED>
+			<IDS_SUITE_ASKREBOOT TimeStamp="1000519215">The installer must restart your system before configuration of [2] can continue.  Click Yes to restart now or No if you plan to restart later.</IDS_SUITE_ASKREBOOT>
+			<IDS_SUITE_BETA TimeStamp="1000519215">This setup was created with a BETA VERSION of %s</IDS_SUITE_BETA>
+			<IDS_SUITE_CONFIRMCANCEL TimeStamp="1000519215">Are you sure you want to cancel [ProductName] installation?</IDS_SUITE_CONFIRMCANCEL>
+			<IDS_SUITE_EVAL TimeStamp="1000519215">This Setup was created with an EVALUATION VERSION of %s</IDS_SUITE_EVAL>
+			<IDS_SUITE_INITIALIZING TimeStamp="1000519215">Initializing</IDS_SUITE_INITIALIZING>
+			<IDS_SUITE_INSTALLING TimeStamp="1000519215">Installing</IDS_SUITE_INSTALLING>
+			<IDS_SUITE_INSTALLING_PARCEL TimeStamp="1000519215">Installing package [1]</IDS_SUITE_INSTALLING_PARCEL>
+			<IDS_SUITE_INTERRUPTED TimeStamp="1000519215">The wizard was interrupted before [ProductName] could be completely installed.</IDS_SUITE_INTERRUPTED>
+			<IDS_SUITE_MINOR_DOWNGRADE TimeStamp="1000519215">A later version of '[ProductName]' is already installed on this machine. The setup cannot continue.</IDS_SUITE_MINOR_DOWNGRADE>
+			<IDS_SUITE_MODIFYING_PARCEL TimeStamp="1000519215">Modifying package [1]</IDS_SUITE_MODIFYING_PARCEL>
+			<IDS_SUITE_PACKAGEFAIL TimeStamp="1000519215">The installation of %s appears to have failed. Do you want to continue the installation?</IDS_SUITE_PACKAGEFAIL>
+			<IDS_SUITE_PARCEL_ERROR TimeStamp="1000519215">Package [1] Error:
+[2]</IDS_SUITE_PARCEL_ERROR>
+			<IDS_SUITE_PARCEL_OPERATION_COMPLETE TimeStamp="1000519215">Package [1] operation complete</IDS_SUITE_PARCEL_OPERATION_COMPLETE>
+			<IDS_SUITE_PREPARING_FOR_OPERATION TimeStamp="1000519215">Preparing for operation</IDS_SUITE_PREPARING_FOR_OPERATION>
+			<IDS_SUITE_REBOOTING TimeStamp="1000519215">Rebooting</IDS_SUITE_REBOOTING>
+			<IDS_SUITE_REGISTERING_SUITE TimeStamp="1000519215">Registering Suite</IDS_SUITE_REGISTERING_SUITE>
+			<IDS_SUITE_REMOVING_PARCEL TimeStamp="1000519215">Removing package [1]</IDS_SUITE_REMOVING_PARCEL>
+			<IDS_SUITE_REPAIRING_PARCEL TimeStamp="1000519215">Repairing package [1]</IDS_SUITE_REPAIRING_PARCEL>
+			<IDS_SUITE_STAGING TimeStamp="1000519215">Staging</IDS_SUITE_STAGING>
+			<IDS_SUITE_UNREGISTERING_SUITE TimeStamp="1000519215">Unregistering Suite</IDS_SUITE_UNREGISTERING_SUITE>
+			<IDS_SUITE_UPGRADE_PARCELS TimeStamp="1000519215">This installation will upgrade the following packages. Do you want to continue?</IDS_SUITE_UPGRADE_PARCELS>
+			<IDS_UITEXT_Bytes TimeStamp="1000519215">bytes</IDS_UITEXT_Bytes>
+			<IDS_UITEXT_GB TimeStamp="1000519215">GB</IDS_UITEXT_GB>
+			<IDS_UITEXT_KB TimeStamp="1000519215">KB</IDS_UITEXT_KB>
+			<IDS_UITEXT_MB TimeStamp="1000519215">MB</IDS_UITEXT_MB>
+			<IDS_UNINSTALL_SUCCESS TimeStamp="1000519215">The InstallShield Wizard has successfully uninstalled [ProductName]. Click Finish to exit the wizard.</IDS_UNINSTALL_SUCCESS>
+			<IDS_WELCOME_INSTALL_COPYRIGHT TimeStamp="1000519215">WARNING: This program is protected by copyright law and international treaties.</IDS_WELCOME_INSTALL_COPYRIGHT>
+			<IDS_WELCOME_INSTALL_DIRECTIONS TimeStamp="1948390799">The installer will install [ProductName_LongVersion] on your computer. To continue, click Next.</IDS_WELCOME_INSTALL_DIRECTIONS>
+			<IDS_WELCOME_MAINTENANCE_CAPTION TimeStamp="-1952272272">Program Maintenanc</IDS_WELCOME_MAINTENANCE_CAPTION>
+			<IDS_WELCOME_MAINTENANCE_MODIFY TimeStamp="1000519215">&amp;Modify</IDS_WELCOME_MAINTENANCE_MODIFY>
+			<IDS_WELCOME_MAINTENANCE_MODIFY_NOTE TimeStamp="1000519215">Change which program features are installed. This option displays the Custom Selection dialog in which you can change the way features are installed.</IDS_WELCOME_MAINTENANCE_MODIFY_NOTE>
+			<IDS_WELCOME_MAINTENANCE_REMOVE TimeStamp="-878530223">  &amp;Remove</IDS_WELCOME_MAINTENANCE_REMOVE>
+			<IDS_WELCOME_MAINTENANCE_REMOVE_NOTE TimeStamp="-878569135"> Remove [ProductName] from your computer.</IDS_WELCOME_MAINTENANCE_REMOVE_NOTE>
+			<IDS_WELCOME_MAINTENANCE_REPAIR TimeStamp="1000519215">Re&amp;pair</IDS_WELCOME_MAINTENANCE_REPAIR>
+			<IDS_WELCOME_MAINTENANCE_REPAIR_NOTE TimeStamp="1000519215">Repair installation errors in the program. This option fixes missing or corrupt files, shortcuts, and registry entries.</IDS_WELCOME_MAINTENANCE_REPAIR_NOTE>
+			<IDS_WELCOME_STAGE_BROWSE_CAPTION TimeStamp="1000519215">Browse to the destination folder.</IDS_WELCOME_STAGE_BROWSE_CAPTION>
+			<IDS_WELCOME_STAGE_CAPTION TimeStamp="1000519215">Change Current Destination Folder</IDS_WELCOME_STAGE_CAPTION>
+			<IDS_WELCOME_STAGE_DIRECTIONS TimeStamp="1000519215">Enter the network location or click Change to browse to a location.  Click Install to create a server image of [ProductName] at the specified network location or click Cancel to exit the wizard.</IDS_WELCOME_STAGE_DIRECTIONS>
+			<IDS_WELCOME_STAGE_NOTE TimeStamp="1000519215">&amp;Look in:</IDS_WELCOME_STAGE_NOTE>
+			<IDS_WELCOME_UNINSTALL_CAPTION TimeStamp="1000519215">Remove the Program</IDS_WELCOME_UNINSTALL_CAPTION>
+			<IDS_WELCOME_UNINSTALL_DIRECTIONS TimeStamp="1000519215">Click Remove to remove [ProductName] from your computer. After removal, this program will no longer be available for use.</IDS_WELCOME_UNINSTALL_DIRECTIONS>
+			<IDS_INSTALLING_WINDOWS_FEATURES TimeStamp="1000519215">Installing Windows features/roles...</IDS_INSTALLING_WINDOWS_FEATURES>
+			<IDS_WELCOME_MAINTENANCE_UPDATE TimeStamp="1000519215">&amp;Update</IDS_WELCOME_MAINTENANCE_UPDATE>
+			<IDS_WELCOME_MAINTENANCE_UPDATE_NOTE TimeStamp="1000519215">[ProductName] [ISUpdateVersion] is available. Download and install the latest update.</IDS_WELCOME_MAINTENANCE_UPDATE_NOTE>
+			<IDS_PROGRESS_CAPTION_UPDATING TimeStamp="1000519215">Updating [ProductName]</IDS_PROGRESS_CAPTION_UPDATING>
+			<IDS_PROGRESS_TITLE_UPDATING TimeStamp="1000519215">Downloading [ProductName] [ISUpdateVersion].</IDS_PROGRESS_TITLE_UPDATING>
+			<IDS_WEBDEPLOY_CAPTION TimeStamp="1000519215">[ProductName] Server</IDS_WEBDEPLOY_CAPTION>
+			<IDS_WEBDEPLOY_USERNAME TimeStamp="1000519215">User Name:</IDS_WEBDEPLOY_USERNAME>
+			<IDS_WEBDEPLOY_SERVER TimeStamp="1000519215">Server:</IDS_WEBDEPLOY_SERVER>
+			<IDS_WEBDEPLOY_PASSWORD TimeStamp="1000519215">Password:</IDS_WEBDEPLOY_PASSWORD>
+			<IDS_WEBDEPLOY_SITE TimeStamp="1000519215">Site Name:</IDS_WEBDEPLOY_SITE>
+			<IDS_WEBDEPLOY_LOADCAPTION TimeStamp="1000519215">Load the publisher profile</IDS_WEBDEPLOY_LOADCAPTION>
+			<IDS_WEBDEPLOY_LOADFILTER TimeStamp="1000519215">Publisher Profile (*.publishsettings)|*.publishsettings|All Files (*.*)|*.*|</IDS_WEBDEPLOY_LOADFILTER>
+			<IDS_WEBDEPLOY_LOAD_BUTTON TimeStamp="1000519215">Load Cloud Server Settings</IDS_WEBDEPLOY_LOAD_BUTTON>
+			<IDS_WEBDEPLOY_LOADPROFILE_FAIL TimeStamp="1000519215">Unable to load publisher settings</IDS_WEBDEPLOY_LOADPROFILE_FAIL>
+			<IDS_WEBDEPLOY_LOCAL TimeStamp="1000519215">Local IIS server</IDS_WEBDEPLOY_LOCAL>
+			<IDS_WEBDEPLOY_REMOTE TimeStamp="1000519215">Remote server</IDS_WEBDEPLOY_REMOTE>
+			<IDS_WEBDEPLOY_PUBPROF TimeStamp="1000519215">Cloud-based server</IDS_WEBDEPLOY_PUBPROF>
+			<IDS_WEBDEPLOY_SERVERLOC TimeStamp="1000519215">Select the server onto which [ProductName] will be installed.</IDS_WEBDEPLOY_SERVERLOC>
+			<ID_STRING TimeStamp="1000475377">Connector</ID_STRING>
+			<ID_STRING1 TimeStamp="1025652233">Sage Data Cloud Connector Monitor</ID_STRING1>
+			<ID_STRING2 TimeStamp="1000514160">Microsoft .NET Framework 4.5.1 Full</ID_STRING2>
+			<ID_STRING3 TimeStamp="1000505585">Microsoft SQL Server Compact 4.0 (x86)</ID_STRING3>
+			<ID_STRING7 TimeStamp="1134704264">Microsoft SQL Server Compact 4.0 (x86)</ID_STRING7>
+			<ID_STRING8 TimeStamp="1134742025">Checking for and stopping services.</ID_STRING8>
+			<ID_STRING11 TimeStamp="1134728139">Microsoft SQL Server Compact 4.0 (x86)</ID_STRING11>
+			<ID_STRING4 TimeStamp="1134748715">Microsoft SQL Server Compact 4.0 (x64)</ID_STRING4>
+			<ID_STRING6 TimeStamp="1268926897">Stopping A </ID_STRING6>
+			<ID_STRING10 TimeStamp="1134740684">Starting Config</ID_STRING10>
+			<ID_STRING12 TimeStamp="1134719917">Sage Connector</ID_STRING12>
+			<ID_STRING13 TimeStamp="1831000273">Review documentation and resources</ID_STRING13>
+			<ID_STRING14 TimeStamp="1134693231">Read the Release Notes</ID_STRING14>
+			<ID_STRING15 TimeStamp="1134751407"/>
+			<ID_STRING16 TimeStamp="1403180816">Microsoft SQL Server Compact 4.0 (x64)</ID_STRING16>
+			<ID_STRING17 TimeStamp="1537383471">Uninstalling Nephos</ID_STRING17>
+			<ID_STRING18 TimeStamp="1948405231">Configure [ProductName]</ID_STRING18>
+			<ID_STRING19 TimeStamp="1537345776">test: [STARTCONNECTORCONFIG]</ID_STRING19>
+			<ID_STRING20 TimeStamp="2074265321">Nephos Install Detected</ID_STRING20>
+			<ID_STRING21 TimeStamp="2074217866">The installer has detected that a previous version of the Nephos product is installed.</ID_STRING21>
+			<ID_STRING22 TimeStamp="2074271114">If you want to remove it as part of the install process check the box below.</ID_STRING22>
+			<ID_STRING23 TimeStamp="2074238378">Uninstall Nephos</ID_STRING23>
+			<ID_STRING24 TimeStamp="2074242634">OK</ID_STRING24>
+			<ID_STRING25 TimeStamp="1948429743">The installer will install [ProductName] on your computer. To continue, click install.</ID_STRING25>
+			<ID_STRING26 TimeStamp="-2086475477">The Install has detected a previous version of Nephos Connector installed. Running this install will remove this previous version.</ID_STRING26>
+			<ID_STRING27 TimeStamp="-1952297233">Checking for Nephos</ID_STRING27>
+			<ID_STRING28 TimeStamp="-1407052248">Microsoft .NET Framework 4.5.1 Full</ID_STRING28>
+			<ID_STRING29 TimeStamp="-190667185">The installer has detected that a previous version of Sage Connector is installed on your computer. Running this install will remove the previous version.</ID_STRING29>
+			<ID_STRING30 TimeStamp="1948415471">Start [ProductName] Monitor</ID_STRING30>
+			<ID_STRING31 TimeStamp="-341693649">Microsoft SQL Server Compact 4.0 (x64)</ID_STRING31>
+			<ID_STRING32 TimeStamp="-341673073">Microsoft SQL Server Compact 4.0 (x86)</ID_STRING32>
+			<ID_STRING33 TimeStamp="-341690608">Microsoft SQL Server Compact 4.0 (x64)</ID_STRING33>
+			<ID_STRING34 TimeStamp="-341679663">Microsoft SQL Server Compact 4.0 (x86)</ID_STRING34>
+			<ID_STRING35 TimeStamp="-207458642"/>
+			<ID_STRING36 TimeStamp="1948386607">Sage Data Cloud Connector</ID_STRING36>
+			<ID_STRING37 TimeStamp="1948423273">This is not a supported OS</ID_STRING37>
+			<ID_STRING38 TimeStamp="-190686993">The installer will upgrade [ProductName] on your computer. To continue click Install.</ID_STRING38>
+			<ID_STRING39 TimeStamp="2082631369">Sage Software, Inc.</ID_STRING39>
+			<ID_STRING40 TimeStamp="-735928568">Sage Data Cloud End User License Agreement</ID_STRING40>
+			<ID_STRING41 TimeStamp="2082662191">The Sage Data Cloud Connector requires windows 7 SP 1 or later</ID_STRING41>
+			<ID_STRING42 TimeStamp="1159859822">Welcome to [ProductName]</ID_STRING42>
+			<ID_STRING5 TimeStamp="-727575378">The installation cannot continue because [ProductName] is not compatible with the version of the operation system on your computer.</ID_STRING5>
+			<ID_STRING9 TimeStamp="-1407006609">Microsoft .NET Framework 4.5.1 Full</ID_STRING9>
+			<ID_STRING43 TimeStamp="-1272794800">Microsoft .NET Framework 4.5.2 Full</ID_STRING43>
+			<ID_STRING44 TimeStamp="-735934423">More information</ID_STRING44>
+			<ID_STRING45 TimeStamp="1159889586">The installer has detected pending system changes that must be applied before installing [ProductName]. Before continuing with installation, restart your computer to apply the changes.</ID_STRING45>
+			<ID_STRING46 TimeStamp="-727538578">Please perform a reboot before continuing with the installation.</ID_STRING46>
+			<ID_STRING47 TimeStamp="-727569426">A pending system reboot has been detected. Please reboot your system before continuing with the installation of [ProductName]</ID_STRING47>
+			<ID_STRING48 TimeStamp="1159879378">[DotNetDisplayName] is required and will be installed with [ProductName]. The installer will detect any running .NET applications and prompt you to exit these applications. If you do not exit these applications during installation, you will need to restart your computer when installation is complete.</ID_STRING48>
+			<ID_STRING49 TimeStamp="1159895762">[DotNetDisplayName] is required and will be installed with [ProductName]. After installation, you will need to restart your computer.</ID_STRING49>
+			<ID_STRING50 TimeStamp="-190700179">The installer will install [ProductName_LongVersion] on your computer.</ID_STRING50>
+			<ID_STRING51 TimeStamp="-190663187">The process will uninstall the previous version of the connector on your computer automatically. To continue, click Next.</ID_STRING51>
+			<ID_STRING52 TimeStamp="220347499">New Feature</ID_STRING52>
+			<ID_STRING53 TimeStamp="220353643">New Feature1</ID_STRING53>
+			<ID_STRING54 TimeStamp="220345967">[ISInstallDir_SageConnector]</ID_STRING54>
+			<ID_STRING55 TimeStamp="220354159">[ISInstallDir_Sage_Data_Cloud_Connector]</ID_STRING55>
+			<ID_STRING56 TimeStamp="220391952">[ISInstallDir_Sage_Data_Cloud_Connector]</ID_STRING56>
+			<ID_STRING57 TimeStamp="1159910034">The installation cannot continue because you are not logged on to Windows as an administrator. Log on as an administrator account or enable User Account Controls (UAC).</ID_STRING57>
+			<ID_STRING58 TimeStamp="891480658">SageConnectorNonProduction</ID_STRING58>
+			<ID_STRING59 TimeStamp="1025649610">SageConnectorNonProd</ID_STRING59>
+			<ID_STRING60 TimeStamp="1025698675">SageConnectorNonProd</ID_STRING60>
+			<ID_STRING61 TimeStamp="1428296521"/>
+			<ID_STRING62 TimeStamp="1428302697">http://na.sage.com/us</ID_STRING62>
+			<ID_STRING63 TimeStamp="-1256006354">[ProductName] cannot be installed on the same machine as Sage Data Cloud Connector. The setup cannot continue.</ID_STRING63>
+		</Language>
+	</Languages>
+	<Actions>
+		<CallInstallScript Id="StopServices" Arguments="StopServices" ExecutionLevel="Admin"/>
+		<CallInstallScript Id="StartConfig"/>
+		<StartExe Id="LaunchConfiguration" DefaultCode="Ignore" File="[ISInstallDir_Sage_Data_Cloud_Connector Monitor]/SageConnect.exe" ExecutionLevel="Admin"/>
+		<CallInstallScript Id="UninstallNephos" Arguments="UninstallNephos" ExecutionLevel="Admin"/>
+		<CallInstallScript Id="CheckForNephos" Arguments="CheckForNephos" ExecutionLevel="Admin"/>
+		<SetProperty Id="CheckForUpgradeCase" Name="STARTCONNECTORCONFIG" Value="False"/>
+		<CallInstallScript Id="DebugStuff" Arguments="DebugStuff"/>
+		<CallInstallScript Id="CheckRunConfig" Arguments="CheckRunConfig"/>
+		<StartExe Id="LaunchMonitor" DefaultCode="Ignore" File="[ISInstallDir_Sage_Data_Cloud_Connector Monitor]\ConnectorServiceMonitor.exe" ExecutionLevel="Admin"/>
+		<SetProperty Id="DetectMonitorFile" Name="MonitorFileExist" Value="true"/>
+		<SetProperty Id="DetectConfigurationFile" Name="ConfigurationFileExist" Value="true"/>
+		<CallInstallScript Id="SetShowConnectorEndpoint" Arguments="SetShowConnectorEndpoint" ExecutionLevel="Admin"/>
+		<CallInstallScript Id="RemoveShowConnectorEndpoint" Arguments="RemoveShowConnectorEndpoint" ExecutionLevel="Admin"/>
+		<CallInstallScript Id="CheckForUpgrade" Arguments="CheckRunConfig"/>
+		<SetProperty Id="CheckSupportedPlatform" Name="UnsupportedPlatform" Value="true"/>
+		<CallInstallScript Id="StartServices" Arguments="StartServices"/>
+		<SetProperty Id="CheckPendingReboot" Name="PendingReboot" Value="true"/>
+		<SetProperty Id="SetUpgradeDotNet" Name="RunDotNet" Value="true"/>
+		<SetProperty Id="CheckModernOS" Name="ModernOS" Value="true"/>
+		<CallInstallScript Id="GetPrevInstallDir" ExecutionLevel="Admin" Arguments="GetPrevInstallDir"/>
+		<SetProperty Id="SetUpgradeInstallDir" Name="ISInstallDir_Sage_Data_Cloud_Connector" Value="[PrevInstallDir]" FormatPropertyValue="Yes"/>
+		<CallInstallScript Id="DetermineUpgrade" Arguments="CheckForUpgrade"/>
+		<CallInstallScript Id="CheckIfAdmin" Arguments="CheckIfAdmin"/>
+		<SetProperty Id="SetNonProdFlag"/>
+	</Actions>
+	<Events>
+		<OnEnd>
+			<Action Id="LaunchMonitor">
+				<When>
+					<All>
+						<FileExists Path="[ISInstallDir_Sage_Data_Cloud_Connector]\ConnectorServiceMonitor.exe"/>
+						<PropertyValue Name="ISSilentInstall" Convert="String" Compare="NotEqual" CompareTo="true"/>
+					</All>
+				</When>
+			</Action>
+		</OnEnd>
+		<OnBegin>
+			<Action Id="CheckIfAdmin"/>
+			<Action Id="DetermineUpgrade"/>
+			<Action Id="CheckSupportedPlatform">
+				<When>
+					<Any>
+						<Platform OSVersion="-6.0" ProductType="Workstation,Server,DomainController"/>
+					</Any>
+				</When>
+			</Action>
+			<Action Id="CheckPendingReboot">
+				<When>
+					<Any>
+						<RegistryExists Check64Bit="False" Key="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending"/>
+						<RegistryExists Check64Bit="False" Key="HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired"/>
+						<RegistryExists Check64Bit="False" Key="HKLM\System\CurrentControlSet\Control\Session Manager\PendingFileRenameOperations"/>
+					</Any>
+				</When>
+			</Action>
+			<Action Id="SetUpgradeDotNet">
+				<When>
+					<All>
+						<RegistryExists Check64Bit="False" Key="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"/>
+						<Not>
+							<RegistryValue Check64Bit="False" Key="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" ValueName="Release" Convert="String" Compare="GreaterEqual" CompareTo="378675"/>
+						</Not>
+					</All>
+				</When>
+			</Action>
+			<Action Id="CheckModernOS">
+				<When>
+					<All>
+						<Platform OSVersion="6.2-"/>
+					</All>
+				</When>
+			</Action>
+			<Action Id="CheckForUpgrade"/>
+			<Action Id="GetPrevInstallDir">
+				<When>
+					<Any>
+						<MsiRelated UpgradeCode="{A53A6887-79CA-49B5-B35D-6492C66E3554}"/>
+					</Any>
+				</When>
+			</Action>
+			<Action Id="SetUpgradeInstallDir">
+				<When>
+					<Any>
+						<PropertyValue Name="PrevInstallDir" Convert="String" Compare="NotEqual" CompareTo="NA"/>
+					</Any>
+				</When>
+			</Action>
+		</OnBegin>
+		<OnParcelsInstalling>
+			<Action Id="StopServices"/>
+		</OnParcelsInstalling>
+		<OnParcelsInstalled>
+			<Action Id="StartServices">
+				<When>
+					<Any>
+						<FeatureAction FeatureName="PegasusConnector" State="install"/>
+					</Any>
+				</When>
+			</Action>
+			<Action Id="DetectMonitorFile">
+				<When>
+					<All>
+						<FileExists Path="[ISInstallDir_Sage_Data_Cloud_Connector Monitor]\Sage.CRE.HostingFramework.ServiceMonitor.exe"/>
+					</All>
+				</When>
+			</Action>
+		</OnParcelsInstalled>
+	</Events>
+	<AbortConditions>
+		<Message Text="IDS_SUITE_MINOR_DOWNGRADE">
+			<When>
+				<Any>
+					<Not>
+						<ParcelRef Id="*"/>
+					</Not>
+					<SuiteInstalled SuiteId="*" Version="*" Compare="GreaterThan"/>
+				</Any>
+			</When>
+		</Message>
+		<Message Text="ID_STRING63">
+			<When>
+				<Not>
+					<Any>
+						<ParcelRef Id="{B7E2BD54-E2FF-4B38-A5A9-BA8C70BB54B3}"/>
+						<ParcelRef Id="{E5EB8F74-C236-4FB5-B97C-2994BFB45648}"/>
+					</Any>
+				</Not>
+			</When>
+		</Message>
+	</AbortConditions>
+	<InstallScript xmlns="installshield/2014/bootstrap/project">
+		<ScriptFiles>
+			<ScriptFile Name="&lt;ISProjectDataFolder&gt;\Script Files\Setup.rul"/>
+		</ScriptFiles>
+		<CompilerOptions>
+			<CompileBeforeBuild Value="1"/>
+			<Debug Value="0"/>
+			<IncludePath Value=""/>
+			<MaxErrors Value="50"/>
+			<MaxWarnings Value="50"/>
+			<OutputPath Value="&lt;ISProjectDataFolder&gt;\Script Files"/>
+			<PreProcessor Value="_ISCRIPT_SUITE_EXTENSION"/>
+			<WarningLevel Value="3"/>
+			<WarningsAsErrors Value="0"/>
+			<LibraryPath Value=""/>
+		</CompilerOptions>
+		<LinkerOptions>
+			<Library Name="isrtsuite.obl"/>
+		</LinkerOptions>
+	</InstallScript>
+</Setup>

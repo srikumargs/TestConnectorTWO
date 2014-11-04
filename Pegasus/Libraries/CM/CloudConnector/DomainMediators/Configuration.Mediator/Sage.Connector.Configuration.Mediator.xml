@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sage.Connector.Configuration.Mediator</name>
+    </assembly>
+    <members>
+        <member name="M:Sage.Connector.Configuration.Mediator.Common.FindFeatureProcessor``1(System.Collections.Generic.IEnumerable{System.Lazy{``0,Sage.Connector.DomainContracts.BackOffice.Metadata.IBackOfficeData}},System.String)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="backOfficeHandlers"></param>
+            <param name="backOfficeId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sage.Connector.Configuration.Mediator.Common.ValidateFeatureProcessor``1(``0,System.String)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="featureProcessor"></param>
+            <param name="backOfficeId"></param>
+        </member>
+        <member name="T:Sage.Connector.Configuration.Mediator.Features.FeatureMessageTypes">
+            <summary>
+            The supported set of features by the configuration domain mediator. 
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Configuration.Mediator.Features.FeatureMessageTypes.GetFeatureConfigurationProperties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Configuration.Mediator.Features.FeatureMessageTypes.ValidateBackOfficeFeatureConfigurations">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Configuration.Mediator.Features.FeatureMessageTypes.GetCompanyConnectionCredentialsNeeded">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Configuration.Mediator.Features.FeatureMessageTypes.GetCompanyConnectionManagementCredentialsNeeded">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Configuration.Mediator.Features.FeatureMessageTypes.ValidateCompanyConnectionCredentials">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Sage.Connector.Configuration.Mediator.Features.FeatureMessageTypes.ValidateCompanyConnectionManagementCredentials">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.Configuration.Mediator.Features.FeatureDescriptions">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Features.FeatureDescriptions.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Features.FeatureDescriptions.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Features.FeatureDescriptions.GetCompanyConnectionCredentialsNeeded">
+            <summary>
+              Looks up a localized string similar to GetCompanyConnectionCredentialsNeeded.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Features.FeatureDescriptions.GetCompanyConnectionManagementCredentialsNeeded">
+            <summary>
+              Looks up a localized string similar to GetCompanyConnectionManagementCredentialsNeeded.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Features.FeatureDescriptions.GetFeatureConfigurationProperties">
+            <summary>
+              Looks up a localized string similar to Get Feature Configuration Properties.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Features.FeatureDescriptions.ValidateBackOfficeFeatureConfigurations">
+            <summary>
+              Looks up a localized string similar to Validate Back Office Feature Configurations.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Features.FeatureDescriptions.ValidateCompanyConnectionCredentials">
+            <summary>
+              Looks up a localized string similar to ValidateCompanyConnectionCredentials.
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Features.FeatureDescriptions.ValidateCompanyConnectionManagementCredentials">
+            <summary>
+              Looks up a localized string similar to ValidateCompanyConnectionManagementCredentials.
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.Configuration.Mediator.Features.GetCompanyConnectionCredentialsNeeded">
+            <summary>
+            Get Company Connection Credentials Needed feature support
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Configuration.Mediator.Features.GetCompanyConnectionCredentialsNeeded.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Get Company Connection Credentials Needed
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="payload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.Configuration.Mediator.Features.GetCompanyConnectionManagementCredentialsNeeded">
+            <summary>
+             Get Company Connection Management Credentials Needed feature support
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Configuration.Mediator.Features.GetCompanyConnectionManagementCredentialsNeeded.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Get Company Connection Management Credentials Needed
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="payload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.Configuration.Mediator.Features.ValidateCompanyConnectionCredentials">
+            <summary>
+            Validate the company connection credentials feature support
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Configuration.Mediator.Features.ValidateCompanyConnectionCredentials.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Validate the company connection credentials 
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="payload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.Configuration.Mediator.Features.ValidateCompanyConnectionManagementCredentials">
+            <summary>
+             Validate the back office connection request feature support
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Configuration.Mediator.Features.ValidateCompanyConnectionManagementCredentials.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Validate the back office connection request 
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="payload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.Configuration.Mediator.Payload.BackOfficeCompanyConfiguration">
+            <summary>
+            BackOffice configuration 
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Payload.BackOfficeCompanyConfiguration.BackOfficeId">
+            <summary>
+            Back Office Id is the id representing the specific back office.
+            
+            TODO KMS: should this be IBackOffice config as opposed to company connection config? 
+            TODO KMS: back office company config is access to the back office for a specific company and its 
+            TODO KMS: configuration
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Payload.BackOfficeCompanyConfiguration.UserId">
+            <summary>
+            Get set the Back Office User id
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Payload.BackOfficeCompanyConfiguration.Password">
+            <summary>
+            Get set the Back Office Password
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Payload.BackOfficeCompanyConfiguration.CompanyId">
+            <summary>
+            Get set the Back Office CompanyId
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Payload.BackOfficeCompanyConfiguration.ConnectionInformation">
+            <summary>
+            Get set the Back Office Connection Information
+            </summary>
+        </member>
+        <member name="P:Sage.Connector.Configuration.Mediator.Payload.BackOfficeCompanyConfiguration.FeatureConfiguration">
+            <summary>
+            Feature configuration in json format
+            </summary>
+        </member>
+        <member name="T:Sage.Connector.Configuration.Mediator.Features.ValidateBackOfficeFeatureConfigurations">
+            <summary>
+            Validates the Back Office Feature Configuration
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Configuration.Mediator.Features.ValidateBackOfficeFeatureConfigurations.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Validate the back office feature configuration
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="requestPayload">String representing the payload to process.</param>
+        </member>
+        <member name="T:Sage.Connector.Configuration.Mediator.Features.GetFeatureConfigurationProperties">
+            <summary>
+            Get Feature Configuration Properties
+            </summary>
+        </member>
+        <member name="M:Sage.Connector.Configuration.Mediator.Features.GetFeatureConfigurationProperties.FeatureRequest(Sage.Connector.DomainMediator.Core.IResponseHandler,System.Guid,System.String,Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration,System.String)">
+            <summary>
+            Validate the back office connection request 
+            </summary>
+            <param name="handler">The <see cref="T:Sage.Connector.DomainMediator.Core.IResponseHandler"/></param>
+            <param name="requestId">The Connector Request Id</param>
+            <param name="tenantId">The tenant Id making the request.</param>
+            <param name="backOfficeConfiguration">The back office company configuration <see cref="T:Sage.Connector.DomainContracts.BackOffice.IBackOfficeCompanyConfiguration"/></param>
+            <param name="requestPayload">String representing the payload to process.</param>
+        </member>
+    </members>
+</doc>

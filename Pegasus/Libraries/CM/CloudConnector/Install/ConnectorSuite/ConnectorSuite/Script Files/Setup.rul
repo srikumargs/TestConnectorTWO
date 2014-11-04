@@ -1,0 +1,207 @@
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            
+//  This template script provides the code necessary to build an entry-point 
+//  function to be called in an InstallScript action during a Suite installation. 
+//                                                                            
+//                                                                            
+//    File Name:  Setup.rul                                                   
+//                                                                            
+//  Description:  InstallShield script                                        
+//
+////////////////////////////////////////////////////////////////////////////////
+
+// Include Ifx.h for built-in InstallScript function prototypes and for Suite 
+// function prototypes.
+#include "ifx.h"
+
+// The keyword export identifies MyFunction() as an entry-point function.
+// The argument it accepts must be an object for a Suite extension interface.
+export prototype CheckIfAdmin(OBJECT);
+export prototype GetPrevInstallDir(OBJECT);
+export prototype StopServices(OBJECT);
+export prototype LaunchConfig(OBJECT);
+export prototype CheckForNephos(OBJECT);
+export prototype UninstallNephos(OBJECT);
+export prototype DebugStuff(OBJECT);
+export prototype CheckRunConfig(OBJECT);
+export prototype SetShowConnectorEndpoint(OBJECT);
+export prototype RemoveShowConnectorEndpoint(OBJECT);
+export prototype CheckForUpgrade(OBJECT);
+export prototype StartServices(OBJECT);
+
+// To Do:  Declare global variables, define constants, and prototype user-
+//         defined and DLL functions here.
+function CheckIfAdmin(oExtension)
+
+begin
+	if !(Is(USER_ADMINISTRATOR, "")) then
+		SuiteSetProperty("AdminUser", "false");	
+	endif;
+end;
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           
+// Function:  CheckForUpgrade
+//                                                                           
+//  Purpose:  This function checks to see if a previous version of the connector suite is installed.
+//                                                                           
+///////////////////////////////////////////////////////////////////////////////
+function GetPrevInstallDir(oExtension)
+	NUMBER nvType, nvSize;
+	STRING registryReadResult;
+begin
+	//Read the registry value to see if the suite is installed.
+	RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	RegDBGetKeyValueEx("SOFTWARE\\Sage\\SageConnector\\SDC", "InstallPath",
+						 nvType, registryReadResult, nvSize);
+	//This is used to detect if this is an upgrade.
+	if(registryReadResult != "") then	
+		SuiteSetProperty("PrevInstallDir", registryReadResult);	
+	endif;				 
+end;
+
+
+function CheckForUpgrade(oExtension)
+	NUMBER nvType, nvSize;
+	STRING registryReadResult;
+begin
+	//Read the registry value to see if the suite is installed.
+	RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	RegDBGetKeyValueEx("SOFTWARE\\Sage\\SageConnector\\SDC", "ProductCode",
+						 nvType, registryReadResult, nvSize);
+	//This is used to detect if this is an upgrade.
+	SuiteSetProperty("DetectedConnectorUpgrade", "false");	
+					 
+	if(registryReadResult != "") then
+		SuiteSetProperty("DetectedConnectorUpgrade", "true");
+	endif;
+end;
+
+
+
+function RemoveShowConnectorEndpoint(oExtension)
+	
+begin
+	RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	RegDBDeleteKey("SOFTWARE\\Sage\\SageConnector");
+end;
+
+function SetShowConnectorEndpoint(oExtension)
+	
+begin
+	SuiteLogInfo("SetShowConnectorEndpoint:  Start", "");
+	RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	RegDBSetKeyValueEx("HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment", "SAGE_CONNECTOR_SHOW_ENDPOINT", REGDB_STRING, "1", -1);
+end;
+
+///////////////////////////////////////////////////////////////////////////////
+//                                                                           
+// Function:  MyFunction
+//                                                                           
+//  Purpose:  This function will be called by the script engine when
+//            the Suite engine calls your InstallScript action.
+//                                                                           
+///////////////////////////////////////////////////////////////////////////////
+function StopServices(oExtension)
+    // To Do:  Declare local variables.
+    BOOL serviceExist;
+    STRING svName;
+begin
+	serviceExist = FALSE;
+	
+	svName = "Sage.Connector.Service.1.0";
+	serviceExist = ServiceExistsService(svName);
+	if(serviceExist = TRUE) then
+		ServiceStopService(svName);
+	endif;
+	
+	serviceExist = FALSE;
+	svName = "Sage.Connector.Service.Monitor.1.0";
+	serviceExist = ServiceExistsService(svName);
+	if(serviceExist = TRUE) then
+		ServiceStartService(svName, "");
+	endif;
+    // To Do:  Write script that will be executed when MyFunction is called.
+
+end;
+
+function StartServices(oExtension)
+	BOOL serviceExist;
+	STRING svName;
+begin
+	serviceExist = FALSE;
+	svName = "Sage.Connector.Service.1.0";
+	serviceExist = ServiceExistsService(svName);
+	if(serviceExist = TRUE) then
+		ServiceStartService(svName, "");
+	endif;
+	
+	serviceExist = FALSE;
+	svName = "Sage.Connector.Service.Monitor.1.0";
+	serviceExist = ServiceExistsService(svName);
+	if(serviceExist = TRUE) then
+		ServiceStartService(svName, "");
+	endif;
+end;
+
+function DebugStuff(oExtension)
+	STRING ISInstallDir_Sage_Data_Cloud_Connector,ConfigurationFileExist,SageConnectorMsiCommand;
+begin
+	SuiteGetProperty("ISInstallDir_Sage_Data_Cloud_Connector", ISInstallDir_Sage_Data_Cloud_Connector);
+	SuiteLogInfo("DebugStuff-ISInstallDir_Sage_Data_Cloud_Connector:" + ISInstallDir_Sage_Data_Cloud_Connector, "");
+	SuiteGetProperty("ConfigurationFileExist", ConfigurationFileExist);
+	SuiteLogInfo("DebugStuff-ConfigurationFileExist:" + ConfigurationFileExist, "");
+	SuiteGetProperty("SageConnectorMsiCommand", SageConnectorMsiCommand);
+	SuiteLogInfo("DebugStuff-SageConnectorMsiCommand:" + SageConnectorMsiCommand, "");
+end;
+
+// Function to check if Pegasus is installed if it is unselect the config checkbox
+function CheckRunConfig(oExtension)
+	NUMBER nvType, nvSize;
+	STRING UpgradeDetected;
+begin
+	SuiteSetProperty("ConfigureSageConnector", "true");
+	SuiteSetProperty("StartSageConnectorMonitor", "false");
+	
+	SuiteGetProperty("DetectedConnectorUpgrade", UpgradeDetected);
+	//RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	//RegDBGetKeyValueEx("SOFTWARE\\Wow6432Node\\Sage\\SageConnector\\SDC", "ProductCode",
+						 //nvType, registryReadResult, nvSize);
+						 					 
+	if(UpgradeDetected != "false") then
+		SuiteSetProperty("ConfigureSageConnector", "false");
+		SuiteSetProperty("StartSageConnectorMonitor", "true");
+		
+		//SuiteSetProperty("DetectedConnectorUpgrade", "true");
+	endif;
+
+end;
+
+function CheckForNephos(oExtension)
+	NUMBER nvType, nvSize;
+	STRING registryReadResult;
+begin
+	SuiteLogInfo("CheckForNephos:  Start", "");
+	RegDBSetDefaultRoot(HKEY_LOCAL_MACHINE);
+	//HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{79169AFC-BE1B-4030-8DD8-B707A54F178C}
+	RegDBGetKeyValueEx("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{79169AFC-BE1B-4030-8DD8-B707A54F178C}", "UninstallString",
+						 nvType, registryReadResult, nvSize);
+	SuiteLogInfo("CheckForNephos:" + registryReadResult, "");
+	if(registryReadResult != "") then
+		SuiteSetProperty("NephosUninstallCommand", registryReadResult);
+	endif;
+end;
+
+function UninstallNephos(oExtension)
+	STRING uninstallCommand, iSupportDir;
+begin
+	SuiteGetProperty("NephosUninstallCommand", uninstallCommand);
+	SuiteLogInfo("NephosUninstallCommand:  uninstallCommand = " + uninstallCommand, "");
+	
+	SuiteGetProperty("SETUPSUPPORTDIR", iSupportDir);
+	SuiteLogInfo("uninstallCommand:  iSupportDir = " + iSupportDir, "");
+	
+	uninstallCommand = uninstallCommand + " /s /f1" + iSupportDir + "NephosUninstall.iss";
+	SuiteLogInfo("uninstallCommand:  uninstallCommand = " + uninstallCommand, "");
+
+	LaunchAppAndWait (uninstallCommand, "", WAIT);
+end;
