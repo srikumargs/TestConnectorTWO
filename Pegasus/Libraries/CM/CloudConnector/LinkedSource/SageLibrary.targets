@@ -3,19 +3,19 @@
 
   <PropertyGroup>
     <SageGetIntegrationDependenciesSourceDirectory>\\orbdevstebld1\Builds\Integration_vNextPegasus\Integration_vNextPegasus_20140725.1</SageGetIntegrationDependenciesSourceDirectory>
-      <!--<SageGetIntegrationDependenciesSourceDirectory>\\orbdevstebld6\Builds\Integration_QFE\Integration_QFE_20120712.1</SageGetIntegrationDependenciesSourceDirectory>-->
+    <!--<SageGetIntegrationDependenciesSourceDirectory>\\orbdevstebld6\Builds\Integration_QFE\Integration_QFE_20120712.1</SageGetIntegrationDependenciesSourceDirectory>-->
     <!--<SageGetIntegrationDependenciesSourceDirectory>C:\dev\IntegrationPeg\vNextPegasus\Projects\Sage.Connector.Cloud.Integration.Proxy\bin\Debug</SageGetIntegrationDependenciesSourceDirectory>-->
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <!-- Figure out where the TFS build tasks are. -->
-    <TeamBuildRefPath Condition="'$(TeamBuildRefPath)'==''">$(VS100COMNTOOLS)..\IDE\PrivateAssemblies\</TeamBuildRefPath>
+    <!--<TeamBuildRefPath Condition="'$(TeamBuildRefPath)'==''">$(VS100COMNTOOLS)..\IDE\PrivateAssemblies\</TeamBuildRefPath>-->
 
     <!-- Figure out where this target is being called from, TFS Build or a developer 
          machine. BuildUri and TeamFoundationServerUrl properties are the 
          ones that indicate this is running under TFS Build.-->
     <SageBuildType>DEVBUILD</SageBuildType>
-    <SageBuildType Condition="'$(BuildUri)'!='' and '$(TeamFoundationServerUrl)'!=''">TFSBUILD</SageBuildType>
+    <!--<SageBuildType Condition="'$(BuildUri)'!='' and '$(TeamFoundationServerUrl)'!=''">TFSBUILD</SageBuildType>-->
 
     <!-- Default root of the sandbox is two directories up -->
     <SandboxDir Condition=" '$(SandboxDir)'=='' ">$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..'))</SandboxDir>
@@ -39,24 +39,25 @@
 
     <SageAssemblyTitleTXTFile Condition=" '$(SageAssemblyTitleTXTFile)'=='' ">$(MSBuildProjectDirectory)\bin\$(Configuration)\Generated.AssemblyTitle.txt</SageAssemblyTitleTXTFile>
 
-    
-    
+    <!-- The variable added for testing -->
+    <SageServerPath> TestSageServerPath</SageServerPath>
+
     <!--<NuGetRepositoryPublishRoot Condition=" '$(NuGetRepositoryPublishRoot)'=='' ">\\orbfile1\crebuild\Platform\NuGet</NuGetRepositoryPublishRoot>-->
 
     <!-- todo if this file persists change this to a var/targets pattern -->
     <PublishNuGetPackage Condition=" '$(PublishNuGetPackage)'=='' ">false</PublishNuGetPackage>
-    
-    <CreateNuGetPackage Condition=" '$(CreateNuGetPackage)'=='' ">false</CreateNuGetPackage>
 
-    <NuGetRepositoryPublishRoot Condition=" '$(NuGetRepositoryPublishRoot)'=='' ">\\orbdevstebld1\NugetPackages</NuGetRepositoryPublishRoot>
+    <CreateNuGetPackage Condition=" '$(CreateNuGetPackage)'=='' ">false</CreateNuGetPackage>
+    <!--\\orbdevstebld1\NugetPackages-->
+    <NuGetRepositoryPublishRoot Condition=" '$(NuGetRepositoryPublishRoot)'=='' ">C:\Explore\NugetPublishFolder</NuGetRepositoryPublishRoot>
 
   </PropertyGroup>
 
   <!-- Pull in the VS 2010 version of the TFS build components only if doing a full 
        TFS Build.-->
-  <UsingTask TaskName="Microsoft.TeamFoundation.Build.Tasks.GetBuildProperties"
+  <!--<UsingTask TaskName="Microsoft.TeamFoundation.Build.Tasks.GetBuildProperties"
              AssemblyFile="$(TeamBuildRefPath)\Microsoft.TeamFoundation.Build.ProcessComponents.dll"
-             Condition="'$(SageBuildType)'=='TFSBUILD'"/>
+             Condition="'$(SageBuildType)'=='TFSBUILD'"/>-->
 
 
   <UsingTask TaskName="TokenReplace" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v$(MSBuildToolsVersion).dll">
@@ -77,8 +78,9 @@ File.WriteAllText(Path, content, Encoding.Default);
     </Task>
   </UsingTask>
 
+  <!--$(SageLinkedSourceDirectory)\GetServerPath.ps1-->
   <Target Name="SageCopyTemplateFiles"
-          Inputs="$(SageLinkedSourceDirectory)\SageLibrary.targets;$(SageLinkedSourceDirectory)\SageVariables.targets;$(SageLinkedSourceDirectory)\GetServerPath.ps1"
+          Inputs="$(SageLinkedSourceDirectory)\SageLibrary.targets;$(SageLinkedSourceDirectory)\SageVariables.targets;"
           Outputs="$(SageGlobalAssemblyInfoCSFile);$(SageServerPathTXTFile)">
     <MakeDir Directories="$(MSBuildProjectDirectory)\bin\$(Configuration)"/>
 
@@ -119,12 +121,14 @@ using System.Runtime.InteropServices%3B
 
     <MakeDir Directories="$(MSBuildProjectDirectory)\bin\$(Configuration)"/>
     <!-- Build server is currently TFS 2010 -->
+    <!--
     <Exec Command="powershell.exe -file &quot;$(SageLinkedSourceDirectory)\GetServerPath.ps1&quot; &quot;http://orbdevtfs2:8080/tfs/SageCRE&quot; &quot;$(SandboxDir)&quot; &quot;$(SageServerPathTXTFile)&quot; &quot;10.0.0.0&quot;"
           Condition="'$(SageBuildType)'=='TFSBUILD'"/>
 
+    -->
     <!-- DEV machines are running VS 2012-->
-    <Exec Command="powershell.exe -file &quot;$(SageLinkedSourceDirectory)\GetServerPath.ps1&quot; &quot;http://orbdevtfs2:8080/tfs/SageCRE&quot; &quot;$(SandboxDir)&quot; &quot;$(SageServerPathTXTFile)&quot; &quot;11.0.0.0&quot;"
-        Condition="'$(SageBuildType)'=='DEVBUILD'"/>
+    <!--<Exec Command="powershell.exe -file &quot;$(SageLinkedSourceDirectory)\GetServerPath.ps1&quot; &quot;http://orbdevtfs2:8080/tfs/SageCRE&quot; &quot;$(SandboxDir)&quot; &quot;$(SageServerPathTXTFile)&quot; &quot;11.0.0.0&quot;"
+        Condition="'$(SageBuildType)'=='DEVBUILD'"/>-->
   </Target>
 
 
@@ -142,6 +146,27 @@ using System.Runtime.InteropServices%3B
     <Message Importance="high" Text="BuildUri=$(BuildUri)"/>
     <Message Importance="high" Text="BuildDefinitionName=$(BuildDefinitionName)"/>
     <Message Importance="high" Text="BuildNumber=$(BuildNumber)"/>
+  </Target>
+
+  <PropertyGroup>
+    <MSBuildCommunityTargetPath>$(SageLinkedSourceDirectory)</MSBuildCommunityTargetPath>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildCommunityTargetPath)\MSBuild.Community.Tasks.Targets" />
+
+  <Target Name="Versioning">
+
+    <GitVersion LocalPath="$(SolutionDir)">
+      <Output TaskParameter="CommitHash" PropertyName="Version" />
+    </GitVersion>
+
+    <GitBranch LocalPath="$(SolutionDir)">
+      <Output TaskParameter="Branch" PropertyName="GitBranchName" />
+    </GitBranch>
+
+    <Message Text="GitBranchName:$(GitBranchName)" Importance="high" />
+    <Message Text="SandboxDir:$(SandboxDir)" Importance="high" />
+
   </Target>
 
   <!-- The SageBuildFileVersion target builds the string suitable for using to 
@@ -165,11 +190,13 @@ using System.Runtime.InteropServices%3B
        SageBuildRevision          14
        -->
   <Target Name="SageBuildFileVersion"
-          DependsOnTargets="SageInitializeBuildProperties">
+          DependsOnTargets="SageInitializeBuildProperties;Versioning">
 
-    <ReadLinesFromFile File="$(SageServerPathTXTFile)">
+    <!--<ReadLinesFromFile File="$(SageServerPathTXTFile)">
       <Output PropertyName="SageServerPath" TaskParameter="Lines"/>
-    </ReadLinesFromFile>
+    </ReadLinesFromFile>-->
+
+
 
     <PropertyGroup>
       <!-- The separator string between the $(BuildDefinition) and the date 
@@ -212,11 +239,12 @@ using System.Runtime.InteropServices%3B
       <SageBuildYear>$([System.DateTime]::Now.Year.ToString("0000"))</SageBuildYear>
       <SageBuildMonth>$([System.DateTime]::Now.Month.ToString("00"))</SageBuildMonth>
       <SageBuildDay>$([System.DateTime]::Now.Day.ToString("00"))</SageBuildDay>
-      <BuildDefinition>DEVBUILD</BuildDefinition>
+      <BuildDefinition>DEVBUILD-$(GitBranchName)</BuildDefinition>
     </PropertyGroup>
 
+    <!--$(SageServerPath)-->
     <PropertyGroup>
-      <BuildSourceInfo>$(BuildDefinition) - $(SageServerPath)</BuildSourceInfo>
+      <BuildSourceInfo>$(BuildDefinition) - $(GitBranchName)</BuildSourceInfo>
     </PropertyGroup>
 
 
@@ -258,8 +286,8 @@ using System.Runtime.InteropServices%3B
            Text="Error building the SageBuildYear property"/>
     <Error Condition="'$(SageBuildRevision)'==''"
            Text="Error building the SageBuildRevision property"/>
-    <Error Condition="'$(SageServerPath)'==''"
-           Text="Error building the SageServerPath property"/>
+    <!--<Error Condition="'$(SageServerPath)'==''"
+           Text="Error building the SageServerPath property"/>-->
   </Target>
 
   <Target Name="SageWriteSageAssemblyFileVersionTXTFile"
@@ -280,12 +308,13 @@ using System.Runtime.InteropServices%3B
   <Target Name="SageWriteAssemblyTitleTXTFile"
           DependsOnTargets="SageInitializeBuildProperties">
 
-    <ReadLinesFromFile File="$(SageServerPathTXTFile)">
+    <!--<ReadLinesFromFile File="$(SageServerPathTXTFile)">
       <Output PropertyName="SageServerPath" TaskParameter="Lines"/>
-    </ReadLinesFromFile>
+    </ReadLinesFromFile>-->
 
+    <!--$(SageServerPath)-->
     <PropertyGroup>
-      <BuildSourceInfo>$(BuildDefinition) - $(SageServerPath)</BuildSourceInfo>
+      <BuildSourceInfo>$(BuildDefinition) - $(GitBranchName)</BuildSourceInfo>
       <AssemblyTitle>$(AssemblyName)</AssemblyTitle>
     </PropertyGroup>
 
@@ -318,8 +347,8 @@ using System.Runtime.InteropServices%3B
            Text="Error building the SageBuildNumber property"/>
     <Error Condition="'$(SageBuildRevision)'==''"
            Text="Error building the SageBuildRevision property"/>
-    <Error Condition="'$(SageServerPath)'==''"
-           Text="Error building the SageServerPath property"/>
+    <!--<Error Condition="'$(SageServerPath)'==''"
+           Text="Error building the SageServerPath property"/>-->
     <Error Condition="'$(AssemblyTitle)'==''"
            Text="Error building the AssemblyTitle property"/>
   </Target>
@@ -383,8 +412,8 @@ using System.Reflection%3B
 
   </Target>
 
-  
-  
+
+
 
   <PropertyGroup>
     <BuildDependsOn>SageCopyTemplateFiles;SageWriteSageAssemblyFileVersionTXTFile;SageWriteSageAssemblyInfoCSFile;SageGetIntegrationDependencies;$(BuildDependsOn);</BuildDependsOn>
